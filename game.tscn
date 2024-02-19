@@ -9,15 +9,11 @@ script = ExtResource("1_yimfk")
 
 [node name="BlueBlankBackground" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -1225)
-scale = Vector2(1.961, 2)
+position = Vector2(0, -864)
+scale = Vector2(1.44, 1.44)
 texture = ExtResource("3_mky08")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_rbiiv")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(800, 646)
-ignore_rotation = false
-zoom = Vector2(1.55, 1.55)
-editor_draw_limits = true
+[connection signal="Attack" from="Player" to="." method="_on_player_attack"]

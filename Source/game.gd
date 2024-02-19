@@ -5,10 +5,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	pass
+	
 func _process(delta):
 	if Input.is_action_just_pressed("ForceQuit"):
 		get_tree().quit()
@@ -17,3 +15,12 @@ func _process(delta):
 		
 	if %BlueBlankBackground.position.y>=0:
 		%BlueBlankBackground.position.y= BG_pos
+
+
+func _on_player_attack(WeaponType:int):
+	print("Player Attack ",WeaponType)
+	var Bullet = preload("res://bullet.tscn").instantiate()
+	Bullet.position = $Player.position
+	Bullet.rotation_degrees = -90
+	add_child(Bullet)
+
