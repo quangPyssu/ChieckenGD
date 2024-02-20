@@ -4,6 +4,10 @@
 
 [node name="Entity" type="CharacterBody2D"]
 script = ExtResource("1_bso2c")
+HP = null
+timerStart = null
+timerEnd = null
+inClampedScreen = null
 
 [node name="AnimationCenter" type="Node2D" parent="."]
 unique_name_in_owner = true

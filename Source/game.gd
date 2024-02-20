@@ -5,22 +5,33 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	#print the window size
+	print("Window Size: ",get_viewport().size)
+	print(DisplayServer.screen_get_size())
+
+	#set the window size
+	get_viewport().size=Vector2(1920,1080)
+	print("Window Size: ",get_viewport().size)
+	print(DisplayServer.screen_get_size())
+
+	$Player.position=get_viewport().size/2
 	
+	#hide the mouse
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 func _process(delta):
 	if Input.is_action_just_pressed("ForceQuit"):
 		get_tree().quit()
 		
-	%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+200.0*delta
+	%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+300.0*delta
 		
-	if %BlueBlankBackground.position.y>=0:
-		%BlueBlankBackground.position.y= BG_pos
+	if %BlueBlankBackground.position.y>0:
+		%BlueBlankBackground.position.y=BG_pos
+
+	#print("Player Position: ",$Player.global_position)
 
 
 func _on_player_attack(WeaponType:int):
 	print("Player Attack ",WeaponType)
-	var Bullet = preload("res://bullet.tscn").instantiate()
-	Bullet.position = $Player.position
-	Bullet.rotation_degrees = -90
-	add_child(Bullet)
-
+	var Bullet = preload("res://bullet_player_normal.tscn").instantiate()
+	Bullet.position = $Player.global_position
+	%Projectiles.add_child(Bullet)

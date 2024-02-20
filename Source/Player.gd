@@ -19,6 +19,9 @@ signal Special
 func _ready():
 	super._ready()
 
+	%AttackTimer.timeout.connect(_on_attack_timer_timeout)
+	%SpecialTimer.timeout.connect(_on_special_timer_timeout)
+
 func _physics_process(delta):
 	super._physics_process(delta)
 	#move the player via wasd and arrow keys
@@ -42,7 +45,6 @@ func _physics_process(delta):
 
 func _process(_delta):
 	super._process(_delta)
-	Timers()
 
 	if Input.is_action_pressed("Attack") and AttackLoaded:
 		AttackLoaded = false
@@ -69,9 +71,8 @@ func JetAnimation(JetType: int):
 		else:
 			%FireJetFast.scale.y = 1
 
-func Timers():
-	if %AttackTimer.is_stopped():
-		AttackLoaded = true
+func _on_attack_timer_timeout():
+	AttackLoaded = true
 
-	if %SpecialTimer.is_stopped():
-		SpecialLoaded = true
+func _on_special_timer_timeout():
+	SpecialLoaded = true
