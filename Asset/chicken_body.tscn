@@ -1,8 +1,13 @@
-[gd_scene load_steps=106 format=3 uid="uid://dc2ccq5smsujm"]
+[gd_scene load_steps=107 format=3 uid="uid://dc2ccq5smsujm"]
 
 [ext_resource type="Texture2D" uid="uid://b2pqxj5o7smbi" path="res://Asset/ChickenBody.png" id="1_y40dk"]
 [ext_resource type="Script" path="res://Source/chicken_body.gd" id="2_mrppb"]
 [ext_resource type="Texture2D" uid="uid://boyofywc41cs" path="res://Asset/SpriteFrames/ChickenFaces.png" id="3_0kukt"]
+[ext_resource type="Texture2D" uid="uid://6b276mkv2l7s" path="res://Asset/SpriteFrames/ChickenShirt.png" id="4_vj6ot"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owhfy"]
+atlas = ExtResource("1_y40dk")
+region = Rect2(2464, 0, 154, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k80gb"]
 atlas = ExtResource("1_y40dk")
@@ -404,12 +409,16 @@ region = Rect2(154, 0, 154, 154)
 atlas = ExtResource("1_y40dk")
 region = Rect2(0, 0, 154, 154)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_owhfy"]
-atlas = ExtResource("1_y40dk")
-region = Rect2(2464, 0, 154, 154)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_vmbtx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owhfy")
+}],
+"loop": true,
+"name": &"ChickenBody_Hurt",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k80gb")
@@ -712,27 +721,28 @@ animations = [{
 "texture": SubResource("AtlasTexture_pidyq")
 }],
 "loop": true,
-"name": &"ChickenBody_Flap",
+"name": &"default",
 "speed": 60.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_owhfy")
-}],
-"loop": true,
-"name": &"ChickenBody_Hurt",
-"speed": 5.0
 }]
 
 [node name="ChickenBody" type="AnimatedSprite2D"]
 texture_filter = 1
-position = Vector2(183, 151)
+position = Vector2(290, 262)
 sprite_frames = SubResource("SpriteFrames_vmbtx")
-animation = &"ChickenBody_Flap"
+frame = 79
+frame_progress = 0.911973
 script = ExtResource("2_mrppb")
 
+[node name="ChickenShirt" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 3)
+texture = ExtResource("4_vj6ot")
+hframes = 6
+vframes = 8
+
 [node name="ChickenFaces" type="Sprite2D" parent="."]
-position = Vector2(3, -38)
+texture_filter = 1
+position = Vector2(2, -38)
 scale = Vector2(1.08824, 1.08824)
 texture = ExtResource("3_0kukt")
 hframes = 15

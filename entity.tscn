@@ -12,4 +12,4 @@ inClampedScreen = null
 [node name="AnimationCenter" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="CollisionShape2D" parent="."]

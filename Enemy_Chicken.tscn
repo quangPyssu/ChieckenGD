@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dujwhxsx2hnvs"]
+
+[ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_luwti"]
+[ext_resource type="PackedScene" uid="uid://dc2ccq5smsujm" path="res://Asset/chicken_body.tscn" id="2_wurf6"]
+[ext_resource type="Script" path="res://Source/Enemy_Chicken.gd" id="2_xbdg0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pcoi3"]
+radius = 437.001
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccb0c"]
+radius = 36.0139
+
+[node name="Entity" instance=ExtResource("1_luwti")]
+position = Vector2(204, 132)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("2_xbdg0")
+HP = 100
+timerStart = 0.0
+timerEnd = -1.0
+inClampedScreen = true
+
+[node name="Area2D" type="Area2D" parent="." index="0"]
+scale = Vector2(0.999011, 1)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+modulate = Color(100, 0.098, 0.118, 0.456)
+shape = SubResource("CircleShape2D_pcoi3")
+
+[node name="ChickenBody" parent="AnimationCenter" index="0" instance=ExtResource("2_wurf6")]
+position = Vector2(0, 0)
+
+[node name="HitBox" parent="." index="2"]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_ccb0c")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
