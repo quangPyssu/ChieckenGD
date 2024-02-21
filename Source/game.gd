@@ -24,7 +24,7 @@ func _process(delta):
 	#print("Player Position: ",$Player.global_position)
 
 
-func _on_player_attack(WeaponType:int):
+func _on_player_attack(_WeaponType:int):
 	var Bullet = preload("res://bullet_player_normal.tscn").instantiate()
 	Bullet.position = $Player.global_position
 	%Projectiles.add_child(Bullet)

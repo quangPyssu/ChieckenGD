@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dc2ccq5smsujm" path="res://Asset/chicken_body.tscn" id="2_wurf6"]
 [ext_resource type="Script" path="res://Source/Enemy_Chicken.gd" id="2_xbdg0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pcoi3"]
-radius = 437.001
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7mfp"]
+size = Vector2(700, 700)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ccb0c"]
-radius = 36.0139
+radius = 38.0
 
 [node name="Entity" instance=ExtResource("1_luwti")]
 position = Vector2(204, 132)
@@ -24,9 +24,10 @@ inClampedScreen = true
 scale = Vector2(0.999011, 1)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="visionShape" type="CollisionShape2D" parent="Area2D" index="0"]
 modulate = Color(100, 0.098, 0.118, 0.456)
-shape = SubResource("CircleShape2D_pcoi3")
+shape = SubResource("RectangleShape2D_t7mfp")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="ChickenBody" parent="AnimationCenter" index="0" instance=ExtResource("2_wurf6")]
 position = Vector2(0, 0)
