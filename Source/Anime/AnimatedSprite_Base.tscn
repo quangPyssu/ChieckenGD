@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2e1xttl76p8m"]
+
+[ext_resource type="Script" path="res://Source/Anime/AnimatedSpriteBase.gd" id="1_8y85i"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+script = ExtResource("1_8y85i")

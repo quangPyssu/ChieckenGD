@@ -6,8 +6,13 @@ var player:Node2D
 func _ready():
     super._ready()
     player = get_node("/root/Game/Player")
+    speed=10000
+    direction = Vector2(5,3).normalized()
+    inClampedScreen = true
+
 func _process(_delta):
     super._process(_delta)
+    
     if nearPlayer:
         $AnimationCenter/ChickenBody._look_at_player(player.global_position)
     else:

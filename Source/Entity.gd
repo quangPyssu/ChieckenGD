@@ -8,6 +8,7 @@ class_name entity
 var direction: Vector2 = Vector2(0, 0)
 var speed: float = 0
 @export var inClampedScreen: bool = true
+@export var BounceOffSceen: bool = true
 
 var StartClock:Timer = null
 var EndClock:Timer = null
@@ -19,14 +20,25 @@ func _ready():
 			animation_cascade(AnimationPiece)
 	print("entity ready")
 
-func _physics_process(_delta):
+func _physics_process(delta):
+	_set_velocity(delta)
 	move_and_slide()
 	if inClampedScreen: #clamp in the screen		
+		#Bounce off the screen
+		if BounceOffSceen:
+			if position.x <= 0 or position.x >= get_viewport().size.x:
+				direction.x = -direction.x
+			if position.y <= 0 or position.y >= get_viewport().size.y:
+				direction.y = -direction.y
+
 		position.x = clamp(position.x, 0, get_viewport().size.x)
 		position.y = clamp(position.y, 0, get_viewport().size.y)
 
 func _process(_delta):
 	pass
+
+func _set_velocity(delta:float):
+	velocity = direction * speed * delta	
 
 func animation_cascade(AnimationPiece: Node):
 	if AnimationPiece.has_method("play"):

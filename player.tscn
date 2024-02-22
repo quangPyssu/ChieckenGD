@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d26j2nusorvjk"]
+[gd_scene load_steps=47 format=3 uid="uid://d26j2nusorvjk"]
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_tg83y"]
 [ext_resource type="Script" path="res://Source/Player.gd" id="1_vop0c"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dj5qlml6yehwb" path="res://Asset/SpriteFrames/FireJet.tres" id="3_y5fs6"]
 [ext_resource type="Texture2D" uid="uid://ltfaidarhr2v" path="res://Asset/Dreadnought_Shield.png" id="5_hl6uf"]
 [ext_resource type="Texture2D" uid="uid://bxwkd5kewkuvu" path="res://Asset/Battlecruiser_Engine.png" id="6_x37wx"]
+[ext_resource type="Texture2D" uid="uid://divxhjle1vn5w" path="res://Asset/Battlecruiser_Destruction.png" id="7_0psjm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6o43q"]
 atlas = ExtResource("5_hl6uf")
@@ -135,15 +136,150 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iiedh"]
-size = Vector2(42, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tea0o"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7b3m"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr4o7"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bp3d"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv4ij"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5grk"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0i5o"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8upqe"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8evo"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2olqu"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydmhk"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnpyo"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8pl5"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxso0"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(1664, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhxju"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(1792, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbehy"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(1920, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4cwe"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(2048, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30vg2"]
+atlas = ExtResource("7_0psjm")
+region = Rect2(2176, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xiaqo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tea0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7b3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr4o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bp3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fv4ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5grk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0i5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8upqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8evo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2olqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydmhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnpyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8pl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxso0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhxju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbehy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4cwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30vg2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qoar3"]
+size = Vector2(42, 68)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gth5p"]
+radius = 20.0
+height = 68.0
 
 [node name="Entity" instance=ExtResource("1_tg83y")]
+collision_mask = 2
 script = ExtResource("1_vop0c")
-HP = 100
-timerStart = 0.0
-timerEnd = -1.0
-inClampedScreen = true
 
 [node name="FireJetFast" type="Node2D" parent="AnimationCenter" index="0"]
 unique_name_in_owner = true
@@ -184,11 +320,19 @@ sprite_frames = SubResource("SpriteFrames_6jaag")
 frame = 6
 frame_progress = 0.26112
 
-[node name="HitBox" parent="." index="1"]
-shape = SubResource("RectangleShape2D_iiedh")
+[node name="BattlecruiserBlowUp" type="AnimatedSprite2D" parent="AnimationCenter" index="4"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_xiaqo")
+frame = 5
+frame_progress = 0.808699
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_qoar3")
+debug_color = Color(0.933333, 0.223529, 0.337255, 0.419608)
 
 [node name="AttackTimer" type="Timer" parent="." index="2"]
 unique_name_in_owner = true
+wait_time = 3.0
 one_shot = true
 autostart = true
 
@@ -196,3 +340,7 @@ autostart = true
 unique_name_in_owner = true
 one_shot = true
 autostart = true
+
+[node name="PhysicBox" parent="." index="4"]
+shape = SubResource("CapsuleShape2D_gth5p")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

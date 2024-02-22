@@ -26,5 +26,5 @@ func _process(delta):
 
 func _on_player_attack(_WeaponType:int):
 	var Bullet = preload("res://bullet_player_normal.tscn").instantiate()
-	Bullet.position = $Player.global_position
+	Bullet.position = $Player.global_position + Vector2(0, -50)
 	%Projectiles.add_child(Bullet)

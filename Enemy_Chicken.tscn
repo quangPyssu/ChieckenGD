@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dujwhxsx2hnvs"]
+[gd_scene load_steps=7 format=3 uid="uid://dujwhxsx2hnvs"]
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_luwti"]
 [ext_resource type="PackedScene" uid="uid://dc2ccq5smsujm" path="res://Asset/chicken_body.tscn" id="2_wurf6"]
@@ -7,24 +7,24 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7mfp"]
 size = Vector2(700, 700)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ccb0c"]
-radius = 38.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkc1u"]
+radius = 38.6394
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lystd"]
+radius = 35.1141
 
 [node name="Entity" instance=ExtResource("1_luwti")]
 position = Vector2(204, 132)
+scale = Vector2(1, 1.00694)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 script = ExtResource("2_xbdg0")
-HP = 100
-timerStart = 0.0
-timerEnd = -1.0
-inClampedScreen = true
 
-[node name="Area2D" type="Area2D" parent="." index="0"]
+[node name="VisionBox" type="Area2D" parent="." index="0"]
 scale = Vector2(0.999011, 1)
 collision_layer = 0
 
-[node name="visionShape" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionBox" index="0"]
 modulate = Color(100, 0.098, 0.118, 0.456)
 shape = SubResource("RectangleShape2D_t7mfp")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
@@ -34,7 +34,14 @@ position = Vector2(0, 0)
 
 [node name="HitBox" parent="." index="2"]
 position = Vector2(0, 11)
-shape = SubResource("CircleShape2D_ccb0c")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_jkc1u")
+debug_color = Color(0.909804, 0.282353, 0.243137, 0.419608)
+
+[node name="PhysicBox" parent="." index="3"]
+shape = SubResource("CircleShape2D_lystd")
+
+[connection signal="body_entered" from="VisionBox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="VisionBox" to="." method="_on_area_2d_body_exited"]

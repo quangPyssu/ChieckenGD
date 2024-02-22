@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cumxo5kmhr2ws"]
+
+[ext_resource type="Texture2D" uid="uid://dtirv618cf5j7" path="res://Asset/white.png" id="1_0ovn1"]
+
+[sub_resource type="Gradient" id="Gradient_0iyrg"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r3c1g"]
+gradient = SubResource("Gradient_0iyrg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0gkrn"]
+particle_flag_disable_z = true
+angle_min = -200.0
+angle_max = 200.0
+inherit_velocity_ratio = 1.5
+direction = Vector3(0, -1, 0)
+spread = 47.946
+initial_velocity_min = 15.0
+initial_velocity_max = 90.0
+gravity = Vector3(0, 20, 0)
+scale_min = 0.1
+scale_max = 0.2
+color = Color(1, 1, 0, 0.670588)
+color_ramp = SubResource("GradientTexture1D_r3c1g")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_0gkrn")
+texture = ExtResource("1_0ovn1")
+lifetime = 1.7
+one_shot = true
+explosiveness = 1.0

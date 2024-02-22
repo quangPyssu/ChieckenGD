@@ -5,6 +5,8 @@ var lookVel:Vector2= Vector2.ZERO
 var currentLookDir:Vector2i = Vector2i(7,3)
 var targetLookDir:Vector2i = Vector2i(7,3)
 
+const visionBox:Vector2i = Vector2i(700/15,700/5)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -16,7 +18,6 @@ func _process(_delta):
 	else : 
 		play("default")
 
-
 	# offset the chicken face base on the spritesheet
 
 	$ChickenFaces.offset = Vector2($ChickenFaces.frame_coords) * Vector2(0.5, 0.5)+ Vector2(-4, -12)
@@ -26,20 +27,17 @@ func _process(_delta):
 
 	$ChickenFaces.offset.y -= 5 - 0.4* abs(bodyFrame)
 	$ChickenShirt.offset.y =  0.4* abs(bodyFrame-1) - 19	
-
-	if Input.is_action_pressed("TestButton+"):
-		$ChickenFaces.set_frame(($ChickenFaces.get_frame()+1)%75)
 	
 	_set_look_dir()
 		
 func _look_at_player(PlayerPos:Vector2):
 	#look at the playerasas
-	var lookAt:Vector2 = (PlayerPos - global_position).normalized()
+	var lookAt:Vector2i = Vector2i(PlayerPos - global_position)/visionBox
 	#the visionShape is a rectangle that around the chicken that is used to detect the player
 	#15x5 is the size of the sprite sheet
 	#get sprite sheet position based on the lookAt 
-	lookAt=lookAt*Vector2(15,5)+Vector2(7,3)
-	targetLookDir = Vector2i(lookAt.x,lookAt.y)
+	lookAt=lookAt+Vector2i(7,3)
+	targetLookDir = Vector2i(lookAt)
 
 
 func _reset_look():
