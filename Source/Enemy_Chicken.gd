@@ -3,6 +3,7 @@ extends entity
 var nearPlayer:bool = false
 var player:Node2D 
 var preEgg:PackedScene = preload("res://Egg.tscn")
+var feather:PackedScene = preload("res://Asset/particle/Particle_Feather.tscn")
 
 func _ready():
     super._ready()
@@ -40,3 +41,10 @@ func _on_attack_timer_timeout():
     var Egg=preEgg.instantiate()
     Egg.global_position = global_position
     get_parent().add_child(Egg)
+
+func kill():
+    var f = feather.instantiate()
+    f.global_position = global_position
+    get_parent().add_child(f)
+    super.kill()
+    
