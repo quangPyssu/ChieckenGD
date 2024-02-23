@@ -22,7 +22,13 @@ unique_name_in_owner = true
 
 [node name="Enemies" type="Node2D" parent="."]
 
+[node name="EnemyChicken2" parent="Enemies" instance=ExtResource("4_10w55")]
+position = Vector2(2147, 236)
+
 [node name="EnemyChicken" parent="Enemies" instance=ExtResource("4_10w55")]
-position = Vector2(716, 378)
+position = Vector2(1322, 1827)
+
+[node name="EnemyChicken3" parent="Enemies" instance=ExtResource("4_10w55")]
+position = Vector2(268, 557)
 
 [connection signal="Attack" from="Player" to="." method="_on_player_attack"]

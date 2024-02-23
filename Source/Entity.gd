@@ -7,6 +7,12 @@ class_name entity
 
 var direction: Vector2 = Vector2(0, 0)
 var speed: float = 0
+
+var savedDirection: Vector2 = Vector2(0, 0)
+var savedSpeed: float = 0
+var savedPos: Vector2 = Vector2(0, 0) #destination position
+var isGoing: bool = false
+
 @export var inClampedScreen: bool = true
 @export var BounceOffSceen: bool = true
 
@@ -15,21 +21,23 @@ var EndClock:Timer = null
 
 func _ready():
 	setTimer()
-
-	for AnimationPiece in %AnimationCenter.get_children():
-			animation_cascade(AnimationPiece)
 	print("entity ready")
 
 func _physics_process(delta):
 	_set_velocity(delta)
 	move_and_slide()
-	if inClampedScreen: #clamp in the screen		
-		#Bounce off the screen
-		if BounceOffSceen:
-			if position.x <= 0 or position.x >= get_viewport().size.x:
-				direction.x = -direction.x
-			if position.y <= 0 or position.y >= get_viewport().size.y:
-				direction.y = -direction.y
+
+	#if going to a position 
+	if isGoing:
+		Going()
+	else :
+		if inClampedScreen: #clamp in the screen		
+			#Bounce off the screen
+			if BounceOffSceen:
+				if position.x <= 0 or position.x >= get_viewport().size.x:
+					direction.x = -direction.x
+				if position.y <= 0 or position.y >= get_viewport().size.y:
+					direction.y = -direction.y
 
 		position.x = clamp(position.x, 0, get_viewport().size.x)
 		position.y = clamp(position.y, 0, get_viewport().size.y)
@@ -39,13 +47,6 @@ func _process(_delta):
 
 func _set_velocity(delta:float):
 	velocity = direction * speed * delta	
-
-func animation_cascade(AnimationPiece: Node):
-	if AnimationPiece.has_method("play"):
-		AnimationPiece.play("default")
-	else:
-		for AnimationPiecePiece in AnimationPiece.get_children():
-			animation_cascade(AnimationPiecePiece)
 
 func _on_entity_timeout():
 	print("entity timeout")
@@ -77,3 +78,48 @@ func setTimer():
 		StartClock.start()
 	else:
 		_on_entity_timein()
+
+func take_damage(damage:int):
+	HP -= damage
+	print("entity take damage: ", HP)
+
+	if HP<=0:
+		kill()
+
+func kill():
+	print("entity kill")
+	#stop process and physics
+	set_process(false)
+	set_physics_process(false)
+
+	var killFlag:bool = false
+
+	for i in $AnimationCenter.get_children():
+		if i.has_method("kill"):
+			i.kill()
+			killFlag = true
+	
+	if killFlag==false:
+		queue_free()
+
+func _on_animation_center_tree_exited():
+	queue_free()
+
+func gotoPosition(pos:Vector2,NewSpeed:float):
+	#save direction and speed 
+	#then move to the new position 
+	savedDirection = direction
+	savedSpeed = speed
+	savedPos = pos
+	speed = NewSpeed
+
+	isGoing = true
+
+func Going():
+	if position.distance_to(savedPos) < 30:
+		isGoing = false
+		direction = savedDirection
+		speed = savedSpeed
+	else:
+		direction = (savedPos - position).normalized()
+		speed = savedSpeed

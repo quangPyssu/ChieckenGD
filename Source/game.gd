@@ -6,7 +6,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#set the window size
-	get_viewport().size=Vector2(1920,1080)
+	get_viewport().size=Global.ScreenSize
+	print("Window Size: ",get_viewport().size)
 
 	$Player.position=get_viewport().size/2
 	
@@ -26,5 +27,5 @@ func _process(delta):
 
 func _on_player_attack(_WeaponType:int):
 	var Bullet = preload("res://bullet_player_normal.tscn").instantiate()
-	Bullet.position = $Player.global_position + Vector2(0, -50)
+	Bullet.global_position = $Player.global_position + Vector2(0, -50)
 	%Projectiles.add_child(Bullet)

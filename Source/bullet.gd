@@ -6,14 +6,13 @@ var BaseSpeed: float = 300.0
 var velocity: Vector2 = Vector2.ZERO
 var accelaration: float = 0.0
 var direction: Vector2 = Vector2(0,-1)
-var damage: int = 1
+@export var damage: int = 1
+@export var HP: int = 1
 @export var BounceCount: int = 0
 
 @export var inClampedScreen: bool = true
 
 func _ready():
-	for AnimationPiece in %AnimationCenter.get_children():
-			animation_cascade(AnimationPiece)
 	print("Bullet ready")
 
 func _process(delta):
@@ -28,10 +27,10 @@ func _process(delta):
 		if position.x < -300 or position.x > get_viewport().size.x+300 or position.y < -300 or position.y > get_viewport().size.y+300:
 			queue_free()
 
+func _on_body_entered(body:Node2D):
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
 
-func animation_cascade(AnimationPiece: Node):
-	if AnimationPiece.has_method("play"):
-		AnimationPiece.play("default")
-	else:
-		for AnimationPiecePiece in AnimationPiece.get_children():
-			animation_cascade(AnimationPiecePiece)
+	HP-=1
+	if HP <= 0:
+		queue_free()

@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Sprite2D
 
 var lookVel:Vector2= Vector2.ZERO
 
@@ -12,22 +12,7 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if Input.is_action_just_pressed("TestButton+"):
-		play("ChickenBody_Hurt")
-	else : 
-		play("default")
-
-	# offset the chicken face base on the spritesheet
-
-	$ChickenFaces.offset = Vector2($ChickenFaces.frame_coords) * Vector2(0.5, 0.5)+ Vector2(-4, -12)
-	
-	#head move up and down with the body going down from 0 to 49 and back up from 50 to 99
-	var bodyFrame:float = get_frame()-50
-
-	$ChickenFaces.offset.y -= 5 - 0.4* abs(bodyFrame)
-	$ChickenShirt.offset.y =  0.4* abs(bodyFrame-1) - 19	
-	
+func _process(_delta):	
 	_set_look_dir()
 		
 func _look_at_player(PlayerPos:Vector2):
@@ -66,3 +51,17 @@ func _set_look_dir():
 
 	$ChickenFaces.frame_coords.x = clamp($ChickenFaces.frame_coords.x+lookVel.x,0,14)
 	$ChickenFaces.frame_coords.y = clamp($ChickenFaces.frame_coords.y+lookVel.y,0,4)
+
+
+func _on_tree_exited():
+	get_parent().queue_free()
+
+func kill():
+	self_modulate = Color(1,1,1,0)
+	$ChickenFaces.visible = false
+	$ChickenShirt.visible = false
+	$Explosion.visible = true
+	$Explosion.play("explosion")
+
+func _on_explosion_animation_finished():
+	get_parent().queue_free()

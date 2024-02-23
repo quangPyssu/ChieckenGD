@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://br007wog1g8hy"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_6cg5q"]
+[ext_resource type="Texture2D" uid="uid://dayl4bi7dt2a5" path="res://Asset/egg.png" id="2_aa0dd"]
+[ext_resource type="Script" path="res://Source/Egg.gd" id="2_o5pn6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qsjq1"]
+radius = 15.0
+height = 42.0
+
+[node name="Bullet" instance=ExtResource("1_6cg5q")]
+scale = Vector2(0.7, 0.7)
+collision_layer = 16
+collision_mask = 1
+script = ExtResource("2_o5pn6")
+
+[node name="Egg" type="Sprite2D" parent="AnimationCenter" index="0"]
+texture = ExtResource("2_aa0dd")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_qsjq1")

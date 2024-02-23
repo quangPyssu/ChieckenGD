@@ -6,12 +6,13 @@
 script = ExtResource("1_bso2c")
 
 [node name="AnimationCenter" type="Node2D" parent="."]
-unique_name_in_owner = true
 
 [node name="HitBox" type="Area2D" parent="."]
-visible = false
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 
 [node name="PhysicBox" type="CollisionShape2D" parent="."]
-visible = false
+
+[connection signal="tree_exited" from="AnimationCenter" to="." method="_on_animation_center_tree_exited"]

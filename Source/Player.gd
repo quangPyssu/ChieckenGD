@@ -21,14 +21,15 @@ signal Special
 
 func _ready():
 	super._ready()
+	HP = 1
 
 	%AttackTimer.timeout.connect(_on_attack_timer_timeout)
 	%SpecialTimer.timeout.connect(_on_special_timer_timeout)
 
-func _physics_process(delta):	
-	#move the player via wasd and arrow keys
+	get_node("AnimationCenter/BattlecruiserBase").visible = true
 
-	
+func _physics_process(delta):	
+	#move the player via wasd and arrow keys	
 
 	direction = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
 	
@@ -51,6 +52,7 @@ func _physics_process(delta):
 	super._physics_process(delta)
 
 func _process(_delta):
+
 	super._process(_delta)
 
 	%AttackTimer.wait_time=WeaponTime[WeaponType]
@@ -76,12 +78,30 @@ func _process(_delta):
 	if WeaponParticle.size()>0:
 		CleanAttackParticle()
 
+	# +  Blow up
+	if Input.is_action_pressed("TestButton+"):
+		_blow_up()
+		#kill()
+
+	# - Shielded
+	if Input.is_action_pressed("TestButton-"):
+		_shielded()
+
 func CleanAttackParticle():
 	# for with index
 	for i in WeaponParticle.size()-1:
 		if WeaponParticle[i].emitting==false:
 			WeaponParticle[i].queue_free()
 			WeaponParticle.remove_at(i)
+
+func _shielded():
+	get_node("AnimationCenter/AnimationPlayer").play("Shielded")
+
+func _blow_up():
+	get_node("AnimationCenter/AnimationPlayer").play("Blowing")
+	#stop process and physics process
+	set_process(false)
+	set_physics_process(false)
 
 func JetAnimation(JetType: int):
 	if JetType == 0:
@@ -101,3 +121,6 @@ func _on_attack_timer_timeout():
 
 func _on_special_timer_timeout():
 	SpecialLoaded = true
+
+func kill():
+	_blow_up()

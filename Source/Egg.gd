@@ -6,7 +6,7 @@ func _ready():
 
 	super._ready()
 
-	BaseSpeed=1000.0
-	direction=Vector2(0,-1)
-	accelaration=100
-	rotation_degrees=-90
+	BaseSpeed=300.0
+	direction=Vector2(0,1)
+	accelaration=0
+    

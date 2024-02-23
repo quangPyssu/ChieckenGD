@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3vckuwyyxyvw"]
+
+[ext_resource type="SpriteFrames" uid="uid://84mmi5wq84fj" path="res://Asset/SpriteFrames/Explosion.tres" id="1_fsmq4"]
+
+[node name="Explosion" type="AnimatedSprite2D"]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_fsmq4")
+animation = &"explosion"
+autoplay = "explosion"
+frame = 10
+frame_progress = 1.0
