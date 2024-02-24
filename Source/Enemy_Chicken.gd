@@ -7,7 +7,7 @@ var feather:PackedScene = preload("res://Asset/particle/Particle_Feather.tscn")
 
 func _ready():
     super._ready()
-    HP = 5
+    HP = 3
     player = get_node("/root/Game/Player")
     speed=10000
     direction = Vector2(5,-3).normalized()

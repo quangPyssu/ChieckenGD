@@ -9,7 +9,10 @@ const visionBox:Vector2i = Vector2i(700/15,700/5)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	self_modulate = Color(1,1,1,1)
+	$ChickenFaces.visible = true
+	$ChickenShirt.visible = true
+	$Explosion.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):	
@@ -53,15 +56,8 @@ func _set_look_dir():
 	$ChickenFaces.frame_coords.y = clamp($ChickenFaces.frame_coords.y+lookVel.y,0,4)
 
 
-func _on_tree_exited():
+func obliterate():
 	get_parent().queue_free()
 
 func kill():
-	self_modulate = Color(1,1,1,0)
-	$ChickenFaces.visible = false
-	$ChickenShirt.visible = false
-	$Explosion.visible = true
-	$Explosion.play("explosion")
-
-func _on_explosion_animation_finished():
-	get_parent().queue_free()
+	$AnimationPlayer.play("explosion")

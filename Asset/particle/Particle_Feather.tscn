@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8na1fxpn8fnt"]
+[gd_scene load_steps=8 format=3 uid="uid://c8na1fxpn8fnt"]
 
 [ext_resource type="Texture2D" uid="uid://ctx05mqaqe2yl" path="res://Asset/FeatherAni.png" id="1_3ydqi"]
 
@@ -8,11 +8,28 @@ particles_anim_h_frames = 10
 particles_anim_v_frames = 10
 particles_anim_loop = true
 
+[sub_resource type="Gradient" id="Gradient_simof"]
+offsets = PackedFloat32Array(0.633333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kionj"]
+gradient = SubResource("Gradient_simof")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sttov"]
 particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 30.0
 gravity = Vector3(0, 98, 0)
+linear_accel_max = 90.0
+radial_accel_min = -30.0
+radial_accel_max = 30.0
+tangential_accel_min = -50.0
+tangential_accel_max = 50.0
+scale_min = 1.5
+scale_max = 1.7
+color_ramp = SubResource("GradientTexture1D_kionj")
 anim_speed_min = 0.1
-anim_speed_max = 0.5
+anim_speed_max = 2.0
 anim_offset_max = 1.0
 
 [sub_resource type="Animation" id="Animation_ucphj"]
@@ -52,11 +69,14 @@ _data = {
 
 [node name="feather" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_sxsyp")
-amount = 1
+scale = Vector2(1.00166, 0.995135)
+emitting = false
+amount = 3
 process_material = SubResource("ParticleProcessMaterial_sttov")
 texture = ExtResource("1_3ydqi")
 lifetime = 5.0
-randomness = 0.35
+one_shot = true
+explosiveness = 1.0
 fixed_fps = 60
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

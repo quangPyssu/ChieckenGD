@@ -15,6 +15,8 @@ var isGoing: bool = false
 
 @export var inClampedScreen: bool = true
 @export var BounceOffSceen: bool = true
+@export var canFlicker: bool = true
+var isFlickering: bool = false
 
 var StartClock:Timer = null
 var EndClock:Timer = null
@@ -50,7 +52,7 @@ func _set_velocity(delta:float):
 
 func _on_entity_timeout():
 	print("entity timeout")
-	queue_free()
+	kill()
 
 func _on_entity_timein():
 	print("entity timein")
@@ -82,6 +84,7 @@ func setTimer():
 func take_damage(damage:int):
 	HP -= damage
 	print("entity take damage: ", HP)
+	flicker()
 
 	if HP<=0:
 		kill()
@@ -123,3 +126,13 @@ func Going():
 	else:
 		direction = (savedPos - position).normalized()
 		speed = savedSpeed
+
+func flicker():
+	#flicker the entity with the modulate
+	if canFlicker and !isFlickering:
+		isFlickering = true
+		for i in range(0, 10):
+			modulate.a = 0.5
+			await get_tree().create_timer(0.1).timeout
+			modulate.a = 1
+			await get_tree().create_timer(0.1).timeout

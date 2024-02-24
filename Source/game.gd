@@ -17,10 +17,14 @@ func _process(delta):
 	if Input.is_action_just_pressed("ForceQuit"):
 		get_tree().quit()
 		
-	%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+300.0*delta
+	%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+100.0*delta
 		
 	if %BlueBlankBackground.position.y>0:
 		%BlueBlankBackground.position.y=BG_pos
+
+	if Global.defeated:
+		pass
+		#get_tree().change_scene("res://scenes/scene_gameover.tscn")
 
 	#print("Player Position: ",$Player.global_position)
 

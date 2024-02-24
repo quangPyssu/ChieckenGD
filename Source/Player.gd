@@ -14,14 +14,13 @@ var WeaponTime: Array[float] = [0.5,0.0,0.0,0.0]
 var SpecialTime: Array[float] = [5.0,0.0,0.0,0.0]
 
 var particle:Array[PackedScene] = [preload("res://Asset/particle/Particle_BaseBullet.tscn")]
-var WeaponParticle:Array[GPUParticles2D] = []
 
 signal Attack
 signal Special
 
 func _ready():
 	super._ready()
-	HP = 1
+	HP = Global.HP
 
 	%AttackTimer.timeout.connect(_on_attack_timer_timeout)
 	%SpecialTimer.timeout.connect(_on_special_timer_timeout)
@@ -53,6 +52,7 @@ func _physics_process(delta):
 
 func _process(_delta):
 
+	Global.HP = HP
 	super._process(_delta)
 
 	%AttackTimer.wait_time=WeaponTime[WeaponType]
@@ -66,7 +66,6 @@ func _process(_delta):
 		add_child(SpawnParticle)
 		SpawnParticle.position = -Vector2(0,50)
 		SpawnParticle.emitting = true
-		WeaponParticle.append(SpawnParticle)
 	
 	if Input.is_action_pressed("Special") and SpecialLoaded:
 		SpecialLoaded = false
@@ -74,25 +73,18 @@ func _process(_delta):
 		$AnimationCenter/PLayerShield.visible = 1
 		%SpecialTimer.wait_time=SpecialTime[SpecialType]
 		%SpecialTimer.start()
-
-	if WeaponParticle.size()>0:
-		CleanAttackParticle()
+		Global.SP=0
+		recoverSP()
 
 	# +  Blow up
 	if Input.is_action_pressed("TestButton+"):
 		_blow_up()
 		#kill()
 
-	# - Shielded
-	if Input.is_action_pressed("TestButton-"):
-		_shielded()
-
-func CleanAttackParticle():
-	# for with index
-	for i in WeaponParticle.size()-1:
-		if WeaponParticle[i].emitting==false:
-			WeaponParticle[i].queue_free()
-			WeaponParticle.remove_at(i)
+	# - hurt
+	if Input.is_action_just_pressed("TestButton-"):
+		HP-=1	
+		
 
 func _shielded():
 	get_node("AnimationCenter/AnimationPlayer").play("Shielded")
@@ -102,6 +94,7 @@ func _blow_up():
 	#stop process and physics process
 	set_process(false)
 	set_physics_process(false)
+	Global.defeated = true
 
 func JetAnimation(JetType: int):
 	if JetType == 0:
@@ -124,3 +117,8 @@ func _on_special_timer_timeout():
 
 func kill():
 	_blow_up()
+
+
+func recoverSP():
+	var tween =get_tree().create_tween()
+	tween.tween_property(Global, "SP", Global.maxSP, 10).set_trans(Tween.TRANS_LINEAR)
