@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c37f5vnoy0g17"]
+
+[ext_resource type="Script" path="res://Source/GameBorder.gd" id="1_e4xlf"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k47d4"]
+a = Vector2(0, -3)
+b = Vector2(1920, -3)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1p0x2"]
+a = Vector2(-3, 0)
+b = Vector2(-3, 1080)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_p8lau"]
+a = Vector2(0, 1083)
+b = Vector2(1920, 1083)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gvccr"]
+a = Vector2(1923, 0)
+b = Vector2(1923, 1080)
+
+[node name="Border" type="Area2D"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_e4xlf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_k47d4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_1p0x2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_p8lau")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_gvccr")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

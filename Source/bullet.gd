@@ -26,10 +26,10 @@ func _process(delta):
 	else: #destroy when out of screen
 		if position.x < -300 or position.x > get_viewport().size.x+300 or position.y < -300 or position.y > get_viewport().size.y+300:
 			queue_free()
-
-func _on_body_entered(body:Node2D):
-	if body.has_method("take_damage"):
-		body.take_damage(damage)
+			
+func _on_area_entered(area:Area2D):
+	if area.get_parent().has_method("take_damage"):
+		area.get_parent().take_damage(damage)
 
 	HP-=1
 	if HP <= 0:

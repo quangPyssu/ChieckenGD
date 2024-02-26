@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc2ccq5smsujm"]
+[gd_scene load_steps=11 format=3 uid="uid://dc2ccq5smsujm"]
 
 [ext_resource type="Texture2D" uid="uid://b2pqxj5o7smbi" path="res://Asset/ChickenBody.png" id="1_y40dk"]
 [ext_resource type="Script" path="res://Source/chicken_body.gd" id="2_mrppb"]
 [ext_resource type="Texture2D" uid="uid://boyofywc41cs" path="res://Asset/SpriteFrames/ChickenFaces.png" id="3_0kukt"]
 [ext_resource type="Texture2D" uid="uid://6b276mkv2l7s" path="res://Asset/SpriteFrames/ChickenShirt.png" id="4_vj6ot"]
 [ext_resource type="Texture2D" uid="uid://6qmf7de038qd" path="res://Asset/Explosion.png" id="5_gbiqx"]
+[ext_resource type="AudioStream" uid="uid://bwp6rixlckh32" path="res://Asset/Sounds/chicken1a(die).ogg" id="5_y4yxr"]
 
 [sub_resource type="Animation" id="Animation_x2jdv"]
 resource_name = "ChickenFlap"
@@ -151,6 +152,21 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_y4yxr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3sp4o"]
 _data = {
@@ -166,6 +182,7 @@ hframes = 50
 script = ExtResource("2_mrppb")
 
 [node name="ChickenShirt" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(0, 3)
 texture = ExtResource("4_vj6ot")
@@ -173,6 +190,7 @@ hframes = 6
 vframes = 8
 
 [node name="ChickenFaces" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(2, -38)
 scale = Vector2(1.08824, 1.08824)
@@ -194,5 +212,8 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_gbiqx")
 hframes = 8
 frame = 7
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

@@ -15,4 +15,5 @@ collision_mask = 0
 
 [node name="PhysicBox" type="CollisionShape2D" parent="."]
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="tree_exited" from="AnimationCenter" to="." method="_on_animation_center_tree_exited"]

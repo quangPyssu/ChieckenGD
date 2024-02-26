@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Global="*res://Source/Global.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+gdscript/warnings/narrowing_conversion=0
+
 [display]
 
 window/size/viewport_width=1920
@@ -109,3 +114,5 @@ FastMove={
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="PlayerBullet_Destrucable"
 2d_physics/layer_5="EnemiesBulletDestructable"
+2d_physics/layer_8="EntityAnchor"
+2d_physics/layer_10="EnemyHitBox"

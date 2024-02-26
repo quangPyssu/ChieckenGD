@@ -19,13 +19,15 @@ signal Attack
 signal Special
 
 func _ready():
-	super._ready()
+	
 	HP = Global.HP
 
 	%AttackTimer.timeout.connect(_on_attack_timer_timeout)
 	%SpecialTimer.timeout.connect(_on_special_timer_timeout)
 
 	get_node("AnimationCenter/BattlecruiserBase").visible = true
+
+	super._ready()
 
 func _physics_process(delta):	
 	#move the player via wasd and arrow keys	
@@ -53,7 +55,6 @@ func _physics_process(delta):
 func _process(_delta):
 
 	Global.HP = HP
-	super._process(_delta)
 
 	%AttackTimer.wait_time=WeaponTime[WeaponType]
 
@@ -70,7 +71,6 @@ func _process(_delta):
 	if Input.is_action_pressed("Special") and SpecialLoaded:
 		SpecialLoaded = false
 		print("Special")
-		$AnimationCenter/PLayerShield.visible = 1
 		%SpecialTimer.wait_time=SpecialTime[SpecialType]
 		%SpecialTimer.start()
 		Global.SP=0
@@ -79,12 +79,10 @@ func _process(_delta):
 	# +  Blow up
 	if Input.is_action_pressed("TestButton+"):
 		_blow_up()
-		#kill()
 
 	# - hurt
 	if Input.is_action_just_pressed("TestButton-"):
-		HP-=1	
-		
+		HP-=1			
 
 func _shielded():
 	get_node("AnimationCenter/AnimationPlayer").play("Shielded")
@@ -118,7 +116,12 @@ func _on_special_timer_timeout():
 func kill():
 	_blow_up()
 
-
 func recoverSP():
 	var tween =get_tree().create_tween()
-	tween.tween_property(Global, "SP", Global.maxSP, 10).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(Global, "SP", Global.maxSP, Global.maxSP).set_trans(Tween.TRANS_LINEAR)
+
+func take_damage(damage: int):
+	if (isFlickering):
+		return
+
+	super.take_damage(damage)

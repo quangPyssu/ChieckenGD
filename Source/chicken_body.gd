@@ -13,6 +13,7 @@ func _ready():
 	$ChickenFaces.visible = true
 	$ChickenShirt.visible = true
 	$Explosion.visible = false
+	$AnimationPlayer.speed_scale = randf()*0.4+0.8
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):	
@@ -60,4 +61,5 @@ func obliterate():
 	get_parent().queue_free()
 
 func kill():
+	$AnimationPlayer.speed_scale = 1
 	$AnimationPlayer.play("explosion")

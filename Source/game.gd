@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var BG_pos=%BlueBlankBackground.position.y
+@onready var BG_pos=-%BlueBlankBackground.texture.get_size().y/2*%BlueBlankBackground.scale.y
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,20 +13,22 @@ func _ready():
 	
 	#hide the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+	%BlueBlankBackground.position=Vector2(0,BG_pos)
+	print("Background Position: ",%BlueBlankBackground.position)
+
 func _process(delta):
 	if Input.is_action_just_pressed("ForceQuit"):
 		get_tree().quit()
 		
 	%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+100.0*delta
 		
-	if %BlueBlankBackground.position.y>0:
+	if %BlueBlankBackground.position.y>=0:
 		%BlueBlankBackground.position.y=BG_pos
 
 	if Global.defeated:
 		pass
 		#get_tree().change_scene("res://scenes/scene_gameover.tscn")
-
-	#print("Player Position: ",$Player.global_position)
 
 
 func _on_player_attack(_WeaponType:int):
