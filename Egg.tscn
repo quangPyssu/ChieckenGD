@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dayl4bi7dt2a5" path="res://Asset/egg.png" id="2_aa0dd"]
 [ext_resource type="Script" path="res://Source/Egg.gd" id="2_o5pn6"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qsjq1"]
-radius = 15.0
-height = 42.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efgmp"]
+radius = 17.1429
+height = 42.8571
 
 [node name="Bullet" instance=ExtResource("1_6cg5q")]
 scale = Vector2(0.7, 0.7)
@@ -17,5 +17,5 @@ script = ExtResource("2_o5pn6")
 [node name="Egg" type="Sprite2D" parent="AnimationCenter" index="0"]
 texture = ExtResource("2_aa0dd")
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CapsuleShape2D_qsjq1")
+[node name="HitBox" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_efgmp")

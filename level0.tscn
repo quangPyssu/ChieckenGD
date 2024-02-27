@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0mpkphl8npgt"]
+
+[ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_2wfyq"]
+[ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="2_s1cj1"]
+
+[node name="Game" instance=ExtResource("1_2wfyq")]
+
+[node name="Anchor" parent="Enemies/Wave0" index="0" instance=ExtResource("2_s1cj1")]
+position = Vector2(880, -279.279)
+scale = Vector2(1, 1.00559)
+entityMax = 9.0
+pattern = 1
+rotateSpeed = -1.0
+speed = 10000.0
+savedPos = Vector2(1000, 500)
+
+[node name="Anchor" parent="Enemies/Wave1" index="0" instance=ExtResource("2_s1cj1")]
+position = Vector2(2280, 311.197)
+scale = Vector2(1, 1.00559)
+entityMax = 9.0
+rotateSpeed = 1.0
+speed = 10000.0
+savedPos = Vector2(1000, 500)
+
+[node name="Anchor" parent="Enemies/Wave2" index="0" instance=ExtResource("2_s1cj1")]
+position = Vector2(-336, 351.094)
+scale = Vector2(1, 1.00559)
+entityMax = 9.0
+pattern = 1
+speed = 10000.0
+savedPos = Vector2(1000, 500)
+
+[connection signal="tree_exited" from="Enemies/Wave0/Anchor" to="Enemies/Wave0/Anchor" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave1/Anchor" to="Enemies/Wave1/Anchor" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave2/Anchor" to="Enemies/Wave2/Anchor" method="_on_tree_exited"]

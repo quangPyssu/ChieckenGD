@@ -1,7 +1,8 @@
 extends Node2D
 
 @onready var BG_pos=-%BlueBlankBackground.texture.get_size().y/2*%BlueBlankBackground.scale.y
-
+var WaveCount=0
+var CurrentWave=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,7 +16,13 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	%BlueBlankBackground.position=Vector2(0,BG_pos)
-	print("Background Position: ",%BlueBlankBackground.position)
+
+	for wave:Node2D in $Enemies.get_children():
+		wave.set_process_mode(PROCESS_MODE_DISABLED)
+		wave.visible=0
+	
+	$Enemies.get_child(0).set_process_mode(0)
+	$Enemies.get_child(0).visible=1
 
 func _process(delta):
 	if Input.is_action_just_pressed("ForceQuit"):
@@ -30,6 +37,15 @@ func _process(delta):
 		pass
 		#get_tree().change_scene("res://scenes/scene_gameover.tscn")
 
+	if !$Enemies.get_children().is_empty():
+		if $Enemies.get_child(0).get_children().is_empty():
+			$Enemies.get_child(0).queue_free()
+			CurrentWave+=1
+			print("Wave ",CurrentWave," has been defeated")
+			
+			if $Enemies.get_children().size()>1:
+				$Enemies.get_child(1).set_process_mode(0)
+				$Enemies.get_child(1).visible=1
 
 func _on_player_attack(_WeaponType:int):
 	var Bullet = preload("res://bullet_player_normal.tscn").instantiate()

@@ -13,19 +13,10 @@ texture = ExtResource("2_efjxa")
 position = Vector2(1038, 682.24)
 
 [node name="Anchor" parent="Enemies" index="0" instance=ExtResource("3_gny33")]
-position = Vector2(953, 161.583)
-size = 200.0
+position = Vector2(1038, -548.585)
+scale = Vector2(1, 1.00559)
 entityMax = 9.0
-Type = 0
-pattern = 0
-HP = 100
-timerStart = 0.0
-timerEnd = -1.0
-rotateSpeed = 1.0
+pattern = 1
 speed = 10000.0
-inClampedScreen = true
-BounceOffSceen = true
-canFlicker = true
-flickerTime = 1.0
 
 [connection signal="tree_exited" from="Enemies/Anchor" to="Enemies/Anchor" method="_on_tree_exited"]

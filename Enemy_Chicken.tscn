@@ -23,7 +23,7 @@ script = ExtResource("2_xbdg0")
 scale = Vector2(0.999011, 1)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionBox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionBox" index="0" groups=["Enemy"]]
 modulate = Color(100, 0.098, 0.118, 0.456)
 shape = SubResource("RectangleShape2D_t7mfp")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)

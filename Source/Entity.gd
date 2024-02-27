@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name entity
 
-@export var HP:int = 100
+@export var HP:float = 100.0
 @export var timerStart:float = 0
 @export var timerEnd:float = -1.0
 @export var rotateSpeed:float = 0
@@ -9,10 +9,9 @@ class_name entity
 
 var direction: Vector2 = Vector2(0, 0)
 
-
 var savedDirection: Vector2 = Vector2(0, 0)
 var savedSpeed: float = 0
-var savedPos: Vector2 = Vector2(0, 0) #destination global_position
+@export var savedPos: Vector2 = Vector2(0, 0) #destination global_position
 var isGoing: bool = false
 var isDead: bool = false
 
@@ -27,6 +26,10 @@ var isFlickering: bool = false
 
 func _ready():
 	setTimer()	
+
+	if savedPos!=Vector2(0, 0):
+		print ("gotoPosition ", savedPos, " speed ", speed)
+		gotoPosition(savedPos, speed)
 
 func _physics_process(delta):
 	_set_velocity(delta)
@@ -76,6 +79,7 @@ func setTimer():
 
 func take_damage(damage:int):
 	HP -= damage
+	print("take ",HP)
 	flicker()
 
 	if HP<=0:
@@ -111,10 +115,7 @@ func gotoPosition(pos:Vector2,NewSpeed:float):
 	savedPos = pos
 	speed = NewSpeed
 
-	isGoing = true
-
-	#set to new parent
-	reparent(get_tree().current_scene.get_node("Enemies"))
+	isGoing = true	
 
 func Going():
 	if global_position.distance_to(savedPos) < 30:

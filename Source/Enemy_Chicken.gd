@@ -1,18 +1,13 @@
 extends entity
 
 var nearPlayer:bool = false
-var player:Node2D 
+
 var preEgg:PackedScene = preload("res://Egg.tscn")
 var feather:PackedScene = preload("res://Asset/particle/Particle_Feather.tscn")
 
-func _ready():    
-	HP = 2
-	player = get_node("/root/Game/Player")
-	speed=10000
+func _ready():  
 	direction = Vector2(5,-3).normalized()
 	inClampedScreen = true
-
-	#gotoPosition(Global.ScreenSize/2, speed)
 	super._ready()
 
 func _physics_process(delta):
@@ -23,12 +18,9 @@ func _physics_process(delta):
 
 func _process(_delta):    
 	if nearPlayer:
-		$AnimationCenter/ChickenBody._look_at_player(player.global_position)
+		$AnimationCenter/ChickenBody._look_at_player(Global.PlayerPos)
 	else:
-		$AnimationCenter/ChickenBody._reset_look()
-
-	if Input.is_action_just_pressed("TestButton-"):
-		gotoPosition(player.global_position, speed)
+		$AnimationCenter/ChickenBody._reset_look()	
 
 func _on_area_2d_body_entered(_body:Node2D):
 	nearPlayer = true
@@ -51,3 +43,5 @@ func kill():
 		f.global_position = global_position
 		get_node("/root/Game/Projectiles").add_child(f)
 		super.kill()
+
+	return 1

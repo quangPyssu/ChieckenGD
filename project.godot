@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chicken"
-run/main_scene="res://game.tscn"
+run/main_scene="res://level0.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -113,6 +113,7 @@ FastMove={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="PlayerBullet_Destrucable"
+2d_physics/layer_4="PlayerBullet_Destroyer"
 2d_physics/layer_5="EnemiesBulletDestructable"
 2d_physics/layer_8="EntityAnchor"
 2d_physics/layer_10="EnemyHitBox"

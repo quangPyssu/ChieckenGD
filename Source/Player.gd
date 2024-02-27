@@ -51,6 +51,7 @@ func _physics_process(delta):
 
 	#MOVE With engine
 	super._physics_process(delta)
+	Global.PlayerPos = global_position
 
 func _process(_delta):
 
@@ -70,7 +71,9 @@ func _process(_delta):
 	
 	if Input.is_action_pressed("Special") and SpecialLoaded:
 		SpecialLoaded = false
-		print("Special")
+		var Beam = preload("res://BigBeam_Player.tscn").instantiate()
+		add_child(Beam)
+		Beam.position=Vector2(-100,0)
 		%SpecialTimer.wait_time=SpecialTime[SpecialType]
 		%SpecialTimer.start()
 		Global.SP=0
@@ -89,9 +92,7 @@ func _shielded():
 
 func _blow_up():
 	get_node("AnimationCenter/AnimationPlayer").play("Blowing")
-	#stop process and physics process
-	set_process(false)
-	set_physics_process(false)
+	stopProcess()
 	Global.defeated = true
 
 func JetAnimation(JetType: int):
@@ -123,5 +124,4 @@ func recoverSP():
 func take_damage(damage: int):
 	if (isFlickering):
 		return
-
 	super.take_damage(damage)

@@ -18,8 +18,6 @@ enum entityType {
 @export var pattern:patternType = patternType.CircleShape
 
 func _ready():
-	# get number of children
-	# check for entity children
 	#why is entityMax 0?
 	generateEntities()
 
@@ -27,13 +25,17 @@ func _ready():
 		if i is entity:
 			entitySet.append(i)
 
+	entityCount = entitySet.size()
+	entityMax = entityCount
+
 	inClampedScreen = true	
 
 	$PhysicBox.shape.radius = size
 
-	direction = Vector2(1,0)
+	direction = Vector2(-1,0)
 
 	setUp()
+	super._ready()
 
 func generateEntities():
 	#generate entities based on the entityMax
@@ -49,7 +51,6 @@ func generateEntities():
 
 func setUp():
 	#depending on the type of pattern, position the entities 
-	print("setUp ",entityMax)
 	for i in range(entityMax):
 		var aEntity:entity = entitySet[i]
 		aEntity.inClampedScreen=false
@@ -57,14 +58,17 @@ func setUp():
 		if pattern == patternType.CircleShape:
 			var tmp:float=i/entityMax*360
 			#make the entities in a circle around the Anchor(this node)
-			aEntity.position = Vector2(sin(deg_to_rad(tmp))*size,
-cos(deg_to_rad(tmp))*size)
+			aEntity.position = Vector2(sin(deg_to_rad(tmp))*size,cos(deg_to_rad(tmp))*size)
 			aEntity.rotation_degrees = tmp
 		elif pattern == patternType.SquareShape:
 			var sideSize:int = sqrt(entityMax)
-			aEntity.position = Vector2(i%sideSize*size, i/sideSize*size)
+			
+			aEntity.position = Vector2(float(i%sideSize), float(i/sideSize))*(size/2)-Vector2(size,size)/2
 
 func _process(_delta):
 	if entityCount==0:
 		queue_free()
-	
+
+	if Input.is_action_just_pressed("TestButton-"):
+		
+		gotoPosition(Global.PlayerPos, speed)
