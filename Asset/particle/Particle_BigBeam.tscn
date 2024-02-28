@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh62quip6yckh"]
+
+[ext_resource type="PackedScene" uid="uid://cumxo5kmhr2ws" path="res://Asset/particle/test_particle.tscn" id="1_khkj6"]
+
+[sub_resource type="Gradient" id="Gradient_u1bq2"]
+offsets = PackedFloat32Array(0.478873, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.172549, 0.160784, 0.141176, 0.117647)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3o6ru"]
+gradient = SubResource("Gradient_u1bq2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w006j"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.6
+direction = Vector3(0, -1, 0)
+spread = 50.0
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+angular_velocity_min = -60.0
+angular_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 90.0
+linear_accel_max = 90.0
+scale_min = 0.2
+scale_max = 0.7
+color_ramp = SubResource("GradientTexture1D_3o6ru")
+
+[node name="GPUParticles2D" instance=ExtResource("1_khkj6")]
+modulate = Color(0.12549, 1, 1, 0.52549)
+emitting = true
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_w006j")
+lifetime = 0.5
+one_shot = false
+explosiveness = 0.0

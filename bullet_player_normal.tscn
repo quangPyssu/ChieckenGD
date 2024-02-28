@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvip17isg7qaa"]
+[gd_scene load_steps=6 format=3 uid="uid://dvip17isg7qaa"]
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_4joqe"]
 [ext_resource type="Script" path="res://Source/bullet_player_normal.gd" id="2_kyhrn"]
 [ext_resource type="SpriteFrames" uid="uid://grb2nc0vebca" path="res://Asset/SpriteFrames/NormalBullet.tres" id="3_o7qer"]
+[ext_resource type="AudioStream" uid="uid://dkufuypgk8ffn" path="res://Asset/Sounds/(laser).ogg" id="4_4t2jf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgt6g"]
 size = Vector2(33.6933, 10.6249)
@@ -23,3 +24,6 @@ frame_progress = 0.83482
 [node name="HitBox" parent="." index="1"]
 position = Vector2(-0.455315, 0.482952)
 shape = SubResource("RectangleShape2D_hgt6g")
+
+[node name="BulletSound" parent="." index="2"]
+stream = ExtResource("4_4t2jf")

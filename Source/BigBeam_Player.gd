@@ -1,8 +1,14 @@
 extends bullet
 
+var ani: AnimationPlayer
+
 func _ready():
 	rotation_degrees=-90
 	HP = 99999999
+	ani = $AnimationCenter/AnimationPlayer
+	ani.play("BeamStart")
+	ani.queue("Beaming")
+	$BulletSound.play
 
 func _process(delta):
 	super._process(delta)
@@ -11,9 +17,14 @@ func _process(delta):
 	for i in target:
 		if i.get_parent().has_method("take_damage"):
 			i.get_parent().take_damage(damage*delta)
-			print("dm  ")
 		else:
 			i.HP-=damage
+			
+	if !ani.is_playing():
+		queue_free()
  
 func _on_area_entered(_area:Area2D):
 	pass
+
+func _on_timer_end_timeout():
+	ani.play_backwards("BeamStart")

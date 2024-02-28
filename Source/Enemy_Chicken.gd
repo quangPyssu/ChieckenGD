@@ -8,6 +8,8 @@ var feather:PackedScene = preload("res://Asset/particle/Particle_Feather.tscn")
 func _ready():  
 	direction = Vector2(5,-3).normalized()
 	inClampedScreen = true
+	$AttackTimer.wait_time=randi()%5+3
+	$AttackTimer.start()
 	super._ready()
 
 func _physics_process(delta):
@@ -32,10 +34,10 @@ func take_damage(damage:int):
 	super.take_damage(damage)
 
 func _on_attack_timer_timeout():
-	#var Egg=preEgg.instantiate()
-	#get_node("/root/Game/Projectiles").add_child(Egg)
-	#Egg.global_position = global_position
-	pass
+	if !isDead:
+		var Egg=preEgg.instantiate()
+		get_node("/root/Game/Projectiles").add_child(Egg)
+		Egg.global_position = global_position
 
 func kill():
 	if !isDead:

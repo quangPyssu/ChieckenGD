@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_nrxfr"]
 [ext_resource type="Texture2D" uid="uid://db31yvcovq88h" path="res://Asset/Orange_Blank_Background.png" id="2_efjxa"]
-[ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="3_gny33"]
+[ext_resource type="PackedScene" uid="uid://dl1becyep5n8l" path="res://Boss_Chicken.tscn" id="4_vtjgh"]
 
 [node name="Game" instance=ExtResource("1_nrxfr")]
 
@@ -12,11 +12,5 @@ texture = ExtResource("2_efjxa")
 [node name="Player" parent="." index="1"]
 position = Vector2(1038, 682.24)
 
-[node name="Anchor" parent="Enemies" index="0" instance=ExtResource("3_gny33")]
-position = Vector2(1038, -548.585)
-scale = Vector2(1, 1.00559)
-entityMax = 9.0
-pattern = 1
-speed = 10000.0
-
-[connection signal="tree_exited" from="Enemies/Anchor" to="Enemies/Anchor" method="_on_tree_exited"]
+[node name="Entity" parent="Enemies/Wave0" index="0" instance=ExtResource("4_vtjgh")]
+position = Vector2(947, -191.506)

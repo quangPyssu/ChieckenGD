@@ -7,7 +7,7 @@ var defeated:bool = false
 var HP:float = 10.0
 var maxHP:float = 10.0
 
-var SP:float = 10
-var maxSP:float = 10
+var SP:float = 30
+var maxSP:float = 30
 
 var PlayerPos:Vector2

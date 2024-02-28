@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name entity
 
 @export var HP:float = 100.0
+var MaxHP:float 
 @export var timerStart:float = 0
 @export var timerEnd:float = -1.0
 @export var rotateSpeed:float = 0
@@ -25,7 +26,8 @@ var isFlickering: bool = false
 @export var flickerTime: float = 1.0
 
 func _ready():
-	setTimer()	
+	MaxHP = HP
+	setTimer()
 
 	if savedPos!=Vector2(0, 0):
 		print ("gotoPosition ", savedPos, " speed ", speed)
@@ -78,12 +80,30 @@ func setTimer():
 	entity_timein()
 
 func take_damage(damage:int):
-	HP -= damage
-	print("take ",HP)
+	#at three quarter health
+	var damed: float = HP - damage
+	if HP > MaxHP * 3 / 4 and damed <= MaxHP * 3 / 4:
+		atThreeQuarterHealth()
+	elif HP > MaxHP / 2 and damed <= MaxHP / 2:
+		atHalfHealth()
+	elif HP > MaxHP / 4 and damed <= MaxHP / 4:
+		atQuarterHealth()
+
+	HP = damed
+	print(damed)
 	flicker()
 
 	if HP<=0:
 		kill()
+
+func atThreeQuarterHealth():
+	pass
+
+func atHalfHealth():
+	pass
+
+func atQuarterHealth():
+	pass	
 
 func kill():
 	if !isDead:
@@ -130,9 +150,9 @@ func flicker():
 	if canFlicker and !isFlickering:
 		isFlickering = true
 		for i:int in range(0, flickerTime/0.2):
-			modulate.a = 0.5
+			$AnimationCenter.modulate.a = 0.5
 			await get_tree().create_timer(0.1).timeout
-			modulate.a = 1
+			$AnimationCenter.modulate.a = 1
 			await get_tree().create_timer(0.1).timeout
 		isFlickering = false
 
@@ -143,4 +163,3 @@ func stopProcess():
 func _on_tree_exiting():
 	if "entityCount" in get_parent():
 		get_parent().entityCount-=1
-		

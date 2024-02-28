@@ -11,8 +11,8 @@ script = ExtResource("1_yimfk")
 
 [node name="BlueBlankBackground" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1640, -716.152)
-scale = Vector2(2.4, 2.39001)
+position = Vector2(0, -845.818)
+scale = Vector2(2.5, 2.49)
 texture = ExtResource("3_mky08")
 centered = false
 

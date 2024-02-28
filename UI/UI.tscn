@@ -136,5 +136,5 @@ text = "SP
 "
 horizontal_alignment = 1
 
-[connection signal="timeout" from="Control/Health/HealthBar/DamageTimer" to="." method="_on_damage_timer_timeout"]
 [connection signal="timeout" from="Control/Health/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Control/Health/HealthBar/DamageTimer" to="." method="_on_damage_timer_timeout"]

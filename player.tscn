@@ -419,6 +419,7 @@ sprite_frames = ExtResource("3_y5fs6")
 autoplay = "default"
 
 [node name="BattlecruiserBase" type="Sprite2D" parent="AnimationCenter" index="1"]
+visible = false
 texture = ExtResource("2_0rdic")
 
 [node name="PLayerShield" type="AnimatedSprite2D" parent="AnimationCenter" index="2"]
@@ -434,7 +435,6 @@ sprite_frames = SubResource("SpriteFrames_6jaag")
 autoplay = "default"
 
 [node name="BattlecruiserBlowUp" type="AnimatedSprite2D" parent="AnimationCenter" index="4"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_xiaqo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="5"]
@@ -443,6 +443,7 @@ libraries = {
 }
 
 [node name="HitBox" parent="." index="1"]
+collision_layer = 1
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]

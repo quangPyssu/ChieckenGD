@@ -11,7 +11,8 @@ var WeaponType:int = 0
 var SpecialType:int = 0
 
 var WeaponTime: Array[float] = [0.5,0.0,0.0,0.0]
-var SpecialTime: Array[float] = [5.0,0.0,0.0,0.0]
+var SpecialTime: Array[float] = [30,0.0,0.0,0.0]
+var SpecialIFrame: Array[float] = [4,0.0,0.0,0.0]
 
 var particle:Array[PackedScene] = [preload("res://Asset/particle/Particle_BaseBullet.tscn")]
 
@@ -24,6 +25,7 @@ func _ready():
 
 	%AttackTimer.timeout.connect(_on_attack_timer_timeout)
 	%SpecialTimer.timeout.connect(_on_special_timer_timeout)
+	print("sp ",%SpecialTimer.wait_time)
 
 	get_node("AnimationCenter/BattlecruiserBase").visible = true
 
@@ -73,7 +75,7 @@ func _process(_delta):
 		SpecialLoaded = false
 		var Beam = preload("res://BigBeam_Player.tscn").instantiate()
 		add_child(Beam)
-		Beam.position=Vector2(-100,0)
+		force_Flicker(SpecialIFrame[SpecialType])
 		%SpecialTimer.wait_time=SpecialTime[SpecialType]
 		%SpecialTimer.start()
 		Global.SP=0
@@ -116,10 +118,19 @@ func _on_special_timer_timeout():
 
 func kill():
 	_blow_up()
+	
+func force_Flicker(flickTime:float):
+	isFlickering = true
+	for i:int in range(0, flickTime/0.2):
+		self_modulate.a = 0.5
+		await get_tree().create_timer(0.1).timeout
+		self_modulate.a = 1
+		await get_tree().create_timer(0.1).timeout
+	isFlickering = false
 
 func recoverSP():
 	var tween =get_tree().create_tween()
-	tween.tween_property(Global, "SP", Global.maxSP, Global.maxSP).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(Global, "SP", Global.maxSP, SpecialTime[SpecialType]).set_trans(Tween.TRANS_LINEAR)
 
 func take_damage(damage: int):
 	if (isFlickering):

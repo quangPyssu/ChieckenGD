@@ -15,7 +15,7 @@ func _ready():
 	#hide the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-	%BlueBlankBackground.position=Vector2(0,BG_pos)
+	%BlueBlankBackground.position=Vector2(-10,BG_pos)
 
 	for wave:Node2D in $Enemies.get_children():
 		wave.set_process_mode(PROCESS_MODE_DISABLED)
