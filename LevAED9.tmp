@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://o854l4lqlhrw"]
+
+[ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_nrxfr"]
+[ext_resource type="Texture2D" uid="uid://db31yvcovq88h" path="res://Asset/Orange_Blank_Background.png" id="2_efjxa"]
+[ext_resource type="PackedScene" uid="uid://dl1becyep5n8l" path="res://Boss_Chicken.tscn" id="4_vtjgh"]
+
+[node name="Game" instance=ExtResource("1_nrxfr")]
+
+[node name="BlueBlankBackground" parent="." index="0"]
+texture = ExtResource("2_efjxa")
+
+[node name="Player" parent="." index="1"]
+position = Vector2(1038, 682.24)
+
+[node name="Entity" parent="Enemies/Wave0" index="0" instance=ExtResource("4_vtjgh")]
+position = Vector2(974, -151.609)
+
+[node name="Entity" parent="Enemies/Wave1" index="0" instance=ExtResource("4_vtjgh")]
+position = Vector2(419, 499.711)

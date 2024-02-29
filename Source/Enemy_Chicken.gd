@@ -22,7 +22,7 @@ func _process(_delta):
 	if nearPlayer:
 		$AnimationCenter/ChickenBody._look_at_player(Global.PlayerPos)
 	else:
-		$AnimationCenter/ChickenBody._reset_look()	
+		$AnimationCenter/ChickenBody._reset_look()
 
 func _on_area_2d_body_entered(_body:Node2D):
 	nearPlayer = true

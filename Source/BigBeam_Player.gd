@@ -8,18 +8,18 @@ func _ready():
 	ani = $AnimationCenter/AnimationPlayer
 	ani.play("BeamStart")
 	ani.queue("Beaming")
-	$BulletSound.play
+	$BulletSound.play()
 
 func _process(delta):
 	super._process(delta)
 	var target: Array[Area2D] = get_overlapping_areas()
 	
 	for i in target:
-		if i.get_parent().has_method("take_damage"):
-			i.get_parent().take_damage(damage*delta)
-		else:
+		if i is bullet:
 			i.HP-=damage
-			
+		else:
+			i.get_parent().take_damage(damage*delta)
+
 	if !ani.is_playing():
 		queue_free()
  

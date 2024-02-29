@@ -5,17 +5,9 @@ var entityCount: float = 10
 
 @export var size:float = 200.0
 
-enum patternType {
-	CircleShape,SquareShape
-}
-
-enum entityType {
-	EnemyChicken
-}
-
 @export var entityMax: float = 10.0
-@export var Type:entityType = entityType.EnemyChicken
-@export var pattern:patternType = patternType.CircleShape
+@export var Type:Global.entityType = Global.entityType.EnemyChicken
+@export var pattern:Global.patternType = Global.patternType.CircleShape
 
 func _ready():
 	#why is entityMax 0?
@@ -41,7 +33,7 @@ func generateEntities():
 	#generate entities based on the entityMax
 	var preload_Entity: PackedScene = null
 
-	if Type == entityType.EnemyChicken:
+	if Type == Global.entityType.EnemyChicken:
 		preload_Entity = preload("res://Enemy_Chicken.tscn")
 
 	for i in range(entityMax):
@@ -55,12 +47,12 @@ func setUp():
 		var aEntity:entity = entitySet[i]
 		aEntity.inClampedScreen=false
 		aEntity.direction = Vector2.ZERO
-		if pattern == patternType.CircleShape:
+		if pattern == Global.patternType.CircleShape:
 			var tmp:float=i/entityMax*360
 			#make the entities in a circle around the Anchor(this node)
 			aEntity.position = Vector2(sin(deg_to_rad(tmp))*size,cos(deg_to_rad(tmp))*size)
 			aEntity.rotation_degrees = tmp
-		elif pattern == patternType.SquareShape:
+		elif pattern == Global.patternType.SquareShape:
 			var sideSize:int = sqrt(entityMax)
 			
 			aEntity.position = Vector2(float(i%sideSize), float(i/sideSize))*(size/2)-Vector2(size,size)/2

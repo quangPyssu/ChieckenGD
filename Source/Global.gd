@@ -11,3 +11,19 @@ var SP:float = 30
 var maxSP:float = 30
 
 var PlayerPos:Vector2
+
+enum patternType {
+	CircleShape,SquareShape
+}
+
+enum BulletSpin{
+	SprialOut
+}
+
+enum bulletType {
+	Egg
+}
+
+enum entityType {
+	EnemyChicken
+}

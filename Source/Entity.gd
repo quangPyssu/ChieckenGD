@@ -3,15 +3,15 @@ class_name entity
 
 @export var HP:float = 100.0
 var MaxHP:float 
-@export var timerStart:float = 0
 @export var timerEnd:float = -1.0
 @export var rotateSpeed:float = 0
 @export var speed: float = 0
 
-var direction: Vector2 = Vector2(0, 0)
+
 
 var savedDirection: Vector2 = Vector2(0, 0)
 var savedSpeed: float = 0
+@export var direction: Vector2 = Vector2(0, 0)
 @export var savedPos: Vector2 = Vector2(0, 0) #destination global_position
 var isGoing: bool = false
 var isDead: bool = false
@@ -27,7 +27,7 @@ var isFlickering: bool = false
 
 func _ready():
 	MaxHP = HP
-	setTimer()
+	entity_timein()
 
 	if savedPos!=Vector2(0, 0):
 		print ("gotoPosition ", savedPos, " speed ", speed)
@@ -65,19 +65,9 @@ func entity_timeout():
 	kill()
 
 func entity_timein():
-	set_process(true)
-	set_physics_process(true)
-
 	if timerEnd!=-1.0:
 		await get_tree().create_timer(timerEnd).timeout
 		entity_timeout()
-
-func setTimer():
-	if timerStart>0.0:
-		stopProcess()
-		await get_tree().create_timer(timerStart).timeout
-	
-	entity_timein()
 
 func take_damage(damage:int):
 	#at three quarter health
@@ -90,7 +80,6 @@ func take_damage(damage:int):
 		atQuarterHealth()
 
 	HP = damed
-	print(damed)
 	flicker()
 
 	if HP<=0:
