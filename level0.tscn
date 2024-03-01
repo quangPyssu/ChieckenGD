@@ -1,35 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0mpkphl8npgt"]
+[gd_scene load_steps=5 format=3 uid="uid://c0mpkphl8npgt"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_2wfyq"]
 [ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="2_s1cj1"]
+[ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://Enemy_Chicken.tscn" id="3_g8b77"]
+[ext_resource type="PackedScene" uid="uid://dl1becyep5n8l" path="res://Boss_Chicken.tscn" id="3_yet7p"]
 
 [node name="Game" instance=ExtResource("1_2wfyq")]
 
 [node name="Anchor" parent="Enemies/Wave0" index="0" instance=ExtResource("2_s1cj1")]
 position = Vector2(880, -279.279)
 scale = Vector2(1, 1.00559)
-entityMax = 9.0
+size = 300.0
+entityMax = 16.0
 pattern = 1
-rotateSpeed = -1.0
+rotateSpeed = 0.1
 speed = 10000.0
 savedPos = Vector2(1000, 500)
 
-[node name="Anchor" parent="Enemies/Wave1" index="0" instance=ExtResource("2_s1cj1")]
+[node name="Anchor2" parent="Enemies/Wave1" index="0" instance=ExtResource("2_s1cj1")]
+position = Vector2(-336, 351.094)
+scale = Vector2(1, 1.00559)
+size = 200.0
+entityMax = 9.0
+pattern = 1
+speed = 10000.0
+savedPos = Vector2(1000, 300)
+
+[node name="Anchor" parent="Enemies/Wave1" index="1" instance=ExtResource("2_s1cj1")]
 position = Vector2(2280, 311.197)
 scale = Vector2(1, 1.00559)
+size = 200.0
 entityMax = 9.0
 rotateSpeed = 1.0
 speed = 10000.0
-savedPos = Vector2(1000, 500)
+savedPos = Vector2(1000, 300)
 
-[node name="Anchor" parent="Enemies/Wave2" index="0" instance=ExtResource("2_s1cj1")]
-position = Vector2(-336, 351.094)
-scale = Vector2(1, 1.00559)
-entityMax = 9.0
-pattern = 1
-speed = 10000.0
-savedPos = Vector2(1000, 500)
+[node name="EnemyChicken" parent="Enemies/Wave2" index="0" instance=ExtResource("3_g8b77")]
+position = Vector2(2544, -622.394)
+timerEnd = 10.0
+
+[node name="Wave3" type="Node2D" parent="Enemies" index="3"]
+
+[node name="BossChicken" parent="Enemies/Wave3" index="0" instance=ExtResource("3_yet7p")]
+position = Vector2(920, -239.382)
 
 [connection signal="tree_exited" from="Enemies/Wave0/Anchor" to="Enemies/Wave0/Anchor" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave1/Anchor2" to="Enemies/Wave1/Anchor2" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Enemies/Wave1/Anchor" to="Enemies/Wave1/Anchor" method="_on_tree_exited"]
-[connection signal="tree_exited" from="Enemies/Wave2/Anchor" to="Enemies/Wave2/Anchor" method="_on_tree_exited"]

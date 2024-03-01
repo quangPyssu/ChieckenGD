@@ -12,7 +12,8 @@ func _ready():
 
 	$Player.position=get_viewport().size/2
 	
-	#hide the mouse
+	#hide the moused
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	%BlueBlankBackground.position=Vector2(-10,BG_pos)
@@ -27,6 +28,9 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ForceQuit"):
 		get_tree().quit()
+		
+	if Input.is_action_just_pressed("PauseToggle"):
+		$Paused.PauseGame()
 		
 	%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+100.0*delta
 		

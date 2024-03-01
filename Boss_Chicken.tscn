@@ -36,6 +36,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.5, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 30), Vector2(0, 0), Vector2(0, 0), Vector2(0, 30)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gx0q5"]
 _data = {
@@ -56,6 +68,9 @@ HP = 200.0
 speed = 7000.0
 direction = Vector2(-1, 0)
 savedPos = Vector2(500, 300)
+
+[node name="AnimationCenter" parent="." index="0"]
+position = Vector2(0, 30)
 
 [node name="ChickenBody" type="Sprite2D" parent="AnimationCenter" index="0"]
 texture_filter = 1

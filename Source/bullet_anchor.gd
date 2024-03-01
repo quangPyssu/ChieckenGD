@@ -29,7 +29,9 @@ func _Rready(theType:Global.bulletType,thepattern:Global.patternType,theCnt: flo
 	bulletMax = bulletCount
 
 	inClampedScreen = true	
-
+	
+	var Shaping = CircleShape2D.new()
+	$PhysicBox.set_shape(Shaping)
 	$PhysicBox.shape.radius = size
 
 	direction = Vector2(-1,0)
@@ -59,7 +61,6 @@ func setUp():
 		elif pattern == Global.patternType.SquareShape:
 			var sideSize:int = sqrt(bulletMax)
 			abullet.position = Vector2(float(i%sideSize), float(i/sideSize))*(size/2)-Vector2(size,size)
-		print (abullet.collision_layer)
 			
 func addBulDir(BulSpeed:int):
 	for i in range(bulletMax):

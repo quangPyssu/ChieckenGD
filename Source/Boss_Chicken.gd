@@ -58,8 +58,9 @@ func attack(type:int):
 		0:
 			for i:int in 2:
 				var s:entity = preSwarm.instantiate()
-				s._Rready(Global.bulletType.Egg,Global.patternType.CircleShape,10.0,50.0,10)
-				s.HP=1
+				var num:float =randf_range(50.0,100.0)
+				s._Rready(Global.bulletType.Egg,Global.patternType.CircleShape,10.0,num,10)
+				
 				get_node("/root/Game/Projectiles").add_child(s)
 				
 				s.global_position=$Marker/AttackHole.global_position

@@ -8,7 +8,7 @@ var feather:PackedScene = preload("res://Asset/particle/Particle_Feather.tscn")
 func _ready():  
 	direction = Vector2(5,-3).normalized()
 	inClampedScreen = true
-	$AttackTimer.wait_time=randi()%5+3
+	$AttackTimer.wait_time=randi()%6+3
 	$AttackTimer.start()
 	super._ready()
 

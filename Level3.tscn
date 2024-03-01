@@ -9,4 +9,4 @@
 position = Vector2(-16, -287.259)
 
 [node name="BossChicken" parent="Enemies/Wave0" index="0" instance=ExtResource("4_vtjgh")]
-position = Vector2(856, 159.588)
+position = Vector2(1152, -255.341)

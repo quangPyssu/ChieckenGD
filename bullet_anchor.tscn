@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt4mvs31k6w4q"]
+[gd_scene load_steps=3 format=3 uid="uid://bt4mvs31k6w4q"]
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_f564q"]
 [ext_resource type="Script" path="res://Source/bullet_anchor.gd" id="2_j1jpn"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gesvk"]
 
 [node name="Entity" instance=ExtResource("1_f564q")]
 collision_layer = 4096
@@ -12,9 +10,6 @@ script = ExtResource("2_j1jpn")
 
 [node name="HitBox" parent="." index="1"]
 collision_layer = 4096
-
-[node name="PhysicBox" parent="." index="2"]
-shape = SubResource("CircleShape2D_gesvk")
 
 [node name="DeathTimer" type="Timer" parent="." index="3"]
 wait_time = 10.0

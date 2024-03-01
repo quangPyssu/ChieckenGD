@@ -7,8 +7,6 @@ var MaxHP:float
 @export var rotateSpeed:float = 0
 @export var speed: float = 0
 
-
-
 var savedDirection: Vector2 = Vector2(0, 0)
 var savedSpeed: float = 0
 @export var direction: Vector2 = Vector2(0, 0)
@@ -66,6 +64,7 @@ func entity_timeout():
 
 func entity_timein():
 	if timerEnd!=-1.0:
+		print("wait ",timerEnd)
 		await get_tree().create_timer(timerEnd).timeout
 		entity_timeout()
 

@@ -3,7 +3,10 @@ extends entity
 var entitySet: Array[entity] = []
 var entityCount: float = 10
 
-@export var size:float = 200.0
+var sideSize:int
+var isOdd:Vector2 = Vector2(1.5,1.5)
+
+@export var size:float 
 
 @export var entityMax: float = 10.0
 @export var Type:Global.entityType = Global.entityType.EnemyChicken
@@ -19,11 +22,15 @@ func _ready():
 
 	entityCount = entitySet.size()
 	entityMax = entityCount
+	
+	sideSize = sqrt(entityMax)
+	isOdd=Vector2(0.5,0.5)*(sideSize-1)
 
 	inClampedScreen = true	
 
+	var Shaping = CircleShape2D.new()
+	$PhysicBox.set_shape(Shaping)
 	$PhysicBox.shape.radius = size
-
 	direction = Vector2(-1,0)
 
 	setUp()
@@ -51,16 +58,13 @@ func setUp():
 			var tmp:float=i/entityMax*360
 			#make the entities in a circle around the Anchor(this node)
 			aEntity.position = Vector2(sin(deg_to_rad(tmp))*size,cos(deg_to_rad(tmp))*size)
-			aEntity.rotation_degrees = tmp
 		elif pattern == Global.patternType.SquareShape:
-			var sideSize:int = sqrt(entityMax)
-			
-			aEntity.position = Vector2(float(i%sideSize), float(i/sideSize))*(size/2)-Vector2(size,size)/2
+			aEntity.position = (Vector2(float(i%sideSize), float(i/sideSize))-isOdd)*size/2
 
 func _process(_delta):
+
 	if entityCount==0:
 		queue_free()
 
 	if Input.is_action_just_pressed("TestButton-"):
-		
 		gotoPosition(Global.PlayerPos, speed)

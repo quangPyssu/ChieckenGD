@@ -9,6 +9,7 @@ func _ready():
 	ani.play("BeamStart")
 	ani.queue("Beaming")
 	$BulletSound.play()
+	$AnimationCenter/ChargeParticle.emitting=true
 
 func _process(delta):
 	super._process(delta)
