@@ -7,10 +7,20 @@ var defeated:bool = false
 var HP:float = 10.0
 var maxHP:float = 10.0
 
-var SP:float = 30
-var maxSP:float = 30
+var SP:float = 30.0
+var maxSP:float = 30.0
+
+var AP:float = 0.5
+var maxAP:float = 0.5
+
+var WeaponTime: Array[float] = [0.5,0.0,0.0,0.0]
+var SpecialTime: Array[float] = [30.0,0.0,0.0,0.0]
+
+var WeaponType:int = 0
+var SpecialType:int = 0
 
 var PlayerPos:Vector2
+
 
 enum patternType {
 	CircleShape,SquareShape
@@ -20,10 +30,6 @@ enum BulletSpin{
 	SprialOut
 }
 
-enum bulletType {
-	Egg
-}
-
-enum entityType {
-	EnemyChicken
+enum SpawnType {
+	Egg, EnemyChicken
 }

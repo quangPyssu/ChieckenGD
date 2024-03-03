@@ -9,5 +9,5 @@ collision_mask = 0
 script = ExtResource("2_cxipj")
 size = 0.0
 entityMax = 0.0
-Type = 0
+Type = 1
 pattern = 0

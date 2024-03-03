@@ -9,7 +9,7 @@ var isOdd:Vector2 = Vector2(1.5,1.5)
 @export var size:float 
 
 @export var entityMax: float = 10.0
-@export var Type:Global.entityType = Global.entityType.EnemyChicken
+@export var Type:Global.SpawnType = Global.SpawnType.EnemyChicken
 @export var pattern:Global.patternType = Global.patternType.CircleShape
 
 func _ready():
@@ -40,7 +40,7 @@ func generateEntities():
 	#generate entities based on the entityMax
 	var preload_Entity: PackedScene = null
 
-	if Type == Global.entityType.EnemyChicken:
+	if Type == Global.SpawnType.EnemyChicken:
 		preload_Entity = preload("res://Enemy_Chicken.tscn")
 
 	for i in range(entityMax):

@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://brmi3g83eksvo"]
+[gd_scene load_steps=11 format=3 uid="uid://brmi3g83eksvo"]
 
 [ext_resource type="Script" path="res://Source/UI.gd" id="1_2c54b"]
+[ext_resource type="Texture2D" uid="uid://gmm01mps67iu" path="res://Asset/Icon/WeaponIcon0.jpg" id="2_7vf4g"]
+[ext_resource type="Texture2D" uid="uid://d1hg23gwh4q82" path="res://Asset/Icon/SpecialIcon1.jpg" id="3_4on2o"]
+[ext_resource type="Texture2D" uid="uid://banqcecntmlsn" path="res://Asset/Icon/IconCover.png" id="4_x0c3o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8oycn"]
 
@@ -136,5 +139,55 @@ text = "SP
 "
 horizontal_alignment = 1
 
-[connection signal="timeout" from="Control/Health/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="WeaponSprite" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_7vf4g")
+
+[node name="WeaponRecharge0" type="TextureProgressBar" parent="Control/HBoxContainer/WeaponSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 60.0
+fill_mode = 4
+texture_under = ExtResource("4_x0c3o")
+texture_progress = ExtResource("2_7vf4g")
+tint_under = Color(0.6, 0.615686, 0.619608, 0.788235)
+tint_progress = Color(1, 1, 1, 0.862745)
+
+[node name="SpecialSprite" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_4on2o")
+
+[node name="SpecialRecharge" type="TextureProgressBar" parent="Control/HBoxContainer/SpecialSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 20.0
+fill_mode = 4
+texture_under = ExtResource("4_x0c3o")
+texture_progress = ExtResource("3_4on2o")
+tint_under = Color(0.6, 0.615686, 0.619608, 0.788235)
+tint_progress = Color(1, 1, 1, 0.862745)
+
 [connection signal="timeout" from="Control/Health/HealthBar/DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="Control/Health/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]

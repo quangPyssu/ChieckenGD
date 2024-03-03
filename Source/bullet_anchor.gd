@@ -8,12 +8,12 @@ var bulletCount: float = 10
 var size:float = 200.0
 
 var bulletMax: float = 10.0
-var Type:Global.bulletType = Global.bulletType.Egg
+var Type:Global.SpawnType = Global.SpawnType.Egg
 var pattern:Global.patternType = Global.patternType.CircleShape
 
 var Dying:bool = false
 
-func _Rready(theType:Global.bulletType,thepattern:Global.patternType,theCnt: float=10.0,theSize:float = 200.0,DeathTime: float=5.0):
+func _Rready(theType:Global.SpawnType,thepattern:Global.patternType,theCnt: float=10.0,theSize:float = 200.0,DeathTime: float=5.0):
 	Type = theType
 	pattern = thepattern
 	bulletMax = theCnt
@@ -43,7 +43,7 @@ func generateBullets():
 	#generate entities based on the bulletMax
 	var preload_bullet: PackedScene = null
 
-	if Type == Global.bulletType.Egg:
+	if Type == Global.SpawnType.Egg:
 		preload_bullet = preload("res://Egg.tscn")
 
 	for i in range(bulletMax):

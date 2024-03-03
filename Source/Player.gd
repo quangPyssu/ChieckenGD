@@ -7,11 +7,6 @@ const FastPercentage: float = 1.5
 var AttackLoaded: bool = true
 var SpecialLoaded: bool = false
 
-var WeaponType:int = 0
-var SpecialType:int = 0
-
-var WeaponTime: Array[float] = [0.5,0.0,0.0,0.0]
-var SpecialTime: Array[float] = [30,0.0,0.0,0.0]
 var SpecialIFrame: Array[float] = [4,0.0,0.0,0.0]
 
 var particle:Array[PackedScene] = [preload("res://Asset/particle/Particle_BaseBullet.tscn")]
@@ -22,10 +17,11 @@ signal Special
 func _ready():
 	
 	HP = Global.HP
+	Global.SP=Global.SpecialTime[Global.SpecialType]
+	Global.AP=Global.WeaponTime[Global.WeaponType]
 
 	%AttackTimer.timeout.connect(_on_attack_timer_timeout)
 	%SpecialTimer.timeout.connect(_on_special_timer_timeout)
-	print("sp ",%SpecialTimer.wait_time)
 
 	get_node("AnimationCenter/BattlecruiserBase").visible = true
 
@@ -59,26 +55,28 @@ func _process(_delta):
 
 	Global.HP = HP
 
-	%AttackTimer.wait_time=WeaponTime[WeaponType]
+	%AttackTimer.wait_time=Global.WeaponTime[Global.WeaponType]
 
 	if Input.is_action_pressed("Attack") and AttackLoaded:
 		AttackLoaded = false
-		Attack.emit(WeaponType)
-		%AttackTimer.wait_time=WeaponTime[WeaponType]
+		Attack.emit(Global.WeaponType)
+		%AttackTimer.wait_time=Global.WeaponTime[Global.WeaponType]
 		%AttackTimer.start()
-		var SpawnParticle = particle[WeaponType].instantiate()
+		var SpawnParticle = particle[Global.WeaponType].instantiate()
 		add_child(SpawnParticle)
 		SpawnParticle.position = -Vector2(0,50)
 		SpawnParticle.emitting = true
+		Global.AP=0.0
+		recoverAP()
 	
 	if Input.is_action_pressed("Special") and SpecialLoaded:
 		SpecialLoaded = false
 		var Beam = preload("res://BigBeam_Player.tscn").instantiate()
 		add_child(Beam)
-		force_Flicker(SpecialIFrame[SpecialType])
-		%SpecialTimer.wait_time=SpecialTime[SpecialType]
+		force_Flicker(SpecialIFrame[Global.SpecialType])
+		%SpecialTimer.wait_time=Global.SpecialTime[Global.SpecialType]
 		%SpecialTimer.start()
-		Global.SP=0
+		Global.SP=0.0
 		recoverSP()
 
 	# +  Blow up
@@ -130,7 +128,11 @@ func force_Flicker(flickTime:float):
 
 func recoverSP():
 	var tween =get_tree().create_tween()
-	tween.tween_property(Global, "SP", Global.maxSP, SpecialTime[SpecialType]).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(Global, "SP", Global.maxSP, Global.SpecialTime[Global.SpecialType]).set_trans(Tween.TRANS_LINEAR)
+
+func recoverAP():
+	var tween =get_tree().create_tween()
+	tween.tween_property(Global, "AP", Global.maxAP, Global.WeaponTime[Global.WeaponType]).set_trans(Tween.TRANS_LINEAR)
 
 func take_damage(damage: int):
 	if (isFlickering):

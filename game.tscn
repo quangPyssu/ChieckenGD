@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://daon3rhir0iyv"]
+[gd_scene load_steps=6 format=3 uid="uid://daon3rhir0iyv"]
 
 [ext_resource type="PackedScene" uid="uid://d26j2nusorvjk" path="res://player.tscn" id="1_rbiiv"]
 [ext_resource type="Script" path="res://Source/game.gd" id="1_yimfk"]
 [ext_resource type="Texture2D" uid="uid://7hsxq7orbnyx" path="res://Asset/Blue_Blank_Background.png" id="3_mky08"]
-[ext_resource type="PackedScene" uid="uid://dl1becyep5n8l" path="res://Boss_Chicken.tscn" id="4_ukms4"]
 [ext_resource type="PackedScene" uid="uid://cfxh60sa0kekt" path="res://UI/PauseMenu.tscn" id="5_quuxs"]
 [ext_resource type="PackedScene" uid="uid://brmi3g83eksvo" path="res://UI/UI.tscn" id="5_xjudq"]
 
@@ -26,9 +25,6 @@ unique_name_in_owner = true
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Wave0" type="Node2D" parent="Enemies"]
-
-[node name="BossChicken" parent="Enemies/Wave0" instance=ExtResource("4_ukms4")]
-position = Vector2(529, 195.496)
 
 [node name="Wave1" type="Node2D" parent="Enemies"]
 

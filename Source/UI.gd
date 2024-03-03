@@ -8,13 +8,20 @@ func _ready():
 
 	%SpecialBar.value = Global.SP
 	%SpecialBar.max_value = Global.SP
-
+	
+	%SpecialRecharge.value = Global.SP
+	%SpecialRecharge.max_value = Global.SP
+	
+	%WeaponRecharge0.value = Global.AP
+	%WeaponRecharge0.max_value = Global.AP
 
 func _process(_delta):
 	#health bar is progressbar
 	healthBarUpdate()
 	#special bar is progressbar
 	%SpecialBar.value = Global.SP
+	%SpecialRecharge.value = Global.SP
+	%WeaponRecharge0.value = Global.AP
 
 func healthBarUpdate():
 	if %HealthBar.value != Global.HP:

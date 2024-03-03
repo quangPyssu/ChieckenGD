@@ -59,7 +59,7 @@ func attack(type:int):
 			for i:int in 2:
 				var s:entity = preSwarm.instantiate()
 				var num:float =randf_range(50.0,100.0)
-				s._Rready(Global.bulletType.Egg,Global.patternType.CircleShape,10.0,num,10)
+				s._Rready(Global.SpawnType.Egg,Global.patternType.CircleShape,10.0,num,10)
 				
 				get_node("/root/Game/Projectiles").add_child(s)
 				

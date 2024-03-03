@@ -25,7 +25,9 @@ var isFlickering: bool = false
 
 func _ready():
 	MaxHP = HP
-	entity_timein()
+	
+	if (timerEnd!=-1):
+		HP=timerEnd
 
 	if savedPos!=Vector2(0, 0):
 		print ("gotoPosition ", savedPos, " speed ", speed)
@@ -56,17 +58,16 @@ func _physics_process(delta):
 			global_position.x = clamp(global_position.x , 0, get_viewport().size.x)
 			global_position.y = clamp(global_position.y , 0, get_viewport().size.y)
 
+	if timerEnd!=-1.0:
+		HP-=delta
+		if HP<=0:
+			queue_free()
+
 func _set_velocity(delta:float):
 	velocity = direction * speed * delta	
 
 func entity_timeout():
 	kill()
-
-func entity_timein():
-	if timerEnd!=-1.0:
-		print("wait ",timerEnd)
-		await get_tree().create_timer(timerEnd).timeout
-		entity_timeout()
 
 func take_damage(damage:int):
 	#at three quarter health
@@ -97,7 +98,6 @@ func kill():
 	if !isDead:
 		isDead = true
 		$HitBox.queue_free()
-		
 
 		stopProcess()
 
