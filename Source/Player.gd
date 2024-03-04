@@ -32,7 +32,7 @@ func _physics_process(delta):
 
 	direction = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
 	
-	var current_speed = BaseSpeed
+	var current_speed:float = BaseSpeed
 
 	var JetType: int = 1
 
@@ -55,14 +55,14 @@ func _process(_delta):
 
 	Global.HP = HP
 
-	%AttackTimer.wait_time=Global.WeaponTime[Global.WeaponType]
+	%AttackTimer.wait_time=Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]
 
 	if Input.is_action_pressed("Attack") and AttackLoaded:
 		AttackLoaded = false
 		Attack.emit(Global.WeaponType)
-		%AttackTimer.wait_time=Global.WeaponTime[Global.WeaponType]
+		%AttackTimer.wait_time=Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]
 		%AttackTimer.start()
-		var SpawnParticle = particle[Global.WeaponType].instantiate()
+		var SpawnParticle:GPUParticles2D = particle[Global.WeaponType].instantiate()
 		add_child(SpawnParticle)
 		SpawnParticle.position = -Vector2(0,50)
 		SpawnParticle.emitting = true
@@ -71,7 +71,7 @@ func _process(_delta):
 	
 	if Input.is_action_pressed("Special") and SpecialLoaded:
 		SpecialLoaded = false
-		var Beam = preload("res://BigBeam_Player.tscn").instantiate()
+		var Beam:bullet = preload("res://BigBeam_Player.tscn").instantiate()
 		add_child(Beam)
 		force_Flicker(SpecialIFrame[Global.SpecialType])
 		%SpecialTimer.wait_time=Global.SpecialTime[Global.SpecialType]
@@ -94,6 +94,15 @@ func _blow_up():
 	get_node("AnimationCenter/AnimationPlayer").play("Blowing")
 	stopProcess()
 	Global.defeated = true
+	
+func changeWeapon():
+	AttackLoaded = false
+	%AttackTimer.wait_time=Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]
+	%AttackTimer.start()
+	Global.AP=0.0
+	Global.maxAP=Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]
+	print(Global.maxAP)
+	recoverAP()
 
 func JetAnimation(JetType: int):
 	if JetType == 0:
@@ -127,12 +136,12 @@ func force_Flicker(flickTime:float):
 	isFlickering = false
 
 func recoverSP():
-	var tween =get_tree().create_tween()
+	var tween:Tween = get_tree().create_tween()
 	tween.tween_property(Global, "SP", Global.maxSP, Global.SpecialTime[Global.SpecialType]).set_trans(Tween.TRANS_LINEAR)
 
 func recoverAP():
-	var tween =get_tree().create_tween()
-	tween.tween_property(Global, "AP", Global.maxAP, Global.WeaponTime[Global.WeaponType]).set_trans(Tween.TRANS_LINEAR)
+	var tween:Tween = get_tree().create_tween()
+	tween.tween_property(Global, "AP", Global.maxAP, Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]).set_trans(Tween.TRANS_LINEAR)
 
 func take_damage(damage: int):
 	if (isFlickering):

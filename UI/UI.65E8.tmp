@@ -1,39 +1,48 @@
-[gd_scene load_steps=26 format=3 uid="uid://brmi3g83eksvo"]
+[gd_scene load_steps=24 format=3 uid="uid://brmi3g83eksvo"]
 
 [ext_resource type="Script" path="res://Source/UI.gd" id="1_2c54b"]
 [ext_resource type="Texture2D" uid="uid://gmm01mps67iu" path="res://Asset/Icon/WeaponIcon0.jpg" id="2_7vf4g"]
-[ext_resource type="Texture2D" uid="uid://dwvvcidxjtrtp" path="res://Asset/Icon/BGStatus.png" id="2_j25fr"]
 [ext_resource type="Texture2D" uid="uid://d1hg23gwh4q82" path="res://Asset/Icon/SpecialIcon1.jpg" id="3_4on2o"]
 [ext_resource type="Texture2D" uid="uid://brjb5snmb8x1o" path="res://Asset/Icon/WeaponSelect.png" id="4_4b6t3"]
 [ext_resource type="Texture2D" uid="uid://banqcecntmlsn" path="res://Asset/Icon/IconCover.png" id="4_x0c3o"]
 [ext_resource type="Texture2D" uid="uid://cmljyc77g880" path="res://Asset/Icon/WeaponIcon1.jpg" id="5_b2gox"]
 [ext_resource type="Texture2D" uid="uid://civqckhkupqeb" path="res://Asset/Icon/SpecialSelect.png" id="6_1ltwo"]
-[ext_resource type="Texture2D" uid="uid://do5pi708i4s4y" path="res://Asset/Icon/BGweapon.png" id="8_xe6ts"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8oycn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsccx"]
-corner_radius_bottom_right = 300
-corner_detail = 1
-anti_aliasing = false
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 88
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3226"]
 bg_color = Color(0.231373, 0.231373, 0.231373, 0.682353)
-corner_radius_bottom_right = 100
-corner_detail = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 88
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chdbx"]
 bg_color = Color(0.415686, 0.415686, 0.415686, 1)
-corner_radius_bottom_right = 100
-corner_detail = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 88
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjq6p"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mms2m"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+corner_radius_top_left = 88
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diy75"]
-bg_color = Color(1, 1, 0.0235294, 1)
-corner_radius_bottom_right = 100
-corner_detail = 1
-anti_aliasing = false
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy330"]
+bg_color = Color(0.937255, 0.772549, 0.266667, 1)
+corner_radius_top_left = 88
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbayl"]
 atlas = ExtResource("4_4b6t3")
@@ -68,7 +77,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 2.0
+"speed": 7.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ndxc"]
@@ -115,140 +124,110 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -35.0
-offset_top = 1.0
-offset_right = -35.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StatusBG" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -151.0
-offset_right = 721.0
-offset_bottom = -3.0
-grow_vertical = 0
-texture = ExtResource("2_j25fr")
-
-[node name="Health" type="HBoxContainer" parent="Control/StatusBG"]
+[node name="Health" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01
 anchor_top = 1.0
 anchor_right = 0.01
 anchor_bottom = 1.0
-offset_left = 136.39
-offset_top = -62.0
-offset_right = 729.39
-offset_bottom = -27.0
+offset_top = -35.0
+offset_right = 532.0
 grow_vertical = 0
+theme_override_constants/separation = 10
 
-[node name="HealthBar" type="ProgressBar" parent="Control/StatusBG/Health"]
+[node name="HealthBar" type="ProgressBar" parent="Control/Health"]
 unique_name_in_owner = true
 self_modulate = Color(0, 1, 0, 1)
 z_index = 1
-custom_minimum_size = Vector2(500, 31)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_8oycn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qsccx")
 max_value = 10.0
-value = 10.0
+value = 5.0
 
-[node name="DamageBar" type="ProgressBar" parent="Control/StatusBG/Health/HealthBar"]
+[node name="DamageBar" type="ProgressBar" parent="Control/Health/HealthBar"]
 unique_name_in_owner = true
 z_index = -1
-custom_minimum_size = Vector2(500, 10)
+custom_minimum_size = Vector2(500, 23)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 4.0
-offset_bottom = 5.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.860002)
 theme_override_styles/background = SubResource("StyleBoxFlat_g3226")
 theme_override_styles/fill = SubResource("StyleBoxFlat_chdbx")
 max_value = 10.0
-value = 10.0
+value = 8.0
 show_percentage = false
 
-[node name="DamageTimer" type="Timer" parent="Control/StatusBG/Health/HealthBar"]
+[node name="DamageTimer" type="Timer" parent="Control/Health/HealthBar"]
 unique_name_in_owner = true
 wait_time = 0.4
 one_shot = true
 
-[node name="Special" type="HBoxContainer" parent="Control/StatusBG"]
+[node name="Label" type="Label" parent="Control/Health"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "HP"
+horizontal_alignment = 1
+
+[node name="Special" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01
 anchor_top = 0.97
 anchor_right = 0.02
 anchor_bottom = 0.97
-offset_left = 123.39
-offset_top = -26.56
-offset_right = 536.78
-offset_bottom = 6.44
+offset_top = -27.0
+offset_right = 500.0
 grow_vertical = 0
 scale = Vector2(0.999206, 0.997491)
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="SpecialBar" type="ProgressBar" parent="Control/StatusBG"]
+[node name="SpecialBar" type="ProgressBar" parent="Control/Special"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.839216)
 z_index = 1
-custom_minimum_size = Vector2(390, 18)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-offset_left = 143.0
-offset_top = 123.0
-offset_right = 533.0
-offset_bottom = 141.0
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxEmpty_cjq6p")
-theme_override_styles/fill = SubResource("StyleBoxFlat_diy75")
+theme_override_colors/font_color = Color(0.635294, 0.0470588, 0.831373, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_mms2m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uy330")
 max_value = 10.0
-value = 10.0
-show_percentage = false
+value = 5.0
 
-[node name="AttackBG" type="TextureRect" parent="Control"]
-self_modulate = Color(1, 1, 1, 0.45098)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -208.0
-offset_top = -106.0
-offset_bottom = -6.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("8_xe6ts")
-flip_h = true
+[node name="Label" type="Label" parent="Control/Special"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SP
+"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.901563
-anchor_top = 0.917593
-anchor_right = 0.997917
-anchor_bottom = 0.988889
-offset_right = -5.0
+anchor_left = 0.940625
+anchor_top = 0.942593
+anchor_right = 0.992708
+anchor_bottom = 0.987037
 grow_horizontal = 0
-grow_vertical = 2
-theme_override_constants/separation = 15
-alignment = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Weapons" type="HBoxContainer" parent="Control/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_vertical = 0
 
 [node name="WeaponSprite" type="TextureRect" parent="Control/HBoxContainer/Weapons"]
 layout_mode = 2
@@ -276,7 +255,7 @@ scale = Vector2(1.46875, 1.5)
 sprite_frames = SubResource("SpriteFrames_t06i7")
 autoplay = "default"
 frame = 1
-frame_progress = 0.123689
+frame_progress = 0.198276
 
 [node name="WeaponSprite2" type="TextureRect" parent="Control/HBoxContainer/Weapons"]
 layout_mode = 2
@@ -291,7 +270,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-value = 10.0
+value = 60.0
 fill_mode = 4
 texture_under = ExtResource("4_x0c3o")
 texture_progress = ExtResource("5_b2gox")
@@ -303,13 +282,11 @@ position = Vector2(24, 24)
 scale = Vector2(1.46875, 1.5)
 sprite_frames = SubResource("SpriteFrames_t06i7")
 autoplay = "default"
-frame_progress = 0.769794
+frame_progress = 0.980829
 
 [node name="SpecialSprite" type="TextureRect" parent="Control/HBoxContainer"]
-custom_minimum_size = Vector2(65, 65)
+custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
 texture = ExtResource("3_4on2o")
 
 [node name="SpecialRecharge" type="TextureProgressBar" parent="Control/HBoxContainer/SpecialSprite"]
@@ -329,12 +306,12 @@ tint_under = Color(0.6, 0.615686, 0.619608, 0.788235)
 tint_progress = Color(1, 1, 1, 0.862745)
 
 [node name="SpecialSelect" type="AnimatedSprite2D" parent="Control/HBoxContainer/SpecialSprite"]
-position = Vector2(33, 33)
-scale = Vector2(2, 2)
+position = Vector2(38, 38)
+scale = Vector2(2.3125, 2.3125)
 sprite_frames = SubResource("SpriteFrames_haxxi")
 autoplay = "default"
 frame = 3
 frame_progress = 0.298739
 
-[connection signal="timeout" from="Control/StatusBG/Health/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Control/StatusBG/Health/HealthBar/DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="Control/Health/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Control/Health/HealthBar/DamageTimer" to="." method="_on_damage_timer_timeout"]

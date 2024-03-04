@@ -13,8 +13,11 @@ var maxSP:float = 30.0
 var AP:float = 0.5
 var maxAP:float = 0.5
 
-var WeaponTime: Array[float] = [0.5,0.0,0.0,0.0]
+var WeaponTime: Array[float] = [0.5,2,0.0,0.0]
 var SpecialTime: Array[float] = [30.0,0.0,0.0,0.0]
+
+var EquippedWeapon: Array[int] =[0,1]
+var CurrentWeapon:int=0
 
 var WeaponType:int = 0
 var SpecialType:int = 0

@@ -32,6 +32,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("PauseToggle"):
 		$Paused.PauseGame()
 		
+	if Input.is_action_just_pressed("ChangeWeapon"):
+		Global.CurrentWeapon=(Global.CurrentWeapon+1)%2
+		$Player.changeWeapon()
+		
 	%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+100.0*delta
 		
 	if %BlueBlankBackground.position.y>=0:
