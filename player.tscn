@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://d26j2nusorvjk"]
+[gd_scene load_steps=52 format=3 uid="uid://d26j2nusorvjk"]
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_tg83y"]
 [ext_resource type="Script" path="res://Source/Player.gd" id="1_vop0c"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ltfaidarhr2v" path="res://Asset/Dreadnought_Shield.png" id="5_hl6uf"]
 [ext_resource type="Texture2D" uid="uid://bxwkd5kewkuvu" path="res://Asset/Battlecruiser_Engine.png" id="6_x37wx"]
 [ext_resource type="Texture2D" uid="uid://divxhjle1vn5w" path="res://Asset/Battlecruiser_Destruction.png" id="7_0psjm"]
+[ext_resource type="AudioStream" uid="uid://obb6wtmc40q5" path="res://Asset/Sounds/PlayerExplode.ogg" id="8_vio31"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6o43q"]
 atlas = ExtResource("5_hl6uf")
@@ -272,7 +273,7 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_s8wx0"]
 resource_name = "Blowing"
-length = 1.15
+length = 1.71
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -333,6 +334,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_vio31")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_cht84"]
 length = 0.001
@@ -435,6 +451,7 @@ sprite_frames = SubResource("SpriteFrames_6jaag")
 autoplay = "default"
 
 [node name="BattlecruiserBlowUp" type="AnimatedSprite2D" parent="AnimationCenter" index="4"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_xiaqo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="5"]
@@ -464,3 +481,5 @@ autostart = true
 [node name="PhysicBox" parent="." index="4"]
 shape = SubResource("CapsuleShape2D_gth5p")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="5"]

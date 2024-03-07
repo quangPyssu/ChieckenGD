@@ -1,0 +1,140 @@
+[gd_scene load_steps=10 format=3 uid="uid://56bfvf80gn1e"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_kngag"]
+[ext_resource type="Script" path="res://Source/Astroid.gd" id="2_r61ai"]
+[ext_resource type="Texture2D" uid="uid://d1abji644ccef" path="res://Asset/Astroid.png" id="3_j2x1t"]
+[ext_resource type="AudioStream" uid="uid://067oerbqcbfg" path="res://Asset/Sounds/rock_0.ogg" id="4_dhy7d"]
+[ext_resource type="Texture2D" uid="uid://6qmf7de038qd" path="res://Asset/Explosion.png" id="5_df667"]
+
+[sub_resource type="Animation" id="Animation_73crq"]
+resource_name = "Astroid"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Astroid:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 47]
+}
+
+[sub_resource type="Animation" id="Animation_5wuni"]
+resource_name = "Explosion"
+length = 0.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AnimationCenter/../BulletSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_dhy7d")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Astroid:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%AnimationCenter/..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4avfb"]
+_data = {
+"Astroid": SubResource("Animation_73crq"),
+"Explosion": SubResource("Animation_5wuni")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chtc7"]
+size = Vector2(114.817, 88.1877)
+
+[node name="Bullet" instance=ExtResource("1_kngag")]
+scale = Vector2(0.7, 0.7)
+collision_layer = 32
+collision_mask = 1
+script = ExtResource("2_r61ai")
+damage = 3
+canBreak = true
+HP = 50
+inClampedScreen = false
+
+[node name="Astroid" type="Sprite2D" parent="AnimationCenter" index="0"]
+texture_filter = 1
+position = Vector2(-3.8147e-06, -9.53674e-07)
+scale = Vector2(2, 2)
+texture = ExtResource("3_j2x1t")
+hframes = 24
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_4avfb")
+}
+autoplay = "Astroid"
+
+[node name="Explosion" type="Sprite2D" parent="AnimationCenter" index="2"]
+visible = false
+position = Vector2(-12.8571, -1.42857)
+scale = Vector2(3.625, 3.625)
+texture = ExtResource("5_df667")
+hframes = 8
+frame = 7
+
+[node name="HitBox" parent="." index="1"]
+visible = false
+position = Vector2(-12.8571, -1.42857)
+scale = Vector2(1.04514, 1.06915)
+shape = SubResource("RectangleShape2D_chtc7")

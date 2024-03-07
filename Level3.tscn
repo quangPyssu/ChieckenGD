@@ -1,12 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://o854l4lqlhrw"]
+[gd_scene load_steps=6 format=3 uid="uid://o854l4lqlhrw"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_nrxfr"]
-[ext_resource type="PackedScene" uid="uid://dl1becyep5n8l" path="res://Boss_Chicken.tscn" id="4_vtjgh"]
+[ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://Enemy_Chicken.tscn" id="2_4qado"]
+[ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://spawner.tscn" id="3_olv7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkuk6"]
+size = Vector2(2006, 251.251)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpudg"]
+size = Vector2(260.5, 996.783)
 
 [node name="Game" instance=ExtResource("1_nrxfr")]
 
 [node name="BlueBlankBackground" parent="." index="0"]
 position = Vector2(-16, -287.259)
 
-[node name="BossChicken2" parent="Enemies/Wave0" index="0" instance=ExtResource("4_vtjgh")]
-position = Vector2(1152, -255.341)
+[node name="EnemyChicken" parent="Enemies/Wave0" index="0" instance=ExtResource("2_4qado")]
+position = Vector2(1224, 446.847)
+scale = Vector2(1, 1.00569)
+timerEnd = 50.0
+savedPos = Vector2(-100, -100)
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Spawner" parent="Enemies/Wave0/EnemyChicken" index="5" instance=ExtResource("3_olv7e")]
+position = Vector2(-2408, 119.014)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 2.0
+SpawnCnt = 5
+WhatSpawning = 2
+direction = Vector2(1, 1)
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave0/EnemyChicken/Spawner" index="1"]
+position = Vector2(2192, -690.281)
+shape = SubResource("RectangleShape2D_lkuk6")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[node name="Spawner2" parent="Enemies/Wave0/EnemyChicken" index="6" instance=ExtResource("3_olv7e")]
+position = Vector2(-336, 22.4779)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 2.0
+SpawnCnt = 5
+WhatSpawning = 2
+direction = Vector2(1, 1)
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave0/EnemyChicken/Spawner2" index="1"]
+position = Vector2(-1016, 33.0619)
+shape = SubResource("RectangleShape2D_xpudg")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)

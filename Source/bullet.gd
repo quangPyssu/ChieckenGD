@@ -7,7 +7,10 @@ var velocity: Vector2 = Vector2.ZERO
 var accelaration: float = 0.0
 var direction: Vector2 = Vector2(0,0)
 @export var damage: int = 1
-@export var HP: int = 1
+@export var canBreak: bool = 0
+@export var HP: int = 10
+
+var broken:bool = false
 
 @export var inClampedScreen: bool = true
 
@@ -21,17 +24,26 @@ func _process(delta):
 		global_position.y = clamp(global_position.y, 0, get_viewport().size.y)
 	else: #destroy when out of screen
 		if global_position.x < -300 or global_position.x > get_viewport().size.x+300 or global_position.y < -300 or global_position.y > get_viewport().size.y+300:
-			HP=0
-			
+			broken=true
 		
-	if HP <= 0 and !$BulletSound.is_playing():
+	if HP<=0:
+		kill()
+		HP=1
+		
+	if broken and !$BulletSound.is_playing():
 		queue_free()
 
 func _on_area_entered(area:Area2D):
-	if HP>0:
-		if area.get_parent().has_method("take_damage"):
-			area.get_parent().take_damage(damage)
-		HP-=1
-		
-		if HP<=0: 
-			%AnimationCenter.hide()
+	if area.get_parent().has_method("take_damage"):
+		area.get_parent().take_damage(damage)
+	elif "HP" in area:
+		if area.HP>0:
+			area.HP-=damage	
+
+	kill()
+
+func kill():
+	if canBreak:
+		broken=true
+		%AnimationCenter.hide()
+		$HitBox.queue_free()

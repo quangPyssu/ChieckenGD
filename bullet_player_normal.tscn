@@ -12,9 +12,10 @@ size = Vector2(33.6933, 10.6249)
 rotation = -1.5708
 scale = Vector2(1.09814, 1.0353)
 collision_layer = 4
-collision_mask = 512
+collision_mask = 544
 script = ExtResource("2_kyhrn")
 damage = 40
+canBreak = true
 
 [node name="BulletNormal" type="AnimatedSprite2D" parent="AnimationCenter" index="0"]
 sprite_frames = ExtResource("3_o7qer")

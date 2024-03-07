@@ -48,7 +48,7 @@ func _physics_process(delta):
 				gotShapeSize = true
 				ShapeSize = $PhysicBox.shape.get_rect().size/2
 
-			if BounceOffSceen:			
+			if BounceOffSceen:
 
 				if global_position.x - ShapeSize.x <= 0 or global_position.x + ShapeSize.x>= get_viewport().size.x:
 					direction.x = -direction.x
@@ -95,29 +95,15 @@ func atQuarterHealth():
 	pass	
 
 func kill():
-	if !isDead:
-		isDead = true
-		$HitBox.queue_free()
+	isDead = true
+	$HitBox.queue_free()
 
-		stopProcess()
-
-		var killFlag:bool = false
-
-		for i in $AnimationCenter.get_children():
-			if i.has_method("kill"):
-				i.kill()
-				killFlag = true
-	
-		if killFlag==false:
-			queue_free()		
+	stopProcess()
 
 func _on_animation_center_tree_exited():
 	queue_free()
 
 func gotoPosition(pos:Vector2,NewSpeed:float):
-	#save direction and speed 
-	#then move to the new position 
-
 	savedDirection = direction
 	savedSpeed = speed
 	savedPos = pos

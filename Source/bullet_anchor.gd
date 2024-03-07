@@ -6,6 +6,8 @@ var bulletSet: Array[bullet] = []
 var bulletCount: float = 10
 
 var size:float = 200.0
+var isOdd:Vector2 = Vector2(1.5,1.5)
+var sideSize:int 
 
 var bulletMax: float = 10.0
 var Type:Global.SpawnType = Global.SpawnType.Egg
@@ -33,6 +35,9 @@ func _Rready(theType:Global.SpawnType,thepattern:Global.patternType,theCnt: floa
 	var Shaping = CircleShape2D.new()
 	$PhysicBox.set_shape(Shaping)
 	$PhysicBox.shape.radius = size
+	
+	sideSize = sqrt(bulletMax)
+	isOdd=Vector2(0.5,0.5)*(sideSize-1)
 
 	direction = Vector2(-1,0)
 
@@ -59,7 +64,6 @@ func setUp():
 			abullet.position = Vector2(sin(deg_to_rad(tmp))*size,cos(deg_to_rad(tmp))*size)
 			abullet.rotation_degrees = tmp
 		elif pattern == Global.patternType.SquareShape:
-			var sideSize:int = sqrt(bulletMax)
 			abullet.position = Vector2(float(i%sideSize), float(i/sideSize))*(size/2)-Vector2(size,size)
 			
 func addBulDir(BulSpeed:int):

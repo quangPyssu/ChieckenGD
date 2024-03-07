@@ -81,7 +81,7 @@ func _process(_delta):
 
 	# +  Blow up
 	if Input.is_action_pressed("TestButton+"):
-		_blow_up()
+		pass
 
 	# - hurt
 	if Input.is_action_just_pressed("TestButton-"):
@@ -124,7 +124,9 @@ func _on_special_timer_timeout():
 	SpecialLoaded = true
 
 func kill():
-	_blow_up()
+	if !isDead:
+		super.kill()
+		_blow_up()
 	
 func force_Flicker(flickTime:float):
 	isFlickering = true

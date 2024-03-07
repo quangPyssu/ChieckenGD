@@ -69,15 +69,14 @@ speed = 7000.0
 direction = Vector2(-1, 0)
 savedPos = Vector2(500, 300)
 
-[node name="AnimationCenter" parent="." index="0"]
-position = Vector2(0, 30)
-
 [node name="ChickenBody" type="Sprite2D" parent="AnimationCenter" index="0"]
 texture_filter = 1
 position = Vector2(0, 31)
 scale = Vector2(1.745, 1.745)
 texture = ExtResource("2_gi3w4")
+offset = Vector2(0, 15)
 hframes = 50
+frame = 37
 
 [node name="BossChickenBody3" type="Sprite2D" parent="AnimationCenter" index="1"]
 visible = false
@@ -103,13 +102,6 @@ libraries = {
 }
 autoplay = "default"
 
-[node name="Explosion" type="AnimatedSprite2D" parent="AnimationCenter" index="5"]
-scale = Vector2(7, 7)
-sprite_frames = ExtResource("7_rpk0s")
-animation = &"explosion"
-frame = 8
-frame_progress = 1.0
-
 [node name="HitBox" parent="." index="1"]
 visible = false
 collision_layer = 512
@@ -119,15 +111,22 @@ collision_mask = 5
 shape = SubResource("CircleShape2D_4k6bu")
 debug_color = Color(0.984314, 0, 0.341176, 0.164706)
 
-[node name="PhysicBox" parent="." index="2"]
+[node name="Explosion" type="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(7, 7)
+sprite_frames = ExtResource("7_rpk0s")
+animation = &"explosion"
+frame = 8
+frame_progress = 1.0
+
+[node name="PhysicBox" parent="." index="3"]
 visible = false
 shape = SubResource("CircleShape2D_t80rn")
 
-[node name="AttackTimer" type="Timer" parent="." index="3"]
+[node name="AttackTimer" type="Timer" parent="." index="4"]
 wait_time = 4.0
 autostart = true
 
-[node name="Marker" type="Node2D" parent="." index="4"]
+[node name="Marker" type="Node2D" parent="." index="5"]
 
 [node name="AttackHole" type="Marker2D" parent="Marker" index="0"]
 position = Vector2(0, 95)
@@ -137,5 +136,7 @@ position = Vector2(-59, 0)
 
 [node name="Wing2" type="Marker2D" parent="Marker" index="2"]
 position = Vector2(59, 0)
+
+[node name="Audio" type="AudioStreamPlayer" parent="." index="6"]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

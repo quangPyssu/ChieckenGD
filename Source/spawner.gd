@@ -34,6 +34,10 @@ func _ready():
 		Global.SpawnType.Egg:
 			WhatSpawner=WhatSpawnerType.BulletSpawner
 			theWhat=preload("res://Egg.tscn")
+			
+		Global.SpawnType.Astroid:
+			WhatSpawner=WhatSpawnerType.BulletSpawner
+			theWhat=preload("res://Astroid.tscn")
 		
 		Global.SpawnType.EnemyChicken:
 			WhatSpawner=WhatSpawnerType.EntitySpawner
@@ -49,7 +53,7 @@ func spawn():
 			A.direction=direction
 			A.global_position = ranPos
 			if (direction!=Vector2.ZERO):
-				A.rotation=atan(direction.x/direction.y)+PI/2
+				A.rotation=atan(direction.x/direction.y)
 
 func _on_spawn_timer_timeout():
 	spawn()

@@ -10,11 +10,22 @@
 [ext_resource type="Texture2D" uid="uid://civqckhkupqeb" path="res://Asset/Icon/SpecialSelect.png" id="6_1ltwo"]
 [ext_resource type="Texture2D" uid="uid://do5pi708i4s4y" path="res://Asset/Icon/BGweapon.png" id="8_xe6ts"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjq6p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diy75"]
+resource_local_to_scene = true
+bg_color = Color(1, 1, 0.0235294, 1)
+corner_radius_bottom_right = 300
+corner_detail = 1
+anti_aliasing = false
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8oycn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsccx"]
-corner_radius_bottom_right = 300
+resource_local_to_scene = true
+corner_radius_bottom_right = 100
 corner_detail = 1
+expand_margin_right = 3.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3226"]
@@ -23,17 +34,8 @@ corner_radius_bottom_right = 100
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chdbx"]
-bg_color = Color(0.415686, 0.415686, 0.415686, 1)
 corner_radius_bottom_right = 100
 corner_detail = 1
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjq6p"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diy75"]
-bg_color = Color(1, 1, 0.0235294, 1)
-corner_radius_bottom_right = 100
-corner_detail = 1
-anti_aliasing = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbayl"]
 atlas = ExtResource("4_4b6t3")
@@ -127,38 +129,49 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -151.0
-offset_right = 721.0
-offset_bottom = -3.0
+offset_left = 46.0
+offset_top = -156.0
+offset_right = 707.0
+offset_bottom = -8.0
 grow_vertical = 0
 texture = ExtResource("2_j25fr")
 
-[node name="Health" type="HBoxContainer" parent="Control/StatusBG"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 1.0
-anchor_right = 0.01
-anchor_bottom = 1.0
-offset_left = 136.39
-offset_top = -62.0
-offset_right = 729.39
-offset_bottom = -27.0
-grow_vertical = 0
+[node name="SpecialBar" type="ProgressBar" parent="Control/StatusBG"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.839216)
+z_index = 1
+custom_minimum_size = Vector2(200, 18)
+layout_mode = 2
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 423.0
+offset_bottom = 142.0
+scale = Vector2(1.4, 1.041)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxEmpty_cjq6p")
+theme_override_styles/fill = SubResource("StyleBoxFlat_diy75")
+max_value = 10.0
+value = 10.0
+show_percentage = false
 
-[node name="HealthBar" type="ProgressBar" parent="Control/StatusBG/Health"]
+[node name="HealthBar" type="ProgressBar" parent="Control/StatusBG"]
 unique_name_in_owner = true
 self_modulate = Color(0, 1, 0, 1)
 z_index = 1
 custom_minimum_size = Vector2(500, 31)
 layout_mode = 2
+offset_left = 143.0
+offset_top = 86.0
+offset_right = 643.0
+offset_bottom = 117.0
+scale = Vector2(0.998961, 1)
 theme_override_styles/background = SubResource("StyleBoxEmpty_8oycn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qsccx")
 max_value = 10.0
 value = 10.0
 
-[node name="DamageBar" type="ProgressBar" parent="Control/StatusBG/Health/HealthBar"]
+[node name="DamageBar" type="ProgressBar" parent="Control/StatusBG/HealthBar"]
 unique_name_in_owner = true
 z_index = -1
 custom_minimum_size = Vector2(500, 10)
@@ -166,7 +179,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 4.0
+offset_right = 5.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -177,44 +190,10 @@ max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="DamageTimer" type="Timer" parent="Control/StatusBG/Health/HealthBar"]
+[node name="DamageTimer" type="Timer" parent="Control/StatusBG/HealthBar"]
 unique_name_in_owner = true
 wait_time = 0.4
 one_shot = true
-
-[node name="Special" type="HBoxContainer" parent="Control/StatusBG"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 0.97
-anchor_right = 0.02
-anchor_bottom = 0.97
-offset_left = 123.39
-offset_top = -26.56
-offset_right = 536.78
-offset_bottom = 6.44
-grow_vertical = 0
-scale = Vector2(0.999206, 0.997491)
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="SpecialBar" type="ProgressBar" parent="Control/StatusBG"]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.839216)
-z_index = 1
-custom_minimum_size = Vector2(390, 18)
-layout_mode = 2
-offset_left = 143.0
-offset_top = 123.0
-offset_right = 533.0
-offset_bottom = 141.0
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxEmpty_cjq6p")
-theme_override_styles/fill = SubResource("StyleBoxFlat_diy75")
-max_value = 10.0
-value = 10.0
-show_percentage = false
 
 [node name="AttackBG" type="TextureRect" parent="Control"]
 self_modulate = Color(1, 1, 1, 0.45098)
@@ -232,31 +211,35 @@ grow_vertical = 0
 texture = ExtResource("8_xe6ts")
 flip_h = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/AttackBG"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.901563
 anchor_top = 0.917593
 anchor_right = 0.997917
 anchor_bottom = 0.988889
-offset_right = -5.0
+offset_left = -173.525
+offset_top = -73.7593
+offset_right = -13.5667
+offset_bottom = -6.8889
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 15
 alignment = 2
 
-[node name="Weapons" type="HBoxContainer" parent="Control/HBoxContainer"]
+[node name="Weapons" type="HBoxContainer" parent="Control/AttackBG/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="WeaponSprite" type="TextureRect" parent="Control/HBoxContainer/Weapons"]
+[node name="WeaponSprite" type="TextureRect" parent="Control/AttackBG/HBoxContainer/Weapons"]
 layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("2_7vf4g")
 stretch_mode = 2
 
-[node name="WeaponRecharge" type="TextureProgressBar" parent="Control/HBoxContainer/Weapons/WeaponSprite"]
+[node name="WeaponRecharge" type="TextureProgressBar" parent="Control/AttackBG/HBoxContainer/Weapons/WeaponSprite"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -270,7 +253,7 @@ texture_progress = ExtResource("2_7vf4g")
 tint_under = Color(0.6, 0.615686, 0.619608, 0.788235)
 tint_progress = Color(1, 1, 1, 0.862745)
 
-[node name="WeaponSelect" type="AnimatedSprite2D" parent="Control/HBoxContainer/Weapons/WeaponSprite"]
+[node name="WeaponSelect" type="AnimatedSprite2D" parent="Control/AttackBG/HBoxContainer/Weapons/WeaponSprite"]
 position = Vector2(24, 24)
 scale = Vector2(1.46875, 1.5)
 sprite_frames = SubResource("SpriteFrames_t06i7")
@@ -278,13 +261,13 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.123689
 
-[node name="WeaponSprite2" type="TextureRect" parent="Control/HBoxContainer/Weapons"]
+[node name="WeaponSprite2" type="TextureRect" parent="Control/AttackBG/HBoxContainer/Weapons"]
 layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("5_b2gox")
 stretch_mode = 2
 
-[node name="WeaponRecharge" type="TextureProgressBar" parent="Control/HBoxContainer/Weapons/WeaponSprite2"]
+[node name="WeaponRecharge" type="TextureProgressBar" parent="Control/AttackBG/HBoxContainer/Weapons/WeaponSprite2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -298,21 +281,21 @@ texture_progress = ExtResource("5_b2gox")
 tint_under = Color(0.6, 0.615686, 0.619608, 0.788235)
 tint_progress = Color(1, 1, 1, 0.862745)
 
-[node name="WeaponSelect" type="AnimatedSprite2D" parent="Control/HBoxContainer/Weapons/WeaponSprite2"]
+[node name="WeaponSelect" type="AnimatedSprite2D" parent="Control/AttackBG/HBoxContainer/Weapons/WeaponSprite2"]
 position = Vector2(24, 24)
 scale = Vector2(1.46875, 1.5)
 sprite_frames = SubResource("SpriteFrames_t06i7")
 autoplay = "default"
 frame_progress = 0.769794
 
-[node name="SpecialSprite" type="TextureRect" parent="Control/HBoxContainer"]
+[node name="SpecialSprite" type="TextureRect" parent="Control/AttackBG/HBoxContainer"]
 custom_minimum_size = Vector2(65, 65)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 texture = ExtResource("3_4on2o")
 
-[node name="SpecialRecharge" type="TextureProgressBar" parent="Control/HBoxContainer/SpecialSprite"]
+[node name="SpecialRecharge" type="TextureProgressBar" parent="Control/AttackBG/HBoxContainer/SpecialSprite"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -328,7 +311,8 @@ texture_progress = ExtResource("3_4on2o")
 tint_under = Color(0.6, 0.615686, 0.619608, 0.788235)
 tint_progress = Color(1, 1, 1, 0.862745)
 
-[node name="SpecialSelect" type="AnimatedSprite2D" parent="Control/HBoxContainer/SpecialSprite"]
+[node name="SpecialSelect" type="AnimatedSprite2D" parent="Control/AttackBG/HBoxContainer/SpecialSprite"]
+unique_name_in_owner = true
 position = Vector2(33, 33)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_haxxi")
@@ -336,5 +320,5 @@ autoplay = "default"
 frame = 3
 frame_progress = 0.298739
 
-[connection signal="timeout" from="Control/StatusBG/Health/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Control/StatusBG/Health/HealthBar/DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="Control/StatusBG/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Control/StatusBG/HealthBar/DamageTimer" to="." method="_on_damage_timer_timeout"]

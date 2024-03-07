@@ -17,7 +17,7 @@ func _ready():
 	%SpecialRecharge.step = 0.1
 	
 	var cnt:int =0
-	for i in $Control/HBoxContainer/Weapons.get_children():
+	for i in %Weapons.get_children():
 		Weapon.append(i)
 		i.get_node("WeaponRecharge").max_value = Global.WeaponTime[Global.EquippedWeapon[cnt]]
 		i.get_node("WeaponRecharge").value = Global.WeaponTime[Global.EquippedWeapon[cnt]]
@@ -41,9 +41,9 @@ func _process(_delta):
 	Weapon[CurWeapon].get_node("WeaponRecharge").value = Global.AP
 	
 	if Global.SP==Global.maxSP:
-		$Control/HBoxContainer/SpecialSprite/SpecialSelect.visible=1
+		%SpecialSelect.visible=1
 	else: 
-		$Control/HBoxContainer/SpecialSprite/SpecialSelect.visible=0
+		%SpecialSelect.visible=0
 		
 func changeWeapon():
 	Weapon[CurWeapon].get_child(0).value=0

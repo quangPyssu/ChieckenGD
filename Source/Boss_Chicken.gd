@@ -4,22 +4,59 @@ var preEgg:PackedScene = preload("res://Egg.tscn")
 var preSwarm:PackedScene = preload("res://bullet_anchor.tscn")
 var feather:PackedScene = preload("res://Asset/particle/Particle_Feather.tscn")
 
+var attackRange:int = 1
+
 func atThreeQuarterHealth():
-	$AnimationCenter/Explosion.play("explosion")
+	attackRange=2
+	$Explosion.play("explosion")
+	$Audio.stream=preload("res://Asset/Sounds/(chickbossCry).ogg")
+	$Audio.play()
 	spawnFea()
 	
-	
 func atHalfHealth():
-	$AnimationCenter/Explosion.play("explosion")
+	$Audio.stream=preload("res://Asset/Sounds/(chickbossCry).ogg")
+	$Audio.play()
+	$Explosion.play("explosion")
 	$AnimationCenter/BossChickenBody.visible = false
 	$AnimationCenter/BossChickenBody2.visible = true	
 	spawnFea()
 
 func atQuarterHealth():
-	$AnimationCenter/Explosion.play("explosion")
+	$Audio.stream=preload("res://Asset/Sounds/(chickbossCry).ogg")
+	$Audio.play()
+	$Explosion.play("explosion")
 	$AnimationCenter/BossChickenBody2.visible = false
 	$AnimationCenter/BossChickenBody3.visible = true
 	spawnFea()
+	SpecialA()
+	await get_tree().create_timer(1).timeout
+	SpecialA()
+	
+func _process(delta):
+	
+	if Input.is_action_just_pressed("TestButton+"):
+		SpecialA()
+			
+func SpecialA():
+	for i:int in 4:
+		var s:entity = preSwarm.instantiate()
+		s._Rready(Global.SpawnType.Egg,Global.patternType.SquareShape,9.0,100.0,15)
+			
+		get_node("/root/Game/Projectiles").add_child(s)
+				
+		s.global_position=$Marker/AttackHole.global_position
+		s.look_at(Global.PlayerPos)
+		s.rotateSpeed=1
+		var dirr:Vector2 
+		
+		match i:
+			0: dirr=Vector2(1,1)
+			1: dirr=Vector2(1,-1)
+			2: dirr=Vector2(-1,1)
+			3: dirr=Vector2(-1,-1)
+			
+		s.direction=Vector2(Global.PlayerPos-s.global_position).normalized()*dirr
+		s.speed = 12000
 
 func spawnFea():
 	var f = feather.instantiate()
@@ -28,21 +65,21 @@ func spawnFea():
 	
 func kill():
 	if !isDead:
-		isDead = true
+		super.kill()
+		$Audio.stream=preload("res://Asset/Sounds/(chickbossDie).ogg")
+		$Audio.play()
+	
+		$AnimationCenter.visible=0
+		$Explosion.play("explosion")
+		spawnFea()
+		spawnFea()
 
-	$HitBox.queue_free()
-	stopProcess()
-	
-	$AnimationCenter/Explosion.play("explosion")
-	spawnFea()
-	spawnFea()
-	
-	await get_tree().create_timer(0.7).timeout
-	queue_free()
+		await get_tree().create_timer(2).timeout
+		queue_free()
 
 func attack(type:int):
 	match type:
-		1:
+		0:
 			for i:int in 10:
 				var b:bullet = preEgg.instantiate()
 				
@@ -55,7 +92,7 @@ func attack(type:int):
 				b.speed = 800
 				
 				await get_tree().create_timer(0.1).timeout
-		0:
+		1:
 			for i:int in 2:
 				var s:entity = preSwarm.instantiate()
 				var num:float =randf_range(50.0,100.0)
@@ -71,8 +108,6 @@ func attack(type:int):
 				s.speed = 10000
 				
 				await get_tree().create_timer(1).timeout
-		2:
-			pass
 
 func _on_attack_timer_timeout():
-	attack(randi()%2)
+	attack(randi()%attackRange)

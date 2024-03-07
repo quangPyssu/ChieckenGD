@@ -15,7 +15,6 @@ func _ready():
 func _physics_process(delta):
 	super._physics_process(delta)
 	if get_parent():
-		#keep Chicken upright
 		rotation_degrees = -get_parent().rotation_degrees
 
 func _process(_delta):    
@@ -45,5 +44,4 @@ func kill():
 		f.global_position = global_position
 		get_node("/root/Game/Projectiles").add_child(f)
 		super.kill()
-
-	return 1
+		$AnimationCenter/ChickenBody.kill()

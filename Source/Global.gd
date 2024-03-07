@@ -34,5 +34,5 @@ enum BulletSpin{
 }
 
 enum SpawnType {
-	Egg, EnemyChicken
+	Egg, EnemyChicken, Astroid
 }
