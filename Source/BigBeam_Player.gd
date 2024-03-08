@@ -17,7 +17,7 @@ func _process(delta):
 	
 	for i in target:
 		if i is bullet:
-			i.HP-=damage
+			i.kill()
 		else:
 			i.get_parent().take_damage(damage*delta)
 

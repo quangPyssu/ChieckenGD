@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwgwx1gljcfub"]
+
+[ext_resource type="Script" path="res://Source/Menu/main_menu.gd" id="1_dxhrw"]
+[ext_resource type="Texture2D" uid="uid://dsm62rvajx7ux" path="res://Asset/Menu/Space_Sea.png" id="1_u153w"]
+[ext_resource type="Texture2D" uid="uid://drlsq3hmwup8r" path="res://Asset/Menu/Start_BTN.png" id="2_qmfao"]
+[ext_resource type="Texture2D" uid="uid://xu7p3c3ja101" path="res://Asset/Menu/Map_BTN.png" id="3_wha1q"]
+[ext_resource type="Texture2D" uid="uid://c0ubxro6u43lj" path="res://Asset/Menu/BTN.png" id="4_5joct"]
+[ext_resource type="Texture2D" uid="uid://bhsmbnuh4cbeo" path="res://Asset/Menu/Exit_BTN.png" id="4_qu6pg"]
+[ext_resource type="Texture2D" uid="uid://b16ij6fi86o0m" path="res://Asset/Menu/NeutronStar.png" id="5_1p2l7"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxhrw")
+
+[node name="SpaceSea" type="Sprite2D" parent="."]
+position = Vector2(970.861, 543.5)
+scale = Vector2(1.93772, 1.93772)
+texture = ExtResource("1_u153w")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -211.0
+offset_right = 205.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="StartBtn" type="TextureButton" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_qmfao")
+texture_hover = ExtResource("4_5joct")
+
+[node name="MapBtn" type="TextureButton" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_wha1q")
+texture_hover = ExtResource("4_5joct")
+
+[node name="ExitBtn" type="TextureButton" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_qu6pg")
+texture_hover = ExtResource("4_5joct")
+
+[node name="NeutronStar" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2520, 392)
+scale = Vector2(4.63, 4.63)
+texture = ExtResource("5_1p2l7")
+hframes = 80
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="Buttons/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="Buttons/ExitBtn" to="." method="_on_exit_btn_pressed"]

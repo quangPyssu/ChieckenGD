@@ -28,9 +28,7 @@ func atQuarterHealth():
 	$AnimationCenter/BossChickenBody2.visible = false
 	$AnimationCenter/BossChickenBody3.visible = true
 	spawnFea()
-	SpecialA()
-	await get_tree().create_timer(1).timeout
-	SpecialA()
+	call_deferred("SpecialA")
 	
 func _process(delta):
 	
@@ -38,6 +36,7 @@ func _process(delta):
 		SpecialA()
 			
 func SpecialA():
+	var dir:Vector2 =Vector2(Global.PlayerPos-global_position).normalized()
 	for i:int in 4:
 		var s:entity = preSwarm.instantiate()
 		s._Rready(Global.SpawnType.Egg,Global.patternType.SquareShape,9.0,100.0,15)
@@ -47,16 +46,19 @@ func SpecialA():
 		s.global_position=$Marker/AttackHole.global_position
 		s.look_at(Global.PlayerPos)
 		s.rotateSpeed=1
-		var dirr:Vector2 
+		
+		s.direction=dir
 		
 		match i:
-			0: dirr=Vector2(1,1)
-			1: dirr=Vector2(1,-1)
-			2: dirr=Vector2(-1,1)
-			3: dirr=Vector2(-1,-1)
-			
-		s.direction=Vector2(Global.PlayerPos-s.global_position).normalized()*dirr
+			1: 
+				Global.Swap(s.direction.x,s.direction.y)
+				s.direction.y=s.direction.y*-1
+			2: s.direction=s.direction*Vector2(-1,-1)
+			3: 
+				Global.Swap(s.direction.x,s.direction.y)
+				s.direction.x=s.direction.x*-1
 		s.speed = 12000
+		await get_tree().create_timer(0.25).timeout
 
 func spawnFea():
 	var f = feather.instantiate()

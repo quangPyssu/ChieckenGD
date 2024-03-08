@@ -8,6 +8,7 @@ var AttackLoaded: bool = true
 var SpecialLoaded: bool = false
 
 var SpecialIFrame: Array[float] = [4,0.0,0.0,0.0]
+var SpecialTimeRatio:float=0
 
 var particle:Array[PackedScene] = [preload("res://Asset/particle/Particle_BaseBullet.tscn")]
 
@@ -17,6 +18,8 @@ signal Special
 func _ready():
 	
 	HP = Global.HP
+	Global.maxSP = Global.SpecialTime[Global.SpecialType]
+	
 	Global.SP=Global.SpecialTime[Global.SpecialType]
 	Global.AP=Global.WeaponTime[Global.WeaponType]
 
@@ -51,7 +54,7 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	Global.PlayerPos = global_position
 
-func _process(_delta):
+func _process(delta):
 
 	Global.HP = HP
 
@@ -77,7 +80,8 @@ func _process(_delta):
 		%SpecialTimer.wait_time=Global.SpecialTime[Global.SpecialType]
 		%SpecialTimer.start()
 		Global.SP=0.0
-		recoverSP()
+		
+	recoverSP(delta)
 
 	# +  Blow up
 	if Input.is_action_pressed("TestButton+"):
@@ -137,9 +141,11 @@ func force_Flicker(flickTime:float):
 		await get_tree().create_timer(0.1).timeout
 	isFlickering = false
 
-func recoverSP():
-	var tween:Tween = get_tree().create_tween()
-	tween.tween_property(Global, "SP", Global.maxSP, Global.SpecialTime[Global.SpecialType]).set_trans(Tween.TRANS_LINEAR)
+func recoverSP(delta):
+	if Global.SP<Global.maxSP:
+		Global.SP+=delta
+	
+	#tween.tween_property(Global, "SP", Global.maxSP, Global.SpecialTime[Global.SpecialType]).set_trans(Tween.TRANS_LINEAR)
 
 func recoverAP():
 	var tween:Tween = get_tree().create_tween()

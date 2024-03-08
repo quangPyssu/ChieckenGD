@@ -43,7 +43,7 @@ func _on_area_entered(area:Area2D):
 	kill()
 
 func kill():
-	if canBreak:
+	if canBreak and !broken:
 		broken=true
 		%AnimationCenter.hide()
 		$HitBox.queue_free()

@@ -2,8 +2,11 @@ extends CanvasLayer
 
 var GonnaPause:bool = true
 
+
 func _on_button_quit_pressed():
-	get_tree().quit()
+	ResumeGame()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
+	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _on_button_resume_pressed():
 	ResumeGame()

@@ -33,6 +33,7 @@ func _process(_delta):
 	#special bar is progressbar
 	%SpecialBar.value = Global.SP
 	%SpecialRecharge.value = Global.SP
+	print(Global.SP)
 	
 	
 	if CurWeapon!=Global.CurrentWeapon:

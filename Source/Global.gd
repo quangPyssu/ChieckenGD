@@ -36,3 +36,8 @@ enum BulletSpin{
 enum SpawnType {
 	Egg, EnemyChicken, Astroid
 }
+
+func Swap(a:float,b:float):
+	var c:float = a
+	a=b
+	b=c

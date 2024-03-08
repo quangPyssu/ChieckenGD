@@ -6,39 +6,29 @@
 [ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://Enemy_Chicken.tscn" id="3_g8b77"]
 [ext_resource type="PackedScene" uid="uid://dl1becyep5n8l" path="res://Boss_Chicken.tscn" id="3_yet7p"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_te88e"]
-size = Vector2(1920, 253.897)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kofpf"]
 size = Vector2(2006, 251.251)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0jq4"]
 size = Vector2(260.5, 996.783)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_te88e"]
+size = Vector2(1920, 253.897)
+
 [node name="Game" instance=ExtResource("1_2wfyq")]
 
 [node name="BlueBlankBackground" parent="." index="0"]
 scale = Vector2(2.5, 2.5)
 
-[node name="BossChicken" parent="Enemies/Wave0" index="0" instance=ExtResource("3_yet7p")]
-position = Vector2(920, -239.382)
-HP = 2000.0
-speed = 8000.0
-
-[node name="Node" type="Node" parent="Enemies/Wave0/BossChicken" index="5"]
-
-[node name="Spawner" parent="Enemies/Wave0/BossChicken/Node" index="0" instance=ExtResource("3_baj8x")]
-position = Vector2(-188, -180.774)
-scale = Vector2(1, 1.00828)
-collision_layer = 0
-collision_mask = 0
-BetweenSpawn = 2.0
-direction = Vector2(0, 1)
-
-[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave0/BossChicken/Node/Spawner" index="1"]
-position = Vector2(1148, 52.3404)
-shape = SubResource("RectangleShape2D_te88e")
-debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+[node name="Anchor" parent="Enemies/Wave0" index="0" instance=ExtResource("2_s1cj1")]
+position = Vector2(880, -279.279)
+scale = Vector2(1, 1.00559)
+size = 300.0
+entityMax = 16.0
+pattern = 1
+rotateSpeed = 0.1
+speed = 10000.0
+savedPos = Vector2(1000, 500)
 
 [node name="EnemyChicken" parent="Enemies/Wave1" index="0" instance=ExtResource("3_g8b77")]
 position = Vector2(2220, -300)
@@ -106,16 +96,26 @@ canFlicker = false
 
 [node name="Wave3" type="Node2D" parent="Enemies" index="4"]
 
-[node name="Anchor" parent="Enemies/Wave3" index="0" instance=ExtResource("2_s1cj1")]
-position = Vector2(880, -279.279)
-scale = Vector2(1, 1.00559)
-size = 300.0
-entityMax = 16.0
-pattern = 1
-rotateSpeed = 0.1
-speed = 10000.0
-savedPos = Vector2(1000, 500)
+[node name="BossChicken" parent="Enemies/Wave3" index="0" instance=ExtResource("3_yet7p")]
+position = Vector2(920, -239.382)
+HP = 2000.0
+speed = 8000.0
 
+[node name="Node" type="Node" parent="Enemies/Wave3/BossChicken" index="5"]
+
+[node name="Spawner" parent="Enemies/Wave3/BossChicken/Node" index="0" instance=ExtResource("3_baj8x")]
+position = Vector2(-188, -180.774)
+scale = Vector2(1, 1.00828)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 2.0
+direction = Vector2(0, 1)
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave3/BossChicken/Node/Spawner" index="1"]
+position = Vector2(1148, 52.3404)
+shape = SubResource("RectangleShape2D_te88e")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[connection signal="tree_exited" from="Enemies/Wave0/Anchor" to="Enemies/Wave0/Anchor" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Enemies/Wave2/Anchor2" to="Enemies/Wave2/Anchor2" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Enemies/Wave2/Anchor" to="Enemies/Wave2/Anchor" method="_on_tree_exited"]
-[connection signal="tree_exited" from="Enemies/Wave3/Anchor" to="Enemies/Wave3/Anchor" method="_on_tree_exited"]
