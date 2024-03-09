@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cy6ukbcug250u"]
+
+[ext_resource type="Shader" path="res://Shaders/main_menu.gdshader" id="1_o82je"]
+
+[resource]
+shader = ExtResource("1_o82je")
+shader_parameter/time_factor = 0.1
+shader_parameter/amplitude = Vector2(10, 5)

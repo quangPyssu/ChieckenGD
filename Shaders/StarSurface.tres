@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://by4ujb1bsujjx"]
+
+[ext_resource type="Shader" path="res://Shaders/starSurface.gdshader" id="1_cqu6e"]
+
+[resource]
+shader = ExtResource("1_cqu6e")
+shader_parameter/time_factor = 0.5
+shader_parameter/amplitude = Vector2(1, 1)
+shader_parameter/tiled_factor = Vector2(3, 1)
+shader_parameter/aspect_ratio = 5.78397
+shader_parameter/offsetScale = Vector2(0.75, 0.5)
+shader_parameter/amplitudeWave = Vector2(0.2, 0.005)
+shader_parameter/timeScale = Vector2(0.75, 0.5)
