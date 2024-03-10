@@ -24,6 +24,8 @@ var SpecialType:int = 0
 
 var PlayerPos:Vector2
 
+var isShaking:bool = 0
+
 
 enum patternType {
 	CircleShape,SquareShape

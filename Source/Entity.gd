@@ -11,6 +11,7 @@ var savedDirection: Vector2 = Vector2(0, 0)
 var savedSpeed: float = 0
 @export var direction: Vector2 = Vector2(0, 0)
 @export var savedPos: Vector2 = Vector2(0, 0) #destination global_position
+@export var isInvincible=false
 var isGoing: bool = false
 var isDead: bool = false
 
@@ -70,6 +71,8 @@ func entity_timeout():
 	kill()
 
 func take_damage(damage:int):
+	if isInvincible:
+		return
 	#at three quarter health
 	var damed: float = HP - damage
 	if HP > MaxHP * 3 / 4 and damed <= MaxHP * 3 / 4:

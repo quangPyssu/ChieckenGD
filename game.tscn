@@ -10,12 +10,17 @@
 scale = Vector2(1, 1.00258)
 script = ExtResource("1_yimfk")
 
-[node name="BlueBlankBackground" type="Sprite2D" parent="."]
+[node name="BlueBlankBackground" type="TextureRect" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -845.818)
+texture_filter = 1
+texture_repeat = 2
+offset_left = -632.0
+offset_top = -957.529
+offset_right = 610.0
+offset_bottom = 242.471
 scale = Vector2(2.5, 2.49)
 texture = ExtResource("3_mky08")
-centered = false
+stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_rbiiv")]
 
@@ -34,6 +39,12 @@ unique_name_in_owner = true
 
 [node name="Paused" parent="." instance=ExtResource("5_quuxs")]
 visible = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(960, 540)
 
 [connection signal="Attack" from="Player" to="." method="_on_player_attack"]
 [connection signal="tree_exited" from="Player" to="Player" method="_on_tree_exited"]

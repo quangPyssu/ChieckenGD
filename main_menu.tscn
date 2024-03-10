@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwgwx1gljcfub"]
+[gd_scene load_steps=11 format=3 uid="uid://dwgwx1gljcfub"]
 
 [ext_resource type="Script" path="res://Source/Menu/main_menu.gd" id="1_dxhrw"]
 [ext_resource type="Texture2D" uid="uid://dsm62rvajx7ux" path="res://Asset/Menu/Space_Sea.png" id="1_u153w"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c0ubxro6u43lj" path="res://Asset/Menu/BTN.png" id="4_5joct"]
 [ext_resource type="Texture2D" uid="uid://bhsmbnuh4cbeo" path="res://Asset/Menu/Exit_BTN.png" id="4_qu6pg"]
 [ext_resource type="Texture2D" uid="uid://b16ij6fi86o0m" path="res://Asset/Menu/NeutronStar.png" id="5_1p2l7"]
+[ext_resource type="AudioStream" uid="uid://dc8ej5pmxidqg" path="res://Asset/Sounds/Music/space_maiden_appear.ogg" id="9_ejhgu"]
+[ext_resource type="Texture2D" uid="uid://dol4ytmt47laf" path="res://Asset/circle.png" id="10_xdcad"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -55,27 +57,27 @@ theme_override_constants/separation = 30
 
 [node name="StartBtn" type="TextureButton" parent="Buttons"]
 unique_name_in_owner = true
-light_mask = 0
+light_mask = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_qmfao")
-texture_hover = ExtResource("4_5joct")
+texture_pressed = ExtResource("4_5joct")
 
 [node name="MapBtn" type="TextureButton" parent="Buttons"]
 unique_name_in_owner = true
-light_mask = 0
+light_mask = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_wha1q")
-texture_hover = ExtResource("4_5joct")
+texture_pressed = ExtResource("4_5joct")
 
 [node name="ExitBtn" type="TextureButton" parent="Buttons"]
 unique_name_in_owner = true
-light_mask = 0
+light_mask = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_qu6pg")
-texture_hover = ExtResource("4_5joct")
+texture_pressed = ExtResource("4_5joct")
 
 [node name="NeutronStar" type="Sprite2D" parent="."]
 visible = false
@@ -85,6 +87,18 @@ texture = ExtResource("5_1p2l7")
 hframes = 80
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ejhgu")
+volume_db = -20.0
+autoplay = true
+
+[node name="BtnLight" type="PointLight2D" parent="."]
+position = Vector2(816, 520)
+energy = 3.0
+range_item_cull_mask = 2
+texture = ExtResource("10_xdcad")
+texture_scale = 0.2
 
 [connection signal="pressed" from="Buttons/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="Buttons/ExitBtn" to="." method="_on_exit_btn_pressed"]

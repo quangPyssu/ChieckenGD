@@ -271,4 +271,5 @@ autostart = true
 stream = ExtResource("6_7jihr")
 volume_db = -5.0
 
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="timeout" from="TimerEnd" to="." method="_on_timer_end_timeout"]

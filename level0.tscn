@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0mpkphl8npgt"]
+[gd_scene load_steps=10 format=3 uid="uid://c0mpkphl8npgt"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_2wfyq"]
 [ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="2_s1cj1"]
 [ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://spawner.tscn" id="3_baj8x"]
 [ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://Enemy_Chicken.tscn" id="3_g8b77"]
 [ext_resource type="PackedScene" uid="uid://dl1becyep5n8l" path="res://Boss_Chicken.tscn" id="3_yet7p"]
+[ext_resource type="AudioStream" uid="uid://cmi2f2ymikqpf" path="res://Asset/Sounds/Music/lullaby_deserted_hell.ogg" id="6_pvt4t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kofpf"]
 size = Vector2(2006, 251.251)
@@ -33,8 +34,10 @@ savedPos = Vector2(1000, 500)
 [node name="EnemyChicken" parent="Enemies/Wave1" index="0" instance=ExtResource("3_g8b77")]
 position = Vector2(2220, -300)
 scale = Vector2(1, 1.00569)
+collision_layer = 0
 timerEnd = 20.0
 savedPos = Vector2(-100, -100)
+isInvincible = true
 inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
@@ -115,6 +118,11 @@ direction = Vector2(0, 1)
 position = Vector2(1148, 52.3404)
 shape = SubResource("RectangleShape2D_te88e")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[node name="Music" parent="." index="6"]
+process_mode = 3
+stream = ExtResource("6_pvt4t")
+autoplay = true
 
 [connection signal="tree_exited" from="Enemies/Wave0/Anchor" to="Enemies/Wave0/Anchor" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Enemies/Wave2/Anchor2" to="Enemies/Wave2/Anchor2" method="_on_tree_exited"]

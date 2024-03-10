@@ -8,7 +8,6 @@ var CurrentWave=0
 func _ready():
 	#set the window size
 	get_viewport().size=Global.ScreenSize
-	print("Window Size: ",get_viewport().size)
 
 	$Player.position=get_viewport().size/2
 	
@@ -16,7 +15,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-	%BlueBlankBackground.position=Vector2(-10,BG_pos)
+	%BlueBlankBackground.position.y=BG_pos
 
 	for wave:Node2D in $Enemies.get_children():
 		wave.set_process_mode(PROCESS_MODE_DISABLED)
@@ -35,7 +34,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("ChangeWeapon"):
 		Global.CurrentWeapon=(Global.CurrentWeapon+1)%2
 		$Player.changeWeapon()
-		
+	
+	cameraShake()
 	%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+100.0*delta
 		
 	if %BlueBlankBackground.position.y>=0:
@@ -59,3 +59,9 @@ func _on_player_attack(_WeaponType:int):
 	var Bullet = preload("res://bullet_player_normal.tscn").instantiate()
 	Bullet.global_position = $Player.global_position + Vector2(0, -50)
 	%Projectiles.add_child(Bullet)
+
+func cameraShake():
+	if Global.isShaking:
+		$Camera.position=Global.ScreenSize/2+Vector2(randi_range(-7,7),randi_range(-7,7))
+	else:
+		$Camera.position=Global.ScreenSize/2
