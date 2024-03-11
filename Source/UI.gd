@@ -5,15 +5,15 @@ var CurWeapon:int = 0
 
 func _ready():
 	%HealthBar.value = Global.HP
-	%HealthBar.max_value = Global.HP
+	%HealthBar.max_value = Global.maxHP
 	%DamageBar.value = Global.HP
-	%DamageBar.max_value = Global.HP
+	%DamageBar.max_value = Global.maxHP
 
 	%SpecialBar.value = Global.SP
-	%SpecialBar.max_value = Global.SP
+	%SpecialBar.max_value = Global.maxSP
 	
 	%SpecialRecharge.value = Global.SP
-	%SpecialRecharge.max_value = Global.SP
+	%SpecialRecharge.max_value = Global.maxSP
 	%SpecialRecharge.step = 0.1
 	
 	var cnt:int =0

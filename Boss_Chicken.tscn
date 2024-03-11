@@ -138,5 +138,6 @@ position = Vector2(-59, 0)
 position = Vector2(59, 0)
 
 [node name="Audio" type="AudioStreamPlayer" parent="." index="6"]
+bus = &"GameSFX"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

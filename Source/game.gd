@@ -1,12 +1,19 @@
 extends Node2D
 
 @onready var BG_pos=-%BlueBlankBackground.texture.get_size().y/2*%BlueBlankBackground.scale.y
+var AfterGame:PackedScene = preload("res://UI/LevelEndMenu.tscn")
 var WaveCount=0
 var CurrentWave=0
+
+var BossMusic: Array[String]=["res://Asset/Sounds/Music/BeOfGoodCheer.ogg"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#set the window size
+	Global.defeated = false
+	Global.LevelEnd = false
+	Global.HP = Global.maxHP
+	
 	get_viewport().size=Global.ScreenSize
 
 	$Player.position=get_viewport().size/2
@@ -41,9 +48,13 @@ func _process(delta):
 	if %BlueBlankBackground.position.y>=0:
 		%BlueBlankBackground.position.y=BG_pos
 
-	if Global.defeated:
-		pass
-		#get_tree().change_scene("res://scenes/scene_gameover.tscn")
+	if Global.LevelEnd:
+		await get_tree().create_timer(1.0).timeout
+		$Paused.PauseGame()
+		$Paused.queue_free()
+		set_process(false)
+		add_child(AfterGame.instantiate())
+		return
 
 	if !$Enemies.get_children().is_empty():
 		if $Enemies.get_child(0).get_children().is_empty():
@@ -54,6 +65,12 @@ func _process(delta):
 			if $Enemies.get_children().size()>1:
 				$Enemies.get_child(1).set_process_mode(0)
 				$Enemies.get_child(1).visible=1
+			
+			if $Enemies.get_children().size()==2:
+				$Music.set_stream(load(BossMusic[Global.CurrentLevel]))
+				$Music.play()
+	else: 
+		Global.LevelEnd=1
 
 func _on_player_attack(_WeaponType:int):
 	var Bullet = preload("res://bullet_player_normal.tscn").instantiate()

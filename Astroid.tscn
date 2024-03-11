@@ -118,6 +118,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_j2x1t")
 hframes = 24
 vframes = 2
+frame = 47
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="1"]
 libraries = {
@@ -131,10 +132,12 @@ position = Vector2(-12.8571, -1.42857)
 scale = Vector2(3.625, 3.625)
 texture = ExtResource("5_df667")
 hframes = 8
-frame = 7
 
 [node name="HitBox" parent="." index="1"]
 visible = false
 position = Vector2(-12.8571, -1.42857)
 scale = Vector2(1.04514, 1.06915)
 shape = SubResource("RectangleShape2D_chtc7")
+
+[node name="BulletSound" parent="." index="2"]
+volume_db = -15.0

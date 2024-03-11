@@ -17,7 +17,7 @@ signal Special
 
 func _ready():
 	
-	HP = Global.HP
+	HP = Global.maxHP
 	Global.maxSP = Global.SpecialTime[Global.SpecialType]
 	
 	Global.SP=Global.SpecialTime[Global.SpecialType]
@@ -97,6 +97,7 @@ func _shielded():
 func _blow_up():
 	get_node("AnimationCenter/AnimationPlayer").play("Blowing")
 	stopProcess()
+	Global.LevelEnd = true
 	Global.defeated = true
 	
 func changeWeapon():

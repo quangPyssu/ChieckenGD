@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://7adcbrdpjynf"]
+
+[ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_2fd1j"]
+[ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="2_dcytd"]
+
+[node name="Game" instance=ExtResource("1_2fd1j")]
+
+[node name="Anchor" parent="Enemies/Wave0" index="0" instance=ExtResource("2_dcytd")]
+position = Vector2(880, -279.279)
+scale = Vector2(1, 1.00559)
+size = 300.0
+entityMax = 16.0
+pattern = 1
+rotateSpeed = 0.1
+speed = 10000.0
+savedPos = Vector2(1000, 500)
+
+[node name="Anchor" parent="Enemies/Wave1" index="0" instance=ExtResource("2_dcytd")]
+position = Vector2(-272, 287.259)
+scale = Vector2(1, 1.00559)
+size = 300.0
+entityMax = 16.0
+pattern = 1
+rotateSpeed = 0.1
+speed = 10000.0
+savedPos = Vector2(1000, 500)
+
+[connection signal="tree_exited" from="Enemies/Wave0/Anchor" to="Enemies/Wave0/Anchor" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave1/Anchor" to="Enemies/Wave1/Anchor" method="_on_tree_exited"]

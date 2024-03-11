@@ -4,6 +4,7 @@ var Buttons:Array [TextureButton] = []
 var Game:Array [PackedScene] = [preload("res://level0.tscn")]
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_viewport().size=Global.ScreenSize
 	Buttons.append(%StartBtn)
 	Buttons.append(%MapBtn)
@@ -11,7 +12,9 @@ func _ready():
 	
 	for i in Buttons:
 		i.connect("pressed",BTN_Hover)
-	
+
+	$Dataing.load_Data()
+
 func _process(_delta):
 	$BtnLight.global_position=get_global_mouse_position()
 	
@@ -25,4 +28,4 @@ func _on_exit_btn_pressed():
 
 func _on_start_btn_pressed():
 	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_packed(Game[0])
+	get_tree().change_scene_to_file(Global.Levels[0])

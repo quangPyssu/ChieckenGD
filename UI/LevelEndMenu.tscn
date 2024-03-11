@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgtpyetgm7rql"]
+[gd_scene load_steps=9 format=3 uid="uid://bgtpyetgm7rql"]
 
 [ext_resource type="Texture2D" uid="uid://dc5dbfeuutvdo" path="res://Asset/Menu/Space Background.png" id="1_bwsbu"]
 [ext_resource type="Script" path="res://Source/Menu/LevelEndMenu.gd" id="1_fk64q"]
@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dsgl34littrvj" path="res://Asset/Menu/Sound_BTN.png" id="3_5030p"]
 [ext_resource type="Texture2D" uid="uid://br5nyvvl4eddy" path="res://Asset/Menu/Replay_BTN.png" id="4_647yb"]
 [ext_resource type="Texture2D" uid="uid://b2ucva3lolmvx" path="res://Asset/Menu/HeaderLost.png" id="6_3qrq7"]
+[ext_resource type="Texture2D" uid="uid://j84hhy3td1vb" path="res://Asset/Menu/Play_BTN.png" id="6_o8k2b"]
+[ext_resource type="Texture2D" uid="uid://b2pjdy3cfnfpu" path="res://Asset/Menu/HeaderWin.png" id="7_klko5"]
 
 [node name="LevelEnd" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_fk64q")
 
 [node name="Control" type="Control" parent="."]
@@ -36,10 +39,10 @@ anchor_left = 0.036
 anchor_top = 0.05
 anchor_right = 0.086
 anchor_bottom = 0.05
-offset_left = 38.88
-offset_top = 54.0
-offset_right = 612.88
-offset_bottom = 264.0
+offset_left = 27.88
+offset_top = 63.0
+offset_right = 831.88
+offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -58,14 +61,21 @@ size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_5030p")
 
-[node name="ButtonResume" type="TextureButton" parent="Control/HBoxContainer"]
+[node name="ButtonPlay" type="TextureButton" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_647yb")
 
-[node name="TextureLabel" type="TextureRect" parent="Control"]
+[node name="ButtonNext" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_o8k2b")
+
+[node name="LostLabel" type="TextureRect" parent="Control"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -81,3 +91,25 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 texture = ExtResource("6_3qrq7")
+
+[node name="WonLabel" type="TextureRect" parent="Control"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -458.0
+offset_top = -50.0
+offset_right = -5.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("7_klko5")
+
+[connection signal="pressed" from="Control/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonNext" to="." method="_on_button_next_pressed"]

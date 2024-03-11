@@ -215,5 +215,6 @@ frame = 7
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
+bus = &"GameSFX"
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

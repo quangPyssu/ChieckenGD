@@ -31,7 +31,7 @@ func _ready():
 		HP=timerEnd
 
 	if savedPos!=Vector2(0, 0):
-		print ("gotoPosition ", savedPos, " speed ", speed)
+		#print ("gotoPosition ", savedPos, " speed ", speed)
 		gotoPosition(savedPos, speed)
 
 func _physics_process(delta):

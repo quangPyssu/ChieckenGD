@@ -122,6 +122,7 @@ debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 [node name="Music" parent="." index="6"]
 process_mode = 3
 stream = ExtResource("6_pvt4t")
+volume_db = -15.0
 autoplay = true
 
 [connection signal="tree_exited" from="Enemies/Wave0/Anchor" to="Enemies/Wave0/Anchor" method="_on_tree_exited"]
