@@ -13,8 +13,6 @@ func _ready():
 	Global.defeated = false
 	Global.LevelEnd = false
 	Global.HP = Global.maxHP
-	
-	get_viewport().size=Global.ScreenSize
 
 	$Player.position=get_viewport().size/2
 	

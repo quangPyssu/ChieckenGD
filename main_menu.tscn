@@ -101,6 +101,10 @@ texture_scale = 0.2
 
 [node name="Setting" parent="." instance=ExtResource("9_l8fvq")]
 layout_mode = 1
+offset_left = 808.0
+offset_top = -500.0
+offset_right = 1018.0
+offset_bottom = -290.0
 
 [connection signal="pressed" from="Buttons/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="Buttons/ExitBtn" to="." method="_on_exit_btn_pressed"]

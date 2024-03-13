@@ -1,23 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://do7mnex32ow7t"]
+[gd_scene load_steps=9 format=3 uid="uid://do7mnex32ow7t"]
 
 [ext_resource type="Texture2D" uid="uid://c6axmfjn5xhno" path="res://Asset/Menu/Settings_BTN.png" id="1_35vqd"]
 [ext_resource type="Texture2D" uid="uid://cocwtxa3vsgtt" path="res://Asset/Menu/Settings_BTN_Hover.png" id="2_skels"]
 [ext_resource type="Script" path="res://UI/setting.gd" id="3_008c1"]
 [ext_resource type="Texture2D" uid="uid://dsgl34littrvj" path="res://Asset/Menu/Sound_BTN.png" id="3_o83bf"]
 [ext_resource type="Texture2D" uid="uid://cypqyiyd0ffbf" path="res://Asset/Menu/Menu_BTN.png" id="4_61tan"]
+[ext_resource type="Texture2D" uid="uid://bnmtgvyjpu226" path="res://Asset/Menu/Window.png" id="6_htxk1"]
+[ext_resource type="Texture2D" uid="uid://dayl4bi7dt2a5" path="res://Asset/egg.png" id="6_uo4pw"]
+[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://Asset/Fonts/neuro.ttf" id="7_kb02j"]
 
 [node name="Setting" type="Control"]
 light_mask = 2
 texture_filter = 1
 texture_repeat = 1
+custom_minimum_size = Vector2(210, 0)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1792.0
-offset_top = 24.0
-offset_right = 82.0
-offset_bottom = -846.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -750.0
+offset_bottom = -330.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -44,6 +50,7 @@ texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 8
 mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource("3_o83bf")
@@ -55,6 +62,7 @@ texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource("4_61tan")
@@ -78,4 +86,116 @@ texture_normal = ExtResource("1_35vqd")
 texture_pressed = ExtResource("2_skels")
 ignore_texture_size = true
 
+[node name="Poppin" type="Node2D" parent="."]
+position = Vector2(1760, 992)
+scale = Vector2(2.5, 2.5)
+
+[node name="Popup" type="TextureRect" parent="Poppin"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = -1389.0
+offset_bottom = -1302.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(300, 300)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_htxk1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Volume" type="VBoxContainer" parent="Poppin/Popup"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -20.0
+offset_right = 232.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Master" type="HSlider" parent="Poppin/Popup/Volume"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("6_uo4pw")
+theme_override_icons/grabber_highlight = ExtResource("6_uo4pw")
+max_value = 1.0
+step = 0.01
+metadata/bus_index = 0
+metadata/busIndex = 0
+
+[node name="Label" type="Label" parent="Poppin/Popup/Volume/Master"]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 164.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("7_kb02j")
+theme_override_font_sizes/font_size = 30
+text = "MASTER"
+
+[node name="Music" type="HSlider" parent="Poppin/Popup/Volume"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("6_uo4pw")
+theme_override_icons/grabber_highlight = ExtResource("6_uo4pw")
+max_value = 1.0
+step = 0.01
+metadata/bus_index = 1
+metadata/busIndex = 1
+
+[node name="Label" type="Label" parent="Poppin/Popup/Volume/Music"]
+offset_top = -25.0
+offset_right = 164.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("7_kb02j")
+theme_override_font_sizes/font_size = 30
+text = "MUSIC
+"
+
+[node name="SFX" type="HSlider" parent="Poppin/Popup/Volume"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("6_uo4pw")
+theme_override_icons/grabber_highlight = ExtResource("6_uo4pw")
+max_value = 1.0
+step = 0.01
+metadata/bus_index = 2
+metadata/busIndex = 2
+
+[node name="Label" type="Label" parent="Poppin/Popup/Volume/SFX"]
+offset_top = -25.0
+offset_right = 164.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("7_kb02j")
+theme_override_font_sizes/font_size = 30
+text = "SFX"
+
+[node name="GameSFX" type="HSlider" parent="Poppin/Popup/Volume"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("6_uo4pw")
+theme_override_icons/grabber_highlight = ExtResource("6_uo4pw")
+max_value = 1.0
+step = 0.01
+metadata/bus_index = 3
+metadata/busIndex = 3
+
+[node name="Label" type="Label" parent="Poppin/Popup/Volume/GameSFX"]
+offset_top = -25.0
+offset_right = 164.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("7_kb02j")
+theme_override_font_sizes/font_size = 30
+text = "Game SFX"
+
+[connection signal="toggled" from="HBoxContainer2/VolumeBtn" to="." method="_on_volume_btn_toggled"]
 [connection signal="pressed" from="SettingBtn" to="." method="_on_setting_btn_pressed"]
