@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://do7mnex32ow7t"]
+
+[ext_resource type="Texture2D" uid="uid://c6axmfjn5xhno" path="res://Asset/Menu/Settings_BTN.png" id="1_35vqd"]
+[ext_resource type="Texture2D" uid="uid://cocwtxa3vsgtt" path="res://Asset/Menu/Settings_BTN_Hover.png" id="2_skels"]
+[ext_resource type="Script" path="res://UI/setting.gd" id="3_008c1"]
+[ext_resource type="Texture2D" uid="uid://dsgl34littrvj" path="res://Asset/Menu/Sound_BTN.png" id="3_o83bf"]
+[ext_resource type="Texture2D" uid="uid://cypqyiyd0ffbf" path="res://Asset/Menu/Menu_BTN.png" id="4_61tan"]
+
+[node name="Setting" type="Control"]
+light_mask = 2
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1792.0
+offset_top = 24.0
+offset_right = 82.0
+offset_bottom = -846.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+script = ExtResource("3_008c1")
+
+[node name="HBoxContainer2" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -210.0
+offset_bottom = 210.0
+grow_horizontal = 0
+pivot_offset = Vector2(210, 105)
+
+[node name="VolumeBtn" type="TextureButton" parent="HBoxContainer2"]
+light_mask = 2
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("3_o83bf")
+texture_pressed = ExtResource("2_skels")
+
+[node name="RatioBtn" type="TextureButton" parent="HBoxContainer2"]
+light_mask = 2
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("4_61tan")
+texture_pressed = ExtResource("2_skels")
+
+[node name="SettingBtn" type="TextureButton" parent="."]
+light_mask = 2
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -210.0
+offset_bottom = 210.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("1_35vqd")
+texture_pressed = ExtResource("2_skels")
+ignore_texture_size = true
+
+[connection signal="pressed" from="SettingBtn" to="." method="_on_setting_btn_pressed"]

@@ -38,6 +38,20 @@ unique_name_in_owner = true
 
 [node name="UI" parent="." instance=ExtResource("5_xjudq")]
 
+[node name="LevelName" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
 [node name="Paused" parent="." instance=ExtResource("5_quuxs")]
 visible = false
 

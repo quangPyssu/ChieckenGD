@@ -29,3 +29,6 @@ func _on_exit_btn_pressed():
 func _on_start_btn_pressed():
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file(Global.Levels[0])
+
+
+var isSetting:bool=0
