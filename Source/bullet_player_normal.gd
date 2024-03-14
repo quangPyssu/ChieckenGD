@@ -7,3 +7,5 @@ func _ready():
 	direction=Vector2(0,-1)
 	accelaration=100
 	rotation_degrees=-90
+	
+	print("root")

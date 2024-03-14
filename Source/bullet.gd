@@ -6,7 +6,7 @@ var speed: float = 0.0
 var velocity: Vector2 = Vector2.ZERO
 var accelaration: float = 0.0
 var direction: Vector2 = Vector2(0,0)
-@export var damage: int = 1
+@export var damage: float = 1.0
 @export var canBreak: bool = 0
 @export var HP: int = 10
 
@@ -20,10 +20,10 @@ func _process(delta):
 	global_position += velocity * delta
 
 	if inClampedScreen: #clamp in the screen		
-		global_position.x = clamp(global_position.x, 0, get_viewport().size.x)
-		global_position.y = clamp(global_position.y, 0, get_viewport().size.y)
+		global_position.x = clamp(global_position.x, 0, Global.ScreenSize.x)
+		global_position.y = clamp(global_position.y, 0, Global.ScreenSize.y)
 	else: #destroy when out of screen
-		if global_position.x < -300 or global_position.x > get_viewport().size.x+300 or global_position.y < -300 or global_position.y > get_viewport().size.y+300:
+		if global_position.x < -300 or global_position.x > Global.ScreenSize.x+300 or global_position.y < -300 or global_position.y > Global.ScreenSize.y+300:
 			broken=true
 		
 	if HP<=0:

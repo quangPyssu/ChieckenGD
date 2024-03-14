@@ -51,13 +51,13 @@ func _physics_process(delta):
 
 			if BounceOffSceen:
 
-				if global_position.x - ShapeSize.x <= 0 or global_position.x + ShapeSize.x>= get_viewport().size.x:
+				if global_position.x - ShapeSize.x <= 0 or global_position.x + ShapeSize.x>= Global.ScreenSize.x:
 					direction.x = -direction.x
-				if global_position.y - ShapeSize.y <= 0 or global_position.y + ShapeSize.y>= get_viewport().size.y:
+				if global_position.y - ShapeSize.y <= 0 or global_position.y + ShapeSize.y>= Global.ScreenSize.y:
 					direction.y = -direction.y					
 
-			global_position.x = clamp(global_position.x , 0, get_viewport().size.x)
-			global_position.y = clamp(global_position.y , 0, get_viewport().size.y)
+			global_position.x = clamp(global_position.x , 0, Global.ScreenSize.x)
+			global_position.y = clamp(global_position.y , 0, Global.ScreenSize.y)
 
 	if timerEnd!=-1.0:
 		HP-=delta
@@ -70,7 +70,7 @@ func _set_velocity(delta:float):
 func entity_timeout():
 	kill()
 
-func take_damage(damage:int):
+func take_damage(damage:float):
 	if isInvincible:
 		return
 	#at three quarter health
@@ -81,7 +81,8 @@ func take_damage(damage:int):
 		atHalfHealth()
 	elif HP > MaxHP / 4 and damed <= MaxHP / 4:
 		atQuarterHealth()
-
+	
+	#print (HP, " ",damed)
 	HP = damed
 	flicker()
 

@@ -29,9 +29,6 @@ func _on_area_2d_body_entered(_body:Node2D):
 func _on_area_2d_body_exited(_body:Node2D):
 	nearPlayer = false
 
-func take_damage(damage:int):
-	super.take_damage(damage)
-
 func _on_attack_timer_timeout():
 	if !isDead:
 		var Egg=preEgg.instantiate()

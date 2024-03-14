@@ -31,9 +31,7 @@ func atQuarterHealth():
 	call_deferred("SpecialA")
 	
 func _process(_delta):
-	
-	if Input.is_action_just_pressed("TestButton+"):
-		SpecialA()
+	pass
 			
 func SpecialA():
 	var dir:Vector2 =Vector2(Global.PlayerPos-global_position).normalized()

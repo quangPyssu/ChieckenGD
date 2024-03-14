@@ -5,7 +5,11 @@ var AfterGame:PackedScene = preload("res://UI/LevelEndMenu.tscn")
 var WaveCount=0
 var CurrentWave=0
 
-var BossMusic: Array[String]=["res://Asset/Sounds/Music/BeOfGoodCheer.ogg"]
+var packedAttack: Array[PackedScene]
+
+var BossMusic: Array[String]=["res://Asset/Sounds/Music/BeOfGoodCheer.ogg","res://Asset/Sounds/Music/magicJinzoStraw.ogg"]
+
+var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +18,7 @@ func _ready():
 	Global.LevelEnd = false
 	Global.HP = Global.maxHP
 
-	$Player.position=get_viewport().size/2
+	$Player.position=Global.ScreenSize/2
 	
 	#hide the moused
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -28,6 +32,8 @@ func _ready():
 	
 	$Enemies.get_child(0).set_process_mode(0)
 	$Enemies.get_child(0).visible=1
+	
+	loadAttack()
 
 func _process(delta):
 	if Input.is_action_just_pressed("ForceQuit"):
@@ -70,10 +76,26 @@ func _process(delta):
 	else: 
 		Global.LevelEnd=1
 
-func _on_player_attack(_WeaponType:int):
-	var Bullet = preload("res://bullet_player_normal.tscn").instantiate()
-	Bullet.global_position = $Player.global_position + Vector2(0, -50)
-	%Projectiles.add_child(Bullet)
+func _on_player_attack():
+	var Bullet = packedAttack[Global.CurrentWeapon].instantiate()
+	
+	match Global.EquippedWeapon[Global.CurrentWeapon]:
+		0,3:
+			Bullet.global_position = $Player.global_position + Vector2(0, -50)
+			%Projectiles.add_child(Bullet)
+		1:
+			$Player.add_child(Bullet)
+			
+func loadAttack():
+	for i in 2:
+		var a:PackedScene 
+		match Global.EquippedWeapon[i]:
+			0:
+				a=preload("res://bullet_player_normal.tscn")
+			1: 
+				a=preload("res://SmallBeam_Player.tscn")
+				
+		packedAttack.append(a)
 
 func cameraShake():
 	if Global.isShaking:

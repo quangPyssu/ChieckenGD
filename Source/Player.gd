@@ -7,16 +7,15 @@ const FastPercentage: float = 1.5
 var AttackLoaded: bool = true
 var SpecialLoaded: bool = false
 
-var SpecialIFrame: Array[float] = [4,0.0,0.0,0.0]
+var SpecialIFrame: Array[float] = [0.5,0.0,4.0,0.0]
 var SpecialTimeRatio:float=0
 
-var particle:Array[PackedScene] = [preload("res://Asset/particle/Particle_BaseBullet.tscn")]
+var particle:Array[PackedScene]
 
 signal Attack
 signal Special
 
 func _ready():
-	
 	HP = Global.maxHP
 	Global.maxSP = Global.SpecialTime[Global.SpecialType]
 	
@@ -27,16 +26,14 @@ func _ready():
 	%SpecialTimer.timeout.connect(_on_special_timer_timeout)
 
 	get_node("AnimationCenter/BattlecruiserBase").visible = true
-
+	loadParti()
 	super._ready()
 
 func _physics_process(delta):	
 	#move the player via wasd and arrow keys	
-
 	direction = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
 	
 	var current_speed:float = BaseSpeed
-
 	var JetType: int = 1
 
 	if Input.is_action_pressed("SlowMove"):
@@ -47,25 +44,21 @@ func _physics_process(delta):
 		JetType = 2
 
 	JetAnimation(JetType)
-
 	speed = current_speed
-
-	#MOVE With engine
+	
 	super._physics_process(delta)
 	Global.PlayerPos = global_position
 
 func _process(delta):
-
 	Global.HP = HP
-
 	%AttackTimer.wait_time=Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]
 
 	if Input.is_action_pressed("Attack") and AttackLoaded:
 		AttackLoaded = false
-		Attack.emit(Global.WeaponType)
+		Attack.emit()
 		%AttackTimer.wait_time=Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]
 		%AttackTimer.start()
-		var SpawnParticle:GPUParticles2D = particle[Global.WeaponType].instantiate()
+		var SpawnParticle:GPUParticles2D = particle[Global.CurrentWeapon].instantiate()
 		add_child(SpawnParticle)
 		SpawnParticle.position = -Vector2(0,50)
 		SpawnParticle.emitting = true
@@ -74,8 +67,7 @@ func _process(delta):
 	
 	if Input.is_action_pressed("Special") and SpecialLoaded:
 		SpecialLoaded = false
-		var Beam:bullet = preload("res://BigBeam_Player.tscn").instantiate()
-		add_child(Beam)
+		SpecialAttack(Global.SpecialType)
 		force_Flicker(SpecialIFrame[Global.SpecialType])
 		%SpecialTimer.wait_time=Global.SpecialTime[Global.SpecialType]
 		%SpecialTimer.start()
@@ -83,13 +75,29 @@ func _process(delta):
 		
 	recoverSP(delta)
 
-	# +  Blow up
 	if Input.is_action_pressed("TestButton+"):
 		pass
 
 	# - hurt
 	if Input.is_action_just_pressed("TestButton-"):
-		HP-=1			
+		HP-=1
+		
+func SpecialAttack(SpecialType:int):
+	print(SpecialType)
+	match SpecialType:
+		0:
+			_ring_shot()
+		1:
+			pass
+		2: 
+			_big_beam()
+
+func _ring_shot():
+	pass
+
+func _big_beam():
+	var Beam:bullet = preload("res://BigBeam_Player.tscn").instantiate()
+	add_child(Beam)
 
 func _shielded():
 	get_node("AnimationCenter/AnimationPlayer").play("Shielded")
@@ -152,7 +160,18 @@ func recoverAP():
 	var tween:Tween = get_tree().create_tween()
 	tween.tween_property(Global, "AP", Global.maxAP, Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]).set_trans(Tween.TRANS_LINEAR)
 
-func take_damage(damage: int):
+func take_damage(damage: float):
 	if (isFlickering):
 		return
 	super.take_damage(damage)
+
+func loadParti():
+	for i in 2:
+		var a:PackedScene
+		match Global.EquippedWeapon[i]:
+			0:
+				a=preload("res://Asset/particle/Particle_BaseBullet.tscn")
+			1: 
+				a=preload("res://Asset/particle/Particle_BaseBullet.tscn")
+				
+		particle.append(a)
