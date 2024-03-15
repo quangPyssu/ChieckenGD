@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Source/Entity.gd" id="1_bso2c"]
 
 [node name="Entity" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_bso2c")
 
 [node name="AnimationCenter" type="Node2D" parent="."]

@@ -9,7 +9,7 @@ enum WhatSpawnerType {
 
 var SpawnTimer:Timer=null
 @export var WhatSpawning:Global.SpawnType = Global.SpawnType.Egg
-@export var direction:Vector2 = Vector2(10,10).normalized()
+@export var direction:Vector2 = Vector2(0,0)
 var WhatSpawner:WhatSpawnerType = WhatSpawnerType.BulletSpawner
 
 var theWhat:PackedScene = null
@@ -38,6 +38,10 @@ func _ready():
 		Global.SpawnType.Astroid:
 			WhatSpawner=WhatSpawnerType.BulletSpawner
 			theWhat=preload("res://Astroid.tscn")
+			
+		Global.SpawnType.SmallLaser:
+			WhatSpawner=WhatSpawnerType.BulletSpawner
+			theWhat=preload("res://SmallBeam_Enemy.tscn")
 		
 		Global.SpawnType.EnemyChicken:
 			WhatSpawner=WhatSpawnerType.EntitySpawner
@@ -52,6 +56,7 @@ func spawn():
 			get_node("/root/Game/Projectiles").add_child(A)
 			A.direction=direction
 			A.global_position = ranPos
+			print(direction)
 			if (direction!=Vector2.ZERO):
 				A.rotation=atan(direction.x/direction.y)
 

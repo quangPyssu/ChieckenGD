@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgeh2dbqccio"]
+
+[ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_lvee2"]
+[ext_resource type="Texture2D" uid="uid://c3xaaww5to3vp" path="res://Asset/UFO1.png" id="2_jyg17"]
+[ext_resource type="Script" path="res://Source/UFO.gd" id="2_wi6cq"]
+[ext_resource type="Texture2D" uid="uid://bggypdrc0td7t" path="res://Asset/UFO0.png" id="3_6bale"]
+[ext_resource type="Texture2D" uid="uid://bmqs2kr6gqhe7" path="res://Asset/UFO.png" id="4_n440m"]
+[ext_resource type="SpriteFrames" uid="uid://84mmi5wq84fj" path="res://Asset/SpriteFrames/Explosion.tres" id="5_mecf8"]
+
+[sub_resource type="Animation" id="Animation_gd31r"]
+resource_name = "default"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ufo:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rsmss"]
+_data = {
+"default": SubResource("Animation_gd31r")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkce4"]
+radius = 24.0
+height = 148.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_80kty"]
+radius = 27.0
+height = 148.0
+
+[node name="UFO" instance=ExtResource("1_lvee2")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_wi6cq")
+
+[node name="Ufo1" type="Sprite2D" parent="AnimationCenter" index="0"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -41)
+scale = Vector2(0.555556, 0.555556)
+texture = ExtResource("2_jyg17")
+
+[node name="Ufo0" type="Sprite2D" parent="AnimationCenter" index="1"]
+position = Vector2(1.13687e-13, -42)
+scale = Vector2(0.566667, 0.566667)
+texture = ExtResource("3_6bale")
+
+[node name="Ufo" type="Sprite2D" parent="AnimationCenter" index="2"]
+texture = ExtResource("4_n440m")
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_rsmss")
+}
+autoplay = "default"
+speed_scale = 4.0
+
+[node name="HitBox" parent="." index="1"]
+visible = false
+collision_layer = 512
+collision_mask = 5
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, 3)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_lkce4")
+debug_color = Color(0.85098, 0.32549, 0.478431, 0.419608)
+
+[node name="PhysicBox" parent="." index="2"]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_80kty")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="." index="3"]
+scale = Vector2(7, 7)
+sprite_frames = ExtResource("5_mecf8")
+animation = &"explosion"
+frame = 8
+frame_progress = 1.0
+
+[node name="Audio" type="AudioStreamPlayer" parent="." index="4"]
+bus = &"GameSFX"
+
+[node name="AttackTimer" type="Timer" parent="." index="5"]
+wait_time = 3.0
+autostart = true
+
+[node name="LaserTimer" type="Timer" parent="." index="6"]
+wait_time = 4.0
+autostart = true
+
+[node name="Marker" type="Marker2D" parent="." index="7"]
+position = Vector2(0, -51)
+
+[node name="Marker2" type="Marker2D" parent="." index="8"]
+position = Vector2(0, 20)
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]

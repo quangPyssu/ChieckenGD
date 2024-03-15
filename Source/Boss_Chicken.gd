@@ -29,10 +29,7 @@ func atQuarterHealth():
 	$AnimationCenter/BossChickenBody3.visible = true
 	spawnFea()
 	call_deferred("SpecialA")
-	
-func _process(_delta):
-	pass
-			
+
 func SpecialA():
 	var dir:Vector2 =Vector2(Global.PlayerPos-global_position).normalized()
 	for i:int in 4:
@@ -45,17 +42,9 @@ func SpecialA():
 		s.look_at(Global.PlayerPos)
 		s.rotateSpeed=1
 		
-		s.direction=dir
+		s.direction=dir.rotated(i*PI/2.0)
 		
-		match i:
-			1: 
-				Global.Swap(s.direction.x,s.direction.y)
-				s.direction.y=s.direction.y*-1
-			2: s.direction=s.direction*Vector2(-1,-1)
-			3: 
-				Global.Swap(s.direction.x,s.direction.y)
-				s.direction.x=s.direction.x*-1
-		s.speed = 12000
+		s.speed = 22000
 		await get_tree().create_timer(0.25).timeout
 
 func spawnFea():
@@ -105,7 +94,7 @@ func attack(type:int):
 				s.rotation_degrees -=90
 				s.rotateSpeed=1
 				s.direction=Vector2(Global.PlayerPos-s.global_position).normalized()
-				s.speed = 10000
+				s.speed = 15000
 				
 				await get_tree().create_timer(1).timeout
 

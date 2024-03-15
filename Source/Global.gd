@@ -23,7 +23,7 @@ var SpecialTime: Array[float] = [10.0,0.0,30.0,0.0]
 ####################
 var UnlockedWeapon:Array[bool] = [1,0,0,0]
 var UnlockedSpecial:Array[bool] = [1,1,0,0]
-var CurrentLevel:int = 0
+var CurrentLevel:int = 1
 var UnlockedLevel:int = 1
 var Volume:int = 100
 ####################
@@ -48,7 +48,7 @@ enum BulletSpin{
 }
 
 enum SpawnType {
-	Egg, EnemyChicken, Astroid
+	Egg, EnemyChicken, Astroid , SmallLaser
 }
 
 func Swap(a:float,b:float):

@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://7adcbrdpjynf"]
+[gd_scene load_steps=8 format=3 uid="uid://7adcbrdpjynf"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_2fd1j"]
+[ext_resource type="PackedScene" uid="uid://cgeh2dbqccio" path="res://UFO.tscn" id="2_3x6us"]
 [ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="2_dcytd"]
 [ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://Enemy_Chicken.tscn" id="3_m07tu"]
+[ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://spawner.tscn" id="3_y13or"]
+[ext_resource type="AudioStream" uid="uid://doq2q6boqmoog" path="res://Asset/Sounds/Music/JinzoLament.ogg" id="6_ygy4s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q28ur"]
+size = Vector2(1920, 20)
 
 [node name="Game" instance=ExtResource("1_2fd1j")]
 
+[node name="Player" parent="." index="1"]
+texture_filter = 0
+
 [node name="Anchor" parent="Enemies/Wave0" index="0" instance=ExtResource("2_dcytd")]
+texture_filter = 0
 position = Vector2(880, -279.279)
 scale = Vector2(1, 1.00559)
 size = 300.0
@@ -16,7 +26,32 @@ speed = 10000.0
 direction = Vector2(1, -1)
 savedPos = Vector2(1000, 500)
 
-[node name="Anchor2" parent="Enemies/Wave0" index="1" instance=ExtResource("2_dcytd")]
+[node name="SDpawn" parent="Enemies/Wave1" index="0" instance=ExtResource("3_m07tu")]
+texture_filter = 0
+position = Vector2(2220, -300)
+scale = Vector2(1, 1.00569)
+timerEnd = 20.0
+savedPos = Vector2(-100, -100)
+isInvincible = true
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Spawner" parent="Enemies/Wave1/SDpawn" index="5" instance=ExtResource("3_y13or")]
+position = Vector2(-2408, 119.014)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 1.0
+SpawnCnt = 5
+WhatSpawning = 3
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave1/SDpawn/Spawner" index="1"]
+position = Vector2(1148, 155.486)
+shape = SubResource("RectangleShape2D_q28ur")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[node name="Anchor2" parent="Enemies/Wave2" index="0" instance=ExtResource("2_dcytd")]
+texture_filter = 0
 position = Vector2(-272, 287.259)
 scale = Vector2(1, 1.00559)
 size = 300.0
@@ -26,17 +61,29 @@ rotateSpeed = 0.1
 speed = 10000.0
 savedPos = Vector2(1000, 500)
 
-[node name="EnemyChicken" parent="Enemies/Wave1" index="0" instance=ExtResource("3_m07tu")]
+[node name="Wave2_5" type="Node2D" parent="Enemies" index="3"]
+
+[node name="EnemyChicken" parent="Enemies/Wave2_5" index="0" instance=ExtResource("3_m07tu")]
 position = Vector2(2220, -300)
 scale = Vector2(1, 1.00569)
+timerEnd = 3.0
 savedPos = Vector2(-100, -100)
 inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
 
-[node name="EnemyChicken" parent="Enemies/Wave2" index="0" instance=ExtResource("3_m07tu")]
-position = Vector2(928, 191.506)
-HP = 5000.0
+[node name="Wave3" type="Node2D" parent="Enemies" index="4"]
+
+[node name="UFO" parent="Enemies/Wave3" index="0" instance=ExtResource("2_3x6us")]
+position = Vector2(896, -231.403)
+scale = Vector2(1.5, 1.5)
+HP = 2500.0
+speed = 10000.0
+direction = Vector2(1, 0)
+savedPos = Vector2(1000, 300)
+
+[node name="Music" parent="." index="6"]
+stream = ExtResource("6_ygy4s")
 
 [connection signal="tree_exited" from="Enemies/Wave0/Anchor" to="Enemies/Wave0/Anchor" method="_on_tree_exited"]
-[connection signal="tree_exited" from="Enemies/Wave0/Anchor2" to="Enemies/Wave0/Anchor2" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave2/Anchor2" to="Enemies/Wave2/Anchor2" method="_on_tree_exited"]

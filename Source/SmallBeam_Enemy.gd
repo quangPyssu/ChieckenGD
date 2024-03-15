@@ -3,11 +3,9 @@ extends bullet
 var ani: AnimationPlayer
 
 func _ready():
-	rotation_degrees=-90
 	HP = 99999999
 	ani = $AnimationCenter/AnimationPlayer
-	ani.play("beamSmall")
-	$BulletSound.play()
+	ani.play("default")
 
 func _process(delta):
 	super._process(delta)
@@ -21,6 +19,3 @@ func _process(delta):
 
 	if !ani.is_playing():
 		queue_free()
- 
-func _on_area_entered(_area:Area2D):
-	pass

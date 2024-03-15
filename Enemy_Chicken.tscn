@@ -45,7 +45,7 @@ debug_color = Color(0.909804, 0.282353, 0.243137, 0.419608)
 shape = SubResource("CircleShape2D_jx65p")
 
 [node name="AttackTimer" type="Timer" parent="." index="4"]
-wait_time = 8.0
+wait_time = 3.0
 autostart = true
 
 [connection signal="body_entered" from="VisionBox" to="." method="_on_area_2d_body_entered"]

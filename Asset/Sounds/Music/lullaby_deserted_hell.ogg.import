@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/lullaby_deserted_hell.ogg-1a40491f8a0476f634d
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

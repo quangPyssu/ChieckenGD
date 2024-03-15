@@ -49,7 +49,6 @@ position = Vector2(590.861, 0.00213623)
 scale = Vector2(4.45458, 1)
 texture = ExtResource("4_fhxdw")
 hframes = 4
-frame = 3
 
 [node name="HitBox" parent="." index="1"]
 position = Vector2(854.178, 0)

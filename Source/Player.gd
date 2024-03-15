@@ -75,8 +75,11 @@ func _process(delta):
 		
 	recoverSP(delta)
 
-	if Input.is_action_pressed("TestButton+"):
-		pass
+	if Input.is_action_just_pressed("TestButton+"):
+		var b = preload("res://SmallBeam_Enemy.tscn").instantiate()
+		b.global_position.x=global_position.x
+		b.global_position.y=-1
+		get_node("/root/Game/Projectiles").add_child(b)
 
 	# - hurt
 	if Input.is_action_just_pressed("TestButton-"):

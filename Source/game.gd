@@ -17,7 +17,6 @@ func _ready():
 	Global.defeated = false
 	Global.LevelEnd = false
 	Global.HP = Global.maxHP
-
 	$Player.position=Global.ScreenSize/2
 	
 	#hide the moused
@@ -74,6 +73,7 @@ func _process(delta):
 				$Music.set_stream(load(BossMusic[Global.CurrentLevel]))
 				$Music.play()
 	else: 
+		#await get_tree().create_timer(3.0)
 		Global.LevelEnd=1
 
 func _on_player_attack():

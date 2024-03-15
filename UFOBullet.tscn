@@ -1,0 +1,107 @@
+[gd_scene load_steps=17 format=3 uid="uid://0dup0uluctqx"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_ywy4j"]
+[ext_resource type="Script" path="res://Source/UFOBullet.gd" id="2_auqik"]
+[ext_resource type="Texture2D" uid="uid://dm4keq1leghk6" path="res://Asset/UFO_Bullet.png" id="3_axa7f"]
+[ext_resource type="AudioStream" uid="uid://dkhfxl18c3uvv" path="res://Asset/Sounds/(buglezap).ogg" id="4_t1uy3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nn3i"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(0, 0, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpomt"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(28, 0, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhd66"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(56, 0, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x50ii"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(84, 0, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1wvl"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(112, 0, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdtah"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(140, 0, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbq5r"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(168, 0, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w146c"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(196, 0, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1grbt"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(224, 0, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utt3r"]
+atlas = ExtResource("3_axa7f")
+region = Rect2(252, 0, 28, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlitd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nn3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpomt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhd66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x50ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1wvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdtah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbq5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w146c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1grbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utt3r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2of00"]
+size = Vector2(12, 24)
+
+[node name="Bullet" instance=ExtResource("1_ywy4j")]
+scale = Vector2(1.5, 1.5)
+collision_layer = 16
+collision_mask = 1
+script = ExtResource("2_auqik")
+canBreak = true
+
+[node name="UfoBullet" type="AnimatedSprite2D" parent="AnimationCenter" index="0"]
+rotation = 1.57079
+sprite_frames = SubResource("SpriteFrames_dlitd")
+autoplay = "default"
+frame = 1
+frame_progress = 0.400887
+
+[node name="HitBox" parent="." index="1"]
+shape = SubResource("RectangleShape2D_2of00")
+
+[node name="BulletSound" parent="." index="2"]
+stream = ExtResource("4_t1uy3")

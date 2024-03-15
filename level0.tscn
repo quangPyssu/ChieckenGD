@@ -103,6 +103,7 @@ canFlicker = false
 position = Vector2(920, -239.382)
 HP = 2000.0
 speed = 8000.0
+savedPos = Vector2(1000, 300)
 
 [node name="Node" type="Node" parent="Enemies/Wave3/BossChicken" index="5"]
 
@@ -123,7 +124,6 @@ debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 process_mode = 3
 stream = ExtResource("6_pvt4t")
 volume_db = -15.0
-autoplay = true
 
 [connection signal="tree_exited" from="Enemies/Wave0/Anchor" to="Enemies/Wave0/Anchor" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Enemies/Wave2/Anchor2" to="Enemies/Wave2/Anchor2" method="_on_tree_exited"]

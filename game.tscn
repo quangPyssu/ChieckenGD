@@ -56,8 +56,10 @@ size_flags_horizontal = 4
 visible = false
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("6_apjum")
 volume_db = -10.0
+autoplay = true
 bus = &"Music"
 
 [node name="Camera" type="Camera2D" parent="."]
