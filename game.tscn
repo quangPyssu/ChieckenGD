@@ -23,11 +23,6 @@ scale = Vector2(2.5, 2.49)
 texture = ExtResource("3_mky08")
 stretch_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("1_rbiiv")]
-
-[node name="Projectiles" type="Node2D" parent="."]
-unique_name_in_owner = true
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Wave0" type="Node2D" parent="Enemies"]
@@ -35,6 +30,11 @@ unique_name_in_owner = true
 [node name="Wave1" type="Node2D" parent="Enemies"]
 
 [node name="Wave2" type="Node2D" parent="Enemies"]
+
+[node name="Player" parent="." instance=ExtResource("1_rbiiv")]
+
+[node name="Projectiles" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="UI" parent="." instance=ExtResource("5_xjudq")]
 

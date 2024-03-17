@@ -26,8 +26,6 @@ func _ready():
 	sideSize = sqrt(entityMax)
 	isOdd=Vector2(0.5,0.5)*(sideSize-1)
 
-	inClampedScreen = true	
-
 	var Shaping = CircleShape2D.new()
 	$PhysicBox.set_shape(Shaping)
 	$PhysicBox.shape.radius = size
@@ -62,7 +60,6 @@ func setUp():
 			aEntity.position = (Vector2(float(i%sideSize), float(i/sideSize))-isOdd)*size/2
 
 func _process(_delta):
-
 	if entityCount==0:
 		queue_free()
 

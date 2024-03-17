@@ -74,6 +74,9 @@ func kill():
 		$Explosion.play("explosion")
 		spawnFea()
 		spawnFea()
+		var f = preload("res://Asset/particle/Particle_Debirs.tscn").instantiate()
+		f.global_position = global_position
+		get_node("/root/Game/Projectiles").add_child(f)
 
 		await get_tree().create_timer(2).timeout
 		queue_free()

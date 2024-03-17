@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=3 uid="uid://cghnb6tuipicn"]
+
+[ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_ksjxw"]
+[ext_resource type="Script" path="res://Source/MotherHen/MotherHen.gd" id="2_qggua"]
+[ext_resource type="Texture2D" uid="uid://d0knb2rwoq8rl" path="res://Asset/MotherHen/motherHen4-structure-back.png" id="3_8djjh"]
+[ext_resource type="Shader" path="res://Shaders/EggWhite.gdshader" id="4_vn554"]
+[ext_resource type="Texture2D" uid="uid://du3shbb6hy1nf" path="res://Asset/MotherHen/motherHen4-eggwhite.png" id="5_gv0m8"]
+[ext_resource type="Texture2D" uid="uid://xays1gvv0jpj" path="res://Asset/MotherHen/motherHen4-yolk.png" id="6_hb2xu"]
+[ext_resource type="Texture2D" uid="uid://dup3pg8m7ksm7" path="res://Asset/MotherHen/motherHen4-structure-front.png" id="7_fyn32"]
+[ext_resource type="PackedScene" uid="uid://bsbaihwrj4djk" path="res://MotherShell.tscn" id="8_pp43c"]
+
+[sub_resource type="Animation" id="Animation_7egs1"]
+resource_name = "default"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HitBox/MotherHen4-yolk:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.54, 0.66), Vector2(0.6, 0.6), Vector2(0.66, 0.54), Vector2(0.6, 0.6), Vector2(0.54, 0.66), Vector2(0.6, 0.6), Vector2(0.66, 0.54), Vector2(0.6, 0.6), Vector2(0.54, 0.66), Vector2(0.6, 0.6), Vector2(0.66, 0.54), Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5kitc"]
+_data = {
+"EggHurt": SubResource("Animation_7egs1")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iie0h"]
+radius = 96.0391
+height = 213.901
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwkse"]
+shader = ExtResource("4_vn554")
+shader_parameter/time_factor = 0.5
+shader_parameter/amplitude = Vector2(0, 0)
+shader_parameter/tiled_factor = Vector2(1, 1)
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/offsetScale = Vector2(5, 1.25)
+shader_parameter/amplitudeWave = Vector2(0.01, 0.01)
+shader_parameter/timeScale = Vector2(6, 5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vcxob"]
+radius = 221.0
+height = 574.0
+
+[node name="MotherHen" instance=ExtResource("1_ksjxw")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_qggua")
+HP = 10000.0
+speed = 7500.0
+inClampedScreen = false
+BounceOffSceen = false
+
+[node name="AnimationCenter" parent="." index="0"]
+scale = Vector2(0.6, 0.6)
+
+[node name="MotherHen4-structure-back" type="Sprite2D" parent="AnimationCenter" index="0"]
+texture = ExtResource("3_8djjh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="1"]
+root_node = NodePath("../../MotherHen4-eggwhite")
+libraries = {
+"": SubResource("AnimationLibrary_5kitc")
+}
+
+[node name="HitBox" parent="." index="1"]
+collision_layer = 512
+
+[node name="MotherHen4-yolk" type="Sprite2D" parent="HitBox" index="0"]
+position = Vector2(30, 31.2)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_hb2xu")
+
+[node name="CollisionShape2D" parent="HitBox" index="1"]
+visible = false
+position = Vector2(-1, -14)
+scale = Vector2(0.916293, 0.82281)
+shape = SubResource("CapsuleShape2D_iie0h")
+debug_color = Color(0.933333, 0.211765, 0.380392, 0.419608)
+
+[node name="MotherHen4-eggwhite" type="Sprite2D" parent="." index="2"]
+texture_repeat = 1
+material = SubResource("ShaderMaterial_jwkse")
+position = Vector2(-6, -10.8)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_gv0m8")
+
+[node name="MotherHen4-structure-front" type="Sprite2D" parent="." index="3"]
+position = Vector2(-4, 3)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_fyn32")
+
+[node name="PhysicBox" parent="." index="4"]
+visible = false
+position = Vector2(-7, -14)
+shape = SubResource("CapsuleShape2D_vcxob")
+
+[node name="MotherSheel" parent="." index="5" instance=ExtResource("8_pp43c")]
+visible = false
+position = Vector2(-9, -8)
+
+[node name="Audio" type="AudioStreamPlayer" parent="." index="6"]
+
+[node name="AttackTimer" type="Timer" parent="." index="7"]
+wait_time = 3.0
+autostart = true
+
+[node name="AttackTimer2" type="Timer" parent="." index="8"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="tree_exiting" from="MotherSheel" to="." method="_on_mother_sheel_tree_exiting"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

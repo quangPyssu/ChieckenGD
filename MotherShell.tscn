@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsbaihwrj4djk"]
+
+[ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_anoo5"]
+[ext_resource type="Script" path="res://Source/MotherHen/MotherShell.gd" id="2_42xk4"]
+[ext_resource type="Texture2D" uid="uid://jn4hunu1e24r" path="res://Asset/MotherHen/EggCannon-eggshell.png" id="3_4sl3k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rv5ku"]
+radius = 211.0
+height = 566.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ryad"]
+
+[node name="MotherSheel" instance=ExtResource("1_anoo5")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_42xk4")
+HP = 1.0
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="EggCannon-eggshell" type="Sprite2D" parent="AnimationCenter" index="0"]
+rotation = -1.57079
+scale = Vector2(2.03533, 2.03533)
+texture = ExtResource("3_4sl3k")
+
+[node name="HitBox" parent="." index="1"]
+visible = false
+collision_layer = 512
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(2, 1)
+shape = SubResource("CapsuleShape2D_rv5ku")
+
+[node name="PhysicBox" parent="." index="2"]
+visible = false
+shape = SubResource("CircleShape2D_6ryad")

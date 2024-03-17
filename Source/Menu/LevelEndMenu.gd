@@ -23,7 +23,7 @@ func _on_button_quit_pressed():
 
 func _on_button_play_pressed():
 	resume()
-	get_tree().change_scene_to_file(Global.Levels[Global.CurrentLevel])
+	get_tree().change_scene_to_file(get_parent().Levels[Global.CurrentLevel])
 	
 func resume():
 	visible=false

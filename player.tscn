@@ -410,6 +410,7 @@ height = 68.0
 [node name="Entity" instance=ExtResource("1_tg83y")]
 collision_mask = 2
 script = ExtResource("1_vop0c")
+BounceOffSceen = false
 
 [node name="FireJetFast" type="Node2D" parent="AnimationCenter" index="0"]
 unique_name_in_owner = true

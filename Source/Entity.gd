@@ -31,7 +31,7 @@ func _ready():
 		HP=timerEnd
 
 	if savedPos!=Vector2(0, 0):
-		#print ("gotoPosition ", savedPos, " speed ", speed)
+		print ("gotoPosition ", savedPos, " speed ", speed)
 		gotoPosition(savedPos, speed)
 
 func _physics_process(delta):
@@ -48,13 +48,12 @@ func _physics_process(delta):
 			if !gotShapeSize:
 				gotShapeSize = true
 				ShapeSize = $PhysicBox.shape.get_rect().size/2
-
 			if BounceOffSceen:
-
+				
 				if global_position.x - ShapeSize.x <= 0 or global_position.x + ShapeSize.x>= Global.ScreenSize.x:
 					direction.x = -direction.x
 				if global_position.y - ShapeSize.y <= 0 or global_position.y + ShapeSize.y>= Global.ScreenSize.y:
-					direction.y = -direction.y					
+					direction.y = -direction.y
 
 			global_position.x = clamp(global_position.x , 0, Global.ScreenSize.x)
 			global_position.y = clamp(global_position.y , 0, Global.ScreenSize.y)

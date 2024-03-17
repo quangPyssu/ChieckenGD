@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg3mkhyhprmkk"]
+
+[ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_2khhx"]
+[ext_resource type="PackedScene" uid="uid://cghnb6tuipicn" path="res://MotherHen.tscn" id="2_jw7nv"]
+[ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="3_1oxge"]
+
+[node name="Game" instance=ExtResource("1_2khhx")]
+
+[node name="MotherHen" parent="Enemies/Wave0" index="0" instance=ExtResource("2_jw7nv")]
+position = Vector2(961, 287.259)
+savedPos = Vector2(960, 540)
+
+[node name="Anchor" parent="Enemies/Wave0/MotherHen" index="7" instance=ExtResource("3_1oxge")]
+position = Vector2(-1, 4.29153e-05)
+scale = Vector2(1, 1.00559)
+size = 300.0
+entityMax = 9.0
+rotateSpeed = 0.1
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Music" parent="." index="6"]
+stream = null
+
+[connection signal="tree_exited" from="Enemies/Wave0/MotherHen/Anchor" to="Enemies/Wave0/MotherHen/Anchor" method="_on_tree_exited"]

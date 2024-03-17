@@ -121,7 +121,6 @@ shape = SubResource("RectangleShape2D_te88e")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
 [node name="Music" parent="." index="6"]
-process_mode = 3
 stream = ExtResource("6_pvt4t")
 volume_db = -15.0
 
