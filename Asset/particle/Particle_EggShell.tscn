@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkxl0gyphv1kx"]
+
+[ext_resource type="Texture2D" uid="uid://dsroas63ysmu6" path="res://Asset/MotherHen/EggShell/Shells-0.png" id="1_1qn58"]
+[ext_resource type="Script" path="res://Source/Particle/Particle_EggShell.gd" id="2_tro8s"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vully"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 10
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_s5knt"]
+offsets = PackedFloat32Array(0.701357, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.101961)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7ynft"]
+gradient = SubResource("Gradient_s5knt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yj7g0"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 70.0
+initial_velocity_max = 100.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_7ynft")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_vully")
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_yj7g0")
+texture = ExtResource("1_1qn58")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("2_tro8s")
+metadata/ShellID = 0

@@ -99,6 +99,6 @@ func loadAttack():
 
 func cameraShake():
 	if Global.isShaking:
-		$Camera.position=Global.ScreenSize/2+Vector2(randi_range(-7,7),randi_range(-7,7))
+		$Camera.position=Global.ScreenSize/2+Vector2(randi_range(-Global.shakeStrength,Global.shakeStrength),randi_range(-Global.shakeStrength,Global.shakeStrength))
 	else:
 		$Camera.position=Global.ScreenSize/2

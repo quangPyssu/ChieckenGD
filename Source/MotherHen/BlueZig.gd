@@ -11,3 +11,4 @@ func _on_timer_timeout():
 	direction = (Global.PlayerPos - global_position).normalized()
 	look_at(Global.PlayerPos)
 	rotate(PI/2)
+	$BulletSound.play()

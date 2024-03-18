@@ -3,11 +3,10 @@ extends bullet
 var ani: AnimationPlayer
 
 func _ready():
-	rotation_degrees=-90
 	HP = 99999999
 	ani = $AnimationCenter/AnimationPlayer
-	ani.play("BeamStart")
-	ani.queue("Beaming")
+	ani.play("BeamStart_Mother")
+	ani.queue("Beaming_Mother")
 	$BulletSound.play()
 	$AnimationCenter/ChargeParticle.emitting=true
 	Global.isShaking=true
@@ -21,7 +20,7 @@ func _process(delta):
 		if i is bullet:
 			i.kill()
 		else:
-			i.get_parent().take_damage(damage*delta)
+			i.get_parent().take_damage(damage)
 
 	if !ani.is_playing():
 		queue_free()
@@ -30,7 +29,7 @@ func _on_area_entered(_area:Area2D):
 	pass
 
 func _on_timer_end_timeout():
-	ani.play_backwards("BeamStart")
+	ani.play_backwards("BeamStart_Mother")
 
 
 func _on_tree_exited():

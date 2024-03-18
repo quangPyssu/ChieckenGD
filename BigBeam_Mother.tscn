@@ -1,13 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://ddxh6p6766h7m"]
+[gd_scene load_steps=23 format=3 uid="uid://lti6pjg0hc4i"]
 
-[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_r5vgt"]
-[ext_resource type="Script" path="res://Source/BigBeam_Player.gd" id="2_w8g3m"]
-[ext_resource type="Texture2D" uid="uid://bgv2j8tbmtwk5" path="res://Asset/BigBeamBody.png" id="3_vtolt"]
-[ext_resource type="Texture2D" uid="uid://jbrsg4bqwpj6" path="res://Asset/BigBeam.png" id="4_e016c"]
-[ext_resource type="AudioStream" uid="uid://uv6n7bismn7j" path="res://Asset/Sounds/MasterSpark.mp3" id="6_7jihr"]
-[ext_resource type="Texture2D" uid="uid://rmnkuorl8kg" path="res://Asset/Battlecruiser_Shield.png" id="6_v45yh"]
-[ext_resource type="Texture2D" uid="uid://dtirv618cf5j7" path="res://Asset/white.png" id="6_wrq3e"]
-[ext_resource type="Shape2D" uid="uid://clfvtmfquskgf" path="res://Asset/particle/BeamBox.tres" id="7_k6kr2"]
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_1j0tc"]
+[ext_resource type="Script" path="res://Source/MotherHen/BigBeam_Mothergd.gd" id="2_hcy52"]
+[ext_resource type="Texture2D" uid="uid://bgv2j8tbmtwk5" path="res://Asset/BigBeamBody.png" id="3_vvadl"]
+[ext_resource type="Texture2D" uid="uid://jbrsg4bqwpj6" path="res://Asset/BigBeam.png" id="4_u8oi6"]
+[ext_resource type="Texture2D" uid="uid://dtirv618cf5j7" path="res://Asset/white.png" id="5_1wqbn"]
+[ext_resource type="Shape2D" uid="uid://clfvtmfquskgf" path="res://Asset/particle/BeamBox.tres" id="6_yijpi"]
+[ext_resource type="AudioStream" uid="uid://ds0oomft3ic4j" path="res://Asset/MotherHen/MasterBark.ogg" id="7_c2oh5"]
 
 [sub_resource type="Animation" id="Animation_v046r"]
 resource_name = "BeamStart"
@@ -251,21 +250,21 @@ _data = {
 "Beaming_Mother": SubResource("Animation_opxis")
 }
 
-[sub_resource type="Gradient" id="Gradient_4ox8l"]
+[sub_resource type="Gradient" id="Gradient_v7fpn"]
 offsets = PackedFloat32Array(0.502347, 1)
 colors = PackedColorArray(1, 1, 1, 0.886275, 0.482353, 0.462745, 0.45098, 0.192157)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_rpbbj"]
-gradient = SubResource("Gradient_4ox8l")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v33e4"]
+gradient = SubResource("Gradient_v7fpn")
 
-[sub_resource type="Curve" id="Curve_moev7"]
+[sub_resource type="Curve" id="Curve_gx4tc"]
 _data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 0.516483), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_lvuhx"]
-curve = SubResource("Curve_moev7")
+[sub_resource type="CurveTexture" id="CurveTexture_a46yq"]
+curve = SubResource("Curve_gx4tc")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dgocb"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lasri"]
 particle_flag_disable_z = true
 direction = Vector3(-1, 0, 0)
 spread = 50.0
@@ -275,25 +274,25 @@ gravity = Vector3(0, 0, 0)
 linear_accel_min = 200.0
 linear_accel_max = 500.0
 scale_over_velocity_max = 700.0
-scale_over_velocity_curve = SubResource("CurveTexture_lvuhx")
+scale_over_velocity_curve = SubResource("CurveTexture_a46yq")
 color = Color(0.172549, 1, 1, 1)
-color_ramp = SubResource("GradientTexture1D_rpbbj")
+color_ramp = SubResource("GradientTexture1D_v33e4")
 
-[sub_resource type="Gradient" id="Gradient_jpqda"]
+[sub_resource type="Gradient" id="Gradient_h88fn"]
 offsets = PackedFloat32Array(0, 0.725352, 1)
 colors = PackedColorArray(0.639216, 0.658824, 0.631373, 0.341176, 1, 1, 1, 1, 1, 1, 1, 0.45098)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1na8m"]
-gradient = SubResource("Gradient_jpqda")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6aohk"]
+gradient = SubResource("Gradient_h88fn")
 
-[sub_resource type="Curve" id="Curve_dumkj"]
+[sub_resource type="Curve" id="Curve_2lhcc"]
 _data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_s47t0"]
-curve = SubResource("Curve_dumkj")
+[sub_resource type="CurveTexture" id="CurveTexture_wje5t"]
+curve = SubResource("Curve_2lhcc")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pio8y"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lee1h"]
 particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
@@ -307,73 +306,59 @@ radial_accel_max = -500.0
 scale_min = 0.5
 scale_max = 0.5
 scale_over_velocity_max = 500.0
-scale_over_velocity_curve = SubResource("CurveTexture_s47t0")
+scale_over_velocity_curve = SubResource("CurveTexture_wje5t")
 color = Color(0.0313726, 1, 1, 1)
-color_ramp = SubResource("GradientTexture1D_1na8m")
+color_ramp = SubResource("GradientTexture1D_6aohk")
 
-[node name="Bullet" instance=ExtResource("1_r5vgt")]
-position = Vector2(0, -40)
-rotation = -1.5708
-scale = Vector2(1.00362, 1)
-collision_mask = 560
-script = ExtResource("2_w8g3m")
-damage = 300.0
+[node name="Bullet" instance=ExtResource("1_1j0tc")]
+collision_mask = 5
+script = ExtResource("2_hcy52")
+damage = 5.0
 inClampedScreen = false
 
-[node name="Shield" type="Sprite2D" parent="AnimationCenter" index="0"]
-position = Vector2(-47.8269, -0.00017376)
-rotation = 1.5708
-texture = ExtResource("6_v45yh")
-hframes = 8
-
-[node name="BigBeamBody" type="Sprite2D" parent="AnimationCenter" index="1"]
+[node name="BigBeamBody" type="Sprite2D" parent="AnimationCenter" index="0"]
 position = Vector2(886, 0)
 scale = Vector2(81.031, 1)
-texture = ExtResource("3_vtolt")
+texture = ExtResource("3_vvadl")
 hframes = 7
+frame = 3
 
-[node name="BigBeam" type="Sprite2D" parent="AnimationCenter" index="2"]
+[node name="BigBeam" type="Sprite2D" parent="AnimationCenter" index="1"]
 position = Vector2(70, 0)
 rotation = 3.14159
-texture = ExtResource("4_e016c")
+texture = ExtResource("4_u8oi6")
 hframes = 7
+frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_ux6m1")
 }
 speed_scale = 0.1
 
-[node name="BigBeamParticle" type="GPUParticles2D" parent="AnimationCenter" index="4"]
+[node name="BigBeamParticle" type="GPUParticles2D" parent="AnimationCenter" index="3"]
 scale = Vector2(1.00698, 0.996726)
 emitting = false
 amount = 15
-process_material = SubResource("ParticleProcessMaterial_dgocb")
-texture = ExtResource("6_wrq3e")
+process_material = SubResource("ParticleProcessMaterial_lasri")
+texture = ExtResource("5_1wqbn")
 lifetime = 0.5
 
-[node name="ChargeParticle" type="GPUParticles2D" parent="AnimationCenter" index="5"]
+[node name="ChargeParticle" type="GPUParticles2D" parent="AnimationCenter" index="4"]
 position = Vector2(-31.8846, 0.999902)
 scale = Vector2(1.07069, 1.00657)
 emitting = false
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_pio8y")
-texture = ExtResource("6_wrq3e")
+process_material = SubResource("ParticleProcessMaterial_lee1h")
+texture = ExtResource("5_1wqbn")
 one_shot = true
 speed_scale = 1.3
 
 [node name="HitBox" parent="." index="1"]
-position = Vector2(854.178, 0)
-shape = ExtResource("7_k6kr2")
+position = Vector2(854, 1)
+scale = Vector2(1, 4)
+shape = ExtResource("6_yijpi")
 
-[node name="TimerEnd" type="Timer" parent="." index="2"]
-wait_time = 4.0
-one_shot = true
-autostart = true
-
-[node name="BulletSound" parent="." index="3"]
-stream = ExtResource("6_7jihr")
-volume_db = -5.0
-
-[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
-[connection signal="timeout" from="TimerEnd" to="." method="_on_timer_end_timeout"]
+[node name="BulletSound" parent="." index="2"]
+stream = ExtResource("7_c2oh5")
+volume_db = -7.0

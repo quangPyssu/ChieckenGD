@@ -2,83 +2,88 @@ extends entity
 
 func _ready():
 	super._ready()
-	isInvincible=true
 
-func _on_mother_sheel_tree_exiting():
-	isInvincible=false
-
+var preEss:PackedScene = preload("res://UFOBullet.tscn")
 var preEgg:PackedScene = preload("res://BlueZig.tscn")
-var preSwarm:PackedScene = preload("res://bullet_anchor.tscn")
-var feather:PackedScene = preload("res://Asset/particle/Particle_Feather.tscn")
+var preBaked:PackedScene = preload("res://BigBeam_Mother.tscn")
+
 const visionBox:Vector2 = Vector2i(600.0,600.0)
 const eyeBox:Vector2 = Vector2i(90.0,90.0)
 var eyePos:Vector2 = Vector2i(0.0,0.0)
 var eyeSpeed:float = 40
 var rotationSpeed:float = 0
+var eyeRoationSpeed:float = PI/4.0
 
 var attackRange:int = 1
 
+var lockedMode:bool=false
+
 func _process(delta):
-	_look_at_player(delta)
-	if !isGoing:
-		var ran:int = randi()%5
-		
-		if !ran: rotationSpeed=0
-		
-		rotationSpeed+=randf_range(-0.02,0.02)*PI
-		if global_position.x+300 > Global.ScreenSize.x or global_position.x<300:
-			rotationSpeed=PI/4
-			if global_position.y+150 > Global.ScreenSize.y  or global_position.y<0:
-				rotationSpeed=PI/8
-		if global_position.y+150 > Global.ScreenSize.y  or global_position.y<0:
-			rotationSpeed=PI/4
-		rotation+=rotationSpeed*delta
-		
-		direction=Vector2(1.0,0.0).rotated(rotation-PI/2.0)
+	if Input.is_action_just_pressed("TestButton+"):
+		SpecialA()
 	
+	if (lockedMode):
+		$HitBox.rotation+=eyeRoationSpeed*delta
+		$Beam.position=$HitBox.position
+		$Beam.rotation=$HitBox.rotation+PI/2
+	else:
+		_look_at_player(delta)
+		if !isGoing:
+			var ran:int = randi()%5
+			
+			if !ran: rotationSpeed=0
+			
+			rotationSpeed+=randf_range(-0.02,0.02)*PI
+			if global_position.x+300 > Global.ScreenSize.x or global_position.x<300:
+				rotationSpeed=PI/4
+				if global_position.y+150 > Global.ScreenSize.y  or global_position.y<0:
+					rotationSpeed=PI/8
+			if global_position.y+150 > Global.ScreenSize.y  or global_position.y<0:
+				rotationSpeed=PI/4
+			rotation+=rotationSpeed*delta
+			
+			direction=Vector2(1.0,0.0).rotated(rotation-PI/2.0)
 	
 func atThreeQuarterHealth():
 	attackRange=2
 	$Audio.stream=preload("res://Asset/Sounds/(chickbossCry).ogg")
 	$Audio.play()
-	spawnFea()
 	
 func atHalfHealth():
+	attackRange=3
 	$Audio.stream=preload("res://Asset/Sounds/(chickbossCry).ogg")
 	$Audio.play()
-	$AnimationCenter/BossChickenBody.visible = false
-	$AnimationCenter/BossChickenBody2.visible = true	
-	spawnFea()
 
 func atQuarterHealth():
 	$Audio.stream=preload("res://Asset/Sounds/(chickbossCry).ogg")
 	$Audio.play()
-	$AnimationCenter/BossChickenBody2.visible = false
-	$AnimationCenter/BossChickenBody3.visible = true
-	spawnFea()
 	call_deferred("SpecialA")
 
 func SpecialA():
-	pass
+	attackRange=4
+	direction=Vector2(0,0)
+	lockedMode=true
+	gotoPosition(Global.ScreenSize/2.0,10000.0)
 	
-func spawnFea():
-	var f = feather.instantiate()
-	f.global_position = global_position
-	get_node("/root/Game/Projectiles").add_child(f)
+	var tween:Tween = get_tree().create_tween()
+	tween.tween_property(self, "rotation", 0, 2.0).set_trans(Tween.TRANS_LINEAR)
+	await get_tree().create_timer(2.5).timeout 
+	
+	Beam()
+	$AttackTimer2.start()
 	
 func kill():
 	if !isDead:
-		super.kill()
+		isDead = true
+
+		stopProcess()
 	
 		$AnimationCenter.visible=0
-		spawnFea()
-		spawnFea()
 
 		await get_tree().create_timer(2).timeout
 		queue_free()
 
-func attack(type:int):
-	var cnt: int=5
+func TrackShot(cnt: int):
 	for j in cnt:
 		var Egg=preEgg.instantiate()
 		get_node("/root/Game/Projectiles").add_child(Egg)
@@ -88,16 +93,48 @@ func attack(type:int):
 		Egg.rotation=Egg.direction.angle()+PI/2
 		Egg.get_child(2).volume_db=-10
 		await get_tree().create_timer(0.03).timeout 
+		
+func SpreadShot(cnt:int,mul:int):
+	var hCnt:int = cnt/2
+	for i in mul:
+		for j in cnt:
+			var Egg=preEss.instantiate()
+			get_node("/root/Game/Projectiles").add_child(Egg)
+			Egg.global_position = $HitBox.global_position
+			
+			var deg:float = (j-hCnt)*PI/2.0/cnt+Egg.get_angle_to(Global.PlayerPos)
+			Egg.direction=Vector2(1,0).rotated(deg)
+			Egg.rotation=Egg.direction.angle()+PI/2
+			Egg.get_child(2).volume_db=-10
+			await get_tree().create_timer(0.03).timeout 
+		await get_tree().create_timer(0.5).timeout 
+		
+func Beam():
+	var begg=preBaked.instantiate()
+	$Beam.add_child(begg)
+
+func attack():
+	match attackRange:
+		1:
+			SpreadShot(8,2)
+		2:
+			TrackShot(5)
+		3: 
+			SpreadShot(4,3)
+			TrackShot(5)
+		4:
+			SpreadShot(4,2)
+			TrackShot(3)
 
 func _on_attack_timer_timeout():
-	attack(randi()%attackRange)
+	attack()
 	
 func flicker():
 	if canFlicker and !isFlickering:
 		isFlickering = true
 		$AnimationCenter/AnimationPlayer.play("EggHurt")
 		await get_tree().create_timer(0.1).timeout
-		isFlickering = false
+		isFlickering = false		
 	
 func _look_at_player(delta):
 	var lookAt:Vector2 = ((Vector2(Global.PlayerPos - global_position)/visionBox).normalized()*eyeBox).rotated(rotation)
@@ -111,8 +148,10 @@ func _look_at_player(delta):
 		eyePos.y=eyePos.y+delta*eyeSpeed
 	elif eyePos.y>lookAt.y:
 		eyePos.y=eyePos.y-delta*eyeSpeed
-	
+		
 	$HitBox.position=eyePos
 	$HitBox.look_at(Global.PlayerPos)
-	$HitBox.rotation-=PI/2.0
-	
+	$HitBox.rotation-=PI/2
+
+func _on_attack_timer_2_timeout():
+	eyeRoationSpeed*=-1
