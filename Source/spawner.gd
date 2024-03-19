@@ -42,11 +42,15 @@ func _ready():
 		Global.SpawnType.SmallLaser:
 			WhatSpawner=WhatSpawnerType.BulletSpawner
 			theWhat=preload("res://SmallBeam_Enemy.tscn")
+			
+		Global.SpawnType.UFOBullet:
+			WhatSpawner=WhatSpawnerType.BulletSpawner
+			theWhat=preload("res://UFOBullet.tscn")
 		
 		Global.SpawnType.EnemyChicken:
 			WhatSpawner=WhatSpawnerType.EntitySpawner
 			theWhat=preload("res://Enemy_Chicken.tscn")
-	
+
 func spawn():
 	#random position in Spawn Zone
 	for i:int in SpawnCnt:
@@ -54,11 +58,12 @@ func spawn():
 		if WhatSpawner==WhatSpawnerType.BulletSpawner:
 			var A:bullet = theWhat.instantiate()
 			get_node("/root/Game/Projectiles").add_child(A)
+			A.get_child(A.get_child_count()-1).volume_db=-20
 			A.direction=direction
 			A.global_position = ranPos
-			print(direction)
+			#print(direction)
 			if (direction!=Vector2.ZERO):
-				A.rotation=atan(direction.x/direction.y)
+				A.rotation=A.direction.angle()+PI/2.0
 
 func _on_spawn_timer_timeout():
 	spawn()

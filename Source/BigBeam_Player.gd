@@ -11,7 +11,7 @@ func _ready():
 	$BulletSound.play()
 	$AnimationCenter/ChargeParticle.emitting=true
 	Global.isShaking=true
-	Global.shakeStrength=3
+	Global.shakeStrength=5
 
 func _process(delta):
 	super._process(delta)

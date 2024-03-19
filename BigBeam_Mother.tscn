@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://lti6pjg0hc4i"]
+[gd_scene load_steps=21 format=3 uid="uid://lti6pjg0hc4i"]
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_1j0tc"]
 [ext_resource type="Script" path="res://Source/MotherHen/BigBeam_Mothergd.gd" id="2_hcy52"]
@@ -8,83 +8,67 @@
 [ext_resource type="Shape2D" uid="uid://clfvtmfquskgf" path="res://Asset/particle/BeamBox.tres" id="6_yijpi"]
 [ext_resource type="AudioStream" uid="uid://ds0oomft3ic4j" path="res://Asset/MotherHen/MasterBark.ogg" id="7_c2oh5"]
 
-[sub_resource type="Animation" id="Animation_v046r"]
-resource_name = "BeamStart"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BigBeamBody:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BigBeam:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%AnimationCenter/../HitBox:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 4)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BigBeamParticle:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Shield:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 3]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AnimationPlayer:speed_scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0.1, 1.0]
-}
+[sub_resource type="Gradient" id="Gradient_v7fpn"]
+offsets = PackedFloat32Array(0.502347, 1)
+colors = PackedColorArray(1, 1, 1, 0.886275, 0.482353, 0.462745, 0.45098, 0.192157)
 
-[sub_resource type="Animation" id="Animation_bfs0x"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v33e4"]
+gradient = SubResource("Gradient_v7fpn")
+
+[sub_resource type="Curve" id="Curve_gx4tc"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 0.516483), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a46yq"]
+curve = SubResource("Curve_gx4tc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lasri"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 50.0
+initial_velocity_min = 500.0
+initial_velocity_max = 700.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 200.0
+linear_accel_max = 500.0
+scale_over_velocity_max = 700.0
+scale_over_velocity_curve = SubResource("CurveTexture_a46yq")
+color = Color(0.172549, 1, 1, 1)
+color_ramp = SubResource("GradientTexture1D_v33e4")
+
+[sub_resource type="Gradient" id="Gradient_h88fn"]
+offsets = PackedFloat32Array(0, 0.725352, 1)
+colors = PackedColorArray(0.639216, 0.658824, 0.631373, 0.341176, 1, 1, 1, 1, 1, 1, 1, 0.45098)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6aohk"]
+gradient = SubResource("Gradient_h88fn")
+
+[sub_resource type="Curve" id="Curve_2lhcc"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wje5t"]
+curve = SubResource("Curve_2lhcc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lee1h"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 300.0
+emission_ring_radius = 300.0
+emission_ring_inner_radius = 270.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -500.0
+radial_accel_max = -500.0
+scale_min = 0.5
+scale_max = 0.5
+scale_over_velocity_max = 500.0
+scale_over_velocity_curve = SubResource("CurveTexture_wje5t")
+color = Color(0.0313726, 1, 1, 1)
+color_ramp = SubResource("GradientTexture1D_6aohk")
+
+[sub_resource type="Animation" id="Animation_7otlu"]
 resource_name = "BeamStart_Mother"
 length = 0.5
 tracks/0/type = "value"
@@ -148,60 +132,7 @@ tracks/4/keys = {
 "values": [0.1, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_44ciy"]
-resource_name = "Beaming"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BigBeamBody:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [3, 6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BigBeam:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [3, 6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%AnimationCenter/../HitBox:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 4), Vector2(1, 6)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Shield:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_opxis"]
+[sub_resource type="Animation" id="Animation_4fgc2"]
 resource_name = "Beaming_Mother"
 length = 0.4
 loop_mode = 1
@@ -242,73 +173,11 @@ tracks/2/keys = {
 "values": [Vector2(1, 4), Vector2(1, 6)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ux6m1"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dgaq"]
 _data = {
-"BeamStart": SubResource("Animation_v046r"),
-"BeamStart_Mother": SubResource("Animation_bfs0x"),
-"Beaming": SubResource("Animation_44ciy"),
-"Beaming_Mother": SubResource("Animation_opxis")
+"BeamStart_Mother": SubResource("Animation_7otlu"),
+"Beaming_Mother": SubResource("Animation_4fgc2")
 }
-
-[sub_resource type="Gradient" id="Gradient_v7fpn"]
-offsets = PackedFloat32Array(0.502347, 1)
-colors = PackedColorArray(1, 1, 1, 0.886275, 0.482353, 0.462745, 0.45098, 0.192157)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_v33e4"]
-gradient = SubResource("Gradient_v7fpn")
-
-[sub_resource type="Curve" id="Curve_gx4tc"]
-_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 0.516483), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_a46yq"]
-curve = SubResource("Curve_gx4tc")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lasri"]
-particle_flag_disable_z = true
-direction = Vector3(-1, 0, 0)
-spread = 50.0
-initial_velocity_min = 500.0
-initial_velocity_max = 700.0
-gravity = Vector3(0, 0, 0)
-linear_accel_min = 200.0
-linear_accel_max = 500.0
-scale_over_velocity_max = 700.0
-scale_over_velocity_curve = SubResource("CurveTexture_a46yq")
-color = Color(0.172549, 1, 1, 1)
-color_ramp = SubResource("GradientTexture1D_v33e4")
-
-[sub_resource type="Gradient" id="Gradient_h88fn"]
-offsets = PackedFloat32Array(0, 0.725352, 1)
-colors = PackedColorArray(0.639216, 0.658824, 0.631373, 0.341176, 1, 1, 1, 1, 1, 1, 1, 0.45098)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6aohk"]
-gradient = SubResource("Gradient_h88fn")
-
-[sub_resource type="Curve" id="Curve_2lhcc"]
-_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_wje5t"]
-curve = SubResource("Curve_2lhcc")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lee1h"]
-particle_flag_disable_z = true
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 300.0
-emission_ring_radius = 300.0
-emission_ring_inner_radius = 270.0
-direction = Vector3(0, 0, 0)
-gravity = Vector3(0, 0, 0)
-radial_accel_min = -500.0
-radial_accel_max = -500.0
-scale_min = 0.5
-scale_max = 0.5
-scale_over_velocity_max = 500.0
-scale_over_velocity_curve = SubResource("CurveTexture_wje5t")
-color = Color(0.0313726, 1, 1, 1)
-color_ramp = SubResource("GradientTexture1D_6aohk")
 
 [node name="Bullet" instance=ExtResource("1_1j0tc")]
 collision_mask = 5
@@ -321,22 +190,14 @@ position = Vector2(886, 0)
 scale = Vector2(81.031, 1)
 texture = ExtResource("3_vvadl")
 hframes = 7
-frame = 3
 
 [node name="BigBeam" type="Sprite2D" parent="AnimationCenter" index="1"]
 position = Vector2(70, 0)
 rotation = 3.14159
 texture = ExtResource("4_u8oi6")
 hframes = 7
-frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_ux6m1")
-}
-speed_scale = 0.1
-
-[node name="BigBeamParticle" type="GPUParticles2D" parent="AnimationCenter" index="3"]
+[node name="BigBeamParticle" type="GPUParticles2D" parent="AnimationCenter" index="2"]
 scale = Vector2(1.00698, 0.996726)
 emitting = false
 amount = 15
@@ -344,7 +205,7 @@ process_material = SubResource("ParticleProcessMaterial_lasri")
 texture = ExtResource("5_1wqbn")
 lifetime = 0.5
 
-[node name="ChargeParticle" type="GPUParticles2D" parent="AnimationCenter" index="4"]
+[node name="ChargeParticle" type="GPUParticles2D" parent="AnimationCenter" index="3"]
 position = Vector2(-31.8846, 0.999902)
 scale = Vector2(1.07069, 1.00657)
 emitting = false
@@ -354,9 +215,14 @@ texture = ExtResource("5_1wqbn")
 one_shot = true
 speed_scale = 1.3
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_5dgaq")
+}
+speed_scale = 0.1
+
 [node name="HitBox" parent="." index="1"]
 position = Vector2(854, 1)
-scale = Vector2(1, 4)
 shape = ExtResource("6_yijpi")
 
 [node name="BulletSound" parent="." index="2"]

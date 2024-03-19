@@ -36,9 +36,9 @@ func _process(delta):
 			rotationSpeed+=randf_range(-0.02,0.02)*PI
 			if global_position.x+300 > Global.ScreenSize.x or global_position.x<300:
 				rotationSpeed=PI/4
-				if global_position.y+150 > Global.ScreenSize.y  or global_position.y<0:
+				if global_position.y+500 > Global.ScreenSize.y  or global_position.y<0:
 					rotationSpeed=PI/8
-			if global_position.y+150 > Global.ScreenSize.y  or global_position.y<0:
+			if global_position.y+500 > Global.ScreenSize.y  or global_position.y<0:
 				rotationSpeed=PI/4
 			rotation+=rotationSpeed*delta
 			
@@ -123,7 +123,7 @@ func attack():
 			SpreadShot(4,3)
 			TrackShot(5)
 		4:
-			SpreadShot(4,2)
+			SpreadShot(5,2)
 			TrackShot(3)
 
 func _on_attack_timer_timeout():

@@ -106,10 +106,12 @@ scale = Vector2(0.7, 0.7)
 collision_layer = 32
 collision_mask = 1
 script = ExtResource("2_r61ai")
-damage = 3
 canBreak = true
 HP = 50
 inClampedScreen = false
+
+[node name="AnimationCenter" parent="." index="0"]
+rotation = -1.57079
 
 [node name="Astroid" type="Sprite2D" parent="AnimationCenter" index="0"]
 texture_filter = 1
@@ -118,7 +120,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_j2x1t")
 hframes = 24
 vframes = 2
-frame = 47
+frame = 45
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="1"]
 libraries = {

@@ -3,7 +3,7 @@ extends Control
 var Buttons:Array [TextureButton] = []
 var Game:Array [PackedScene] = [preload("res://level0.tscn")]
 
-var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn"]
+var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://level2.tscn","res://level3.tscn"]
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

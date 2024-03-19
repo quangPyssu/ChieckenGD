@@ -36,7 +36,7 @@ rotation = -1.5708
 scale = Vector2(1.00362, 1)
 collision_mask = 544
 script = ExtResource("2_oaop0")
-damage = 100.0
+damage = 150.0
 inClampedScreen = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="0"]

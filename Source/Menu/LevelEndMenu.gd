@@ -35,4 +35,5 @@ func resume():
 func _on_button_next_pressed():
 	resume()
 	print("NextLvel")
-	get_tree().change_scene_to_file(Global.Levels[(Global.CurrentLevel+1)%5])
+	Global.CurrentLevel=(Global.CurrentLevel+1)%5
+	get_tree().change_scene_to_file(get_parent().Levels[Global.CurrentLevel])

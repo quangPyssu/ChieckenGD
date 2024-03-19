@@ -2,22 +2,24 @@ extends Node2D
 
 @onready var BG_pos=-%BlueBlankBackground.texture.get_size().y/2*%BlueBlankBackground.scale.y
 var AfterGame:PackedScene = preload("res://UI/LevelEndMenu.tscn")
-var WaveCount=0
-var CurrentWave=0
+var CurrentWave:int=0
+var FinalWave:bool=false
 
 var packedAttack: Array[PackedScene]
 
-var BossMusic: Array[String]=["res://Asset/Sounds/Music/BeOfGoodCheer.ogg","res://Asset/Sounds/Music/magicJinzoStraw.ogg"]
+var BossMusic: Array[String]=["res://Asset/Sounds/Music/BeOfGoodCheer.ogg","res://Asset/Sounds/Music/magicJinzoStraw.ogg",
+"res://Asset/Sounds/Music/LoveMasterSpark.ogg","res://Asset/Sounds/Music/HelianAlien.ogg"]
 
-var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn"]
+var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://level2.tscn","res://level3.tscn"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#set the window size
+	#set the window sizes
 	Global.defeated = false
 	Global.LevelEnd = false
 	Global.HP = Global.maxHP
 	$Player.position=Global.ScreenSize/2
+	#print(DisplayServer.window_get_size())	
 	
 	#hide the moused
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -29,7 +31,7 @@ func _ready():
 		wave.set_process_mode(PROCESS_MODE_DISABLED)
 		wave.visible=0
 	
-	$Enemies.get_child(0).set_process_mode(0)
+	$Enemies.get_child(0).set_process_mode(PROCESS_MODE_INHERIT)
 	$Enemies.get_child(0).visible=1
 	
 	loadAttack()
@@ -46,13 +48,14 @@ func _process(delta):
 		$Player.changeWeapon()
 	
 	cameraShake()
-	%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+100.0*delta
+	if !FinalWave:
+		%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+100.0*delta
 		
 	if %BlueBlankBackground.position.y>=0:
 		%BlueBlankBackground.position.y=BG_pos
 
 	if Global.LevelEnd:
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(2.0).timeout
 		$Paused.PauseGame()
 		$Paused.queue_free()
 		set_process(false)
@@ -66,12 +69,13 @@ func _process(delta):
 			print("Wave ",CurrentWave," has been defeated")
 			
 			if $Enemies.get_children().size()>1:
-				$Enemies.get_child(1).set_process_mode(0)
+				$Enemies.get_child(1).set_process_mode(PROCESS_MODE_INHERIT)
 				$Enemies.get_child(1).visible=1
 			
 			if $Enemies.get_children().size()==2:
 				$Music.set_stream(load(BossMusic[Global.CurrentLevel]))
 				$Music.play()
+				FinalWave=true
 	else: 
 		#await get_tree().create_timer(3.0)
 		Global.LevelEnd=1
@@ -99,6 +103,6 @@ func loadAttack():
 
 func cameraShake():
 	if Global.isShaking:
-		$Camera.position=Global.ScreenSize/2+Vector2(randi_range(-Global.shakeStrength,Global.shakeStrength),randi_range(-Global.shakeStrength,Global.shakeStrength))
+		$Camera.offset=Vector2(randi_range(-Global.shakeStrength,Global.shakeStrength),randi_range(-Global.shakeStrength,Global.shakeStrength))
 	else:
-		$Camera.position=Global.ScreenSize/2
+		$Camera.offset=Vector2.ZERO
