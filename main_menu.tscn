@@ -86,7 +86,7 @@ bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ejhgu")
-volume_db = -20.0
+volume_db = -15.0
 autoplay = true
 bus = &"Music"
 
@@ -106,5 +106,7 @@ offset_top = -500.0
 offset_right = 1018.0
 offset_bottom = -290.0
 
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="pressed" from="Buttons/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="Buttons/MapBtn" to="." method="_on_map_btn_pressed"]
 [connection signal="pressed" from="Buttons/ExitBtn" to="." method="_on_exit_btn_pressed"]

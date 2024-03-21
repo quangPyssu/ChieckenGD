@@ -24,6 +24,7 @@ func PauseGame():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Engine.time_scale=0
 	GonnaPause=true
+	$Audio.play()
 	
 func ResumeGame():
 	visible=false

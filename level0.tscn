@@ -29,6 +29,7 @@ entityMax = 16.0
 pattern = 1
 rotateSpeed = 0.1
 speed = 10000.0
+direction = Vector2(-1, 0)
 savedPos = Vector2(1000, 500)
 
 [node name="EnemyChicken" parent="Enemies/Wave1" index="0" instance=ExtResource("3_g8b77")]
@@ -69,21 +70,23 @@ shape = SubResource("RectangleShape2D_v0jq4")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
 [node name="Anchor2" parent="Enemies/Wave2" index="0" instance=ExtResource("2_s1cj1")]
-position = Vector2(-336, 351.094)
+position = Vector2(-230, 351)
 scale = Vector2(1, 1.00559)
 size = 200.0
 entityMax = 9.0
 pattern = 1
 speed = 10000.0
+direction = Vector2(1, 0)
 savedPos = Vector2(1000, 300)
 
 [node name="Anchor" parent="Enemies/Wave2" index="1" instance=ExtResource("2_s1cj1")]
-position = Vector2(2280, 311.197)
+position = Vector2(2250, 351)
 scale = Vector2(1, 1.00559)
 size = 200.0
 entityMax = 9.0
 rotateSpeed = 1.0
 speed = 10000.0
+direction = Vector2(1, 0)
 savedPos = Vector2(1000, 300)
 
 [node name="Wave2_5" type="Node2D" parent="Enemies" index="3"]

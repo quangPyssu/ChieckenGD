@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgeh2dbqccio"]
+[gd_scene load_steps=12 format=3 uid="uid://cgeh2dbqccio"]
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_lvee2"]
 [ext_resource type="Texture2D" uid="uid://c3xaaww5to3vp" path="res://Asset/UFO1.png" id="2_jyg17"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bggypdrc0td7t" path="res://Asset/UFO0.png" id="3_6bale"]
 [ext_resource type="Texture2D" uid="uid://bmqs2kr6gqhe7" path="res://Asset/UFO.png" id="4_n440m"]
 [ext_resource type="SpriteFrames" uid="uid://84mmi5wq84fj" path="res://Asset/SpriteFrames/Explosion.tres" id="5_mecf8"]
+[ext_resource type="AudioStream" uid="uid://bpgsgvppthgj0" path="res://Asset/Sounds/(ufoEngine).ogg" id="7_yyprj"]
 
 [sub_resource type="Animation" id="Animation_gd31r"]
 resource_name = "default"
@@ -89,20 +90,26 @@ frame = 8
 frame_progress = 1.0
 
 [node name="Audio" type="AudioStreamPlayer" parent="." index="4"]
+autoplay = true
 bus = &"GameSFX"
 
-[node name="AttackTimer" type="Timer" parent="." index="5"]
+[node name="Audio2" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("7_yyprj")
+autoplay = true
+bus = &"GameSFX"
+
+[node name="AttackTimer" type="Timer" parent="." index="6"]
 wait_time = 3.0
 autostart = true
 
-[node name="LaserTimer" type="Timer" parent="." index="6"]
+[node name="LaserTimer" type="Timer" parent="." index="7"]
 wait_time = 4.0
 autostart = true
 
-[node name="Marker" type="Marker2D" parent="." index="7"]
+[node name="Marker" type="Marker2D" parent="." index="8"]
 position = Vector2(0, -51)
 
-[node name="Marker2" type="Marker2D" parent="." index="8"]
+[node name="Marker2" type="Marker2D" parent="." index="9"]
 position = Vector2(0, 20)
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

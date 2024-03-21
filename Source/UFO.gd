@@ -40,6 +40,8 @@ func atQuarterHealth():
 	gotoPosition(Vector2(Global.ScreenSize.x/2,Global.ScreenSize.y/3),30000)
 	$Audio.stream=preload("res://Asset/Sounds/PlayerExplode.ogg")
 	$Audio.play()
+	$Audio2.stream=preload("res://Asset/Sounds/engineUfoDamaged.ogg")
+	$Audio2.play()
 	$Explosion.play("explosion")
 	
 func _process(_delta):
@@ -69,6 +71,7 @@ func kill():
 		super.kill()
 		$Audio.stream=preload("res://Asset/Sounds/PlayerExplode.ogg")
 		$Audio.play()
+		$Audio2.stop()
 	
 		$AnimationCenter.visible=0
 		$Explosion.play("explosion")

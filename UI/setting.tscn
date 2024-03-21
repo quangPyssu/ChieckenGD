@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://do7mnex32ow7t"]
+[gd_scene load_steps=10 format=3 uid="uid://do7mnex32ow7t"]
 
 [ext_resource type="Texture2D" uid="uid://c6axmfjn5xhno" path="res://Asset/Menu/Settings_BTN.png" id="1_35vqd"]
+[ext_resource type="PackedScene" uid="uid://cfg8be78qrgrg" path="res://Data/Dataing.tscn" id="2_bp5un"]
 [ext_resource type="Texture2D" uid="uid://cocwtxa3vsgtt" path="res://Asset/Menu/Settings_BTN_Hover.png" id="2_skels"]
 [ext_resource type="Script" path="res://UI/setting.gd" id="3_008c1"]
 [ext_resource type="Texture2D" uid="uid://dsgl34littrvj" path="res://Asset/Menu/Sound_BTN.png" id="3_o83bf"]
@@ -30,6 +31,8 @@ scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 2
 script = ExtResource("3_008c1")
+
+[node name="Dataing" parent="." instance=ExtResource("2_bp5un")]
 
 [node name="HBoxContainer2" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -200,6 +203,7 @@ theme_override_fonts/font = ExtResource("7_kb02j")
 theme_override_font_sizes/font_size = 30
 text = "Game SFX"
 
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="toggled" from="HBoxContainer2/VolumeBtn" to="." method="_on_volume_btn_toggled"]
 [connection signal="toggled" from="HBoxContainer2/RatioBtn" to="." method="_on_ratio_btn_toggled"]
 [connection signal="pressed" from="SettingBtn" to="." method="_on_setting_btn_pressed"]

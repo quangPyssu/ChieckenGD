@@ -9,16 +9,28 @@ enum Orentation {
 @export var isPausing:bool = false
 @export var orientation:Orentation = Orentation.left
 
+var Data = preload("res://UI/Data.gd").new()
+
 var pos:Array [Vector2] = [Vector2(-410.0,0.0),Vector2(0.0,0.0)]
 var siz:Array [Vector2] = [Vector2(625.0,210.0),Vector2(210.0,625.0)]
 
+static var loaded: bool=false
+
 func _ready():
+	if !loaded:
+		Data.load_Data()
+		loaded=1
+		
+	var j:int =0
 	for i in $Poppin/Popup/Volume.get_children():
 		i.value_changed.connect(_on_value_changed.bind(i.get_meta("busIndex")))
-		i.value=db_to_linear(AudioServer.get_bus_volume_db(i.get_meta("busIndex")))
-		
+		i.value=Global.Volume[j]
+		_on_value_changed(Global.Volume[j],i.get_meta("busIndex"))
+		j+=1
+	
 func _on_value_changed(value:float,bus_index:int):
 	AudioServer.set_bus_volume_db(bus_index,linear_to_db(value))
+	Global.Volume[bus_index]=value
 	
 func _on_setting_btn_pressed():	
 	stretch_retract()
@@ -67,9 +79,12 @@ func _on_volume_btn_toggled(toggled_on):
 	else:
 		$Poppin/Popup.global_position=Vector2(-2000.0,-2000.0)
 
-
 func _on_ratio_btn_toggled(toggled_on):
 	if (toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+func _on_tree_exited():
+	pass
+	#Data.save_Data()

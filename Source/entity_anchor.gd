@@ -31,7 +31,6 @@ func _ready():
 			var Shaping = CircleShape2D.new()
 			$PhysicBox.set_shape(Shaping)
 			$PhysicBox.shape.radius = size
-			direction = Vector2(-1,0)
 		Global.patternType.Hline,Global.patternType.Vline:
 			var Shaping = RectangleShape2D.new()
 			$PhysicBox.set_shape(Shaping)

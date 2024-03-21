@@ -37,6 +37,11 @@ func _ready():
 	loadAttack()
 
 func _process(delta):
+	%FPS.set_text("FPS %d" % Engine.get_frames_per_second())
+	
+	if Input.is_action_just_pressed("FramShow"):
+		%FPS.visible=!%FPS.visible
+	
 	if Input.is_action_just_pressed("ForceQuit"):
 		get_tree().quit()
 		
@@ -49,7 +54,7 @@ func _process(delta):
 	
 	cameraShake()
 	if !FinalWave:
-		%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+100.0*delta
+		%BlueBlankBackground.position.y=%BlueBlankBackground.position.y+70.0*delta
 		
 	if %BlueBlankBackground.position.y>=0:
 		%BlueBlankBackground.position.y=BG_pos

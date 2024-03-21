@@ -58,7 +58,7 @@ func spawn():
 		if WhatSpawner==WhatSpawnerType.BulletSpawner:
 			var A:bullet = theWhat.instantiate()
 			get_node("/root/Game/Projectiles").add_child(A)
-			A.get_child(A.get_child_count()-1).volume_db=-20
+			A.get_child(A.get_child_count()-1).volume_db=A.get_child(A.get_child_count()-1).volume_db-20
 			A.direction=direction
 			A.global_position = ranPos
 			#print(direction)

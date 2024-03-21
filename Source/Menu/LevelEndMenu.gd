@@ -1,4 +1,6 @@
 extends CanvasLayer
+
+var Data = preload("res://UI/Data.gd").new()
  
 func _ready():
 	if Global.defeated:
@@ -18,8 +20,6 @@ func _ready():
 func _on_button_quit_pressed():
 	resume()
 	get_tree().change_scene_to_file("res://main_menu.tscn")
-	
-
 
 func _on_button_play_pressed():
 	resume()
@@ -35,5 +35,6 @@ func resume():
 func _on_button_next_pressed():
 	resume()
 	print("NextLvel")
-	Global.CurrentLevel=(Global.CurrentLevel+1)%5
+	Global.CurrentLevel=(Global.CurrentLevel+1)%6
+	Global.UnlockedLevel=min(Global.CurrentLevel,5)
 	get_tree().change_scene_to_file(get_parent().Levels[Global.CurrentLevel])

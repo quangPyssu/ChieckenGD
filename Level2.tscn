@@ -1,5 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3f6lmxfc16kb"]
+[gd_scene load_steps=4 format=3 uid="uid://d3f6lmxfc16kb"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_y7006"]
+[ext_resource type="Texture2D" uid="uid://db31yvcovq88h" path="res://Asset/Orange_Blank_Background.png" id="2_wpoqj"]
+[ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="3_dqxsm"]
 
 [node name="Game" instance=ExtResource("1_y7006")]
+
+[node name="BlueBlankBackground" parent="." index="0"]
+texture = ExtResource("2_wpoqj")
+
+[node name="Anchor2" parent="Enemies/Wave2" index="0" instance=ExtResource("3_dqxsm")]
+position = Vector2(2382, 587.484)
+size = 400.0
+entityMax = 8.0
+pattern = 3
+speed = 10000.0
+direction = Vector2(-1, 0)
+savedPos = Vector2(1000, 200)
+
+[node name="Anchor3" parent="Enemies/Wave2" index="1" instance=ExtResource("3_dqxsm")]
+position = Vector2(-336, 351.094)
+size = 400.0
+entityMax = 7.0
+pattern = 3
+speed = 10000.0
+direction = Vector2(1, 0)
+savedPos = Vector2(1000, 200)
+
+[node name="Anchor4" parent="Enemies/Wave2" index="2" instance=ExtResource("3_dqxsm")]
+position = Vector2(2120, 79.7941)
+size = 100.0
+entityMax = 4.0
+Type = 5
+rotateSpeed = -1.0
+speed = 15000.0
+direction = Vector2(-1, 0)
+savedPos = Vector2(1000, 200)
+
+[node name="Anchor5" parent="Enemies/Wave2" index="3" instance=ExtResource("3_dqxsm")]
+position = Vector2(-72, 542.6)
+size = 300.0
+entityMax = 5.0
+pattern = 3
+speed = 10000.0
+direction = Vector2(1, 0)
+savedPos = Vector2(1000, 150)
+
+[node name="LevelName" parent="UI" index="1"]
+text = "
+"
+
+[connection signal="tree_exited" from="Enemies/Wave2/Anchor2" to="Enemies/Wave2/Anchor2" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave2/Anchor3" to="Enemies/Wave2/Anchor3" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave2/Anchor4" to="Enemies/Wave2/Anchor4" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave2/Anchor5" to="Enemies/Wave2/Anchor5" method="_on_tree_exited"]

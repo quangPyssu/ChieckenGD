@@ -1,0 +1,309 @@
+[gd_scene load_steps=18 format=3 uid="uid://btu0gnwjrvoy7"]
+
+[ext_resource type="Texture2D" uid="uid://ivp3tycfevyr" path="res://Asset/Menu/GalaxyBG.png" id="1_20i34"]
+[ext_resource type="Script" path="res://UI/LoadMenu.gd" id="1_qf11l"]
+[ext_resource type="Texture2D" uid="uid://cd06uic6x3jyj" path="res://Asset/Menu/LoadMenu/Earth.png" id="2_onamb"]
+[ext_resource type="Texture2D" uid="uid://tncu7crjpdt8" path="res://Asset/Menu/LoadMenu/FireRock.png" id="3_7v0qt"]
+[ext_resource type="Texture2D" uid="uid://78cbr3i1tibx" path="res://Asset/Menu/LoadMenu/GasGiant.png" id="4_wc88s"]
+[ext_resource type="Texture2D" uid="uid://bchsrkuuaav45" path="res://Asset/Menu/LoadMenu/Ring.png" id="5_oy21s"]
+[ext_resource type="Texture2D" uid="uid://bjsfaydokdyca" path="res://Asset/Menu/LoadMenu/Star.png" id="6_ap24g"]
+[ext_resource type="Texture2D" uid="uid://b055q84jxu1f5" path="res://Asset/Menu/LoadMenu/BlackHole.png" id="7_ob7r5"]
+[ext_resource type="Texture2D" uid="uid://drlsq3hmwup8r" path="res://Asset/Menu/Start_BTN.png" id="9_8baam"]
+[ext_resource type="Texture2D" uid="uid://c0ubxro6u43lj" path="res://Asset/Menu/BTN.png" id="10_t5rox"]
+
+[sub_resource type="Animation" id="Animation_q38dp"]
+resource_name = "BlackHole"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackHole:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 89]
+}
+
+[sub_resource type="Animation" id="Animation_h48bn"]
+resource_name = "Earth"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Earth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 99]
+}
+
+[sub_resource type="Animation" id="Animation_wc0xe"]
+resource_name = "FireRock"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireRock:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 119]
+}
+
+[sub_resource type="Animation" id="Animation_gaosy"]
+resource_name = "GasGiant"
+length = 11.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GasGiant:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 80]
+}
+
+[sub_resource type="Animation" id="Animation_rtb27"]
+resource_name = "Ring"
+length = 13.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ring:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 13),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 89]
+}
+
+[sub_resource type="Animation" id="Animation_mfhsr"]
+resource_name = "Star"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Star:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 89]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81160"]
+_data = {
+"BlackHole": SubResource("Animation_q38dp"),
+"Earth": SubResource("Animation_h48bn"),
+"FireRock": SubResource("Animation_wc0xe"),
+"GasGiant": SubResource("Animation_gaosy"),
+"Ring": SubResource("Animation_rtb27"),
+"Star": SubResource("Animation_mfhsr")
+}
+
+[node name="Load" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qf11l")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+z_index = -2
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_20i34")
+
+[node name="Earth" type="Sprite2D" parent="."]
+position = Vector2(1728, 888)
+texture = ExtResource("2_onamb")
+hframes = 50
+vframes = 2
+
+[node name="Button" type="Button" parent="Earth"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "Earth"
+metadata/Level = 0
+
+[node name="Ring" type="Sprite2D" parent="."]
+position = Vector2(1640, 312)
+rotation = -0.523598
+texture = ExtResource("5_oy21s")
+hframes = 30
+vframes = 3
+
+[node name="Button" type="Button" parent="Ring"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.307
+anchor_top = 0.307
+anchor_right = 0.689
+anchor_bottom = 0.693
+offset_left = -134.89
+offset_top = -134.89
+offset_right = -135.03
+offset_bottom = -135.11
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "Ring"
+metadata/Level = 1
+
+[node name="FireRock" type="Sprite2D" parent="."]
+position = Vector2(992, 96)
+rotation = -1.83259
+texture = ExtResource("3_7v0qt")
+hframes = 40
+vframes = 3
+
+[node name="Button" type="Button" parent="FireRock"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "FireRock"
+metadata/Level = 2
+
+[node name="Star" type="Sprite2D" parent="."]
+position = Vector2(984, 528)
+texture = ExtResource("6_ap24g")
+hframes = 30
+vframes = 3
+
+[node name="Button" type="Button" parent="Star"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.24
+anchor_right = 0.76
+anchor_bottom = 0.76
+offset_left = -200.0
+offset_top = -200.0
+offset_right = -200.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "Star"
+metadata/Level = 3
+
+[node name="GasGiant" type="Sprite2D" parent="."]
+position = Vector2(200, 880)
+rotation = 1.83259
+texture = ExtResource("4_wc88s")
+hframes = 27
+vframes = 3
+
+[node name="Button" type="Button" parent="GasGiant"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -80.0
+offset_right = -80.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "GasGiant"
+metadata/Level = 4
+
+[node name="BlackHole" type="Sprite2D" parent="."]
+position = Vector2(216, 128)
+rotation = 0.261799
+texture = ExtResource("7_ob7r5")
+hframes = 30
+vframes = 3
+
+[node name="Button" type="Button" parent="BlackHole"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.22
+anchor_top = 0.215
+anchor_right = 0.79
+anchor_bottom = 0.75
+offset_left = -99.0
+offset_top = -94.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "BlackHole"
+metadata/Level = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_81160")
+}
+
+[node name="StartBtn" type="TextureButton" parent="."]
+light_mask = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.905
+anchor_right = 0.5
+anchor_bottom = 0.905
+offset_left = -205.0
+offset_top = -121.0
+offset_right = 205.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_8baam")
+texture_pressed = ExtResource("10_t5rox")
+texture_disabled = ExtResource("10_t5rox")
+
+[connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]

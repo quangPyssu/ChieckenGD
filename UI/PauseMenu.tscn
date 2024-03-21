@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfxh60sa0kekt"]
+[gd_scene load_steps=7 format=3 uid="uid://cfxh60sa0kekt"]
 
 [ext_resource type="Script" path="res://Source/PauseMenu.gd" id="1_a66hj"]
 [ext_resource type="Texture2D" uid="uid://cf7xihxmn31ce" path="res://Asset/Menu/Close_BTN.png" id="2_b7yvq"]
 [ext_resource type="Texture2D" uid="uid://j84hhy3td1vb" path="res://Asset/Menu/Play_BTN.png" id="4_q6yur"]
 [ext_resource type="PackedScene" uid="uid://do7mnex32ow7t" path="res://UI/setting.tscn" id="5_sw3ip"]
 [ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://Asset/Fonts/neuro.ttf" id="5_vm3mv"]
+[ext_resource type="AudioStream" uid="uid://v4nx0thw6uja" path="res://Asset/Menu/Sfx/vanish.ogg" id="6_kx3aw"]
 
 [node name="Paused" type="CanvasLayer"]
 process_mode = 2
@@ -60,18 +61,6 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 20
 
-[node name="ButtonQuit" type="TextureButton" parent="Control/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("2_b7yvq")
-
-[node name="Setting" parent="Control/HBoxContainer" instance=ExtResource("5_sw3ip")]
-layout_mode = 2
-isPausing = true
-orientation = 1
-
 [node name="ButtonResume" type="TextureButton" parent="Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -79,5 +68,22 @@ size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_q6yur")
 
-[connection signal="pressed" from="Control/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[node name="Setting" parent="Control/HBoxContainer" instance=ExtResource("5_sw3ip")]
+layout_mode = 2
+isPausing = true
+orientation = 1
+
+[node name="ButtonQuit" type="TextureButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_b7yvq")
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_kx3aw")
+bus = &"SFX"
+
 [connection signal="pressed" from="Control/HBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

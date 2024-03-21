@@ -25,7 +25,7 @@ var UnlockedWeapon:Array[bool] = [1,0,0,0]
 var UnlockedSpecial:Array[bool] = [1,1,0,0]
 var CurrentLevel:int = 0
 var UnlockedLevel:int = 3
-var Volume:int = 100
+var Volume:Array [float] = [1.0,0.5,0.5,0.4]
 ####################
 
 var EquippedWeapon: Array[int] =[0,1]

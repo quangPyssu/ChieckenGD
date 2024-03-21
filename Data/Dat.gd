@@ -1,3 +1,5 @@
+extends Node
+
 func save_Data():
 	print("saving")
 	var file = FileAccess.open(Global.save_game_path,FileAccess.WRITE)
@@ -20,6 +22,7 @@ func load_Data():
 		Global.UnlockedLevel=file.get_var(Global.UnlockedLevel)
 		for i in 4:
 			Global.Volume[i]=file.get_var(Global.Volume[i])
+			print(Global.Volume[i])
 		
 		for i in Global.UnlockedWeapon:
 			i=file.get_var(i)
@@ -28,3 +31,4 @@ func load_Data():
 			i=file.get_var(i)
 	else:
 		print("cc ko cos file")
+

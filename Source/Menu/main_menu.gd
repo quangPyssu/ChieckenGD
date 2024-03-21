@@ -5,6 +5,8 @@ var Game:Array [PackedScene] = [preload("res://level0.tscn")]
 
 var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://level2.tscn","res://level3.tscn"]
 
+var Data = preload("res://UI/Data.gd").new()
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -17,8 +19,6 @@ func _ready():
 	for i in Buttons:
 		i.connect("pressed",BTN_Hover)
 
-	#$Dataing.load_Data()
-
 func _process(_delta):
 	$BtnLight.global_position=get_global_mouse_position()
 	
@@ -27,6 +27,7 @@ func BTN_Hover():
 	$AudioStreamPlayer.play()
 
 func _on_exit_btn_pressed():
+	_on_tree_exited()
 	get_tree().quit()
 	
 
@@ -36,3 +37,11 @@ func _on_start_btn_pressed():
 
 
 var isSetting:bool=0
+
+
+func _on_map_btn_pressed():
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://UI/LoadMenu.tscn")
+
+func _on_tree_exited():
+	Data.save_Data()
