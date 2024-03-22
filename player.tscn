@@ -461,7 +461,7 @@ libraries = {
 }
 
 [node name="HitBox" parent="." index="1"]
-collision_layer = 1
+collision_layer = 256
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("RectangleShape2D_qoar3")

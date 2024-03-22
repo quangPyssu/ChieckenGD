@@ -1,15 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3f6lmxfc16kb"]
+[gd_scene load_steps=9 format=3 uid="uid://d3f6lmxfc16kb"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_y7006"]
 [ext_resource type="Texture2D" uid="uid://db31yvcovq88h" path="res://Asset/Orange_Blank_Background.png" id="2_wpoqj"]
 [ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="3_dqxsm"]
+[ext_resource type="PackedScene" uid="uid://dmy2mmbxd5qib" path="res://spaceShip.tscn" id="3_l2y60"]
+[ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://spawner.tscn" id="4_u2gux"]
+[ext_resource type="AudioStream" uid="uid://dlkk3ei4syevg" path="res://Asset/Sounds/Music/RetributionNight.ogg" id="5_7j663"]
+[ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://Enemy_Chicken.tscn" id="5_5152i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxb7e"]
+size = Vector2(1920, 253.897)
 
 [node name="Game" instance=ExtResource("1_y7006")]
 
 [node name="BlueBlankBackground" parent="." index="0"]
 texture = ExtResource("2_wpoqj")
 
-[node name="Anchor2" parent="Enemies/Wave2" index="0" instance=ExtResource("3_dqxsm")]
+[node name="Anchor2" parent="Enemies/Wave0" index="0" instance=ExtResource("3_dqxsm")]
 position = Vector2(2382, 587.484)
 size = 400.0
 entityMax = 8.0
@@ -18,7 +25,7 @@ speed = 10000.0
 direction = Vector2(-1, 0)
 savedPos = Vector2(1000, 200)
 
-[node name="Anchor3" parent="Enemies/Wave2" index="1" instance=ExtResource("3_dqxsm")]
+[node name="Anchor3" parent="Enemies/Wave0" index="1" instance=ExtResource("3_dqxsm")]
 position = Vector2(-336, 351.094)
 size = 400.0
 entityMax = 7.0
@@ -27,7 +34,7 @@ speed = 10000.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 200)
 
-[node name="Anchor4" parent="Enemies/Wave2" index="2" instance=ExtResource("3_dqxsm")]
+[node name="Anchor4" parent="Enemies/Wave0" index="2" instance=ExtResource("3_dqxsm")]
 position = Vector2(2120, 79.7941)
 size = 100.0
 entityMax = 4.0
@@ -37,7 +44,7 @@ speed = 15000.0
 direction = Vector2(-1, 0)
 savedPos = Vector2(1000, 200)
 
-[node name="Anchor5" parent="Enemies/Wave2" index="3" instance=ExtResource("3_dqxsm")]
+[node name="Anchor5" parent="Enemies/Wave0" index="3" instance=ExtResource("3_dqxsm")]
 position = Vector2(-72, 542.6)
 size = 300.0
 entityMax = 5.0
@@ -46,11 +53,113 @@ speed = 10000.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 150)
 
+[node name="EnemyChicken" parent="Enemies/Wave1" index="0" instance=ExtResource("5_5152i")]
+position = Vector2(2220, -300)
+scale = Vector2(1, 1.00569)
+collision_layer = 0
+timerEnd = 20.0
+savedPos = Vector2(-100, -100)
+isInvincible = true
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Spawner" parent="Enemies/Wave1/EnemyChicken" index="5" instance=ExtResource("4_u2gux")]
+position = Vector2(-2408, 118.551)
+scale = Vector2(1, 1.00258)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 2.0
+SpawnCnt = 7
+WhatSpawning = 2
+direction = Vector2(0, 3)
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave1/EnemyChicken/Spawner" index="1"]
+position = Vector2(1148, 52.3404)
+shape = SubResource("RectangleShape2D_gxb7e")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[node name="Anchor2" parent="Enemies/Wave2" index="0" instance=ExtResource("3_dqxsm")]
+position = Vector2(2358, 348.102)
+size = 400.0
+entityMax = 8.0
+pattern = 3
+speed = 10000.0
+direction = Vector2(-1, 0)
+savedPos = Vector2(1000, 200)
+
+[node name="Anchor3" parent="Enemies/Wave2" index="1" instance=ExtResource("3_dqxsm")]
+position = Vector2(-360, 111.712)
+size = 400.0
+entityMax = 7.0
+pattern = 3
+speed = 10000.0
+direction = Vector2(1, 0)
+savedPos = Vector2(1000, 200)
+
+[node name="Anchor5" parent="Enemies/Wave2" index="2" instance=ExtResource("3_dqxsm")]
+position = Vector2(-96, 303.218)
+size = 300.0
+entityMax = 5.0
+pattern = 3
+speed = 10000.0
+direction = Vector2(1, 0)
+savedPos = Vector2(1000, 150)
+
+[node name="Wave3" type="Node2D" parent="Enemies" index="3"]
+
+[node name="EnemyChicken" parent="Enemies/Wave3" index="0" instance=ExtResource("5_5152i")]
+position = Vector2(2220, 1039.32)
+scale = Vector2(1, 1.00569)
+collision_layer = 0
+timerEnd = 20.0
+savedPos = Vector2(-100, -100)
+isInvincible = true
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Spawner" parent="Enemies/Wave3/EnemyChicken" index="5" instance=ExtResource("4_u2gux")]
+position = Vector2(-2408, 118.551)
+scale = Vector2(1, 1.00258)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 2.0
+SpawnCnt = 7
+WhatSpawning = 2
+direction = Vector2(0, -1)
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave3/EnemyChicken/Spawner" index="1"]
+position = Vector2(1148, 52.3404)
+shape = SubResource("RectangleShape2D_gxb7e")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[node name="Wave3_5" type="Node2D" parent="Enemies" index="4"]
+
+[node name="EnemyChicken" parent="Enemies/Wave3_5" index="0" instance=ExtResource("5_5152i")]
+position = Vector2(2220, -300)
+scale = Vector2(1, 1.00569)
+timerEnd = 3.0
+savedPos = Vector2(-100, -100)
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Wave4" type="Node2D" parent="Enemies" index="5"]
+
+[node name="Entity" parent="Enemies/Wave4" index="0" instance=ExtResource("3_l2y60")]
+
 [node name="LevelName" parent="UI" index="1"]
 text = "
 "
 
+[node name="Music" parent="." index="6"]
+stream = ExtResource("5_7j663")
+
+[connection signal="tree_exited" from="Enemies/Wave0/Anchor2" to="Enemies/Wave0/Anchor2" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave0/Anchor3" to="Enemies/Wave0/Anchor3" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave0/Anchor4" to="Enemies/Wave0/Anchor4" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave0/Anchor5" to="Enemies/Wave0/Anchor5" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Enemies/Wave2/Anchor2" to="Enemies/Wave2/Anchor2" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Enemies/Wave2/Anchor3" to="Enemies/Wave2/Anchor3" method="_on_tree_exited"]
-[connection signal="tree_exited" from="Enemies/Wave2/Anchor4" to="Enemies/Wave2/Anchor4" method="_on_tree_exited"]
 [connection signal="tree_exited" from="Enemies/Wave2/Anchor5" to="Enemies/Wave2/Anchor5" method="_on_tree_exited"]

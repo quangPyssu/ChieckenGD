@@ -89,8 +89,9 @@ size = Vector2(12, 24)
 [node name="Bullet" instance=ExtResource("1_ywy4j")]
 scale = Vector2(1.5, 1.5)
 collision_layer = 16
-collision_mask = 1
+collision_mask = 256
 script = ExtResource("2_auqik")
+damage = 10.0
 canBreak = true
 
 [node name="UfoBullet" type="AnimatedSprite2D" parent="AnimationCenter" index="0"]

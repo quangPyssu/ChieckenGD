@@ -1,34 +1,119 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmy2mmbxd5qib"]
+[gd_scene load_steps=12 format=3 uid="uid://dmy2mmbxd5qib"]
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_5glbx"]
 [ext_resource type="Script" path="res://Source/SpaceShip.gd" id="2_yfynb"]
 [ext_resource type="Texture2D" uid="uid://d2nix8plrsw5c" path="res://Asset/SpaceShip/SpaceShipBody.png" id="3_cfh5d"]
+[ext_resource type="Texture2D" uid="uid://dddm6dd83slfa" path="res://Asset/SpaceShip/exhaust.png" id="3_pucct"]
+[ext_resource type="AudioStream" uid="uid://obb6wtmc40q5" path="res://Asset/Sounds/PlayerExplode.ogg" id="5_2p4lj"]
+[ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://spawner.tscn" id="6_7tf5e"]
+[ext_resource type="PackedScene" uid="uid://d3vckuwyyxyvw" path="res://Asset/SpriteFrames/explosion.tscn" id="6_hw3kw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvsti"]
 size = Vector2(80, 103)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r18c0"]
-radius = 26.0
-height = 82.0
+radius = 40.0
+height = 96.0001
 
-[node name="Entity" instance=ExtResource("1_5glbx")]
-collision_layer = 2
+[sub_resource type="Curve2D" id="Curve2D_ar8lx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -300, -300, 0, 0, 0, 0, 2220, -300, 0, 0, 0, 0, 2200, 1380, 0, 0, 0, 0, -300, 1380, 0, 0, 0, 0, -300, -300)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unmaf"]
+size = Vector2(1920, 253.897)
+
+[node name="SpaceShip" instance=ExtResource("1_5glbx")]
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_yfynb")
+HP = 3000.0
+speed = 8000.0
+inClampedScreen = false
+BounceOffSceen = false
 
-[node name="SpaceShipBody" type="Sprite2D" parent="AnimationCenter" index="0"]
+[node name="Marker" type="Marker2D" parent="." index="0"]
+position = Vector2(42, 0)
+
+[node name="AttackTimer" type="Timer" parent="Marker" index="0"]
+wait_time = 3.0
+autostart = true
+
+[node name="Exhaust" type="Sprite2D" parent="AnimationCenter" index="0"]
+position = Vector2(-149, 0)
+rotation = -1.57079
+texture = ExtResource("3_pucct")
+
+[node name="SpaceShipBody" type="Sprite2D" parent="AnimationCenter" index="1"]
+unique_name_in_owner = true
+texture_filter = 1
 texture = ExtResource("3_cfh5d")
 hframes = 11
 vframes = 3
 frame = 16
 
-[node name="HitBox" parent="." index="1"]
+[node name="HitBox" parent="." index="2"]
 collision_layer = 512
+collision_mask = 288
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("RectangleShape2D_gvsti")
 debug_color = Color(0.866667, 0.305882, 0.482353, 0.419608)
 
-[node name="PhysicBox" parent="." index="2"]
+[node name="PhysicBox" parent="." index="3"]
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_r18c0")
+
+[node name="Audio" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("5_2p4lj")
+volume_db = -5.0
+
+[node name="Node" type="Node" parent="." index="5"]
+
+[node name="Path2D" type="Path2D" parent="Node" index="0"]
+curve = SubResource("Curve2D_ar8lx")
+
+[node name="Border" type="PathFollow2D" parent="Node/Path2D" index="0"]
+unique_name_in_owner = true
+position = Vector2(-300, -300)
+
+[node name="Spawner" parent="Node" index="1" instance=ExtResource("6_7tf5e")]
+position = Vector2(-188, -180.774)
+scale = Vector2(0.3, 1.008)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 3.0
+SpawnCnt = 2
+WhatSpawning = 2
+direction = Vector2(0, -1)
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Node/Spawner" index="1"]
+position = Vector2(3200, 1382.71)
+shape = SubResource("RectangleShape2D_unmaf")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[node name="Spawner2" parent="Node" index="2" instance=ExtResource("6_7tf5e")]
+position = Vector2(-188, -180.774)
+scale = Vector2(0.3, 1.008)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 3.0
+SpawnCnt = 2
+WhatSpawning = 2
+direction = Vector2(0, -1)
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Node/Spawner2" index="1"]
+position = Vector2(8933.33, 1382.71)
+shape = SubResource("RectangleShape2D_unmaf")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[node name="AttackTimer" type="Timer" parent="." index="6"]
+wait_time = 1.5
+autostart = true
+
+[node name="Explosion" parent="." index="7" instance=ExtResource("6_hw3kw")]
+frame = 8
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

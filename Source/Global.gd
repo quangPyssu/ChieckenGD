@@ -5,8 +5,8 @@ const ScreenSize:Vector2 = Vector2(1920, 1080)
 var defeated:bool = false
 var LevelEnd:bool = false
 
-var HP:float = 10.0
-var maxHP:float = 10.0
+var HP:float = 100.0
+var maxHP:float = 100.0
 
 var SP:float = 30.0
 var maxSP:float = 30.0

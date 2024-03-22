@@ -180,9 +180,9 @@ _data = {
 }
 
 [node name="Bullet" instance=ExtResource("1_1j0tc")]
-collision_mask = 5
+collision_mask = 260
 script = ExtResource("2_hcy52")
-damage = 5.0
+damage = 50.0
 inClampedScreen = false
 
 [node name="BigBeamBody" type="Sprite2D" parent="AnimationCenter" index="0"]

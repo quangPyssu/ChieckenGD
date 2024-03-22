@@ -13,7 +13,7 @@ func _ready():
 			a.pressed.connect(_press_butt.bind(a.get_meta("Level"),a.get_meta("Ani")))
 
 func _press_butt(i:int,ani:String):
-	
+	print (i , " " ,Global.UnlockedLevel)
 	if Global.UnlockedLevel>=i:
 		Global.CurrentLevel=i
 		

@@ -2,7 +2,6 @@ extends bullet
 
 func _ready():
 	inClampedScreen=false
-	damage=4
 	
 	var ran:float = randf_range(0.7,1.2)
 	speed=200.0/ran

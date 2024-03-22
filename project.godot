@@ -135,5 +135,6 @@ FramShow={
 2d_physics/layer_6="EnemyBullet_vulnerable"
 2d_physics/layer_7="EnemiesBulletHARD"
 2d_physics/layer_8="EntityAnchor"
+2d_physics/layer_9="PlayerHitBox"
 2d_physics/layer_10="EnemyHitBox"
 2d_physics/layer_13="BulletSwarm"

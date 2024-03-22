@@ -54,7 +54,7 @@ func _ready():
 func spawn():
 	#random position in Spawn Zone
 	for i:int in SpawnCnt:
-		var ranPos=Vector2(randf_range(0,theBox.shape.size.x),randf_range(0,theBox.shape.size.y))+orgPos
+		var ranPos=Vector2(randf_range(0,theBox.shape.size.x*scale.x),randf_range(0,theBox.shape.size.y*scale.y))+orgPos
 		if WhatSpawner==WhatSpawnerType.BulletSpawner:
 			var A:bullet = theWhat.instantiate()
 			get_node("/root/Game/Projectiles").add_child(A)

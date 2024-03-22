@@ -71,9 +71,9 @@ size = Vector2(1140, 18.75)
 
 [node name="Bullet" instance=ExtResource("1_vtrlp")]
 rotation = 1.5708
-collision_mask = 1
+collision_mask = 256
 script = ExtResource("2_a0brl")
-damage = 2.0
+damage = 20.0
 
 [node name="QuicklyBeam" type="Sprite2D" parent="AnimationCenter" index="0"]
 self_modulate = Color(1, 1, 1, 0)

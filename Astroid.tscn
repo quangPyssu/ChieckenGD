@@ -104,10 +104,11 @@ size = Vector2(114.817, 88.1877)
 [node name="Bullet" instance=ExtResource("1_kngag")]
 scale = Vector2(0.7, 0.7)
 collision_layer = 32
-collision_mask = 1
+collision_mask = 256
 script = ExtResource("2_r61ai")
+damage = 40.0
 canBreak = true
-HP = 50
+HP = 40
 inClampedScreen = false
 
 [node name="AnimationCenter" parent="." index="0"]
