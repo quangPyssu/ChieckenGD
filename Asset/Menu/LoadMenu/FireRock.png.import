@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tncu7crjpdt8"
-path="res://.godot/imported/FireRock.png-0ba314cb24324d3c016e10688f49dfde.ctex"
+path.s3tc="res://.godot/imported/FireRock.png-0ba314cb24324d3c016e10688f49dfde.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Asset/Menu/LoadMenu/FireRock.png"
-dest_files=["res://.godot/imported/FireRock.png-0ba314cb24324d3c016e10688f49dfde.ctex"]
+dest_files=["res://.godot/imported/FireRock.png-0ba314cb24324d3c016e10688f49dfde.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

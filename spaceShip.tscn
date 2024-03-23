@@ -114,6 +114,7 @@ autostart = true
 
 [node name="Explosion" parent="." index="7" instance=ExtResource("6_hw3kw")]
 frame = 8
+frame_progress = 0.0
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

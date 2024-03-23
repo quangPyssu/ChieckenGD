@@ -14,9 +14,6 @@ var lockedMode:bool=false
 var damage:float = 40
 
 func _process(delta):
-	if Input.is_action_just_pressed("ChangeWeapon"):
-		kill()
-
 	$AnimationCenter/Exhaust.scale.x=randf_range(0.9,1.2)	
 	if (ramCnt):
 		$AnimationCenter/Exhaust.scale.x+=1

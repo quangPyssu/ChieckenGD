@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bchsrkuuaav45"
-path.s3tc="res://.godot/imported/Ring.png-cc6ed7c8d8d371b2894fe4ae59fa0ad6.s3tc.ctex"
+uid="uid://vrd5n1327hkg"
+path="res://.godot/imported/electroBeam5.png-cc6a902bbd1ff242d5d78a955236d014.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Menu/LoadMenu/Ring.png"
-dest_files=["res://.godot/imported/Ring.png-cc6ed7c8d8d371b2894fe4ae59fa0ad6.s3tc.ctex"]
+source_file="res://Asset/TheHenterPrise/electroBeam5.png"
+dest_files=["res://.godot/imported/electroBeam5.png-cc6a902bbd1ff242d5d78a955236d014.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

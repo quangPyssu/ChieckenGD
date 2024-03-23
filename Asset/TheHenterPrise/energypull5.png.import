@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bchsrkuuaav45"
-path.s3tc="res://.godot/imported/Ring.png-cc6ed7c8d8d371b2894fe4ae59fa0ad6.s3tc.ctex"
+uid="uid://bdjkddbllf1q"
+path="res://.godot/imported/energypull5.png-d788f61c03867b221f7fef6337355e79.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Menu/LoadMenu/Ring.png"
-dest_files=["res://.godot/imported/Ring.png-cc6ed7c8d8d371b2894fe4ae59fa0ad6.s3tc.ctex"]
+source_file="res://Asset/TheHenterPrise/energypull5.png"
+dest_files=["res://.godot/imported/energypull5.png-d788f61c03867b221f7fef6337355e79.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

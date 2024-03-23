@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bchsrkuuaav45"
-path.s3tc="res://.godot/imported/Ring.png-cc6ed7c8d8d371b2894fe4ae59fa0ad6.s3tc.ctex"
+uid="uid://dsratar3t7chq"
+path="res://.godot/imported/henterpriseFront.png-ac8999df3f4617370efa34dd8b5da184.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Menu/LoadMenu/Ring.png"
-dest_files=["res://.godot/imported/Ring.png-cc6ed7c8d8d371b2894fe4ae59fa0ad6.s3tc.ctex"]
+source_file="res://Asset/TheHenterPrise/henterpriseFront.png"
+dest_files=["res://.godot/imported/henterpriseFront.png-ac8999df3f4617370efa34dd8b5da184.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

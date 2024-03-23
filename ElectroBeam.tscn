@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://fsstljqi48wb"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_r4t7v"]
+[ext_resource type="Script" path="res://Source/TheHenterPrise/ElectroBeam.gd" id="2_ykc4r"]
+[ext_resource type="Shader" path="res://Shaders/ElectroBeam.gdshader" id="3_71h77"]
+[ext_resource type="Texture2D" uid="uid://vrd5n1327hkg" path="res://Asset/TheHenterPrise/electroBeam5.png" id="4_4xmsu"]
+[ext_resource type="Shape2D" uid="uid://clfvtmfquskgf" path="res://Asset/particle/BeamBox.tres" id="5_v7w1l"]
+[ext_resource type="Texture2D" uid="uid://dol4ytmt47laf" path="res://Asset/circle.png" id="7_cttl7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yu6dd"]
+shader = ExtResource("3_71h77")
+shader_parameter/speed = -2.0
+shader_parameter/tiled_factor = Vector2(1.5, 1)
+shader_parameter/offsetScale = Vector2(1, 3)
+shader_parameter/amplitudeWave = Vector2(0.02, 0.03)
+shader_parameter/timeScale = Vector2(900, 30)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2v1ea"]
+polygon = PackedVector2Array(-38.3764, -506.273, -125.461, -278.967, -147.601, -194.834, -169.742, 94.465, -42.8044, 382.288, -59.0406, 211.07, -66.4207, 143.173, -72.3247, 59.0406, -73.8007, -39.8524, -73.8007, -129.889, -70.8487, -230.258, -63.4686, -302.583)
+
+[node name="ElectroBeam" instance=ExtResource("1_r4t7v")]
+collision_mask = 292
+script = ExtResource("2_ykc4r")
+damage = 60.0
+
+[node name="ElectroBeam5" type="Sprite2D" parent="AnimationCenter" index="0"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_yu6dd")
+position = Vector2(1202, 0)
+scale = Vector2(4.695, 4)
+texture = ExtResource("4_4xmsu")
+
+[node name="HitBox" parent="." index="1"]
+position = Vector2(1180, -21)
+scale = Vector2(1.4, 8)
+shape = ExtResource("5_v7w1l")
+
+[node name="Charging" type="Node2D" parent="." index="3"]
+
+[node name="Charge" type="PointLight2D" parent="Charging" index="0"]
+position = Vector2(160, -24)
+scale = Vector2(0.6075, 0.5925)
+color = Color(1, 0.611765, 0, 0.556863)
+energy = 0.0
+shadow_enabled = true
+texture = ExtResource("7_cttl7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Charging/Charge" index="0"]
+position = Vector2(69.1357, 40.5063)
+scale = Vector2(1.11523, 1.14346)
+occluder = SubResource("OccluderPolygon2D_2v1ea")
