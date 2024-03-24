@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://fsstljqi48wb"]
+[gd_scene load_steps=11 format=3 uid="uid://fsstljqi48wb"]
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_r4t7v"]
 [ext_resource type="Script" path="res://Source/TheHenterPrise/ElectroBeam.gd" id="2_ykc4r"]
 [ext_resource type="Shader" path="res://Shaders/ElectroBeam.gdshader" id="3_71h77"]
 [ext_resource type="Texture2D" uid="uid://vrd5n1327hkg" path="res://Asset/TheHenterPrise/electroBeam5.png" id="4_4xmsu"]
 [ext_resource type="Shape2D" uid="uid://clfvtmfquskgf" path="res://Asset/particle/BeamBox.tres" id="5_v7w1l"]
+[ext_resource type="AudioStream" uid="uid://cpv2mlf06yb4n" path="res://Asset/TheHenterPrise/chargeWarning2.ogg" id="6_l7s8v"]
+[ext_resource type="AudioStream" uid="uid://qk01y63k42j2" path="res://Asset/TheHenterPrise/beam4.ogg" id="7_4e4q2"]
 [ext_resource type="Texture2D" uid="uid://dol4ytmt47laf" path="res://Asset/circle.png" id="7_cttl7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yu6dd"]
@@ -22,6 +24,7 @@ polygon = PackedVector2Array(-38.3764, -506.273, -125.461, -278.967, -147.601, -
 collision_mask = 292
 script = ExtResource("2_ykc4r")
 damage = 60.0
+inClampedScreen = false
 
 [node name="ElectroBeam5" type="Sprite2D" parent="AnimationCenter" index="0"]
 texture_repeat = 2
@@ -31,11 +34,19 @@ scale = Vector2(4.695, 4)
 texture = ExtResource("4_4xmsu")
 
 [node name="HitBox" parent="." index="1"]
+visible = false
 position = Vector2(1180, -21)
 scale = Vector2(1.4, 8)
 shape = ExtResource("5_v7w1l")
 
-[node name="Charging" type="Node2D" parent="." index="3"]
+[node name="BulletSound" parent="." index="2"]
+stream = ExtResource("6_l7s8v")
+
+[node name="BeamSound" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("7_4e4q2")
+volume_db = -5.0
+
+[node name="Charging" type="Node2D" parent="." index="4"]
 
 [node name="Charge" type="PointLight2D" parent="Charging" index="0"]
 position = Vector2(160, -24)
@@ -49,3 +60,6 @@ texture = ExtResource("7_cttl7")
 position = Vector2(69.1357, 40.5063)
 scale = Vector2(1.11523, 1.14346)
 occluder = SubResource("OccluderPolygon2D_2v1ea")
+
+[node name="Marker2D" type="Marker2D" parent="." index="5"]
+position = Vector2(213, -28)

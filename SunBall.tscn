@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkdffwk0xhrt0"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_1qd8c"]
+[ext_resource type="Texture2D" uid="uid://w2lpiswu5xh8" path="res://Asset/TheHenterPrise/sun.png" id="2_8hs4w"]
+[ext_resource type="Script" path="res://Source/TheHenterPrise/SunBall.gd" id="2_71c2d"]
+[ext_resource type="Texture2D" uid="uid://bdr7dxve6o4y8" path="res://Asset/TheHenterPrise/flarebig.png" id="3_5r5b6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d73fq"]
+radius = 140.071
+
+[node name="Sun" instance=ExtResource("1_1qd8c")]
+collision_mask = 256
+script = ExtResource("2_71c2d")
+damage = 30.0
+inClampedScreen = false
+
+[node name="Sun" type="Sprite2D" parent="AnimationCenter" index="0"]
+position = Vector2(14, 9)
+texture = ExtResource("2_8hs4w")
+
+[node name="Flarebig" type="Sprite2D" parent="AnimationCenter" index="1"]
+self_modulate = Color(1, 1, 0.14902, 0.996078)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_5r5b6")
+
+[node name="HitBox" parent="." index="1"]
+visible = false
+shape = SubResource("CircleShape2D_d73fq")

@@ -22,7 +22,7 @@ var BulletSet:Array [bullet] = []
 
 func _ready():
 	theBox=get_child(get_child_count()-1)
-	orgPos=theBox.global_position-Vector2(theBox.shape.size.x,theBox.shape.size.y)/2
+	orgPos=theBox.global_position-Vector2(theBox.shape.size.x*scale.x,theBox.shape.size.y*scale.y)/2
 	
 	theBox.position=-position
 	direction=direction.normalized()
@@ -47,23 +47,23 @@ func _ready():
 			WhatSpawner=WhatSpawnerType.BulletSpawner
 			theWhat=preload("res://UFOBullet.tscn")
 		
-		Global.SpawnType.EnemyChicken:
-			WhatSpawner=WhatSpawnerType.EntitySpawner
-			theWhat=preload("res://Enemy_Chicken.tscn")
+		#Global.SpawnType.EnemyChicken:
+			#WhatSpawner=WhatSpawnerType.EntitySpawner
+			#theWhat=preload("res://Enemy_Chicken.tscn")
 
 func spawn():
 	#random position in Spawn Zone
 	for i:int in SpawnCnt:
 		var ranPos=Vector2(randf_range(0,theBox.shape.size.x*scale.x),randf_range(0,theBox.shape.size.y*scale.y))+orgPos
-		if WhatSpawner==WhatSpawnerType.BulletSpawner:
-			var A:bullet = theWhat.instantiate()
-			get_node("/root/Game/Projectiles").add_child(A)
-			A.get_child(A.get_child_count()-1).volume_db=A.get_child(A.get_child_count()-1).volume_db-20
-			A.direction=direction
-			A.global_position = ranPos
-			#print(direction)
-			if (direction!=Vector2.ZERO):
-				A.rotation=A.direction.angle()+PI/2.0
+		
+		var A:bullet = theWhat.instantiate()
+		get_node("/root/Game/Projectiles").add_child(A)
+		A.get_child(A.get_child_count()-1).volume_db-=20
+		A.direction=direction
+		A.global_position = ranPos
+		#print(direction)
+		if (direction!=Vector2.ZERO):
+			A.rotation=A.direction.angle()+PI/2.0
 
 func _on_spawn_timer_timeout():
 	spawn()

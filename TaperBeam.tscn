@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://gpabb731kw1l"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_jhk33"]
+[ext_resource type="Texture2D" uid="uid://lnk5vdjbavqe" path="res://Asset/TheHenterPrise/taperBeam5A.png" id="2_gt7tp"]
+[ext_resource type="Script" path="res://Source/TheHenterPrise/TaperBeam.gd" id="2_x2buf"]
+[ext_resource type="Shader" path="res://Shaders/TaperBeam.gdshader" id="3_ibu0t"]
+[ext_resource type="Shape2D" uid="uid://clfvtmfquskgf" path="res://Asset/particle/BeamBox.tres" id="5_l8f4l"]
+[ext_resource type="Texture2D" uid="uid://du8w106demqxx" path="res://Asset/TheHenterPrise/warningstrip4.png" id="6_mxjed"]
+[ext_resource type="AudioStream" uid="uid://cqfu7kouocxmu" path="res://Asset/Sounds/laserSmall.ogg" id="7_echqo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0vf51"]
+shader = ExtResource("3_ibu0t")
+shader_parameter/speed = -6.0
+shader_parameter/tiled_factor = Vector2(10, 1)
+shader_parameter/offsetScale = Vector2(1, 1)
+shader_parameter/amplitudeWave = Vector2(0.1, 0.05)
+shader_parameter/timeScale = Vector2(4, 5)
+
+[sub_resource type="Animation" id="Animation_k4ppl"]
+resource_name = "default"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0392157), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"charge"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hsbhh"]
+_data = {
+"default": SubResource("Animation_k4ppl")
+}
+
+[node name="Taper" instance=ExtResource("1_jhk33")]
+collision_mask = 256
+script = ExtResource("2_x2buf")
+damage = 25.0
+inClampedScreen = false
+
+[node name="TaperBeam5a" type="Sprite2D" parent="AnimationCenter" index="0"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_0vf51")
+position = Vector2(959.109, 0)
+scale = Vector2(3.75739, 0.183594)
+texture = ExtResource("2_gt7tp")
+
+[node name="HitBox" parent="." index="1"]
+visible = false
+position = Vector2(926, 0)
+scale = Vector2(1.1, 0.7)
+shape = ExtResource("5_l8f4l")
+
+[node name="Warningstrip4" type="Sprite2D" parent="." index="2"]
+position = Vector2(948.5, 0)
+scale = Vector2(3.70508, 1)
+texture = ExtResource("6_mxjed")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Warningstrip4" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_hsbhh")
+}
+autoplay = "default"
+
+[node name="BulletSound" parent="." index="3"]
+stream = ExtResource("7_echqo")
+autoplay = false

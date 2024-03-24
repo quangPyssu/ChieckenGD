@@ -1,26 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg3mkhyhprmkk"]
+[gd_scene load_steps=3 format=3 uid="uid://cg3mkhyhprmkk"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_2khhx"]
 [ext_resource type="PackedScene" uid="uid://div18mnpo7y2s" path="res://the_henterprise.tscn" id="2_xjl61"]
-[ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="3_1oxge"]
-[ext_resource type="AudioStream" uid="uid://cnqqqgrfo2px1" path="res://Asset/Sounds/Music/HelianAlien.ogg" id="4_to4cc"]
 
 [node name="Game" instance=ExtResource("1_2khhx")]
 
-[node name="TheHenterprise" parent="Enemies/Wave0" index="0" instance=ExtResource("2_xjl61")]
-position = Vector2(960, 153.604)
-
-[node name="Anchor" parent="Enemies/Wave1" index="0" instance=ExtResource("3_1oxge")]
-position = Vector2(960, 287.259)
-scale = Vector2(1, 1.00559)
-size = 300.0
-entityMax = 9.0
-rotateSpeed = 0.1
-inClampedScreen = false
-BounceOffSceen = false
-canFlicker = false
+[node name="TheHenterprise" parent="Enemies/Wave2" index="0" instance=ExtResource("2_xjl61")]
+position = Vector2(960, -317.182)
+rotation = -6.28318
+speed = 6000.0
+savedPos = Vector2(967, 190)
 
 [node name="Music" parent="." index="6"]
-stream = ExtResource("4_to4cc")
-
-[connection signal="tree_exited" from="Enemies/Wave1/Anchor" to="Enemies/Wave1/Anchor" method="_on_tree_exited"]
+stream = null
+volume_db = -15.0

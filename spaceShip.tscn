@@ -89,7 +89,7 @@ WhatSpawning = 2
 direction = Vector2(0, -1)
 
 [node name="SpawnZone" type="CollisionShape2D" parent="Node/Spawner" index="1"]
-position = Vector2(3200, 1382.71)
+position = Vector2(1590, 1382.71)
 shape = SubResource("RectangleShape2D_unmaf")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
@@ -104,7 +104,7 @@ WhatSpawning = 2
 direction = Vector2(0, -1)
 
 [node name="SpawnZone" type="CollisionShape2D" parent="Node/Spawner2" index="1"]
-position = Vector2(8933.33, 1382.71)
+position = Vector2(6076.67, 1382.71)
 shape = SubResource("RectangleShape2D_unmaf")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 

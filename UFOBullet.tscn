@@ -93,6 +93,7 @@ collision_mask = 256
 script = ExtResource("2_auqik")
 damage = 10.0
 canBreak = true
+inClampedScreen = false
 
 [node name="UfoBullet" type="AnimatedSprite2D" parent="AnimationCenter" index="0"]
 rotation = 1.57079

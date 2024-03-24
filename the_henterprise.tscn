@@ -1,22 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://div18mnpo7y2s"]
+[gd_scene load_steps=8 format=3 uid="uid://div18mnpo7y2s"]
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_8cthb"]
 [ext_resource type="Script" path="res://Source/TheHenterPrise/the_henterprise.gd" id="2_cs8m2"]
 [ext_resource type="Texture2D" uid="uid://phtned6vmijn" path="res://Asset/TheHenterPrise/henterpriseBack.png" id="2_e4j83"]
 [ext_resource type="Texture2D" uid="uid://dsratar3t7chq" path="res://Asset/TheHenterPrise/henterpriseFront.png" id="3_um4em"]
+[ext_resource type="AudioStream" uid="uid://dsbrpko0gne1o" path="res://Asset/TheHenterPrise/henterpriseRumble.ogg" id="5_x8apd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kks8"]
 radius = 1438.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bop6"]
-radius = 1044.0
-height = 2102.0
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bmfod"]
+a = Vector2(1, 70)
 
 [node name="TheHenterprise" instance=ExtResource("1_8cthb")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_cs8m2")
-HP = 9000.0
+HP = 7000.0
 inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
@@ -25,12 +25,48 @@ canFlicker = false
 position = Vector2(36, 191)
 texture = ExtResource("2_e4j83")
 
+[node name="Bullets" type="Node" parent="AnimationCenter/HenterpriseBack" index="0"]
+unique_name_in_owner = true
+
+[node name="Mark" type="Node2D" parent="AnimationCenter/HenterpriseBack" index="1"]
+position = Vector2(-36, -191)
+
+[node name="Marker2D" type="Marker2D" parent="AnimationCenter/HenterpriseBack/Mark" index="0"]
+position = Vector2(-629.942, 87.0578)
+rotation = 0.00580143
+
+[node name="Marker2D2" type="Marker2D" parent="AnimationCenter/HenterpriseBack/Mark" index="1"]
+position = Vector2(-531.942, 120.058)
+
+[node name="Marker2D4" type="Marker2D" parent="AnimationCenter/HenterpriseBack/Mark" index="2"]
+position = Vector2(-434.942, 155.058)
+
+[node name="Marker2D3" type="Marker2D" parent="AnimationCenter/HenterpriseBack/Mark" index="3"]
+position = Vector2(-336.942, 188.058)
+
+[node name="Marker2D5" type="Marker2D" parent="AnimationCenter/HenterpriseBack/Mark" index="4"]
+position = Vector2(326.058, 183.058)
+
+[node name="Marker2D6" type="Marker2D" parent="AnimationCenter/HenterpriseBack/Mark" index="5"]
+position = Vector2(421.058, 155.058)
+
+[node name="Marker2D7" type="Marker2D" parent="AnimationCenter/HenterpriseBack/Mark" index="6"]
+position = Vector2(521.058, 120.058)
+
+[node name="Marker2D8" type="Marker2D" parent="AnimationCenter/HenterpriseBack/Mark" index="7"]
+position = Vector2(617.058, 87.0578)
+
+[node name="BeamPos" type="Marker2D" parent="AnimationCenter/HenterpriseBack" index="2"]
+position = Vector2(-41, 27)
+
 [node name="HenterpriseFront" type="Sprite2D" parent="AnimationCenter" index="1"]
+z_index = 3
 texture = ExtResource("3_um4em")
 
 [node name="HitBox" parent="." index="1"]
 visible = false
 collision_layer = 512
+collision_mask = 256
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2(0, -1212)
@@ -41,8 +77,49 @@ debug_color = Color(0.827451, 0.345098, 0.517647, 0.419608)
 [node name="PhysicBox" parent="." index="2"]
 light_mask = 0
 visibility_layer = 0
-position = Vector2(0, -827)
-shape = SubResource("CapsuleShape2D_0bop6")
+shape = SubResource("SegmentShape2D_bmfod")
 debug_color = Color(0.333333, 0.611765, 0.34902, 0.419608)
 
 [node name="Audio" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("5_x8apd")
+volume_db = -15.0
+
+[node name="AttackTimer" type="Timer" parent="." index="4"]
+wait_time = 5.0
+autostart = true
+
+[node name="AttackTimer2" type="Timer" parent="." index="5"]
+wait_time = 2.0
+autostart = true
+
+[node name="UfoZone" type="Node2D" parent="." index="6"]
+unique_name_in_owner = true
+
+[node name="DiscShape" type="Node2D" parent="UfoZone" index="0"]
+
+[node name="Marker2D" type="Marker2D" parent="UfoZone/DiscShape" index="0"]
+position = Vector2(255, 194)
+
+[node name="Marker2D2" type="Marker2D" parent="UfoZone/DiscShape" index="1"]
+position = Vector2(-255, 78)
+
+[node name="DiscShape2" type="Node2D" parent="UfoZone" index="1"]
+position = Vector2(925, -301)
+
+[node name="Marker2D" type="Marker2D" parent="UfoZone/DiscShape2" index="0"]
+position = Vector2(58, 109)
+
+[node name="Marker2D2" type="Marker2D" parent="UfoZone/DiscShape2" index="1"]
+position = Vector2(-254, 58)
+
+[node name="DiscShape3" type="Node2D" parent="UfoZone" index="2"]
+position = Vector2(-721, -266)
+
+[node name="Marker2D" type="Marker2D" parent="UfoZone/DiscShape3" index="0"]
+position = Vector2(58, 109)
+
+[node name="Marker2D2" type="Marker2D" parent="UfoZone/DiscShape3" index="1"]
+position = Vector2(-254, 58)
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="AttackTimer2" to="." method="_on_attack_timer_2_timeout"]
