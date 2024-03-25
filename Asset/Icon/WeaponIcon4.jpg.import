@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dror0m3d8pfhh"
-path="res://.godot/imported/Star_surface.png-19020a44e9a786d65714e0bef927a3d3.ctex"
+uid="uid://dujjbnbl3d1y5"
+path.s3tc="res://.godot/imported/WeaponIcon4.jpg-d578033c3e327b6b6a5175d6dfebe649.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Asset/Menu/Star_surface.png"
-dest_files=["res://.godot/imported/Star_surface.png-19020a44e9a786d65714e0bef927a3d3.ctex"]
+source_file="res://Asset/Icon/WeaponIcon4.jpg"
+dest_files=["res://.godot/imported/WeaponIcon4.jpg-d578033c3e327b6b6a5175d6dfebe649.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

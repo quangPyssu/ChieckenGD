@@ -18,7 +18,7 @@ static var loaded: bool=false
 
 func _ready():
 	if !loaded:
-		Data.load_Data()
+		#Data.load_Data()
 		loaded=1
 		
 	var j:int =0

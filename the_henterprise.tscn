@@ -121,5 +121,14 @@ position = Vector2(58, 109)
 [node name="Marker2D2" type="Marker2D" parent="UfoZone/DiscShape3" index="1"]
 position = Vector2(-254, 58)
 
+[node name="Explosion" type="Node2D" parent="." index="7"]
+position = Vector2(1.35525e-20, 120)
+
+[node name="Marker2D" type="Marker2D" parent="Explosion" index="0"]
+position = Vector2(-584, -312)
+
+[node name="Marker2D2" type="Marker2D" parent="Explosion" index="1"]
+position = Vector2(568, -92)
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="AttackTimer2" to="." method="_on_attack_timer_2_timeout"]

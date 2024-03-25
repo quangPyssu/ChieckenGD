@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gmm01mps67iu"
-path.s3tc="res://.godot/imported/WeaponIcon0.jpg-a31fd04ca91cc82740a7e86c279ec77b.s3tc.ctex"
+uid="uid://ckpisyojsvyj7"
+path.s3tc="res://.godot/imported/SpecialIcon2Grey.jpg-6c542162d2ff13e47e0ef2b965c35fbe.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Asset/Icon/WeaponIcon0.jpg"
-dest_files=["res://.godot/imported/WeaponIcon0.jpg-a31fd04ca91cc82740a7e86c279ec77b.s3tc.ctex"]
+source_file="res://Asset/Icon/SpecialIcon2Grey.jpg"
+dest_files=["res://.godot/imported/SpecialIcon2Grey.jpg-6c542162d2ff13e47e0ef2b965c35fbe.s3tc.ctex"]
 
 [params]
 

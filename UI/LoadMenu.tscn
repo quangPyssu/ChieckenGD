@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://btu0gnwjrvoy7"]
+[gd_scene load_steps=49 format=3 uid="uid://btu0gnwjrvoy7"]
 
 [ext_resource type="Texture2D" uid="uid://ivp3tycfevyr" path="res://Asset/Menu/GalaxyBG.png" id="1_20i34"]
 [ext_resource type="Script" path="res://UI/LoadMenu.gd" id="1_qf11l"]
@@ -10,6 +10,26 @@
 [ext_resource type="Texture2D" uid="uid://b055q84jxu1f5" path="res://Asset/Menu/LoadMenu/BlackHole.png" id="7_ob7r5"]
 [ext_resource type="Texture2D" uid="uid://drlsq3hmwup8r" path="res://Asset/Menu/Start_BTN.png" id="9_8baam"]
 [ext_resource type="Texture2D" uid="uid://c0ubxro6u43lj" path="res://Asset/Menu/BTN.png" id="10_t5rox"]
+[ext_resource type="FontFile" uid="uid://eyphu0pmtdue" path="res://Asset/Menu/neuro.ttf" id="11_pbh2b"]
+[ext_resource type="Texture2D" uid="uid://du8w106demqxx" path="res://Asset/TheHenterPrise/warningstrip4.png" id="12_g7lqh"]
+[ext_resource type="Texture2D" uid="uid://dh8asqhb4t3os" path="res://Asset/Menu/LoadMenu/Table_02.png" id="13_e587k"]
+[ext_resource type="Texture2D" uid="uid://gmm01mps67iu" path="res://Asset/Icon/WeaponIcon0.jpg" id="14_p165u"]
+[ext_resource type="Texture2D" uid="uid://cmljyc77g880" path="res://Asset/Icon/WeaponIcon1.jpg" id="15_d163e"]
+[ext_resource type="Texture2D" uid="uid://bph3drcy11mnp" path="res://Asset/Icon/WeaponIcon1Grey.jpg" id="16_8l6w5"]
+[ext_resource type="Texture2D" uid="uid://kj6dsubb0om0" path="res://Asset/Icon/WeaponIcon2.jpg" id="16_wt7cn"]
+[ext_resource type="Texture2D" uid="uid://dujjbnbl3d1y5" path="res://Asset/Icon/WeaponIcon4.jpg" id="17_3h4xg"]
+[ext_resource type="Texture2D" uid="uid://dnk2o577iwtdy" path="res://Asset/Icon/WeaponIcon2Grey.jpg" id="18_a2squ"]
+[ext_resource type="Texture2D" uid="uid://bkpj2tbdkbj1q" path="res://Asset/Icon/SpecialIcon0.jpg" id="18_v3gv5"]
+[ext_resource type="Texture2D" uid="uid://c28hjbi7o8mpv" path="res://Asset/Icon/SpecialIcon2.jpg" id="19_mwd47"]
+[ext_resource type="Texture2D" uid="uid://d3willghgemae" path="res://Asset/Icon/WeaponIcon4Grey.jpg" id="20_5pr3d"]
+[ext_resource type="Texture2D" uid="uid://cw4bs8m4jje4t" path="res://Asset/Icon/SpecialIcon4.jpg" id="20_jx1ej"]
+[ext_resource type="Texture2D" uid="uid://d1hg23gwh4q82" path="res://Asset/Icon/SpecialIcon1.jpg" id="21_6pkoq"]
+[ext_resource type="Texture2D" uid="uid://c0j6yo7ggj5qr" path="res://Asset/Icon/SpecialIcon0Grey.jpg" id="22_0ylb2"]
+[ext_resource type="Texture2D" uid="uid://ckpisyojsvyj7" path="res://Asset/Icon/SpecialIcon2Grey.jpg" id="24_blelv"]
+[ext_resource type="Texture2D" uid="uid://bp2at0e2ipkow" path="res://Asset/Icon/SpecialIcon4Grey.jpg" id="26_rtgmy"]
+[ext_resource type="Texture2D" uid="uid://bw50smgyw7qth" path="res://Asset/Icon/SpecialIcon1Grey.jpg" id="28_6jqvy"]
+[ext_resource type="Texture2D" uid="uid://brjb5snmb8x1o" path="res://Asset/Icon/WeaponSelect.png" id="29_il5xu"]
+[ext_resource type="Texture2D" uid="uid://civqckhkupqeb" path="res://Asset/Icon/SpecialSelect.png" id="30_wpoo6"]
 
 [sub_resource type="Animation" id="Animation_q38dp"]
 resource_name = "BlackHole"
@@ -122,6 +142,81 @@ _data = {
 "Ring": SubResource("Animation_rtb27"),
 "Star": SubResource("Animation_mfhsr")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vfsp"]
+bg_color = Color(0.443137, 0.423529, 0.964706, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbayl"]
+atlas = ExtResource("29_il5xu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uubgq"]
+atlas = ExtResource("29_il5xu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmetb"]
+atlas = ExtResource("29_il5xu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qte7k"]
+atlas = ExtResource("29_il5xu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q1aq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbayl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uubgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmetb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qte7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ndxc"]
+atlas = ExtResource("30_wpoo6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaqne"]
+atlas = ExtResource("30_wpoo6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acyg2"]
+atlas = ExtResource("30_wpoo6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6x4w"]
+atlas = ExtResource("30_wpoo6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3c64q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ndxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaqne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acyg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6x4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Load" type="Control"]
 texture_filter = 1
@@ -306,4 +401,284 @@ texture_normal = ExtResource("9_8baam")
 texture_pressed = ExtResource("10_t5rox")
 texture_disabled = ExtResource("10_t5rox")
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -88.0
+offset_right = 248.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_pbh2b")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/fill = SubResource("StyleBoxFlat_6vfsp")
+
+[node name="Link" type="Node2D" parent="."]
+
+[node name="Linkink" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 1657.0
+offset_top = 342.0
+offset_right = 2169.0
+offset_bottom = 376.0
+rotation = 1.41523
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="Linkink2" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 1062.0
+offset_top = 88.0
+offset_right = 1634.0
+offset_bottom = 120.0
+rotation = 0.332495
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="Linkink3" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 1012.0
+offset_top = 87.0
+offset_right = 1524.0
+offset_bottom = 122.0
+rotation = 1.60227
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="Linkink4" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 889.0
+offset_top = 593.0
+offset_right = 1602.0
+offset_bottom = 628.0
+rotation = 2.77141
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="Linkink5" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 227.0
+offset_top = 161.0
+offset_right = 892.0
+offset_bottom = 196.0
+rotation = 1.60227
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="WeaponSelect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -705.0
+offset_top = 520.0
+offset_right = -284.0
+offset_bottom = 691.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_e587k")
+
+[node name="Weapon5" type="HBoxContainer" parent="WeaponSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.06
+anchor_right = 0.93
+anchor_bottom = 0.242
+offset_left = -2.86102e-05
+offset_right = -3.05176e-05
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Weapon" type="TextureButton" parent="WeaponSelect/Weapon5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("14_p165u")
+
+[node name="Weapon2" type="TextureButton" parent="WeaponSelect/Weapon5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("15_d163e")
+texture_disabled = ExtResource("16_8l6w5")
+
+[node name="Weapon3" type="TextureButton" parent="WeaponSelect/Weapon5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("16_wt7cn")
+texture_disabled = ExtResource("18_a2squ")
+
+[node name="Weapon4" type="TextureButton" parent="WeaponSelect/Weapon5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("17_3h4xg")
+texture_disabled = ExtResource("20_5pr3d")
+
+[node name="Weapon" type="HBoxContainer" parent="WeaponSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.06
+anchor_right = 0.93
+anchor_bottom = 0.242
+offset_bottom = 48.0
+grow_horizontal = 2
+
+[node name="Weapon" type="TextureButton" parent="WeaponSelect/Weapon"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("14_p165u")
+
+[node name="Weapon2" type="TextureButton" parent="WeaponSelect/Weapon"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("15_d163e")
+texture_disabled = ExtResource("16_8l6w5")
+
+[node name="Weapon3" type="TextureButton" parent="WeaponSelect/Weapon"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("16_wt7cn")
+texture_disabled = ExtResource("18_a2squ")
+
+[node name="Weapon4" type="TextureButton" parent="WeaponSelect/Weapon"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("17_3h4xg")
+texture_disabled = ExtResource("20_5pr3d")
+
+[node name="Special" type="HBoxContainer" parent="WeaponSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.425
+anchor_right = 0.93
+anchor_bottom = 0.606
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(77.53, 166.325)
+
+[node name="Special" type="TextureButton" parent="WeaponSelect/Special"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("18_v3gv5")
+texture_disabled = ExtResource("22_0ylb2")
+
+[node name="Special2" type="TextureButton" parent="WeaponSelect/Special"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("19_mwd47")
+texture_disabled = ExtResource("24_blelv")
+
+[node name="Special3" type="TextureButton" parent="WeaponSelect/Special"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("20_jx1ej")
+texture_disabled = ExtResource("26_rtgmy")
+
+[node name="Special4" type="TextureButton" parent="WeaponSelect/Special"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("21_6pkoq")
+texture_disabled = ExtResource("28_6jqvy")
+
+[node name="WeaponSelect" type="AnimatedSprite2D" parent="WeaponSelect"]
+unique_name_in_owner = true
+position = Vector2(49, 26)
+scale = Vector2(1.46875, 1.5)
+sprite_frames = SubResource("SpriteFrames_q1aq5")
+autoplay = "default"
+centered = false
+
+[node name="SpecialSelect" type="AnimatedSprite2D" parent="WeaponSelect"]
+unique_name_in_owner = true
+position = Vector2(169, 198)
+scale = Vector2(1.45406, 1.45406)
+sprite_frames = SubResource("SpriteFrames_3c64q")
+autoplay = "default"
+centered = false
+
+[node name="WeaponSelect2" type="AnimatedSprite2D" parent="WeaponSelect"]
+unique_name_in_owner = true
+position = Vector2(256, 197)
+scale = Vector2(1.46875, 1.5)
+sprite_frames = SubResource("SpriteFrames_q1aq5")
+autoplay = "default"
+centered = false
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="mouse_entered" from="WeaponSelect" to="." method="_on_weapon_select_mouse_entered"]
+[connection signal="mouse_exited" from="WeaponSelect" to="." method="_on_weapon_select_mouse_exited"]

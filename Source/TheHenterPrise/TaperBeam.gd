@@ -26,7 +26,7 @@ func _on_area_entered(_area:Area2D):
 	pass
 
 func charge():
-	$Warningstrip4.visible=false
+	$Warningstrip5.visible=false
 	ani.visible=true
 	set_process(true)
 	$BulletSound.play()

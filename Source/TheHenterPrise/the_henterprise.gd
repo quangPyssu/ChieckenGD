@@ -7,6 +7,8 @@ var preBaked:PackedScene = preload("res://ElectroBeam.tscn")
 
 var preEdd:PackedScene = preload("res://UFOBullet.tscn")
 
+var feather:PackedScene = preload("res://Asset/SpriteFrames/explosion.tscn")
+
 var attackRange:int = 0
 
 var lockedMode:bool=false
@@ -26,20 +28,14 @@ func _ready():
 	
 	await get_tree().create_timer(5.0).timeout 
 	Beam()
-
-func _process(delta):
+	
+func _process(_delta):
 	if Input.is_action_just_pressed("TestButton+"):
-		Beam()
+		atHalfHealth()
 	
 	if Input.is_action_just_pressed("TestButton-"):
-		Sun()
-		
-	if Input.is_action_just_pressed("FramShow"):
-		laserStraight()
-		
-	if Input.is_action_just_pressed("ChangeWeapon"):
-		laserTap()
-	
+		kill()
+
 func atThreeQuarterHealth():
 	attackRange=1
 	direction=Vector2.ZERO
@@ -78,12 +74,14 @@ func Sun():
 
 func laserStraight():
 	for i in $AnimationCenter/HenterpriseBack/Mark.get_children():
-		var Egg:bullet = preEss.instantiate()
-		Egg.get_child(Egg.get_child_count()-1).volume_db-=4
-		i.add_child(Egg)
-		await get_tree().create_timer(0.5).timeout
+		if !lockedMode:
+			var Egg:bullet = preEss.instantiate()
+			Egg.get_child(Egg.get_child_count()-1).volume_db-=4
+			i.add_child(Egg)
+			await get_tree().create_timer(0.5).timeout
 	
 func laserTap():
+	
 	for i in $AnimationCenter/HenterpriseBack/Mark.get_children():
 		var Egg:bullet = preEee.instantiate()
 		Egg.rotation=randf_range(-PI/3,PI/3)+PI/2
@@ -93,10 +91,29 @@ func laserTap():
 func kill():
 	if !isDead:
 		isDead = true
-
-		stopProcess()
-
-		await get_tree().create_timer(2).timeout
+		CleanAttack()
+		$AnimationCenter/HenterpriseFront.z_index=0
+		$Explosion.visible=true
+		
+		lockedMode=true
+		
+		for j in 20:
+			for i in 5:
+				var explo:AnimatedSprite2D = feather.instantiate()
+				$Explosion.add_child(explo)
+				explo.global_position=Vector2(randf_range($Explosion.get_child(1).global_position.x,$Explosion.get_child(0).global_position.x),
+randf_range($Explosion.get_child(1).global_position.y,$Explosion.get_child(0).global_position.y)) 
+				explo.speed_scale=randf_range(0.8,1.4)
+				explo.scale=Vector2(3,3)
+				explo.play("explosion")
+			await get_tree().create_timer(0.2).timeout
+		
+		var explo:AnimatedSprite2D = feather.instantiate()
+		$Explosion.add_child(explo)
+		explo.scale=Vector2(15,15)
+		explo.play("explosion")
+		
+		await get_tree().create_timer(0.4).timeout
 		queue_free()
 
 func _on_hit_box_area_entered(area):
@@ -121,7 +138,8 @@ func attack():
 			laserTap()
 			for i in 2:
 				Sun()
-				await get_tree().create_timer(1.5).timeout
+				await get_tree().create_timer(2.0).timeout
+			laserTap()
 
 func _on_attack_timer_timeout():
 	if !lockedMode:
@@ -134,7 +152,7 @@ func BackUp():
 	gotoPosition(orgOrgPos+Vector2(0,-600),10000)
 	CleanAttack()
 	
-	await get_tree().create_timer(4.4).timeout
+	await get_tree().create_timer(4).timeout
 	CleanAttack()
 	
 	match attackRange:
@@ -197,6 +215,7 @@ func goIn():
 func CleanAttack():
 	for i in $AnimationCenter/HenterpriseBack/Mark.get_children():
 		for j in i.get_children():
+			i.remove_child(j)
 			j.queue_free()
 
 func _on_attack_timer_2_timeout():

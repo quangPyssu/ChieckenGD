@@ -21,8 +21,8 @@ var SpecialTime: Array[float] = [10.0,0.0,30.0,0.0]
 
 #Data for file I/O
 ####################
-var UnlockedWeapon:Array[bool] = [1,0,0,0]
-var UnlockedSpecial:Array[bool] = [1,1,0,0]
+var UnlockedWeapon:Array[bool] = [1,1,1,0]
+var UnlockedSpecial:Array[bool] = [1,1,0,1]
 var CurrentLevel:int = 0
 var UnlockedLevel:int = 4
 var Volume:Array [float] = [1.0,0.5,0.5,0.4]

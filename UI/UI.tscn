@@ -320,5 +320,5 @@ autoplay = "default"
 frame = 3
 frame_progress = 0.298739
 
-[connection signal="timeout" from="Control/StatusBG/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Control/StatusBG/HealthBar/DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="Control/StatusBG/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]

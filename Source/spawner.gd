@@ -46,10 +46,6 @@ func _ready():
 		Global.SpawnType.UFOBullet:
 			WhatSpawner=WhatSpawnerType.BulletSpawner
 			theWhat=preload("res://UFOBullet.tscn")
-		
-		#Global.SpawnType.EnemyChicken:
-			#WhatSpawner=WhatSpawnerType.EntitySpawner
-			#theWhat=preload("res://Enemy_Chicken.tscn")
 
 func spawn():
 	#random position in Spawn Zone
