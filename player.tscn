@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://d26j2nusorvjk"]
+[gd_scene load_steps=53 format=3 uid="uid://d26j2nusorvjk"]
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_tg83y"]
 [ext_resource type="Script" path="res://Source/Player.gd" id="1_vop0c"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bxwkd5kewkuvu" path="res://Asset/Battlecruiser_Engine.png" id="6_x37wx"]
 [ext_resource type="Texture2D" uid="uid://divxhjle1vn5w" path="res://Asset/Battlecruiser_Destruction.png" id="7_0psjm"]
 [ext_resource type="AudioStream" uid="uid://obb6wtmc40q5" path="res://Asset/Sounds/PlayerExplode.ogg" id="8_vio31"]
+[ext_resource type="Texture2D" uid="uid://tx1hl7rfmsa" path="res://Asset/SpaceShip/Ammo.png" id="9_nlerg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6o43q"]
 atlas = ExtResource("5_hl6uf")
@@ -452,7 +453,6 @@ sprite_frames = SubResource("SpriteFrames_6jaag")
 autoplay = "default"
 
 [node name="BattlecruiserBlowUp" type="AnimatedSprite2D" parent="AnimationCenter" index="4"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_xiaqo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="5"]
@@ -460,7 +460,25 @@ libraries = {
 "": SubResource("AnimationLibrary_0jxmj")
 }
 
+[node name="Ammo" type="Sprite2D" parent="AnimationCenter" index="6"]
+texture_filter = 1
+position = Vector2(37, 24)
+rotation = -1.83259
+texture = ExtResource("9_nlerg")
+hframes = 7
+vframes = 4
+
+[node name="Ammo2" type="Sprite2D" parent="AnimationCenter" index="7"]
+texture_filter = 1
+position = Vector2(-36, 24)
+rotation = -1.309
+scale = Vector2(1, -1)
+texture = ExtResource("9_nlerg")
+hframes = 7
+vframes = 4
+
 [node name="HitBox" parent="." index="1"]
+visible = false
 collision_layer = 256
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
@@ -478,10 +496,16 @@ unique_name_in_owner = true
 one_shot = true
 autostart = true
 
-[node name="PhysicBox" parent="." index="4"]
+[node name="MiniGunTimer" type="Timer" parent="." index="4"]
+wait_time = 0.4
+
+[node name="PhysicBox" parent="." index="5"]
+visible = false
 shape = SubResource("CapsuleShape2D_gth5p")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="5"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
 volume_db = -15.0
 bus = &"GameSFX"
+
+[connection signal="timeout" from="MiniGunTimer" to="." method="_on_mini_gun_timer_timeout"]

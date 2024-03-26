@@ -22,6 +22,11 @@ func _ready():
 		i.get_node("WeaponRecharge").max_value = Global.WeaponTime[Global.EquippedWeapon[cnt]]
 		i.get_node("WeaponRecharge").value = Global.WeaponTime[Global.EquippedWeapon[cnt]]
 		i.get_node("WeaponRecharge").step=0.05
+		
+		var s:String="res://Asset/Icon/WeaponIcon"+str(Global.EquippedWeapon[cnt])+".jpg"
+		i.texture=load(s)
+		i.get_node("WeaponRecharge").texture_progress=load(s)
+		
 		cnt+=1
 		
 	CurWeapon=1

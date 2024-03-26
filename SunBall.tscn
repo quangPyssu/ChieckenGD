@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkdffwk0xhrt0"]
+[gd_scene load_steps=7 format=3 uid="uid://dkdffwk0xhrt0"]
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_1qd8c"]
 [ext_resource type="Texture2D" uid="uid://w2lpiswu5xh8" path="res://Asset/TheHenterPrise/sun.png" id="2_8hs4w"]
 [ext_resource type="Script" path="res://Source/TheHenterPrise/SunBall.gd" id="2_71c2d"]
 [ext_resource type="Texture2D" uid="uid://bdr7dxve6o4y8" path="res://Asset/TheHenterPrise/flarebig.png" id="3_5r5b6"]
+[ext_resource type="AudioStream" uid="uid://cqrc23ir3mh2l" path="res://Asset/TheHenterPrise/explosionUnderwaterLarge.ogg" id="5_p4j2o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d73fq"]
 radius = 140.071
@@ -26,3 +27,6 @@ texture = ExtResource("3_5r5b6")
 [node name="HitBox" parent="." index="1"]
 visible = false
 shape = SubResource("CircleShape2D_d73fq")
+
+[node name="BulletSound" parent="." index="2"]
+stream = ExtResource("5_p4j2o")

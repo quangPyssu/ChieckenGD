@@ -16,8 +16,8 @@ var maxAP:float = 0.5
 
 var save_game_path:String = "res://Data/data.save"
 
-var WeaponTime: Array[float] = [0.5,2.0,0.0,0.0]
-var SpecialTime: Array[float] = [10.0,0.0,30.0,0.0]
+var WeaponTime: Array[float] = [0.5,2.0,0.1,0.0]
+var SpecialTime: Array[float] = [8.0,0.0,30.0,0.0]
 
 #Data for file I/O
 ####################
@@ -32,12 +32,12 @@ var EquippedWeapon: Array[int] =[0,1]
 var CurrentWeapon:int=0
 
 var WeaponType:int = 0
-var SpecialType:int = 2
+var SpecialType:int = 0
 
 var PlayerPos:Vector2
 
 var isShaking:bool = 0
-var shakeStrength:int = 7
+var shakeStrength:int = 0
 
 
 enum patternType {

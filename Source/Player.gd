@@ -11,6 +11,9 @@ var SpecialIFrame: Array[float] = [0.5,0.0,4.0,0.0]
 var SpecialTimeRatio:float=0
 
 var particle:Array[PackedScene]
+var bomb:PackedScene 
+
+var bulletCnt:int=55
 
 signal Attack
 signal Special
@@ -49,21 +52,27 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	Global.PlayerPos = global_position
 
+func atk():
+	AttackLoaded = false
+	Attack.emit()
+	%AttackTimer.start()
+	var SpawnParticle:GPUParticles2D = particle[Global.CurrentWeapon].instantiate()
+	add_child(SpawnParticle)
+	SpawnParticle.position = -Vector2(0,50)
+	SpawnParticle.emitting = true
+	Global.AP=0.0
+	recoverAP()
+
 func _process(delta):
 	Global.HP = HP
 	%AttackTimer.wait_time=Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]
 
 	if Input.is_action_pressed("Attack") and AttackLoaded:
-		AttackLoaded = false
-		Attack.emit()
-		%AttackTimer.wait_time=Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]
-		%AttackTimer.start()
-		var SpawnParticle:GPUParticles2D = particle[Global.CurrentWeapon].instantiate()
-		add_child(SpawnParticle)
-		SpawnParticle.position = -Vector2(0,50)
-		SpawnParticle.emitting = true
-		Global.AP=0.0
-		recoverAP()
+		if Global.EquippedWeapon[Global.CurrentWeapon]!=2:
+			atk()
+		elif bulletCnt>0:
+			atk()
+			bulletCnt=max(0,bulletCnt-1)
 	
 	if Input.is_action_pressed("Special") and SpecialLoaded:
 		SpecialLoaded = false
@@ -74,32 +83,28 @@ func _process(delta):
 		Global.SP=0.0
 		
 	recoverSP(delta)
-
-	if Input.is_action_just_pressed("TestButton+"):
-		var b = preload("res://SmallBeam_Enemy.tscn").instantiate()
-		b.global_position.x=global_position.x
-		b.global_position.y=-1
-		get_node("/root/Game/Projectiles").add_child(b)
-
-	# - hurt
-	if Input.is_action_just_pressed("TestButton-"):
-		HP-=1
+	reloadBullet()
 		
 func SpecialAttack(SpecialType:int):
-	print(SpecialType)
 	match SpecialType:
 		0:
-			_ring_shot()
+			_gun_shot()
 		1:
 			pass
 		2: 
 			_big_beam()
 
-func _ring_shot():
-	pass
+func _gun_shot():
+	for i in 5:
+		var shot:bullet = bomb.instantiate()
+		shot.rotation=(i-2)*PI/18.0-PI/2
+		shot.direction=Vector2(0,-1).rotated(shot.rotation+PI/2)
+		shot.global_position=global_position+Vector2(0, -50)
+		shot.get_child(shot.get_child_count()-1).volume_db-=10
+		get_node("/root/Game/Projectiles").add_child(shot)
 
 func _big_beam():
-	var Beam:bullet = preload("res://BigBeam_Player.tscn").instantiate()
+	var Beam:bullet = bomb.instantiate()
 	add_child(Beam)
 
 func _shielded():
@@ -172,9 +177,28 @@ func loadParti():
 	for i in 2:
 		var a:PackedScene
 		match Global.EquippedWeapon[i]:
-			0:
+			0,1:
 				a=preload("res://Asset/particle/Particle_BaseBullet.tscn")
-			1: 
-				a=preload("res://Asset/particle/Particle_BaseBullet.tscn")
+			2:
+				a=preload("res://Asset/particle/BulletShell.tscn")
+				$MiniGunTimer.start()
+				$AnimationCenter/Ammo.visible=true
 				
 		particle.append(a)
+	
+	match Global.SpecialType:
+		0:
+			bomb=preload("res://bullet_player_normal.tscn")
+		2: 
+			bomb=preload("res://BigBeam_Player.tscn")
+
+func reloadBullet():
+	if (bulletCnt<28):
+		$AnimationCenter/Ammo2.frame=27-bulletCnt
+		$AnimationCenter/Ammo2.position.y=-$AnimationCenter/Ammo2.frame*2+24
+	else:
+		$AnimationCenter/Ammo.frame=55-bulletCnt
+		$AnimationCenter/Ammo.position.y=-$AnimationCenter/Ammo.frame*2+24
+		
+func _on_mini_gun_timer_timeout():
+	bulletCnt=min(55,bulletCnt+1)

@@ -16,12 +16,12 @@ script = ExtResource("2_h83a1")
 damage = 7.0
 canBreak = true
 
+[node name="Microgun-bullet" type="Sprite2D" parent="AnimationCenter" index="0"]
+scale = Vector2(0.205882, 0.205882)
+texture = ExtResource("3_fpulv")
+
 [node name="HitBox" parent="." index="1"]
 shape = SubResource("SegmentShape2D_xhr72")
 
 [node name="BulletSound" parent="." index="2"]
 stream = ExtResource("3_fw7dc")
-
-[node name="Microgun-bullet" type="Sprite2D" parent="." index="3"]
-scale = Vector2(0.205882, 0.205882)
-texture = ExtResource("3_fpulv")

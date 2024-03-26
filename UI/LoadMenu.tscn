@@ -564,6 +564,7 @@ offset_bottom = 48.0
 grow_horizontal = 2
 
 [node name="Weapon" type="TextureButton" parent="WeaponSelect/Weapon"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -573,6 +574,7 @@ disabled = true
 texture_normal = ExtResource("14_p165u")
 
 [node name="Weapon2" type="TextureButton" parent="WeaponSelect/Weapon"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -583,6 +585,7 @@ texture_normal = ExtResource("15_d163e")
 texture_disabled = ExtResource("16_8l6w5")
 
 [node name="Weapon3" type="TextureButton" parent="WeaponSelect/Weapon"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -593,6 +596,7 @@ texture_normal = ExtResource("16_wt7cn")
 texture_disabled = ExtResource("18_a2squ")
 
 [node name="Weapon4" type="TextureButton" parent="WeaponSelect/Weapon"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4

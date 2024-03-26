@@ -10,8 +10,7 @@ func _ready():
 	ani.queue("Beaming")
 	$BulletSound.play()
 	$AnimationCenter/ChargeParticle.emitting=true
-	Global.isShaking=true
-	Global.shakeStrength=5
+	Global.shakeStrength+=5
 
 func _process(delta):
 	super._process(delta)
@@ -34,4 +33,4 @@ func _on_timer_end_timeout():
 
 
 func _on_tree_exited():
-	Global.isShaking=false
+	Global.shakeStrength-=5

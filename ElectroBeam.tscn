@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://fsstljqi48wb"]
+[gd_scene load_steps=12 format=3 uid="uid://fsstljqi48wb"]
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_r4t7v"]
 [ext_resource type="Script" path="res://Source/TheHenterPrise/ElectroBeam.gd" id="2_ykc4r"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cpv2mlf06yb4n" path="res://Asset/TheHenterPrise/chargeWarning2.ogg" id="6_l7s8v"]
 [ext_resource type="AudioStream" uid="uid://qk01y63k42j2" path="res://Asset/TheHenterPrise/beam4.ogg" id="7_4e4q2"]
 [ext_resource type="Texture2D" uid="uid://dol4ytmt47laf" path="res://Asset/circle.png" id="7_cttl7"]
+[ext_resource type="Texture2D" uid="uid://bdr7dxve6o4y8" path="res://Asset/TheHenterPrise/flarebig.png" id="9_wvyjx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yu6dd"]
 shader = ExtResource("3_71h77")
@@ -63,3 +64,10 @@ occluder = SubResource("OccluderPolygon2D_2v1ea")
 
 [node name="Marker2D" type="Marker2D" parent="." index="5"]
 position = Vector2(213, -28)
+
+[node name="Flarebig" type="Sprite2D" parent="." index="6"]
+self_modulate = Color(1, 0.317647, 0.203922, 1)
+position = Vector2(230, -33)
+scale = Vector2(0.814458, 0.814458)
+texture = ExtResource("9_wvyjx")
+offset = Vector2(11.3334, 19.6667)

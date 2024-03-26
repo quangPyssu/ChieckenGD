@@ -31,7 +31,7 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("TestButton+"):
-		atHalfHealth()
+		Beam()
 	
 	if Input.is_action_just_pressed("TestButton-"):
 		kill()
@@ -95,6 +95,7 @@ func kill():
 		$AnimationCenter/HenterpriseFront.z_index=0
 		$Explosion.visible=true
 		
+		$AttackTimer2.stop()
 		lockedMode=true
 		
 		for j in 20:

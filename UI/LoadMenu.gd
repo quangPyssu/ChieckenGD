@@ -34,6 +34,8 @@ func _ready():
 	%WeaponSelect.global_position=$WeaponSelect/Weapon.get_child(Global.EquippedWeapon[0]).global_position+Vector2(20.0,16.0)
 	%WeaponSelect2.global_position=$WeaponSelect/Weapon.get_child(Global.EquippedWeapon[1]).global_position+Vector2(20.0,16.0)
 	%SpecialSelect.global_position=$WeaponSelect/Special.get_child(Global.SpecialType).global_position+Vector2(20.0,16.0)
+	
+	
 		
 func _changeWepon(i:int):
 	Global.EquippedWeapon[0]=i

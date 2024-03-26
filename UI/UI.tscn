@@ -190,11 +190,6 @@ max_value = 10.0
 value = 10.0
 show_percentage = false
 
-[node name="DamageTimer" type="Timer" parent="Control/StatusBG/HealthBar"]
-unique_name_in_owner = true
-wait_time = 0.4
-one_shot = true
-
 [node name="AttackBG" type="TextureRect" parent="Control"]
 self_modulate = Color(1, 1, 1, 0.45098)
 layout_mode = 1
@@ -319,6 +314,3 @@ sprite_frames = SubResource("SpriteFrames_haxxi")
 autoplay = "default"
 frame = 3
 frame_progress = 0.298739
-
-[connection signal="timeout" from="Control/StatusBG/HealthBar/DamageTimer" to="." method="_on_damage_timer_timeout"]
-[connection signal="timeout" from="Control/StatusBG/HealthBar/DamageTimer" to="." method="_on_timer_timeout"]

@@ -11,8 +11,7 @@ func _ready():
 	ani = $AnimationCenter
 	$BulletSound.play()
 	
-	Global.isShaking=true
-	Global.shakeStrength=3
+	Global.shakeStrength+=5
 	ani.visible=false
 	set_process(false)
 	position=Vector2(-72.0,-161.0)
@@ -35,25 +34,30 @@ func _on_area_entered(_area:Area2D):
 
 func charge(cnt:int):
 	var tween:Tween = get_tree().create_tween()
-	tween.tween_property($Charging/Charge, "energy", 30,chargeTime).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property($Charging/Charge, "energy", 30,chargeTime).set_trans(Tween.TRANS_BOUNCE)
+	
+	var taeen:Tween = get_tree().create_tween()
+	taeen.tween_property($Flarebig, "scale", Vector2(3.5,3.5),chargeTime).set_trans(Tween.TRANS_BOUNCE)
 	
 	for i in cnt:
 		for j in 3:
 			var parti:Sprite2D = preParticle.instantiate()
 			var rot:Vector2 = Vector2(1,0).rotated(randf_range(0.0,PI*2))
-			parti.global_position = $Marker2D.global_position+rot*300.0
+			parti.position = rot*300.0
 			parti.rotation=rot.angle()+PI
 			var teen:Tween = get_tree().create_tween()
-			teen.tween_property(parti, "position", $Marker2D.global_position,0.5).set_trans(Tween.TRANS_LINEAR)
+			teen.tween_property(parti, "position", Vector2.ZERO,0.5).set_trans(Tween.TRANS_LINEAR)
 			
-			get_node("/root/Game/Projectiles").add_child(parti)
+			$Marker2D.add_child(parti)
+			#get_node("/root/Game/Projectiles").add_child(parti)
 		await get_tree().create_timer(chargeTime/(cnt-1)).timeout 
 	
 	ani.visible=true
 	set_process(true)
-	await get_tree().create_timer(chargeTime*blastScale).timeout 
-	Global.isShaking=false
-	queue_free()
+	
+	var tseen:Tween = get_tree().create_tween()
+	tseen.tween_property($Flarebig, "scale", Vector2(2.0,2.0),chargeTime*blastScale).set_trans(Tween.TRANS_BOUNCE)
 
-func _on_tree_exited():
-	Global.isShaking=false
+	await get_tree().create_timer(chargeTime*blastScale).timeout 
+	Global.shakeStrength-=5
+	queue_free()

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcldnhjbew7ld"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_x4yvm"]
+[ext_resource type="Script" path="res://Source/miniBullet_Player.gd" id="2_dkr6d"]
+[ext_resource type="Texture2D" uid="uid://86syui1ftdba" path="res://Asset/microgun-bullet.png" id="2_wmm0t"]
+[ext_resource type="AudioStream" uid="uid://dijogd71owox4" path="res://Asset/Sounds/(defaultweapon).ogg" id="3_38n5h"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xb1ly"]
+a = Vector2(-24, 0)
+b = Vector2(24, 0)
+
+[node name="Bullet" instance=ExtResource("1_x4yvm")]
+collision_layer = 4
+collision_mask = 544
+script = ExtResource("2_dkr6d")
+damage = 10.0
+canBreak = true
+HP = 1
+
+[node name="Microgun-bullet" type="Sprite2D" parent="AnimationCenter" index="0"]
+scale = Vector2(0.205882, 0.205882)
+texture = ExtResource("2_wmm0t")
+
+[node name="HitBox" parent="." index="1"]
+shape = SubResource("SegmentShape2D_xb1ly")
+
+[node name="BulletSound" parent="." index="2"]
+stream = ExtResource("3_38n5h")
+volume_db = -5.0

@@ -90,7 +90,7 @@ func _on_player_attack():
 	var Bullet = packedAttack[Global.CurrentWeapon].instantiate()
 	
 	match Global.EquippedWeapon[Global.CurrentWeapon]:
-		0,3:
+		0,2,3:
 			Bullet.global_position = $Player.global_position + Vector2(0, -50)
 			%Projectiles.add_child(Bullet)
 		1:
@@ -104,11 +104,14 @@ func loadAttack():
 				a=preload("res://bullet_player_normal.tscn")
 			1: 
 				a=preload("res://SmallBeam_Player.tscn")
+			2:
+				a=preload("res://miniBullet_Player.tscn")
+			
 				
 		packedAttack.append(a)
 
 func cameraShake():
-	if Global.isShaking:
+	if Global.shakeStrength:
 		$Camera.offset=Vector2(randi_range(-Global.shakeStrength,Global.shakeStrength),randi_range(-Global.shakeStrength,Global.shakeStrength))
 	else:
 		$Camera.offset=Vector2.ZERO
