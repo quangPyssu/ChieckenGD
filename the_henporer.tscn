@@ -1,0 +1,340 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwj24ow517lat"]
+
+[ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://entity.tscn" id="1_y27se"]
+[ext_resource type="Texture2D" uid="uid://ccqwp36p647bt" path="res://Asset/TheHenporer/henperor-Cape.png" id="2_3rl27"]
+[ext_resource type="Shader" path="res://Shaders/the_henporer_cape.gdshader" id="2_bvcoo"]
+[ext_resource type="Script" path="res://Source/TheHenporer/the_henporer.gd" id="2_d2tkb"]
+[ext_resource type="Texture2D" uid="uid://c18uhuo437cec" path="res://Asset/TheHenporer/henperor-limbs.png" id="3_7f45w"]
+[ext_resource type="Texture2D" uid="uid://cj310d5dx6kra" path="res://Asset/TheHenporer/henperor-body.png" id="4_k1vn8"]
+[ext_resource type="Texture2D" uid="uid://cxy0x0qiwe4p2" path="res://Asset/TheHenporer/flareSmall.png" id="7_v3w8o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xs77d"]
+shader = ExtResource("2_bvcoo")
+shader_parameter/tiled_factor = Vector2(1, 1.2)
+shader_parameter/offsetScale = Vector2(1, 10)
+shader_parameter/amplitudeWave = Vector2(0.01, 0.08)
+shader_parameter/timeScale = Vector2(3.7, 5)
+
+[sub_resource type="Animation" id="Animation_u642k"]
+resource_name = "Henporer_normal"
+length = 2.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Henperor-limbs2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, 0.261799]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Henperor-limbs:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, -0.261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Henperor-limbs2:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.436332, -0.261799]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Henperor-limbs:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.349066, 0.261799]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Henperor-limbs2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 1.1), Vector2(1.1, 0.9)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Henperor-limbs:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(-0.9, 1.1), Vector2(-1.1, 0.9)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Henperor-body:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.05), Vector2(1, 0.98)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Henperor-Legs:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 1.1), Vector2(1, 0.95)]
+}
+
+[sub_resource type="Animation" id="Animation_70ymq"]
+resource_name = "Henporer_The_Sky_Descend"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Henperor-limbs2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, 0.261799, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Henperor-limbs:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Henperor-limbs2:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.436332, -0.261799, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Henperor-limbs:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Henperor-limbs2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 1.1), Vector2(1.1, 0.9), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Henperor-limbs:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Henperor-body:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Henperor-Legs:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"the_Sky_Descend"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Henperor-body/FlareSmall:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.983541, 0.983541, 0.983541, 1), Color(0.983541, 0.983541, 0.983541, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Henperor-body/FlareSmall2:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trnic"]
+_data = {
+"Henporer_The_Sky_Descend": SubResource("Animation_70ymq"),
+"Henporer_flap": SubResource("Animation_u642k")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4g1wa"]
+radius = 268.263
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vfnnw"]
+radius = 234.184
+
+[node name="Henporer" instance=ExtResource("1_y27se")]
+position = Vector2(602, 297)
+script = ExtResource("2_d2tkb")
+
+[node name="Henperor-cape" type="Sprite2D" parent="AnimationCenter" index="0"]
+material = SubResource("ShaderMaterial_xs77d")
+position = Vector2(0, -3.05176e-05)
+scale = Vector2(1.925, 1.71508)
+texture = ExtResource("2_3rl27")
+offset = Vector2(0, 112.531)
+
+[node name="Henperor-limbs2" type="Sprite2D" parent="AnimationCenter" index="1"]
+position = Vector2(47, 29)
+texture = ExtResource("3_7f45w")
+offset = Vector2(113, 0)
+region_enabled = true
+region_rect = Rect2(0, 192.715, 285.937, 192.285)
+
+[node name="Henperor-limbs" type="Sprite2D" parent="AnimationCenter" index="2"]
+position = Vector2(-47, 29)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_7f45w")
+offset = Vector2(113, 0)
+region_enabled = true
+region_rect = Rect2(0, 192.715, 285.937, 192.285)
+
+[node name="Henperor-Legs" type="Sprite2D" parent="AnimationCenter" index="3"]
+position = Vector2(0, 185)
+texture = ExtResource("3_7f45w")
+region_enabled = true
+region_rect = Rect2(0, 0, 406.459, 195)
+
+[node name="Henperor-body" type="Sprite2D" parent="AnimationCenter" index="4"]
+texture = ExtResource("4_k1vn8")
+region_enabled = true
+region_rect = Rect2(0, 0, 276, 453)
+
+[node name="FlareSmall" type="Sprite2D" parent="AnimationCenter/Henperor-body" index="0"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.129412, 0.113725, 1)
+position = Vector2(-32, -139.696)
+scale = Vector2(0.569702, 0.57704)
+texture = ExtResource("7_v3w8o")
+region_enabled = true
+region_rect = Rect2(0, 0, 127.435, 124.049)
+
+[node name="FlareSmall2" type="Sprite2D" parent="AnimationCenter/Henperor-body" index="1"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.129412, 0.113725, 1)
+position = Vector2(28, -136.728)
+rotation = 0.785397
+scale = Vector2(0.569702, 0.57704)
+texture = ExtResource("7_v3w8o")
+region_enabled = true
+region_rect = Rect2(0, 0, 127.435, 124.049)
+
+[node name="Animation" type="AnimationPlayer" parent="AnimationCenter" index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_trnic")
+}
+autoplay = "Henporer_flap"
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+visible = false
+position = Vector2(0, 26)
+shape = SubResource("CircleShape2D_4g1wa")
+debug_color = Color(0.901961, 0.258824, 0.443137, 0.419608)
+
+[node name="PhysicBox" parent="." index="2"]
+visible = false
+position = Vector2(0, 26)
+shape = SubResource("CircleShape2D_vfnnw")

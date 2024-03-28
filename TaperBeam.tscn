@@ -11,7 +11,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vf51"]
 shader = ExtResource("3_ibu0t")
 shader_parameter/speed = -6.0
-shader_parameter/tiled_factor = Vector2(10, 1)
+shader_parameter/tiled_factor = Vector2(11, 1)
 shader_parameter/offsetScale = Vector2(1, 1)
 shader_parameter/amplitudeWave = Vector2(0.1, 0.05)
 shader_parameter/timeScale = Vector2(4, 5)
@@ -60,21 +60,21 @@ inClampedScreen = false
 [node name="TaperBeam5a" type="Sprite2D" parent="AnimationCenter" index="0"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_0vf51")
-position = Vector2(959.109, 0)
-scale = Vector2(3.75739, 0.183594)
+position = Vector2(1152, 0)
+scale = Vector2(4.5, 0.184)
 texture = ExtResource("2_gt7tp")
 
 [node name="HitBox" parent="." index="1"]
 visible = false
-position = Vector2(926, 0)
-scale = Vector2(1.1, 0.7)
+position = Vector2(1184, 0)
+scale = Vector2(1.4, 0.7)
 shape = ExtResource("5_l8f4l")
 
 [node name="Warningstrip5" type="TextureRect" parent="." index="2"]
 self_modulate = Color(1, 1, 1, 0.137255)
 offset_left = -3.0
 offset_top = -17.0
-offset_right = 1921.0
+offset_right = 2304.0
 offset_bottom = 17.0
 texture = ExtResource("6_mxjed")
 stretch_mode = 1

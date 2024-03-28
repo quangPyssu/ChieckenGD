@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6kk345hsjnss"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_7xesm"]
+[ext_resource type="Script" path="res://Source/TheHenporer/the_Sky_Descend.gd" id="2_4qltd"]
+[ext_resource type="Texture2D" uid="uid://bdr7dxve6o4y8" path="res://Asset/TheHenterPrise/flarebig.png" id="3_017il"]
+[ext_resource type="Texture2D" uid="uid://syffv5y4l3xi" path="res://Asset/TheHenporer/bulletHyperGun.png" id="4_nqysh"]
+[ext_resource type="Texture2D" uid="uid://7hsxq7orbnyx" path="res://Asset/Blue_Blank_Background.png" id="4_wep7c"]
+
+[sub_resource type="Animation" id="Animation_yvrxs"]
+resource_name = "default"
+length = 2.25
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("commet:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 30.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingTrail:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-442, -312), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FallingTrail:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65, 1.8, 1.95, 2.1, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.8, 3.3), Vector2(1.75, 2.7), Vector2(1.8, 3.4), Vector2(1.85, 2.8), Vector2(1.9, 3.5), Vector2(1.95, 2.9), Vector2(2, 3.6), Vector2(2.05, 3), Vector2(2.1, 3.7), Vector2(2.15, 3.1), Vector2(2.15, 3.8), Vector2(2.2, 3.2), Vector2(2.25, 3.9), Vector2(2.3, 3.3), Vector2(2.35, 4), Vector2(2.4, 3.4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("commet:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-442, -312), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("commet:texture_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%AnimationCenter/..:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hiknv"]
+_data = {
+"default": SubResource("Animation_yvrxs")
+}
+
+[node name="Bullet" instance=ExtResource("1_7xesm")]
+script = ExtResource("2_4qltd")
+
+[node name="BlueBlankBackground" type="Sprite2D" parent="." index="0"]
+scale = Vector2(1.56375, 1.56375)
+texture = ExtResource("4_wep7c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_hiknv")
+}
+
+[node name="FallingTrail" type="Sprite2D" parent="AnimationCenter" index="1"]
+rotation = 0.523598
+scale = Vector2(2.4, 3.4)
+texture = ExtResource("4_nqysh")
+offset = Vector2(-199, -1.52588e-05)
+region_enabled = true
+region_rect = Rect2(0, 31.1969, 398.811, 49.7376)
+
+[node name="commet" type="PointLight2D" parent="AnimationCenter" index="2"]
+self_modulate = Color(1, 1, 1, 0)
+energy = 30.0
+texture = ExtResource("3_017il")
+texture_scale = 1.4

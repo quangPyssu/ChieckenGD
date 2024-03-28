@@ -29,6 +29,8 @@ func _ready():
 	%SpecialTimer.timeout.connect(_on_special_timer_timeout)
 
 	get_node("AnimationCenter/BattlecruiserBase").visible = true
+	$AnimationCenter/Ammo.visible=false
+	$AnimationCenter/Ammo2.visible=false
 	loadParti()
 	super._ready()
 
@@ -91,7 +93,7 @@ func SpecialAttack(SpecialType:int):
 			_gun_shot()
 		1:
 			pass
-		2: 
+		3: 
 			_big_beam()
 
 func _gun_shot():
@@ -183,13 +185,14 @@ func loadParti():
 				a=preload("res://Asset/particle/BulletShell.tscn")
 				$MiniGunTimer.start()
 				$AnimationCenter/Ammo.visible=true
+				$AnimationCenter/Ammo2.visible=true
 				
 		particle.append(a)
 	
 	match Global.SpecialType:
 		0:
 			bomb=preload("res://bullet_player_normal.tscn")
-		2: 
+		3: 
 			bomb=preload("res://BigBeam_Player.tscn")
 
 func reloadBullet():
