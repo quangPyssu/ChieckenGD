@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://fdcitrefq8yt"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_s6j16"]
+[ext_resource type="Texture2D" uid="uid://b67ima7gr7aig" path="res://Asset/TheHenporer/lighting.png" id="2_e7wy5"]
+[ext_resource type="Shape2D" uid="uid://clfvtmfquskgf" path="res://Asset/particle/BeamBox.tres" id="2_etbpv"]
+[ext_resource type="Shader" path="res://Shaders/lighting.gdshader" id="2_hnd6c"]
+[ext_resource type="Script" path="res://Source/TheHenporer/lighting.gd" id="2_osfer"]
+[ext_resource type="AudioStream" uid="uid://c8lc858vmpje7" path="res://Asset/TheHenporer/lightningHit.ogg" id="3_8xbf2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tk3tj"]
+shader = ExtResource("2_hnd6c")
+shader_parameter/speed = -2.0
+shader_parameter/tiled_factor = Vector2(1, 1)
+shader_parameter/offsetScale = Vector2(1, 5)
+shader_parameter/amplitudeWave = Vector2(0.2, 0.1)
+shader_parameter/timeScale = Vector2(31, 5)
+
+[node name="Bullet" instance=ExtResource("1_s6j16")]
+collision_mask = 256
+script = ExtResource("2_osfer")
+damage = 3.0
+
+[node name="TextureRect" type="TextureRect" parent="AnimationCenter" index="0"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_tk3tj")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -51.0
+offset_right = 2316.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 60)
+texture = ExtResource("2_e7wy5")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="HitBox" parent="." index="1"]
+visible = false
+position = Vector2(1183, 0)
+scale = Vector2(1.4, 1.6)
+shape = ExtResource("2_etbpv")
+
+[node name="BulletSound" parent="." index="2"]
+stream = ExtResource("3_8xbf2")

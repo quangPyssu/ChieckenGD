@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://s6kdrfboa161"]
+
+[ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_0sngu"]
+[ext_resource type="PackedScene" uid="uid://dwj24ow517lat" path="res://the_henporer.tscn" id="2_g8vk8"]
+
+[node name="Game" instance=ExtResource("1_0sngu")]
+
+[node name="Henporer" parent="Enemies/Wave0" index="0" instance=ExtResource("2_g8vk8")]
+position = Vector2(952, 383.012)

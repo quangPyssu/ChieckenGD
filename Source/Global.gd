@@ -24,7 +24,7 @@ var SpecialTime: Array[float] = [8.0,0.0,0.0,30.0]
 var UnlockedWeapon:Array[bool] = [1,1,1,0]
 var UnlockedSpecial:Array[bool] = [1,1,0,1]
 var CurrentLevel:int = 0
-var UnlockedLevel:int = 4
+var UnlockedLevel:int = 5
 var Volume:Array [float] = [1.0,0.5,0.5,0.4]
 ####################
 

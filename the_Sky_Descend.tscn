@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6kk345hsjnss"]
+[gd_scene load_steps=19 format=3 uid="uid://b6kk345hsjnss"]
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_7xesm"]
 [ext_resource type="Script" path="res://Source/TheHenporer/the_Sky_Descend.gd" id="2_4qltd"]
 [ext_resource type="Texture2D" uid="uid://bdr7dxve6o4y8" path="res://Asset/TheHenterPrise/flarebig.png" id="3_017il"]
+[ext_resource type="AudioStream" uid="uid://m7wy6t6ielya" path="res://Asset/TheHenporer/henterpriseCannon.ogg" id="4_5ijfx"]
 [ext_resource type="Texture2D" uid="uid://syffv5y4l3xi" path="res://Asset/TheHenporer/bulletHyperGun.png" id="4_nqysh"]
 [ext_resource type="Texture2D" uid="uid://7hsxq7orbnyx" path="res://Asset/Blue_Blank_Background.png" id="4_wep7c"]
+[ext_resource type="AudioStream" uid="uid://dlqcahiyhox4u" path="res://Asset/TheHenporer/(bossexplosion).ogg" id="5_dr63x"]
+[ext_resource type="Texture2D" uid="uid://bayqvhu5lifeb" path="res://Asset/TheHenporer/sg_flare_star_3.png" id="6_2vgau"]
+[ext_resource type="Texture2D" uid="uid://bvv8t7fhb2485" path="res://Asset/particle/sg_flare_short_7.png" id="7_uulua"]
+[ext_resource type="Texture2D" uid="uid://cxy0x0qiwe4p2" path="res://Asset/TheHenporer/flareSmall.png" id="8_2qtrr"]
 
 [sub_resource type="Animation" id="Animation_yvrxs"]
 resource_name = "default"
@@ -32,7 +37,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-442, -312), Vector2(0, 0)]
+"values": [Vector2(-1920, -1108), Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -56,7 +61,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 2.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-442, -312), Vector2(0, 0)]
+"values": [Vector2(-1920, -1108), Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -68,12 +73,12 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 2.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 1.4]
+"values": [1.0, 1.2]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%AnimationCenter/..:modulate")
+tracks/5/path = NodePath("..:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -82,18 +87,276 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FallingTrail:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%AnimationCenter/../BulletSound")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_5ijfx")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/7/use_blend = true
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("%AnimationCenter/..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_process"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("%AnimationCenter/../HitBox:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1920, -1108), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ovhiw"]
+resource_name = "SkyFall"
+length = 2.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FallingTrail:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SgFlareStar3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.785398, 0.785397]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SgFlareStar3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("commet:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.45, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [30.0, 40.0, 80.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("commet:texture_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.45, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.2, 0.1, 0.1, 3.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../SgFlareStar3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Blast:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../HitBox:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.45, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.7, 0.7), Vector2(6, 6)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("%AnimationCenter/..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.45, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [20],
+"method": &"shake"
+}, {
+"args": [-20],
+"method": &"shake"
+}, {
+"args": [],
+"method": &"kill"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("%AnimationCenter/..:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(2, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("%AnimationCenter/../BulletSound")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_dr63x")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/10/use_blend = true
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("%AnimationCenter/..")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.45, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_process"
+}, {
+"args": [false],
+"method": &"set_process"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hiknv"]
 _data = {
-"default": SubResource("Animation_yvrxs")
+"FallingStar": SubResource("Animation_yvrxs"),
+"SkyFall": SubResource("Animation_ovhiw")
 }
 
-[node name="Bullet" instance=ExtResource("1_7xesm")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gmxr"]
+radius = 90.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_htvk0"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_s2xg0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i706w"]
+curve = SubResource("Curve_s2xg0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8sfrn"]
+particle_flag_disable_z = true
+angle_max = 180.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 500.0
+initial_velocity_max = 600.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_i706w")
+anim_offset_min = 0.8
+anim_offset_max = 1.0
+
+[node name="the_sky_Descend" instance=ExtResource("1_7xesm")]
+collision_mask = 308
 script = ExtResource("2_4qltd")
+damage = 90.0
+canBreak = true
+inClampedScreen = false
 
 [node name="BlueBlankBackground" type="Sprite2D" parent="." index="0"]
-scale = Vector2(1.56375, 1.56375)
+visible = false
+position = Vector2(66.9998, -289.375)
+scale = Vector2(5.4575, 2.04604)
 texture = ExtResource("4_wep7c")
+
+[node name="AnimationCenter" parent="." index="1"]
+scale = Vector2(0.997467, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationCenter" index="0"]
 libraries = {
@@ -101,8 +364,9 @@ libraries = {
 }
 
 [node name="FallingTrail" type="Sprite2D" parent="AnimationCenter" index="1"]
+position = Vector2(-1536, -886.4)
 rotation = 0.523598
-scale = Vector2(2.4, 3.4)
+scale = Vector2(1.85, 2.8)
 texture = ExtResource("4_nqysh")
 offset = Vector2(-199, -1.52588e-05)
 region_enabled = true
@@ -110,6 +374,38 @@ region_rect = Rect2(0, 31.1969, 398.811, 49.7376)
 
 [node name="commet" type="PointLight2D" parent="AnimationCenter" index="2"]
 self_modulate = Color(1, 1, 1, 0)
-energy = 30.0
+position = Vector2(-1536, -886.4)
+energy = 6.8
 texture = ExtResource("3_017il")
-texture_scale = 1.4
+texture_scale = 1.04
+
+[node name="HitBox" parent="." index="2"]
+position = Vector2(-1536, -886.4)
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CircleShape2D_5gmxr")
+debug_color = Color(0.984314, 0, 0.333333, 0.427451)
+
+[node name="Blast" type="GPUParticles2D" parent="." index="3"]
+material = SubResource("CanvasItemMaterial_htvk0")
+position = Vector2(-27, -36)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_8sfrn")
+texture = ExtResource("8_2qtrr")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="SgFlareStar3" type="Sprite2D" parent="." index="4"]
+position = Vector2(0, -6.10352e-05)
+rotation = 0.785397
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_2vgau")
+
+[node name="SgFlareShort7" type="Sprite2D" parent="SgFlareStar3" index="0"]
+rotation = -0.785397
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_uulua")
+
+[node name="BulletSound" parent="." index="5"]
+autoplay = false

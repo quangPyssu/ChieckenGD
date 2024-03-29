@@ -29,17 +29,17 @@ func _ready():
 		
 		cnt+=1
 		
-	var s:String ="res://Asset/Icon/SpecialIcon0.jpg"
+	var c:String ="res://Asset/Icon/SpecialIcon0.jpg"
 	match Global.SpecialType:
 		1:
-			s="res://Asset/Icon/SpecialIcon2.jpg"
+			c="res://Asset/Icon/SpecialIcon2.jpg"
 		2:
-			s="res://Asset/Icon/SpecialIcon4.jpg"
+			c="res://Asset/Icon/SpecialIcon4.jpg"
 		3:
-			s="res://Asset/Icon/SpecialIcon1.jpg"
+			c="res://Asset/Icon/SpecialIcon1.jpg"
 	
-	$Control/AttackBG/HBoxContainer/SpecialSprite.texture=load(s)
-	%SpecialRecharge.texture_progress=load(s)
+	$Control/AttackBG/HBoxContainer/SpecialSprite.texture=load(c)
+	%SpecialRecharge.texture_progress=load(c)
 	
 		
 	CurWeapon=1

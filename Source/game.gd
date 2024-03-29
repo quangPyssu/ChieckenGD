@@ -9,9 +9,9 @@ var packedAttack: Array[PackedScene]
 
 var BossMusic: Array[String]=["res://Asset/Sounds/Music/BeOfGoodCheer.ogg","res://Asset/Sounds/Music/magicJinzoStraw.ogg",
 "res://Asset/Sounds/Music/LoveMasterSpark.ogg","res://Asset/Sounds/Music/HelianAlien.ogg",
-"res://Asset/Sounds/Music/Necrofantasia.ogg"]
+"res://Asset/Sounds/Music/Necrofantasia.ogg","res://Asset/Sounds/Music/PureFurries.ogg"]
 
-var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://level2.tscn","res://level3.tscn","res://level4.tscn"]
+var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://level2.tscn","res://level3.tscn","res://level4.tscn","res://level5.tscn"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +19,7 @@ func _ready():
 	Global.defeated = false
 	Global.LevelEnd = false
 	Global.HP = Global.maxHP
+	Global.shakeStrength=0
 	$Player.position=Global.ScreenSize/2
 	#print(DisplayServer.window_get_size())	
 	
