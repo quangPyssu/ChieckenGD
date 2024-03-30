@@ -19,6 +19,7 @@ var orgPos:Vector2
 
 var EntitySet:Array [entity] = []
 var BulletSet:Array [bullet] = []
+var isSpawning:bool = true
 
 func _ready():
 	theBox=get_child(get_child_count()-1)
@@ -49,6 +50,8 @@ func _ready():
 
 func spawn():
 	#random position in Spawn Zone
+	if (!isSpawning):
+		return
 	for i:int in SpawnCnt:
 		var ranPos=Vector2(randf_range(0,theBox.shape.size.x*scale.x),randf_range(0,theBox.shape.size.y*scale.y))+orgPos
 		

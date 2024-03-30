@@ -68,7 +68,7 @@ func SpecialA():
 func ram():
 	lockedMode=true
 	var desti:Vector2 = global_position+(Global.PlayerPos-global_position)*100
-	gotoPosition(desti,70000.0)
+	gotoPosition(desti,65000.0)
 	look_at(Global.PlayerPos)
 	%SpaceShipBody.frame=16
 

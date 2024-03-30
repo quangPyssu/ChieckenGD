@@ -191,7 +191,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.45, 2, 2.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [30.0, 40.0, 80.0, 0.0]
+"values": [30.0, 40.0, 40.0, 0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -343,9 +343,9 @@ anim_offset_min = 0.8
 anim_offset_max = 1.0
 
 [node name="the_sky_Descend" instance=ExtResource("1_7xesm")]
-collision_mask = 308
+collision_mask = 256
 script = ExtResource("2_4qltd")
-damage = 90.0
+damage = 70.0
 canBreak = true
 inClampedScreen = false
 
@@ -364,9 +364,9 @@ libraries = {
 }
 
 [node name="FallingTrail" type="Sprite2D" parent="AnimationCenter" index="1"]
-position = Vector2(-1536, -886.4)
+position = Vector2(-1920, -1108)
 rotation = 0.523598
-scale = Vector2(1.85, 2.8)
+scale = Vector2(1.8, 3.3)
 texture = ExtResource("4_nqysh")
 offset = Vector2(-199, -1.52588e-05)
 region_enabled = true
@@ -374,14 +374,14 @@ region_rect = Rect2(0, 31.1969, 398.811, 49.7376)
 
 [node name="commet" type="PointLight2D" parent="AnimationCenter" index="2"]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(-1536, -886.4)
-energy = 6.8
+position = Vector2(-1920, -1108)
+energy = 30.0
 texture = ExtResource("3_017il")
-texture_scale = 1.04
+texture_scale = 1.2
 
 [node name="HitBox" parent="." index="2"]
-position = Vector2(-1536, -886.4)
-scale = Vector2(0.7, 0.7)
+position = Vector2(-1920, -1108)
+scale = Vector2(1e-05, 1e-05)
 shape = SubResource("CircleShape2D_5gmxr")
 debug_color = Color(0.984314, 0, 0.333333, 0.427451)
 
@@ -389,7 +389,7 @@ debug_color = Color(0.984314, 0, 0.333333, 0.427451)
 material = SubResource("CanvasItemMaterial_htvk0")
 position = Vector2(-27, -36)
 emitting = false
-amount = 200
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_8sfrn")
 texture = ExtResource("8_2qtrr")
 lifetime = 1.5
@@ -397,9 +397,9 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="SgFlareStar3" type="Sprite2D" parent="." index="4"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -6.10352e-05)
-rotation = 0.785397
-scale = Vector2(1e-05, 1e-05)
+rotation = -0.785398
 texture = ExtResource("6_2vgau")
 
 [node name="SgFlareShort7" type="Sprite2D" parent="SgFlareStar3" index="0"]

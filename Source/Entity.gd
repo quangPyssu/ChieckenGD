@@ -23,9 +23,11 @@ var gotShapeSize:bool = false
 @export var canFlicker: bool = true
 var isFlickering: bool = false
 @export var flickerTime: float = 1.0
+@export var percentageHealth:float = 1.0
 
 func _ready():
 	MaxHP = HP
+	HP=HP*percentageHealth
 	
 	if (timerEnd!=-1):
 		HP=timerEnd

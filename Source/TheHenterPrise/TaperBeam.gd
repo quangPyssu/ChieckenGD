@@ -7,7 +7,6 @@ var blastScale:float = 1
 func _ready():
 	HP = 99999999
 	ani = %AnimationCenter
-	#$Warningstrip4/AnimationPlayer.play("default")
 	
 	ani.visible=false
 	set_process(false)

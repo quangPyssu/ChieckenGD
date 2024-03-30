@@ -7,7 +7,7 @@ const FastPercentage: float = 1.5
 var AttackLoaded: bool = true
 var SpecialLoaded: bool = false
 
-var SpecialIFrame: Array[float] = [0.5,0.0,4.0,0.0]
+var SpecialIFrame: Array[float] = [0.7,0.0,0.0,4.5]
 var SpecialTimeRatio:float=0
 
 var particle:Array[PackedScene]
@@ -171,8 +171,9 @@ func recoverAP():
 	tween.tween_property(Global, "AP", Global.maxAP, Global.WeaponTime[Global.EquippedWeapon[Global.CurrentWeapon]]).set_trans(Tween.TRANS_LINEAR)
 
 func take_damage(damage: float):
-	if (isFlickering):
+	if isFlickering:
 		return
+		damage=0
 	super.take_damage(damage)
 
 func loadParti():

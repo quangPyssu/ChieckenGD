@@ -1,9 +1,154 @@
-[gd_scene load_steps=3 format=3 uid="uid://s6kdrfboa161"]
+[gd_scene load_steps=11 format=3 uid="uid://s6kdrfboa161"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_0sngu"]
+[ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://Enemy_Chicken.tscn" id="2_55x2a"]
 [ext_resource type="PackedScene" uid="uid://dwj24ow517lat" path="res://the_henporer.tscn" id="2_g8vk8"]
+[ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://entity_anchor.tscn" id="2_oke5u"]
+[ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://spawner.tscn" id="3_0rkxi"]
+[ext_resource type="PackedScene" uid="uid://cgeh2dbqccio" path="res://UFO.tscn" id="5_g5taf"]
+[ext_resource type="PackedScene" uid="uid://dmy2mmbxd5qib" path="res://spaceShip.tscn" id="6_24rfh"]
+[ext_resource type="AudioStream" uid="uid://d4egux6t481mf" path="res://Asset/Sounds/Music/TheSeaOneHomePlanet.ogg" id="8_brfyl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq0nd"]
+size = Vector2(1920, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdue3"]
+size = Vector2(1920, 253.897)
 
 [node name="Game" instance=ExtResource("1_0sngu")]
 
-[node name="Henporer" parent="Enemies/Wave0" index="0" instance=ExtResource("2_g8vk8")]
-position = Vector2(952, 383.012)
+[node name="Wave0_0" type="Node2D" parent="Enemies" index="0"]
+
+[node name="EnemyChicken" parent="Enemies/Wave0_0" index="0" instance=ExtResource("2_55x2a")]
+position = Vector2(2220, -300)
+scale = Vector2(1, 1.00569)
+timerEnd = 10.0
+savedPos = Vector2(-100, -100)
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Anchor" parent="Enemies/Wave0" index="0" instance=ExtResource("2_oke5u")]
+position = Vector2(880, -279.279)
+scale = Vector2(1, 1.00559)
+size = 300.0
+entityMax = 16.0
+pattern = 1
+rotateSpeed = 0.1
+speed = 10000.0
+direction = Vector2(-1, 0)
+savedPos = Vector2(1000, 500)
+
+[node name="SDpawn" parent="Enemies/Wave1" index="0" instance=ExtResource("2_55x2a")]
+texture_filter = 0
+position = Vector2(2220, -300)
+scale = Vector2(1, 1.00569)
+timerEnd = 15.0
+savedPos = Vector2(-100, -100)
+isInvincible = true
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Spawner" parent="Enemies/Wave1/SDpawn" index="5" instance=ExtResource("3_0rkxi")]
+position = Vector2(-2408, 119.014)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 1.0
+SpawnCnt = 5
+WhatSpawning = 3
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave1/SDpawn/Spawner" index="1"]
+position = Vector2(1148, 155.486)
+shape = SubResource("RectangleShape2D_dq0nd")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[node name="UFO" parent="Enemies/Wave2" index="0" instance=ExtResource("5_g5taf")]
+position = Vector2(960, -215.444)
+HP = 3000.0
+speed = 10000.0
+direction = Vector2(1, 0)
+savedPos = Vector2(1000, 300)
+percentageHealth = 0.48
+
+[node name="Wave3" type="Node2D" parent="Enemies" index="4"]
+
+[node name="Anchor" parent="Enemies/Wave3" index="0" instance=ExtResource("2_oke5u")]
+texture_filter = 0
+position = Vector2(880, -279.279)
+scale = Vector2(1, 1.00559)
+size = 300.0
+entityMax = 16.0
+rotateSpeed = 0.3
+speed = 10000.0
+direction = Vector2(1, -1)
+savedPos = Vector2(1000, 500)
+
+[node name="Wave4" type="Node2D" parent="Enemies" index="5"]
+
+[node name="EnemyChicken" parent="Enemies/Wave4" index="0" instance=ExtResource("2_55x2a")]
+position = Vector2(2220, -300)
+scale = Vector2(1, 1.00569)
+timerEnd = 3.0
+savedPos = Vector2(-100, -100)
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Wave5" type="Node2D" parent="Enemies" index="6"]
+
+[node name="EnemyChicken" parent="Enemies/Wave5" index="0" instance=ExtResource("2_55x2a")]
+position = Vector2(2220, 1039.32)
+scale = Vector2(1, 1.00569)
+collision_layer = 0
+timerEnd = 20.0
+savedPos = Vector2(-100, -100)
+isInvincible = true
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Spawner" parent="Enemies/Wave5/EnemyChicken" index="5" instance=ExtResource("3_0rkxi")]
+position = Vector2(-2408, 118.551)
+scale = Vector2(1, 1.00258)
+collision_layer = 0
+collision_mask = 0
+BetweenSpawn = 2.0
+SpawnCnt = 7
+WhatSpawning = 2
+direction = Vector2(0, -1)
+
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave5/EnemyChicken/Spawner" index="1"]
+position = Vector2(1148, 52.3404)
+shape = SubResource("RectangleShape2D_kdue3")
+debug_color = Color(0.890196, 0, 0.788235, 0.109804)
+
+[node name="Wave6" type="Node2D" parent="Enemies" index="7"]
+
+[node name="SpaceShip" parent="Enemies/Wave6" index="0" instance=ExtResource("6_24rfh")]
+percentageHealth = 0.48
+
+[node name="Wave6_5" type="Node2D" parent="Enemies" index="8"]
+
+[node name="EnemyChicken" parent="Enemies/Wave6_5" index="0" instance=ExtResource("2_55x2a")]
+position = Vector2(2220, -300)
+scale = Vector2(1, 1.00569)
+timerEnd = 3.0
+savedPos = Vector2(-100, -100)
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
+[node name="Wave7" type="Node2D" parent="Enemies" index="9"]
+
+[node name="Henporer" parent="Enemies/Wave7" index="0" instance=ExtResource("2_g8vk8")]
+position = Vector2(2048, -454.826)
+speed = 7000.0
+direction = Vector2(-1, 0)
+savedPos = Vector2(960, 300)
+
+[node name="Music" parent="." index="6"]
+stream = ExtResource("8_brfyl")
+
+[connection signal="tree_exited" from="Enemies/Wave0/Anchor" to="Enemies/Wave0/Anchor" method="_on_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Wave3/Anchor" to="Enemies/Wave3/Anchor" method="_on_tree_exited"]

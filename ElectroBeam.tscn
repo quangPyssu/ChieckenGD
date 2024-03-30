@@ -35,8 +35,7 @@ scale = Vector2(4.695, 4)
 texture = ExtResource("4_4xmsu")
 
 [node name="HitBox" parent="." index="1"]
-visible = false
-position = Vector2(1180, -21)
+position = Vector2(1200.5, -21)
 scale = Vector2(1.4, 8)
 shape = ExtResource("5_v7w1l")
 

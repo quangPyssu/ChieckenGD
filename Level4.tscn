@@ -8,9 +8,10 @@
 [node name="TheHenterprise" parent="Enemies/Wave2" index="0" instance=ExtResource("2_xjl61")]
 position = Vector2(960, -317.182)
 rotation = -6.28318
+HP = 12000.0
 speed = 6000.0
 savedPos = Vector2(967, 190)
 
 [node name="Music" parent="." index="6"]
 stream = null
-volume_db = -15.0
+volume_db = -5.0

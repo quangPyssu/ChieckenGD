@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://gpabb731kw1l"]
+[gd_scene load_steps=12 format=3 uid="uid://gpabb731kw1l"]
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://bullet.tscn" id="1_jhk33"]
 [ext_resource type="Texture2D" uid="uid://lnk5vdjbavqe" path="res://Asset/TheHenterPrise/taperBeam5A.png" id="2_gt7tp"]
 [ext_resource type="Script" path="res://Source/TheHenterPrise/TaperBeam.gd" id="2_x2buf"]
 [ext_resource type="Shader" path="res://Shaders/TaperBeam.gdshader" id="3_ibu0t"]
+[ext_resource type="Texture2D" uid="uid://cxy0x0qiwe4p2" path="res://Asset/TheHenporer/flareSmall.png" id="5_c40l0"]
 [ext_resource type="Shape2D" uid="uid://clfvtmfquskgf" path="res://Asset/particle/BeamBox.tres" id="5_l8f4l"]
 [ext_resource type="Texture2D" uid="uid://du8w106demqxx" path="res://Asset/TheHenterPrise/warningstrip4.png" id="6_mxjed"]
 [ext_resource type="AudioStream" uid="uid://cqfu7kouocxmu" path="res://Asset/Sounds/laserSmall.ogg" id="7_echqo"]
@@ -64,8 +65,14 @@ position = Vector2(1152, 0)
 scale = Vector2(4.5, 0.184)
 texture = ExtResource("2_gt7tp")
 
+[node name="FlareSmall" type="Sprite2D" parent="AnimationCenter" index="1"]
+self_modulate = Color(1, 0.454902, 1, 0.658824)
+position = Vector2(16, 0)
+texture = ExtResource("5_c40l0")
+region_enabled = true
+region_rect = Rect2(127, 0, 127, 125)
+
 [node name="HitBox" parent="." index="1"]
-visible = false
 position = Vector2(1184, 0)
 scale = Vector2(1.4, 0.7)
 shape = ExtResource("5_l8f4l")

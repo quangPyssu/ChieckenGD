@@ -1,6 +1,6 @@
 extends Control
 
-var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://level2.tscn","res://level3.tscn","res://level4.tscn","res://level5.tscn"]
+var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://Level2.tscn","res://Level3.tscn","res://Level4.tscn","res://Level5.tscn"]
 
 var Data = preload("res://UI/Data.gd").new()
 var loading:bool = false

@@ -95,6 +95,7 @@ func kill():
 		$AnimationCenter/HenterpriseFront.z_index=0
 		$Explosion.visible=true
 		
+		$AttackTimer.stop()
 		$AttackTimer2.stop()
 		lockedMode=true
 		

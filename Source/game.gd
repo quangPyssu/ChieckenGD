@@ -11,7 +11,7 @@ var BossMusic: Array[String]=["res://Asset/Sounds/Music/BeOfGoodCheer.ogg","res:
 "res://Asset/Sounds/Music/LoveMasterSpark.ogg","res://Asset/Sounds/Music/HelianAlien.ogg",
 "res://Asset/Sounds/Music/Necrofantasia.ogg","res://Asset/Sounds/Music/PureFurries.ogg"]
 
-var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://level2.tscn","res://level3.tscn","res://level4.tscn","res://level5.tscn"]
+var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://Level2.tscn","res://Level3.tscn","res://Level4.tscn","res://Level5.tscn"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
