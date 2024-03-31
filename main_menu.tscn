@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwgwx1gljcfub"]
+[gd_scene load_steps=13 format=3 uid="uid://dwgwx1gljcfub"]
 
 [ext_resource type="Script" path="res://Source/Menu/main_menu.gd" id="1_dxhrw"]
 [ext_resource type="Texture2D" uid="uid://dsm62rvajx7ux" path="res://Asset/Menu/Space_Sea.png" id="1_u153w"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://do7mnex32ow7t" path="res://UI/setting.tscn" id="9_l8fvq"]
 [ext_resource type="Texture2D" uid="uid://dol4ytmt47laf" path="res://Asset/circle.png" id="10_xdcad"]
 [ext_resource type="PackedScene" uid="uid://cfg8be78qrgrg" path="res://Data/Dataing.tscn" id="11_x3xg6"]
+[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://Asset/Fonts/neuro.ttf" id="12_55n0p"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -21,11 +22,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dxhrw")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(792, 680)
-texture = ExtResource("1_u153w")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
@@ -105,6 +101,26 @@ offset_left = 808.0
 offset_top = -500.0
 offset_right = 1018.0
 offset_bottom = -290.0
+
+[node name="Content" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -696.0
+offset_top = -920.0
+offset_right = 700.0
+offset_bottom = -792.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0.309804, 0.988235, 0.980392, 1)
+theme_override_fonts/font = ExtResource("12_55n0p")
+theme_override_font_sizes/font_size = 60
+text = "Space Chicken Project: Remake"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="pressed" from="Buttons/StartBtn" to="." method="_on_start_btn_pressed"]

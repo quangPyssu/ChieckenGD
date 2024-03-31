@@ -5,7 +5,7 @@ var lookVel:Vector2= Vector2.ZERO
 var currentLookDir:Vector2i = Vector2i(7,3)
 var targetLookDir:Vector2i = Vector2i(7,3)
 
-const visionBox:Vector2i = Vector2i(700/15,700/5)
+const visionBox:Vector2i = Vector2i(3000/15,700/5)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

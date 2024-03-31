@@ -17,12 +17,12 @@ size = Vector2(1920, 253.897)
 
 [node name="Game" instance=ExtResource("1_0sngu")]
 
-[node name="Wave0_0" type="Node2D" parent="Enemies" index="0"]
+[node name="Wave0_0" type="Node2D" parent="Enemies" index="1"]
 
 [node name="EnemyChicken" parent="Enemies/Wave0_0" index="0" instance=ExtResource("2_55x2a")]
 position = Vector2(2220, -300)
 scale = Vector2(1, 1.00569)
-timerEnd = 10.0
+timerEnd = 5.0
 savedPos = Vector2(-100, -100)
 inClampedScreen = false
 BounceOffSceen = false
@@ -65,13 +65,14 @@ debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
 [node name="UFO" parent="Enemies/Wave2" index="0" instance=ExtResource("5_g5taf")]
 position = Vector2(960, -215.444)
+scale = Vector2(1.3, 1.3)
 HP = 3000.0
 speed = 10000.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 300)
 percentageHealth = 0.48
 
-[node name="Wave3" type="Node2D" parent="Enemies" index="4"]
+[node name="Wave3" type="Node2D" parent="Enemies" index="5"]
 
 [node name="Anchor" parent="Enemies/Wave3" index="0" instance=ExtResource("2_oke5u")]
 texture_filter = 0
@@ -84,7 +85,7 @@ speed = 10000.0
 direction = Vector2(1, -1)
 savedPos = Vector2(1000, 500)
 
-[node name="Wave4" type="Node2D" parent="Enemies" index="5"]
+[node name="Wave4" type="Node2D" parent="Enemies" index="6"]
 
 [node name="EnemyChicken" parent="Enemies/Wave4" index="0" instance=ExtResource("2_55x2a")]
 position = Vector2(2220, -300)
@@ -95,7 +96,7 @@ inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
 
-[node name="Wave5" type="Node2D" parent="Enemies" index="6"]
+[node name="Wave5" type="Node2D" parent="Enemies" index="7"]
 
 [node name="EnemyChicken" parent="Enemies/Wave5" index="0" instance=ExtResource("2_55x2a")]
 position = Vector2(2220, 1039.32)
@@ -123,12 +124,12 @@ position = Vector2(1148, 52.3404)
 shape = SubResource("RectangleShape2D_kdue3")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
-[node name="Wave6" type="Node2D" parent="Enemies" index="7"]
+[node name="Wave6" type="Node2D" parent="Enemies" index="8"]
 
 [node name="SpaceShip" parent="Enemies/Wave6" index="0" instance=ExtResource("6_24rfh")]
 percentageHealth = 0.48
 
-[node name="Wave6_5" type="Node2D" parent="Enemies" index="8"]
+[node name="Wave6_5" type="Node2D" parent="Enemies" index="9"]
 
 [node name="EnemyChicken" parent="Enemies/Wave6_5" index="0" instance=ExtResource("2_55x2a")]
 position = Vector2(2220, -300)
@@ -139,13 +140,16 @@ inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
 
-[node name="Wave7" type="Node2D" parent="Enemies" index="9"]
+[node name="Wave7" type="Node2D" parent="Enemies" index="10"]
 
 [node name="Henporer" parent="Enemies/Wave7" index="0" instance=ExtResource("2_g8vk8")]
 position = Vector2(2048, -454.826)
 speed = 7000.0
 direction = Vector2(-1, 0)
 savedPos = Vector2(960, 300)
+
+[node name="LevelName" parent="UI" index="1"]
+text = "Level 6: The Henporer"
 
 [node name="Music" parent="." index="6"]
 stream = ExtResource("8_brfyl")

@@ -59,7 +59,7 @@ speed = 10000.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 500)
 
-[node name="Wave2_5" type="Node2D" parent="Enemies" index="3"]
+[node name="Wave2_5" type="Node2D" parent="Enemies" index="4"]
 
 [node name="EnemyChicken" parent="Enemies/Wave2_5" index="0" instance=ExtResource("3_m07tu")]
 position = Vector2(2220, -300)
@@ -70,7 +70,7 @@ inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
 
-[node name="Wave3" type="Node2D" parent="Enemies" index="4"]
+[node name="Wave3" type="Node2D" parent="Enemies" index="5"]
 
 [node name="UFO" parent="Enemies/Wave3" index="0" instance=ExtResource("2_3x6us")]
 position = Vector2(896, -231.403)
@@ -82,6 +82,10 @@ savedPos = Vector2(1000, 300)
 
 [node name="Player" parent="." index="2"]
 texture_filter = 0
+
+[node name="LevelName" parent="UI" index="1"]
+text = "Level 2: The Unidentified
+"
 
 [node name="Music" parent="." index="6"]
 stream = ExtResource("6_ygy4s")

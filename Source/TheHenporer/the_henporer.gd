@@ -19,6 +19,7 @@ func _ready():
 		i.isSpawning=false	
 	$Node/SpawnerHead.isSpawning=true
 	
+	call_deferred("the_Sky_Descend")	
 
 func the_Sky_Descend():
 	Ani.play("Henporer_The_Sky_Descend")
@@ -78,10 +79,15 @@ func atQuarterHealth():
 func kill():
 	if !isDead:
 		isDead = true
+		for i in Ani.get_children():
+			i.light_mask=1
+			
 		$AttackTimer.stop()
-		stopProcess()
+		call_deferred("the_Sky_Descend")
+		direction=Vector2.ZERO
 
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(3).timeout
+		stopProcess()
 		queue_free()
 
 func attack():

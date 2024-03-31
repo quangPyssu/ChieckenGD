@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://do7mnex32ow7t"]
+[gd_scene load_steps=12 format=3 uid="uid://do7mnex32ow7t"]
 
 [ext_resource type="Texture2D" uid="uid://c6axmfjn5xhno" path="res://Asset/Menu/Settings_BTN.png" id="1_35vqd"]
 [ext_resource type="PackedScene" uid="uid://cfg8be78qrgrg" path="res://Data/Dataing.tscn" id="2_bp5un"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://UI/setting.gd" id="3_008c1"]
 [ext_resource type="Texture2D" uid="uid://dsgl34littrvj" path="res://Asset/Menu/Sound_BTN.png" id="3_o83bf"]
 [ext_resource type="Texture2D" uid="uid://cypqyiyd0ffbf" path="res://Asset/Menu/Menu_BTN.png" id="4_61tan"]
+[ext_resource type="Texture2D" uid="uid://b62fm08ud0i6f" path="res://Asset/Menu/Info_BTN.png" id="6_4jgom"]
 [ext_resource type="Texture2D" uid="uid://bnmtgvyjpu226" path="res://Asset/Menu/Window.png" id="6_htxk1"]
 [ext_resource type="Texture2D" uid="uid://dayl4bi7dt2a5" path="res://Asset/egg.png" id="6_uo4pw"]
+[ext_resource type="Texture2D" uid="uid://cf7xihxmn31ce" path="res://Asset/Menu/Close_BTN.png" id="7_1pu0u"]
 [ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://Asset/Fonts/neuro.ttf" id="7_kb02j"]
 
 [node name="Setting" type="Control"]
@@ -53,7 +55,7 @@ texture_filter = 1
 texture_repeat = 1
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 8
+size_flags_vertical = 0
 mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource("3_o83bf")
@@ -71,6 +73,18 @@ toggle_mode = true
 button_pressed = true
 texture_normal = ExtResource("4_61tan")
 texture_pressed = ExtResource("2_skels")
+
+[node name="InfoBtn" type="TextureButton" parent="HBoxContainer2"]
+light_mask = 2
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("6_4jgom")
+texture_pressed = ExtResource("7_1pu0u")
 
 [node name="SettingBtn" type="TextureButton" parent="."]
 light_mask = 2
@@ -203,7 +217,77 @@ theme_override_fonts/font = ExtResource("7_kb02j")
 theme_override_font_sizes/font_size = 30
 text = "Game SFX"
 
+[node name="Credit" type="TextureRect" parent="Poppin"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2195.0
+offset_top = -2150.0
+offset_right = -1203.0
+offset_bottom = -1534.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(300, 300)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_htxk1")
+expand_mode = 1
+
+[node name="Credit" type="Label" parent="Poppin/Credit"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -382.933
+offset_top = 18.9333
+offset_right = 385.067
+offset_bottom = 78.9333
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0.898039, 1)
+theme_override_fonts/font = ExtResource("7_kb02j")
+theme_override_font_sizes/font_size = 50
+text = "Space Chicken  Remake"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="Poppin/Credit/Credit"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -458.0
+offset_top = 36.0
+offset_right = 458.0
+offset_bottom = 593.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0.898039, 1)
+theme_override_fonts/font = ExtResource("7_kb02j")
+theme_override_font_sizes/font_size = 30
+text = "Powered by Godot 4.2 Game Engine
+
+Made By Nguyen Vuong Quang
+
+Game Sfx and Texture are from Interaction studio 's Chicken Invader 4 and 5
+
+BGM are from Zun's Touhou project
+
+The rest of the assests are free asset on itch.io
+
+
+
+
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="toggled" from="HBoxContainer2/VolumeBtn" to="." method="_on_volume_btn_toggled"]
 [connection signal="toggled" from="HBoxContainer2/RatioBtn" to="." method="_on_ratio_btn_toggled"]
+[connection signal="toggled" from="HBoxContainer2/InfoBtn" to="." method="_on_info_btn_toggled"]
 [connection signal="pressed" from="SettingBtn" to="." method="_on_setting_btn_pressed"]

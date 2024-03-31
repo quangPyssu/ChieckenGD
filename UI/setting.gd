@@ -11,14 +11,14 @@ enum Orentation {
 
 var Data = preload("res://UI/Data.gd").new()
 
-var pos:Array [Vector2] = [Vector2(-410.0,0.0),Vector2(0.0,0.0)]
+var pos:Array [Vector2] = [Vector2(-615.0,0.0),Vector2(0.0,210.0)]
 var siz:Array [Vector2] = [Vector2(625.0,210.0),Vector2(210.0,625.0)]
 
 static var loaded: bool=false
 
 func _ready():
 	if !loaded:
-		#Data.load_Data()
+		Data.load_Data()
 		loaded=1
 		
 	var j:int =0
@@ -88,3 +88,9 @@ func _on_ratio_btn_toggled(toggled_on):
 func _on_tree_exited():
 	pass
 	#Data.save_Data()
+
+func _on_info_btn_toggled(toggled_on):
+	if toggled_on:
+		$Poppin/Credit.global_position=Global.ScreenSize/2.0-$Poppin/Credit.size/(2.0*$Poppin/Credit.scale)+Vector2(100.0,0)
+	else:
+		$Poppin/Credit.global_position=Vector2(-2000.0,-2000.0)

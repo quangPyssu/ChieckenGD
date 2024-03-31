@@ -8,11 +8,13 @@ var loaded:float = 0
 
 var progress = []
 
-var pos:Array [Vector2] = [Vector2(1215,1060),Vector2(1215,938)]
+var pos:Array [Vector2] = [Vector2(1170,1060),Vector2(1170,938)]
+var pos2:Array [Vector2] = [Vector2(314,1060),Vector2(314,938)]
 
 func _ready():
 	$StartBtn.set_disabled(true)
-	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 	for i in get_children():
 		if i is Sprite2D:
 			var a:Button=i.get_child(0)
@@ -21,7 +23,7 @@ func _ready():
 	for i in Global.UnlockedLevel:
 		$Link.get_child(i).visible=true
 	
-	for i in 4:
+	for i in 3:
 		$WeaponSelect/Weapon.get_child(i).disabled=not Global.UnlockedWeapon[i]
 		$WeaponSelect/Weapon.get_child(i).pressed.connect(_changeWepon.bind(i))
 		
@@ -31,12 +33,11 @@ func _ready():
 		$WeaponSelect/Special.get_child(i).disabled=not Global.UnlockedSpecial[i]
 		$WeaponSelect/Special.get_child(i).pressed.connect(_changeSpecial.bind(i))
 		
-	%WeaponSelect.global_position=$WeaponSelect/Weapon.get_child(Global.EquippedWeapon[0]).global_position+Vector2(20.0,16.0)
-	%WeaponSelect2.global_position=$WeaponSelect/Weapon.get_child(Global.EquippedWeapon[1]).global_position+Vector2(20.0,16.0)
-	%SpecialSelect.global_position=$WeaponSelect/Special.get_child(Global.SpecialType).global_position+Vector2(20.0,16.0)
+	await get_tree().create_timer(0.5).timeout
+	_changeWepon(Global.EquippedWeapon[0])
+	_changeSideWepon(Global.EquippedWeapon[1])
+	_changeSpecial(Global.SpecialType)
 	
-	
-		
 func _changeWepon(i:int):
 	Global.EquippedWeapon[0]=i
 	%WeaponSelect.global_position=$WeaponSelect/Weapon.get_child(i).global_position
@@ -46,11 +47,13 @@ func _changeSideWepon(i:int):
 	%WeaponSelect2.global_position=$WeaponSelect/Weapon.get_child(i).global_position
 	
 func _changeSpecial(i:int):
+	if i>2:
+		return
 	Global.SpecialType=i
 	%SpecialSelect.global_position=$WeaponSelect/Special.get_child(i).global_position
 
 func _press_butt(i:int,ani:String):
-	print (i , " " ,Global.UnlockedLevel)
+
 	if Global.UnlockedLevel>=i:
 		Global.CurrentLevel=i
 		
@@ -79,9 +82,11 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Shift"):
 		$WeaponSelect/Weapon.visible=false
 		
-		
 	if Input.is_action_just_released("Shift"):
 		$WeaponSelect/Weapon.visible=true
+		
+	if Input.is_action_just_pressed("PauseToggle"):
+		get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _on_start_btn_pressed():
 	Data.save_Data()
@@ -106,3 +111,17 @@ func _on_weapon_select_mouse_exited():
 	tween.tween_property($WeaponSelect,"position" ,pos[0],0.5 ).set_trans(Tween.TRANS_LINEAR)
 
 
+
+
+func _on_how_to_play_mouse_entered():
+	var tween:Tween = get_tree().create_tween()
+	tween.set_parallel(true)
+
+	tween.tween_property($HowToPlay,"position" ,pos2[1],0.5 ).set_trans(Tween.TRANS_LINEAR)
+
+
+func _on_how_to_play_mouse_exited():
+	var tween:Tween = get_tree().create_tween()
+	tween.set_parallel(true)
+
+	tween.tween_property($HowToPlay,"position" ,pos2[0],0.5 ).set_trans(Tween.TRANS_LINEAR)

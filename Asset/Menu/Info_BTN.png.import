@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duxgjrnc13b7p"
-path="res://.godot/imported/lightning-redone.png-cdddecbe5730c0883a6631b7fc7d3281.ctex"
+uid="uid://b62fm08ud0i6f"
+path="res://.godot/imported/Info_BTN.png-856c26897700ed16ed4a7728c7c9689d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/TheHenporer/lightning-redone.png"
-dest_files=["res://.godot/imported/lightning-redone.png-cdddecbe5730c0883a6631b7fc7d3281.ctex"]
+source_file="res://Asset/Menu/Info_BTN.png"
+dest_files=["res://.godot/imported/Info_BTN.png-856c26897700ed16ed4a7728c7c9689d.ctex"]
 
 [params]
 

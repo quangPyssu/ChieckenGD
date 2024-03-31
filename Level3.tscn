@@ -109,7 +109,7 @@ speed = 10000.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 200)
 
-[node name="Wave3" type="Node2D" parent="Enemies" index="3"]
+[node name="Wave3" type="Node2D" parent="Enemies" index="4"]
 
 [node name="EnemyChicken" parent="Enemies/Wave3" index="0" instance=ExtResource("2_4qado")]
 visible = false
@@ -147,7 +147,7 @@ position = Vector2(0, 60.4988)
 shape = SubResource("RectangleShape2D_xpudg")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
-[node name="Wave4" type="Node2D" parent="Enemies" index="4"]
+[node name="Wave4" type="Node2D" parent="Enemies" index="5"]
 
 [node name="Anchor2" parent="Enemies/Wave4" index="0" instance=ExtResource("3_7t1pn")]
 position = Vector2(2220, 400)
@@ -170,7 +170,7 @@ speed = 10000.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 300)
 
-[node name="Wave5" type="Node2D" parent="Enemies" index="5"]
+[node name="Wave5" type="Node2D" parent="Enemies" index="6"]
 
 [node name="EnemyChicken" parent="Enemies/Wave5" index="0" instance=ExtResource("2_4qado")]
 visible = false
@@ -196,7 +196,7 @@ position = Vector2(61, -19.0094)
 shape = SubResource("RectangleShape2D_lkuk6")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
-[node name="Wave6_5" type="Node2D" parent="Enemies" index="6"]
+[node name="Wave6_5" type="Node2D" parent="Enemies" index="7"]
 
 [node name="EnemyChicken" parent="Enemies/Wave6_5" index="0" instance=ExtResource("2_4qado")]
 position = Vector2(2220, -300)
@@ -207,11 +207,14 @@ inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
 
-[node name="Wave7" type="Node2D" parent="Enemies" index="7"]
+[node name="Wave7" type="Node2D" parent="Enemies" index="8"]
 
 [node name="MotherHen" parent="Enemies/Wave7" index="0" instance=ExtResource("5_o86nm")]
 position = Vector2(960, -377.027)
 savedPos = Vector2(960, 540)
+
+[node name="LevelName" parent="UI" index="1"]
+text = "Level 4: The Mother"
 
 [node name="Music" parent="." index="6"]
 stream = ExtResource("6_b34wm")

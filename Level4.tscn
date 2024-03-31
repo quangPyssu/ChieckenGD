@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg3mkhyhprmkk"]
+[gd_scene load_steps=4 format=3 uid="uid://cg3mkhyhprmkk"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game.tscn" id="1_2khhx"]
+[ext_resource type="Texture2D" uid="uid://duwu2ouix0qfb" path="res://Asset/Purple_Blank_Background.png" id="2_uewkk"]
 [ext_resource type="PackedScene" uid="uid://div18mnpo7y2s" path="res://the_henterprise.tscn" id="2_xjl61"]
 
 [node name="Game" instance=ExtResource("1_2khhx")]
+
+[node name="BlueBlankBackground" parent="." index="0"]
+texture = ExtResource("2_uewkk")
 
 [node name="TheHenterprise" parent="Enemies/Wave2" index="0" instance=ExtResource("2_xjl61")]
 position = Vector2(960, -317.182)
@@ -11,6 +15,9 @@ rotation = -6.28318
 HP = 12000.0
 speed = 6000.0
 savedPos = Vector2(967, 190)
+
+[node name="LevelName" parent="UI" index="1"]
+text = "Level 5: The Henterprise"
 
 [node name="Music" parent="." index="6"]
 stream = null

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var Data = preload("res://UI/Data.gd").new()
+var Cred:bool = 0
  
 func _ready():
 	if Global.defeated:
@@ -15,6 +16,9 @@ func _ready():
 		$Control/HBoxContainer/ButtonNext.visible=1
 		$Control/HBoxContainer/ButtonNext.disabled=false
 		print("win")
+		Global.UnlockedLevel=min(max(Global.UnlockedLevel,Global.CurrentLevel+1),5)
+		if (Global.CurrentLevel==5):
+			Cred=true
 
 
 func _on_button_quit_pressed():
@@ -23,7 +27,7 @@ func _on_button_quit_pressed():
 
 func _on_button_play_pressed():
 	resume()
-	get_tree().change_scene_to_file(get_parent().Levels[Global.CurrentLevel])
+	get_tree().change_scene_to_file(get_parent().Levels[Global.CurrentLevel])	
 	
 func resume():
 	visible=false
@@ -34,7 +38,22 @@ func resume():
 
 func _on_button_next_pressed():
 	resume()
-	print("NextLvel")
 	Global.CurrentLevel=(Global.CurrentLevel+1)%6
-	Global.UnlockedLevel=min(Global.CurrentLevel,5)
-	get_tree().change_scene_to_file(get_parent().Levels[Global.CurrentLevel])
+	
+	match Global.UnlockedLevel:
+		1:
+			Global.UnlockedSpecial[0]=1
+		2:
+			Global.UnlockedWeapon[1]=1
+		3:
+			Global.UnlockedWeapon[2]=1
+		4:
+			Global.UnlockedSpecial[1]=1
+		5:
+			Global.UnlockedSpecial[2]=1
+
+	if (Cred):
+		get_tree().change_scene_to_file("res://credit.tscn")
+		return
+
+	get_tree().change_scene_to_file("res://UI/LoadMenu.tscn")

@@ -7,9 +7,7 @@ var FinalWave:bool=false
 
 var packedAttack: Array[PackedScene]
 
-var BossMusic: Array[String]=["res://Asset/Sounds/Music/BeOfGoodCheer.ogg","res://Asset/Sounds/Music/magicJinzoStraw.ogg",
-"res://Asset/Sounds/Music/LoveMasterSpark.ogg","res://Asset/Sounds/Music/HelianAlien.ogg",
-"res://Asset/Sounds/Music/Necrofantasia.ogg","res://Asset/Sounds/Music/PureFurries.ogg"]
+var PreBossBGM:Resource 
 
 var Levels: Array [String] = ["res://level0.tscn","res://level1.tscn","res://Level2.tscn","res://Level3.tscn","res://Level4.tscn","res://Level5.tscn"]
 
@@ -37,6 +35,20 @@ func _ready():
 	$Enemies.get_child(0).visible=1
 	
 	loadAttack()
+	
+	match Global.CurrentLevel:
+		0:
+			PreBossBGM=preload("res://Asset/Sounds/Music/BeOfGoodCheer.ogg")
+		1:
+			PreBossBGM=preload("res://Asset/Sounds/Music/magicJinzoStraw.ogg")
+		2:
+			PreBossBGM=preload("res://Asset/Sounds/Music/LoveMasterSpark.ogg")
+		3:
+			PreBossBGM=preload("res://Asset/Sounds/Music/HelianAlien.ogg")
+		4:
+			PreBossBGM=preload("res://Asset/Sounds/Music/Necrofantasia.ogg")
+		5:
+			PreBossBGM=preload("res://Asset/Sounds/Music/PureFurries.ogg")
 
 func _process(delta):
 	%FPS.set_text("FPS %d" % Engine.get_frames_per_second())
@@ -80,7 +92,7 @@ func _process(delta):
 				$Enemies.get_child(1).visible=1
 			
 			if $Enemies.get_children().size()==2:
-				$Music.set_stream(load(BossMusic[Global.CurrentLevel]))
+				$Music.set_stream(PreBossBGM)
 				$Music.play()
 				FinalWave=true
 	else: 
@@ -91,7 +103,7 @@ func _on_player_attack():
 	var Bullet = packedAttack[Global.CurrentWeapon].instantiate()
 	
 	match Global.EquippedWeapon[Global.CurrentWeapon]:
-		0,2,3:
+		0,2:
 			Bullet.global_position = $Player.global_position + Vector2(0, -50)
 			%Projectiles.add_child(Bullet)
 		1:

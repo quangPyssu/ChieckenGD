@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://cj4b1hr5pwjea"]
+
+[ext_resource type="Texture2D" uid="uid://dsm62rvajx7ux" path="res://Asset/Menu/Space_Sea.png" id="1_b7u46"]
+[ext_resource type="Script" path="res://Source/credit.gd" id="1_ggky0"]
+[ext_resource type="PackedScene" uid="uid://ccpc1pyal5oti" path="res://Shaders/starSurface.tscn" id="2_jpvmm"]
+[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://Asset/Fonts/neuro.ttf" id="7_1ynr5"]
+[ext_resource type="AudioStream" uid="uid://dc8ej5pmxidqg" path="res://Asset/Sounds/Music/space_maiden_appear.ogg" id="7_fnue3"]
+[ext_resource type="PackedScene" uid="uid://do7mnex32ow7t" path="res://UI/setting.tscn" id="10_3mt17"]
+
+[sub_resource type="Animation" id="Animation_38wwi"]
+resource_name = "new_animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(577, 929), Vector2(577, 300)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hrf52"]
+_data = {
+"new_animation": SubResource("Animation_38wwi")
+}
+
+[node name="Credit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ggky0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+z_index = -2
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 912.0
+grow_horizontal = 2
+texture = ExtResource("1_b7u46")
+
+[node name="Credit" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -383.0
+offset_top = -151.0
+offset_right = 385.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0.898039, 1)
+theme_override_fonts/font = ExtResource("7_1ynr5")
+theme_override_font_sizes/font_size = 50
+text = "Space Chicken  Remake"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="Credit"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -458.0
+offset_top = 36.0
+offset_right = 458.0
+offset_bottom = 593.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0.898039, 1)
+theme_override_fonts/font = ExtResource("7_1ynr5")
+theme_override_font_sizes/font_size = 30
+text = "Powered by Godot 4.2 Game Engine
+
+Made By Nguyen Vuong Quang
+
+Game Sfx and Texture are from Interaction studio 's Chicken Invader 4 and 5
+
+BGM are from Zun's Touhou project
+
+The rest of the assests are free asset on itch.io
+
+
+
+
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="starSurface" parent="." instance=ExtResource("2_jpvmm")]
+position = Vector2(960, 996)
+scale = Vector2(19.18, 1.63107)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fnue3")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+
+[node name="Setting" parent="." instance=ExtResource("10_3mt17")]
+layout_mode = 1
+offset_left = 808.0
+offset_top = -500.0
+offset_right = 1018.0
+offset_bottom = -290.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hrf52")
+}
+autoplay = "new_animation"

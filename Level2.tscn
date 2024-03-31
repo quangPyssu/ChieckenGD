@@ -106,7 +106,7 @@ speed = 10000.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 150)
 
-[node name="Wave3" type="Node2D" parent="Enemies" index="3"]
+[node name="Wave3" type="Node2D" parent="Enemies" index="4"]
 
 [node name="EnemyChicken" parent="Enemies/Wave3" index="0" instance=ExtResource("5_5152i")]
 position = Vector2(2220, 1039.32)
@@ -134,7 +134,7 @@ position = Vector2(1148, 52.3404)
 shape = SubResource("RectangleShape2D_gxb7e")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
-[node name="Wave3_5" type="Node2D" parent="Enemies" index="4"]
+[node name="Wave3_5" type="Node2D" parent="Enemies" index="5"]
 
 [node name="EnemyChicken" parent="Enemies/Wave3_5" index="0" instance=ExtResource("5_5152i")]
 position = Vector2(2220, -300)
@@ -145,13 +145,12 @@ inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
 
-[node name="Wave4" type="Node2D" parent="Enemies" index="5"]
+[node name="Wave4" type="Node2D" parent="Enemies" index="6"]
 
 [node name="Entity" parent="Enemies/Wave4" index="0" instance=ExtResource("3_l2y60")]
 
 [node name="LevelName" parent="UI" index="1"]
-text = "
-"
+text = "Level 3: The Old Ace"
 
 [node name="Music" parent="." index="6"]
 stream = ExtResource("5_7j663")

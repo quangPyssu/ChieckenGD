@@ -97,7 +97,7 @@ func attack():
 func _on_attack_timer_timeout():
 	attack()
 	
-func _look_at_player(delta):
+func _look_at_player(_delta):
 	var xDiff:int = global_position.x-Global.PlayerPos.x
 	
 	rotation=PI/2

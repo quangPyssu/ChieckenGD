@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://btu0gnwjrvoy7"]
+[gd_scene load_steps=45 format=3 uid="uid://btu0gnwjrvoy7"]
 
 [ext_resource type="Texture2D" uid="uid://ivp3tycfevyr" path="res://Asset/Menu/GalaxyBG.png" id="1_20i34"]
 [ext_resource type="Script" path="res://UI/LoadMenu.gd" id="1_qf11l"]
@@ -17,16 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://cmljyc77g880" path="res://Asset/Icon/WeaponIcon1.jpg" id="15_d163e"]
 [ext_resource type="Texture2D" uid="uid://bph3drcy11mnp" path="res://Asset/Icon/WeaponIcon1Grey.jpg" id="16_8l6w5"]
 [ext_resource type="Texture2D" uid="uid://kj6dsubb0om0" path="res://Asset/Icon/WeaponIcon2.jpg" id="16_wt7cn"]
-[ext_resource type="Texture2D" uid="uid://dujjbnbl3d1y5" path="res://Asset/Icon/WeaponIcon4.jpg" id="17_3h4xg"]
 [ext_resource type="Texture2D" uid="uid://dnk2o577iwtdy" path="res://Asset/Icon/WeaponIcon2Grey.jpg" id="18_a2squ"]
 [ext_resource type="Texture2D" uid="uid://bkpj2tbdkbj1q" path="res://Asset/Icon/SpecialIcon0.jpg" id="18_v3gv5"]
 [ext_resource type="Texture2D" uid="uid://c28hjbi7o8mpv" path="res://Asset/Icon/SpecialIcon2.jpg" id="19_mwd47"]
-[ext_resource type="Texture2D" uid="uid://d3willghgemae" path="res://Asset/Icon/WeaponIcon4Grey.jpg" id="20_5pr3d"]
-[ext_resource type="Texture2D" uid="uid://cw4bs8m4jje4t" path="res://Asset/Icon/SpecialIcon4.jpg" id="20_jx1ej"]
 [ext_resource type="Texture2D" uid="uid://d1hg23gwh4q82" path="res://Asset/Icon/SpecialIcon1.jpg" id="21_6pkoq"]
 [ext_resource type="Texture2D" uid="uid://c0j6yo7ggj5qr" path="res://Asset/Icon/SpecialIcon0Grey.jpg" id="22_0ylb2"]
 [ext_resource type="Texture2D" uid="uid://ckpisyojsvyj7" path="res://Asset/Icon/SpecialIcon2Grey.jpg" id="24_blelv"]
-[ext_resource type="Texture2D" uid="uid://bp2at0e2ipkow" path="res://Asset/Icon/SpecialIcon4Grey.jpg" id="26_rtgmy"]
 [ext_resource type="Texture2D" uid="uid://bw50smgyw7qth" path="res://Asset/Icon/SpecialIcon1Grey.jpg" id="28_6jqvy"]
 [ext_resource type="Texture2D" uid="uid://brjb5snmb8x1o" path="res://Asset/Icon/WeaponSelect.png" id="29_il5xu"]
 [ext_resource type="Texture2D" uid="uid://civqckhkupqeb" path="res://Asset/Icon/SpecialSelect.png" id="30_wpoo6"]
@@ -493,9 +489,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -705.0
+offset_left = -750.0
 offset_top = 520.0
-offset_right = -284.0
+offset_right = -329.0
 offset_bottom = 691.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -543,16 +539,6 @@ disabled = true
 texture_normal = ExtResource("16_wt7cn")
 texture_disabled = ExtResource("18_a2squ")
 
-[node name="Weapon4" type="TextureButton" parent="WeaponSelect/Weapon5"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-mouse_filter = 1
-mouse_default_cursor_shape = 2
-disabled = true
-texture_normal = ExtResource("17_3h4xg")
-texture_disabled = ExtResource("20_5pr3d")
-
 [node name="Weapon" type="HBoxContainer" parent="WeaponSelect"]
 layout_mode = 1
 anchors_preset = -1
@@ -595,17 +581,6 @@ disabled = true
 texture_normal = ExtResource("16_wt7cn")
 texture_disabled = ExtResource("18_a2squ")
 
-[node name="Weapon4" type="TextureButton" parent="WeaponSelect/Weapon"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-mouse_filter = 1
-mouse_default_cursor_shape = 2
-disabled = true
-texture_normal = ExtResource("17_3h4xg")
-texture_disabled = ExtResource("20_5pr3d")
-
 [node name="Special" type="HBoxContainer" parent="WeaponSelect"]
 layout_mode = 1
 anchors_preset = -1
@@ -637,16 +612,6 @@ mouse_default_cursor_shape = 2
 disabled = true
 texture_normal = ExtResource("19_mwd47")
 texture_disabled = ExtResource("24_blelv")
-
-[node name="Special3" type="TextureButton" parent="WeaponSelect/Special"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-mouse_filter = 1
-mouse_default_cursor_shape = 2
-disabled = true
-texture_normal = ExtResource("20_jx1ej")
-texture_disabled = ExtResource("26_rtgmy")
 
 [node name="Special4" type="TextureButton" parent="WeaponSelect/Special"]
 layout_mode = 2
@@ -682,7 +647,57 @@ sprite_frames = SubResource("SpriteFrames_q1aq5")
 autoplay = "default"
 centered = false
 
+[node name="Label" type="Label" parent="WeaponSelect"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 29.0
+offset_right = 727.0
+offset_bottom = 130.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0.870588, 1)
+text = "Left Click to choose Weapon
+Shift+Left Click to choose Side Weapon
+
+Left Click to choose Special"
+horizontal_alignment = 1
+
+[node name="HowToPlay" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1606.0
+offset_top = 521.0
+offset_right = -1185.0
+offset_bottom = 692.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_e587k")
+
+[node name="Label" type="Label" parent="HowToPlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.5
+offset_top = -71.5
+offset_right = 176.5
+offset_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(1, 0, 0.415686, 1)
+text = "-   WASD to move
+-   Shift to speed up
+-   Space to Slow Down
+-  Left Click to attack, Right Click to use Special
+-  Middle Mouse to switch weapons"
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="mouse_entered" from="WeaponSelect" to="." method="_on_weapon_select_mouse_entered"]
 [connection signal="mouse_exited" from="WeaponSelect" to="." method="_on_weapon_select_mouse_exited"]
+[connection signal="mouse_entered" from="HowToPlay" to="." method="_on_how_to_play_mouse_entered"]
+[connection signal="mouse_exited" from="HowToPlay" to="." method="_on_how_to_play_mouse_exited"]

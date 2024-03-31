@@ -7,7 +7,7 @@ const FastPercentage: float = 1.5
 var AttackLoaded: bool = true
 var SpecialLoaded: bool = false
 
-var SpecialIFrame: Array[float] = [0.7,0.0,0.0,4.5]
+var SpecialIFrame: Array[float] = [0.7,4.0,4.5,0.0]
 var SpecialTimeRatio:float=0
 
 var particle:Array[PackedScene]
@@ -92,8 +92,8 @@ func SpecialAttack(SpecialType:int):
 		0:
 			_gun_shot()
 		1:
-			pass
-		3: 
+			_shielded()
+		2: 
 			_big_beam()
 
 func _gun_shot():
@@ -173,7 +173,6 @@ func recoverAP():
 func take_damage(damage: float):
 	if isFlickering:
 		return
-		damage=0
 	super.take_damage(damage)
 
 func loadParti():
@@ -193,7 +192,7 @@ func loadParti():
 	match Global.SpecialType:
 		0:
 			bomb=preload("res://bullet_player_normal.tscn")
-		3: 
+		2: 
 			bomb=preload("res://BigBeam_Player.tscn")
 
 func reloadBullet():

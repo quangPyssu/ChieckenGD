@@ -110,10 +110,10 @@ randf_range($Explosion.get_child(1).global_position.y,$Explosion.get_child(0).gl
 				explo.play("explosion")
 			await get_tree().create_timer(0.2).timeout
 		
-		var explo:AnimatedSprite2D = feather.instantiate()
-		$Explosion.add_child(explo)
-		explo.scale=Vector2(15,15)
-		explo.play("explosion")
+		var expla:AnimatedSprite2D = feather.instantiate()
+		$Explosion.add_child(expla)
+		expla.scale=Vector2(15,15)
+		expla.play("explosion")
 		
 		await get_tree().create_timer(0.4).timeout
 		queue_free()

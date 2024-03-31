@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://c8lc858vmpje7"
+uid="uid://7n3lx4vlnce2"
 path="res://.godot/imported/lightningHit.ogg-6097433be29257c6d75bc1ca066770c1.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/lightningHit.ogg-6097433be29257c6d75bc1ca0667
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

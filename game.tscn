@@ -1,11 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://daon3rhir0iyv"]
+[gd_scene load_steps=11 format=3 uid="uid://daon3rhir0iyv"]
 
 [ext_resource type="PackedScene" uid="uid://d26j2nusorvjk" path="res://player.tscn" id="1_rbiiv"]
 [ext_resource type="Script" path="res://Source/game.gd" id="1_yimfk"]
 [ext_resource type="Texture2D" uid="uid://7hsxq7orbnyx" path="res://Asset/Blue_Blank_Background.png" id="3_mky08"]
+[ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://Enemy_Chicken.tscn" id="3_scqhn"]
+[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://Asset/Fonts/neuro.ttf" id="5_jv1r4"]
 [ext_resource type="PackedScene" uid="uid://cfxh60sa0kekt" path="res://UI/PauseMenu.tscn" id="5_quuxs"]
 [ext_resource type="PackedScene" uid="uid://brmi3g83eksvo" path="res://UI/UI.tscn" id="5_xjudq"]
 [ext_resource type="AudioStream" uid="uid://b7xu2o4ldgpxt" path="res://Asset/Sounds/Music/BeOfGoodCheer.ogg" id="6_apjum"]
+
+[sub_resource type="Animation" id="Animation_i4bqj"]
+resource_name = "Default"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0t7je"]
+_data = {
+"Default": SubResource("Animation_i4bqj")
+}
 
 [node name="Game" type="Node2D"]
 scale = Vector2(1, 1.00258)
@@ -25,6 +48,17 @@ stretch_mode = 1
 
 [node name="Enemies" type="Node2D" parent="."]
 
+[node name="PreWave" type="Node2D" parent="Enemies"]
+
+[node name="EnemyChicken" parent="Enemies/PreWave" instance=ExtResource("3_scqhn")]
+position = Vector2(2220, -300)
+scale = Vector2(1, 1.00569)
+timerEnd = 5.0
+savedPos = Vector2(-100, -100)
+inClampedScreen = false
+BounceOffSceen = false
+canFlicker = false
+
 [node name="Wave0" type="Node2D" parent="Enemies"]
 
 [node name="Wave1" type="Node2D" parent="Enemies"]
@@ -39,18 +73,26 @@ unique_name_in_owner = true
 [node name="UI" parent="." instance=ExtResource("5_xjudq")]
 
 [node name="LevelName" type="Label" parent="UI"]
+self_modulate = Color(1, 1, 1, 0.326087)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
+offset_top = -156.0
+offset_right = 1.0
+offset_bottom = -119.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_jv1r4")
+theme_override_font_sizes/font_size = 30
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/LevelName"]
+libraries = {
+"": SubResource("AnimationLibrary_0t7je")
+}
+autoplay = "Default"
 
 [node name="FPS" type="Label" parent="UI"]
 unique_name_in_owner = true
