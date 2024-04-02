@@ -19,10 +19,11 @@ var save_game_path:String = "res://Data/data.save"
 var WeaponTime: Array[float] = [0.5,2.0,0.1]
 var SpecialTime: Array[float] = [8.0,16.0,30.0,100000.0]
 
-#Data for file I/O
-####################
 var UnlockedWeapon:Array[bool] = [1,0,0]
 var UnlockedSpecial:Array[bool] = [0,0,0]
+
+#Data for file I/O
+####################
 var CurrentLevel:int = 0
 var UnlockedLevel:int = 0
 var Volume:Array [float] = [1.0,0.5,0.5,0.4]

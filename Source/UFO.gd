@@ -72,7 +72,9 @@ func kill():
 		$Audio.stream=preload("res://Asset/Sounds/PlayerExplode.ogg")
 		$Audio.play()
 		$Audio2.stop()
-	
+		$AttackTimer.stop()
+		$LaserTimer.stop()
+		
 		$AnimationCenter.visible=0
 		$Explosion.play("explosion")
 		spawnFea()

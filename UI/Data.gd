@@ -8,16 +8,11 @@ func save_Data():
 	for i in 4:
 		file.store_var(Global.Volume[i])
 	
-	for i in Global.UnlockedWeapon:
-		file.store_var(i)
-	
-	for i in Global.UnlockedSpecial:
-		file.store_var(i)
-	
 	for i in Global.EquippedWeapon:
 		file.store_var(i);
 		
 	file.store_var(Global.SpecialType)
+	
 	
 func load_Data():
 	if FileAccess.file_exists(Global.save_game_path):
@@ -28,18 +23,11 @@ func load_Data():
 		for i in 4:
 			Global.Volume[i]=file.get_var(Global.Volume[i])
 			print(Global.Volume[i])
-		
-		for i in Global.UnlockedWeapon:
-			i=file.get_var(i)
-		
-		for i in Global.UnlockedSpecial:
-			i=file.get_var(i)
 			
 		for i in Global.EquippedWeapon:
 			i=file.get_var(i);
 		
 		Global.SpecialType=file.get_var(Global.SpecialType)
-			
 	else:
 		print("cc ko cos file")
 

@@ -75,7 +75,7 @@ func ram():
 func kill():
 	if !isDead:
 		isDead = true
-		
+		$AttackTimer.stop()
 		$AnimationCenter.visible=false
 		stopProcess()
 	

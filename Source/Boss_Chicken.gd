@@ -18,7 +18,7 @@ func atHalfHealth():
 	$Audio.play()
 	$Explosion.play("explosion")
 	$AnimationCenter/BossChickenBody.visible = false
-	$AnimationCenter/BossChickenBody2.visible = true	
+	$AnimationCenter/BossChickenBody2.visible = true
 	spawnFea()
 
 func atQuarterHealth():
@@ -57,6 +57,7 @@ func kill():
 		super.kill()
 		$Audio.stream=preload("res://Asset/Sounds/(chickbossDie).ogg")
 		$Audio.play()
+		$AttackTimer.stop()
 	
 		$AnimationCenter.visible=0
 		$Explosion.play("explosion")

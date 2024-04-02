@@ -18,8 +18,6 @@ func _ready():
 	for i in $Node.get_children():
 		i.isSpawning=false	
 	$Node/SpawnerHead.isSpawning=true
-	
-	call_deferred("the_Sky_Descend")	
 
 func the_Sky_Descend():
 	Ani.play("Henporer_The_Sky_Descend")
@@ -45,13 +43,6 @@ func EggFlower():
 	s.direction=Vector2(Global.PlayerPos-s.global_position).normalized()
 	s.speed = 16000
 	
-func _process(_delta):
-	if Input.is_action_just_pressed("TestButton+"):
-		the_Sky_Descend()
-		
-	if Input.is_action_just_pressed("TestButton-"):
-		pass
-
 func atThreeQuarterHealth():
 	attackRange=1
 	

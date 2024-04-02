@@ -22,6 +22,17 @@ func _ready():
 	
 	for i in Global.UnlockedLevel:
 		$Link.get_child(i).visible=true
+		
+	if Global.UnlockedLevel>0:
+		Global.UnlockedSpecial[0]=1
+	if Global.UnlockedLevel>1:
+		Global.UnlockedWeapon[1]=1
+	if Global.UnlockedLevel>2:
+		Global.UnlockedWeapon[2]=1
+	if Global.UnlockedLevel>3:
+		Global.UnlockedSpecial[1]=1
+	if Global.UnlockedLevel>4:
+		Global.UnlockedSpecial[2]=1
 	
 	for i in 3:
 		$WeaponSelect/Weapon.get_child(i).disabled=not Global.UnlockedWeapon[i]

@@ -39,18 +39,6 @@ func resume():
 func _on_button_next_pressed():
 	resume()
 	Global.CurrentLevel=(Global.CurrentLevel+1)%6
-	
-	match Global.UnlockedLevel:
-		1:
-			Global.UnlockedSpecial[0]=1
-		2:
-			Global.UnlockedWeapon[1]=1
-		3:
-			Global.UnlockedWeapon[2]=1
-		4:
-			Global.UnlockedSpecial[1]=1
-		5:
-			Global.UnlockedSpecial[2]=1
 
 	if (Cred):
 		get_tree().change_scene_to_file("res://credit.tscn")

@@ -76,7 +76,9 @@ func SpecialA():
 func kill():
 	if !isDead:
 		isDead = true
-
+	
+		$AttackTimer.stop()
+		$AttackTimer2.stop()
 		stopProcess()
 	
 		$AnimationCenter/AnimationPlayer.play("kill")

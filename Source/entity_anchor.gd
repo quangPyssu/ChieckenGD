@@ -77,6 +77,3 @@ func setUp():
 func _process(_delta):
 	if entityCount==0:
 		queue_free()
-
-	if Input.is_action_just_pressed("TestButton-"):
-		gotoPosition(Global.PlayerPos, speed)
