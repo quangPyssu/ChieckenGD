@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://br007wog1g8hy"]
+
+[ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://core/bullet.tscn" id="1_6cg5q"]
+[ext_resource type="Texture2D" uid="uid://dayl4bi7dt2a5" path="res://enemies/projectiles/egg/egg.png" id="2_aa0dd"]
+[ext_resource type="Script" path="res://enemies/projectiles/egg/egg.gd" id="2_o5pn6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efgmp"]
+radius = 17.1429
+height = 42.8571
+
+[node name="Bullet" instance=ExtResource("1_6cg5q")]
+scale = Vector2(0.7, 0.7)
+collision_layer = 16
+collision_mask = 256
+script = ExtResource("2_o5pn6")
+damage = 10.0
+canBreak = true
+
+[node name="Egg" type="Sprite2D" parent="AnimationCenter" index="0"]
+texture = ExtResource("2_aa0dd")
+
+[node name="HitBox" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_efgmp")

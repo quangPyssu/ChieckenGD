@@ -1,0 +1,703 @@
+[gd_scene load_steps=45 format=3 uid="uid://btu0gnwjrvoy7"]
+
+[ext_resource type="Texture2D" uid="uid://ivp3tycfevyr" path="res://ui/level_select/galaxy_background.png" id="1_20i34"]
+[ext_resource type="Script" path="res://ui/level_select/level_select.gd" id="1_qf11l"]
+[ext_resource type="Texture2D" uid="uid://cd06uic6x3jyj" path="res://ui/level_select/planets/earth.png" id="2_onamb"]
+[ext_resource type="Texture2D" uid="uid://tncu7crjpdt8" path="res://ui/level_select/planets/fire_rock.png" id="3_7v0qt"]
+[ext_resource type="Texture2D" uid="uid://78cbr3i1tibx" path="res://ui/level_select/planets/gas_giant.png" id="4_wc88s"]
+[ext_resource type="Texture2D" uid="uid://bchsrkuuaav45" path="res://ui/level_select/planets/ring.png" id="5_oy21s"]
+[ext_resource type="Texture2D" uid="uid://bjsfaydokdyca" path="res://ui/level_select/planets/star.png" id="6_ap24g"]
+[ext_resource type="Texture2D" uid="uid://b055q84jxu1f5" path="res://ui/level_select/planets/black_hole.png" id="7_ob7r5"]
+[ext_resource type="Texture2D" uid="uid://drlsq3hmwup8r" path="res://ui/shared/buttons/start.png" id="9_8baam"]
+[ext_resource type="Texture2D" uid="uid://c0ubxro6u43lj" path="res://ui/shared/buttons/button.png" id="10_t5rox"]
+[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://ui/shared/fonts/neuro.ttf" id="11_pbh2b"]
+[ext_resource type="Texture2D" uid="uid://du8w106demqxx" path="res://bosses/henterprise/warning_strip.png" id="12_g7lqh"]
+[ext_resource type="Texture2D" uid="uid://dh8asqhb4t3os" path="res://ui/level_select/table.png" id="13_e587k"]
+[ext_resource type="Texture2D" uid="uid://gmm01mps67iu" path="res://ui/shared/icons/weapon_0.jpg" id="14_p165u"]
+[ext_resource type="Texture2D" uid="uid://cmljyc77g880" path="res://ui/shared/icons/weapon_1.jpg" id="15_d163e"]
+[ext_resource type="Texture2D" uid="uid://bph3drcy11mnp" path="res://ui/shared/icons/weapon_1_grey.jpg" id="16_8l6w5"]
+[ext_resource type="Texture2D" uid="uid://kj6dsubb0om0" path="res://ui/shared/icons/weapon_2.jpg" id="16_wt7cn"]
+[ext_resource type="Texture2D" uid="uid://dnk2o577iwtdy" path="res://ui/shared/icons/weapon_2_grey.jpg" id="18_a2squ"]
+[ext_resource type="Texture2D" uid="uid://bkpj2tbdkbj1q" path="res://ui/shared/icons/special_0_spread_shot.jpg" id="18_v3gv5"]
+[ext_resource type="Texture2D" uid="uid://c28hjbi7o8mpv" path="res://ui/shared/icons/special_1_shield.jpg" id="19_mwd47"]
+[ext_resource type="Texture2D" uid="uid://d1hg23gwh4q82" path="res://ui/shared/icons/special_2_mega_beam.jpg" id="21_6pkoq"]
+[ext_resource type="Texture2D" uid="uid://c0j6yo7ggj5qr" path="res://ui/shared/icons/special_0_spread_shot_grey.jpg" id="22_0ylb2"]
+[ext_resource type="Texture2D" uid="uid://ckpisyojsvyj7" path="res://ui/shared/icons/special_1_shield_grey.jpg" id="24_blelv"]
+[ext_resource type="Texture2D" uid="uid://bw50smgyw7qth" path="res://ui/shared/icons/special_2_mega_beam_grey.jpg" id="28_6jqvy"]
+[ext_resource type="Texture2D" uid="uid://brjb5snmb8x1o" path="res://ui/shared/icons/weapon_select.png" id="29_il5xu"]
+[ext_resource type="Texture2D" uid="uid://civqckhkupqeb" path="res://ui/shared/icons/special_select.png" id="30_wpoo6"]
+
+[sub_resource type="Animation" id="Animation_q38dp"]
+resource_name = "BlackHole"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackHole:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 89]
+}
+
+[sub_resource type="Animation" id="Animation_h48bn"]
+resource_name = "Earth"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Earth:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 99]
+}
+
+[sub_resource type="Animation" id="Animation_wc0xe"]
+resource_name = "FireRock"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireRock:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 119]
+}
+
+[sub_resource type="Animation" id="Animation_gaosy"]
+resource_name = "GasGiant"
+length = 11.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GasGiant:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 80]
+}
+
+[sub_resource type="Animation" id="Animation_rtb27"]
+resource_name = "Ring"
+length = 13.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ring:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 13),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 89]
+}
+
+[sub_resource type="Animation" id="Animation_mfhsr"]
+resource_name = "Star"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Star:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 89]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81160"]
+_data = {
+"BlackHole": SubResource("Animation_q38dp"),
+"Earth": SubResource("Animation_h48bn"),
+"FireRock": SubResource("Animation_wc0xe"),
+"GasGiant": SubResource("Animation_gaosy"),
+"Ring": SubResource("Animation_rtb27"),
+"Star": SubResource("Animation_mfhsr")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vfsp"]
+bg_color = Color(0.443137, 0.423529, 0.964706, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbayl"]
+atlas = ExtResource("29_il5xu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uubgq"]
+atlas = ExtResource("29_il5xu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmetb"]
+atlas = ExtResource("29_il5xu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qte7k"]
+atlas = ExtResource("29_il5xu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q1aq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbayl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uubgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmetb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qte7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ndxc"]
+atlas = ExtResource("30_wpoo6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaqne"]
+atlas = ExtResource("30_wpoo6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acyg2"]
+atlas = ExtResource("30_wpoo6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6x4w"]
+atlas = ExtResource("30_wpoo6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3c64q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ndxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaqne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acyg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6x4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Load" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qf11l")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+z_index = -2
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_20i34")
+
+[node name="Earth" type="Sprite2D" parent="."]
+position = Vector2(1728, 888)
+texture = ExtResource("2_onamb")
+hframes = 50
+vframes = 2
+
+[node name="Button" type="Button" parent="Earth"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "Earth"
+metadata/Level = 0
+
+[node name="Ring" type="Sprite2D" parent="."]
+position = Vector2(1640, 312)
+rotation = -0.523598
+texture = ExtResource("5_oy21s")
+hframes = 30
+vframes = 3
+
+[node name="Button" type="Button" parent="Ring"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.307
+anchor_top = 0.307
+anchor_right = 0.689
+anchor_bottom = 0.693
+offset_left = -134.89
+offset_top = -134.89
+offset_right = -135.03
+offset_bottom = -135.11
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "Ring"
+metadata/Level = 1
+
+[node name="FireRock" type="Sprite2D" parent="."]
+position = Vector2(992, 96)
+rotation = -1.83259
+texture = ExtResource("3_7v0qt")
+hframes = 40
+vframes = 3
+
+[node name="Button" type="Button" parent="FireRock"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "FireRock"
+metadata/Level = 2
+
+[node name="Star" type="Sprite2D" parent="."]
+position = Vector2(984, 528)
+texture = ExtResource("6_ap24g")
+hframes = 30
+vframes = 3
+
+[node name="Button" type="Button" parent="Star"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.24
+anchor_right = 0.76
+anchor_bottom = 0.76
+offset_left = -200.0
+offset_top = -200.0
+offset_right = -200.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "Star"
+metadata/Level = 3
+
+[node name="GasGiant" type="Sprite2D" parent="."]
+position = Vector2(200, 880)
+rotation = 1.83259
+texture = ExtResource("4_wc88s")
+hframes = 27
+vframes = 3
+
+[node name="Button" type="Button" parent="GasGiant"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -80.0
+offset_right = -80.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "GasGiant"
+metadata/Level = 4
+
+[node name="BlackHole" type="Sprite2D" parent="."]
+position = Vector2(216, 128)
+rotation = 0.261799
+texture = ExtResource("7_ob7r5")
+hframes = 30
+vframes = 3
+
+[node name="Button" type="Button" parent="BlackHole"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.22
+anchor_top = 0.215
+anchor_right = 0.79
+anchor_bottom = 0.75
+offset_left = -99.0
+offset_top = -94.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+metadata/Ani = "BlackHole"
+metadata/Level = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_81160")
+}
+
+[node name="StartBtn" type="TextureButton" parent="."]
+light_mask = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.905
+anchor_right = 0.5
+anchor_bottom = 0.905
+offset_left = -205.0
+offset_top = -121.0
+offset_right = 205.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_8baam")
+texture_pressed = ExtResource("10_t5rox")
+texture_disabled = ExtResource("10_t5rox")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -88.0
+offset_right = 248.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_pbh2b")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/fill = SubResource("StyleBoxFlat_6vfsp")
+
+[node name="Link" type="Node2D" parent="."]
+
+[node name="Linkink" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 1657.0
+offset_top = 342.0
+offset_right = 2169.0
+offset_bottom = 376.0
+rotation = 1.41523
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="Linkink2" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 1062.0
+offset_top = 88.0
+offset_right = 1634.0
+offset_bottom = 120.0
+rotation = 0.332495
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="Linkink3" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 1012.0
+offset_top = 87.0
+offset_right = 1524.0
+offset_bottom = 122.0
+rotation = 1.60227
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="Linkink4" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 889.0
+offset_top = 593.0
+offset_right = 1602.0
+offset_bottom = 628.0
+rotation = 2.77141
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="Linkink5" type="TextureRect" parent="Link"]
+visible = false
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+offset_left = 227.0
+offset_top = 161.0
+offset_right = 892.0
+offset_bottom = 196.0
+rotation = 1.60227
+texture = ExtResource("12_g7lqh")
+stretch_mode = 1
+
+[node name="WeaponSelect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = 520.0
+offset_right = -329.0
+offset_bottom = 691.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_e587k")
+
+[node name="Weapon5" type="HBoxContainer" parent="WeaponSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.06
+anchor_right = 0.93
+anchor_bottom = 0.242
+offset_left = -2.86102e-05
+offset_right = -3.05176e-05
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Weapon" type="TextureButton" parent="WeaponSelect/Weapon5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("14_p165u")
+
+[node name="Weapon2" type="TextureButton" parent="WeaponSelect/Weapon5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("15_d163e")
+texture_disabled = ExtResource("16_8l6w5")
+
+[node name="Weapon3" type="TextureButton" parent="WeaponSelect/Weapon5"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("16_wt7cn")
+texture_disabled = ExtResource("18_a2squ")
+
+[node name="Weapon" type="HBoxContainer" parent="WeaponSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.06
+anchor_right = 0.93
+anchor_bottom = 0.242
+offset_bottom = 48.0
+grow_horizontal = 2
+
+[node name="Weapon" type="TextureButton" parent="WeaponSelect/Weapon"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("14_p165u")
+
+[node name="Weapon2" type="TextureButton" parent="WeaponSelect/Weapon"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("15_d163e")
+texture_disabled = ExtResource("16_8l6w5")
+
+[node name="Weapon3" type="TextureButton" parent="WeaponSelect/Weapon"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("16_wt7cn")
+texture_disabled = ExtResource("18_a2squ")
+
+[node name="Special" type="HBoxContainer" parent="WeaponSelect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.425
+anchor_right = 0.93
+anchor_bottom = 0.606
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(77.53, 166.325)
+
+[node name="Special" type="TextureButton" parent="WeaponSelect/Special"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("18_v3gv5")
+texture_disabled = ExtResource("22_0ylb2")
+
+[node name="Special2" type="TextureButton" parent="WeaponSelect/Special"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("19_mwd47")
+texture_disabled = ExtResource("24_blelv")
+
+[node name="Special4" type="TextureButton" parent="WeaponSelect/Special"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("21_6pkoq")
+texture_disabled = ExtResource("28_6jqvy")
+
+[node name="WeaponSelect" type="AnimatedSprite2D" parent="WeaponSelect"]
+unique_name_in_owner = true
+position = Vector2(49, 26)
+scale = Vector2(1.46875, 1.5)
+sprite_frames = SubResource("SpriteFrames_q1aq5")
+autoplay = "default"
+centered = false
+
+[node name="SpecialSelect" type="AnimatedSprite2D" parent="WeaponSelect"]
+unique_name_in_owner = true
+position = Vector2(169, 198)
+scale = Vector2(1.45406, 1.45406)
+sprite_frames = SubResource("SpriteFrames_3c64q")
+autoplay = "default"
+centered = false
+
+[node name="WeaponSelect2" type="AnimatedSprite2D" parent="WeaponSelect"]
+unique_name_in_owner = true
+position = Vector2(256, 197)
+scale = Vector2(1.46875, 1.5)
+sprite_frames = SubResource("SpriteFrames_q1aq5")
+autoplay = "default"
+centered = false
+
+[node name="Label" type="Label" parent="WeaponSelect"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 29.0
+offset_right = 727.0
+offset_bottom = 130.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0.870588, 1)
+text = "Left Click to choose Weapon
+Shift+Left Click to choose Side Weapon
+
+Left Click to choose Special"
+horizontal_alignment = 1
+
+[node name="HowToPlay" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1606.0
+offset_top = 521.0
+offset_right = -1185.0
+offset_bottom = 692.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_e587k")
+
+[node name="Label" type="Label" parent="HowToPlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.5
+offset_top = -71.5
+offset_right = 176.5
+offset_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(1, 0, 0.415686, 1)
+text = "-   WASD to move
+-   Shift to speed up
+-   Space to Slow Down
+-  Left Click to attack, Right Click to use Special
+-  Middle Mouse to switch weapons"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="mouse_entered" from="WeaponSelect" to="." method="_on_weapon_select_mouse_entered"]
+[connection signal="mouse_exited" from="WeaponSelect" to="." method="_on_weapon_select_mouse_exited"]
+[connection signal="mouse_entered" from="HowToPlay" to="." method="_on_how_to_play_mouse_entered"]
+[connection signal="mouse_exited" from="HowToPlay" to="." method="_on_how_to_play_mouse_exited"]

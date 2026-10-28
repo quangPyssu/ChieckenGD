@@ -1,0 +1,316 @@
+[gd_scene load_steps=26 format=3 uid="uid://brmi3g83eksvo"]
+
+[ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_2c54b"]
+[ext_resource type="Texture2D" uid="uid://gmm01mps67iu" path="res://ui/shared/icons/weapon_0.jpg" id="2_7vf4g"]
+[ext_resource type="Texture2D" uid="uid://dwvvcidxjtrtp" path="res://ui/shared/icons/bg_status.png" id="2_j25fr"]
+[ext_resource type="Texture2D" uid="uid://d1hg23gwh4q82" path="res://ui/shared/icons/special_2_mega_beam.jpg" id="3_4on2o"]
+[ext_resource type="Texture2D" uid="uid://brjb5snmb8x1o" path="res://ui/shared/icons/weapon_select.png" id="4_4b6t3"]
+[ext_resource type="Texture2D" uid="uid://banqcecntmlsn" path="res://ui/shared/icons/icon_cover.png" id="4_x0c3o"]
+[ext_resource type="Texture2D" uid="uid://cmljyc77g880" path="res://ui/shared/icons/weapon_1.jpg" id="5_b2gox"]
+[ext_resource type="Texture2D" uid="uid://civqckhkupqeb" path="res://ui/shared/icons/special_select.png" id="6_1ltwo"]
+[ext_resource type="Texture2D" uid="uid://do5pi708i4s4y" path="res://ui/shared/icons/bg_weapon.png" id="8_xe6ts"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjq6p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diy75"]
+resource_local_to_scene = true
+bg_color = Color(1, 1, 0.0235294, 1)
+corner_radius_bottom_right = 300
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8oycn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsccx"]
+resource_local_to_scene = true
+corner_radius_bottom_right = 100
+corner_detail = 1
+expand_margin_right = 3.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3226"]
+bg_color = Color(0.231373, 0.231373, 0.231373, 0.682353)
+corner_radius_bottom_right = 100
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chdbx"]
+corner_radius_bottom_right = 100
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbayl"]
+atlas = ExtResource("4_4b6t3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uubgq"]
+atlas = ExtResource("4_4b6t3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmetb"]
+atlas = ExtResource("4_4b6t3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qte7k"]
+atlas = ExtResource("4_4b6t3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t06i7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbayl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uubgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmetb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qte7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ndxc"]
+atlas = ExtResource("6_1ltwo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaqne"]
+atlas = ExtResource("6_1ltwo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acyg2"]
+atlas = ExtResource("6_1ltwo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6x4w"]
+atlas = ExtResource("6_1ltwo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_haxxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ndxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaqne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acyg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6x4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_2c54b")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = 1.0
+offset_right = -35.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatusBG" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = -156.0
+offset_right = 707.0
+offset_bottom = -8.0
+grow_vertical = 0
+texture = ExtResource("2_j25fr")
+
+[node name="SpecialBar" type="ProgressBar" parent="Control/StatusBG"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.839216)
+z_index = 1
+custom_minimum_size = Vector2(200, 18)
+layout_mode = 2
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 423.0
+offset_bottom = 142.0
+scale = Vector2(1.4, 1.041)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxEmpty_cjq6p")
+theme_override_styles/fill = SubResource("StyleBoxFlat_diy75")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="Control/StatusBG"]
+unique_name_in_owner = true
+self_modulate = Color(0, 1, 0, 1)
+z_index = 1
+custom_minimum_size = Vector2(500, 31)
+layout_mode = 2
+offset_left = 143.0
+offset_top = 86.0
+offset_right = 643.0
+offset_bottom = 117.0
+scale = Vector2(0.998961, 1)
+theme_override_styles/background = SubResource("StyleBoxEmpty_8oycn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qsccx")
+max_value = 10.0
+value = 10.0
+
+[node name="DamageBar" type="ProgressBar" parent="Control/StatusBG/HealthBar"]
+unique_name_in_owner = true
+z_index = -1
+custom_minimum_size = Vector2(500, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.860002)
+theme_override_styles/background = SubResource("StyleBoxFlat_g3226")
+theme_override_styles/fill = SubResource("StyleBoxFlat_chdbx")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="AttackBG" type="TextureRect" parent="Control"]
+self_modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -106.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_xe6ts")
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/AttackBG"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.901563
+anchor_top = 0.917593
+anchor_right = 0.997917
+anchor_bottom = 0.988889
+offset_left = -173.525
+offset_top = -73.7593
+offset_right = -13.5667
+offset_bottom = -6.8889
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Weapons" type="HBoxContainer" parent="Control/AttackBG/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="WeaponSprite" type="TextureRect" parent="Control/AttackBG/HBoxContainer/Weapons"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("2_7vf4g")
+stretch_mode = 2
+
+[node name="WeaponRecharge" type="TextureProgressBar" parent="Control/AttackBG/HBoxContainer/Weapons/WeaponSprite"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 60.0
+fill_mode = 4
+texture_under = ExtResource("4_x0c3o")
+texture_progress = ExtResource("2_7vf4g")
+tint_under = Color(0.6, 0.615686, 0.619608, 0.788235)
+tint_progress = Color(1, 1, 1, 0.862745)
+
+[node name="WeaponSelect" type="AnimatedSprite2D" parent="Control/AttackBG/HBoxContainer/Weapons/WeaponSprite"]
+position = Vector2(24, 24)
+scale = Vector2(1.46875, 1.5)
+sprite_frames = SubResource("SpriteFrames_t06i7")
+autoplay = "default"
+frame = 1
+frame_progress = 0.123689
+
+[node name="WeaponSprite2" type="TextureRect" parent="Control/AttackBG/HBoxContainer/Weapons"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("5_b2gox")
+stretch_mode = 2
+
+[node name="WeaponRecharge" type="TextureProgressBar" parent="Control/AttackBG/HBoxContainer/Weapons/WeaponSprite2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 10.0
+fill_mode = 4
+texture_under = ExtResource("4_x0c3o")
+texture_progress = ExtResource("5_b2gox")
+tint_under = Color(0.6, 0.615686, 0.619608, 0.788235)
+tint_progress = Color(1, 1, 1, 0.862745)
+
+[node name="WeaponSelect" type="AnimatedSprite2D" parent="Control/AttackBG/HBoxContainer/Weapons/WeaponSprite2"]
+position = Vector2(24, 24)
+scale = Vector2(1.46875, 1.5)
+sprite_frames = SubResource("SpriteFrames_t06i7")
+autoplay = "default"
+frame_progress = 0.769794
+
+[node name="SpecialSprite" type="TextureRect" parent="Control/AttackBG/HBoxContainer"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("3_4on2o")
+
+[node name="SpecialRecharge" type="TextureProgressBar" parent="Control/AttackBG/HBoxContainer/SpecialSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 20.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("4_x0c3o")
+texture_progress = ExtResource("3_4on2o")
+tint_under = Color(0.6, 0.615686, 0.619608, 0.788235)
+tint_progress = Color(1, 1, 1, 0.862745)
+
+[node name="SpecialSelect" type="AnimatedSprite2D" parent="Control/AttackBG/HBoxContainer/SpecialSprite"]
+unique_name_in_owner = true
+position = Vector2(33, 33)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_haxxi")
+autoplay = "default"
+frame = 3
+frame_progress = 0.298739
