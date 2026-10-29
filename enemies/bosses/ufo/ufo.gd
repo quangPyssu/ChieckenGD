@@ -14,7 +14,7 @@ func atThreeQuarterHealth():
 	$Audio.stream=preload("res://assets/shared/audio/explode.ogg")
 	$Audio.play()
 	$AnimationCenter/AnimationPlayer.speed_scale=1.5
-	speed=15000
+	speed=250
 	
 func atHalfHealth():
 	$Audio.stream=preload("res://assets/shared/audio/explode.ogg")
@@ -26,7 +26,7 @@ func atHalfHealth():
 	$AnimationCenter/Ufo1.visible = true
 	$AttackTimer.wait_time=2.0
 	$AnimationCenter/AnimationPlayer.speed_scale=2
-	speed=20000
+	speed=333
 	spawnFea()
 
 func atQuarterHealth():
@@ -37,7 +37,7 @@ func atQuarterHealth():
 	$LaserTimer.start()
 	direction=Vector2(0.0,0.0)
 	$AnimationCenter/AnimationPlayer.speed_scale=3
-	gotoPosition(Vector2(Global.ScreenSize.x/2,Global.ScreenSize.y/3),30000)
+	gotoPosition(Vector2(Global.ScreenSize.x/2,Global.ScreenSize.y/3),500)
 	$Audio.stream=preload("res://assets/shared/audio/explode.ogg")
 	$Audio.play()
 	$Audio2.stream=preload("res://assets/enemies/bosses/ufo/ufo_engine_damaged.ogg")

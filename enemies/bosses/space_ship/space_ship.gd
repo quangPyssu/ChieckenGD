@@ -68,7 +68,7 @@ func SpecialA():
 func ram():
 	lockedMode=true
 	var desti:Vector2 = global_position+(Global.PlayerPos-global_position)*100
-	gotoPosition(desti,65000.0)
+	gotoPosition(desti,1083.0)
 	look_at(Global.PlayerPos)
 	%SpaceShipBody.frame=16
 
@@ -109,7 +109,7 @@ func _look_at_player(_delta):
 	xDiff=absi(xDiff)
 	xDiff=xDiff*xDiff
 	xDiff=mini(xDiff,27000)
-	gotoPosition(Vector2(Global.PlayerPos.x,200),xDiff)
+	gotoPosition(Vector2(Global.PlayerPos.x,200),xDiff/60.0)
 	
 	$AnimationCenter/Exhaust.position.y=-fram+15
 	$AnimationCenter/Exhaust.position.x=abs(fram-16)/2-149

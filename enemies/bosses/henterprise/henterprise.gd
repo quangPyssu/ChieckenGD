@@ -39,7 +39,7 @@ func _process(_delta):
 func atThreeQuarterHealth():
 	attackRange=1
 	direction=Vector2.ZERO
-	gotoPosition(global_position+Vector2(randi_range(-30,30),-70),13000)
+	gotoPosition(global_position+Vector2(randi_range(-30,30),-70),217)
 	$Audio.play()
 	
 	blastScale=2
@@ -151,7 +151,7 @@ func BackUp():
 	isInvincible=true
 	lockedMode=true
 	direction=Vector2.ZERO
-	gotoPosition(orgOrgPos+Vector2(0,-600),10000)
+	gotoPosition(orgOrgPos+Vector2(0,-600),167)
 	CleanAttack()
 	
 	await get_tree().create_timer(4).timeout
@@ -162,7 +162,7 @@ func BackUp():
 			rotation=-PI/2
 			global_position=Vector2(-354.0,490.0)
 			direction=Vector2.ZERO
-			gotoPosition(global_position+Vector2(400,0.0),10000)
+			gotoPosition(global_position+Vector2(400,0.0),167)
 			
 			await get_tree().create_timer(2).timeout
 			Beam()
@@ -171,13 +171,13 @@ func BackUp():
 			await get_tree().create_timer(5).timeout
 			
 			direction=Vector2.ZERO
-			gotoPosition(global_position-Vector2(400,0.0),10000)
+			gotoPosition(global_position-Vector2(400,0.0),167)
 
 		2:
 			rotation=deg_to_rad(-205.3)
 			global_position=Vector2(1920.0,1408.0)
 			direction=Vector2.ZERO
-			gotoPosition(Vector2(1352.0,1078.0),10000)
+			gotoPosition(Vector2(1352.0,1078.0),167)
 			
 			await get_tree().create_timer(2).timeout
 			Beam()
@@ -186,13 +186,13 @@ func BackUp():
 			await get_tree().create_timer(6).timeout
 			
 			direction=Vector2.ZERO
-			gotoPosition(Vector2(1920.0,1408.0),13000)
+			gotoPosition(Vector2(1920.0,1408.0),217)
 
 		3:
 			rotation=PI
 			global_position=Vector2(250.0,1396.0)
 			direction=Vector2.ZERO
-			gotoPosition(Vector2(1400.0,1000.0),4000)
+			gotoPosition(Vector2(1400.0,1000.0),67)
 			
 			await get_tree().create_timer(2).timeout
 			Beam()
@@ -201,7 +201,7 @@ func BackUp():
 			await get_tree().create_timer(10).timeout
 			
 			direction=Vector2.ZERO
-			gotoPosition(Vector2(1400.0,1396.0),10000)
+			gotoPosition(Vector2(1400.0,1396.0),167)
 
 	await get_tree().create_timer(2.5).timeout
 	goIn()
@@ -210,7 +210,7 @@ func goIn():
 	rotation=0
 	global_position=Vector2(960.0,-335.0)
 	direction=Vector2.ZERO
-	gotoPosition(orgOrgPos,10000)
+	gotoPosition(orgOrgPos,167)
 	lockedMode=false
 	isInvincible=false
 

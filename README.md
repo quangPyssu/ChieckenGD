@@ -22,3 +22,4 @@ Read top-down: each doc goes one level deeper than the one before it.
 | 3 | [Architecture](docs/3-architecture.md) | Scenes, scripts, class hierarchy, wave system, save data |
 | 4 | [Assets](docs/4-assets.md) | Folder layout, art/audio inventory, provenance |
 | 5 | [Known Issues](docs/5-known-issues.md) | Bugs and tech debt to fix during the revamp |
+| 6 | [Genre Reference](docs/6-genre-reference.md) | Core loops, enemies and bullet patterns of other shooters in the genre |

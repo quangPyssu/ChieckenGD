@@ -44,7 +44,7 @@ func SpecialA():
 		
 		s.direction=dir.rotated(i*PI/2.0)
 		
-		s.speed = 22000
+		s.speed = 367
 		await get_tree().create_timer(0.25).timeout
 
 func spawnFea():
@@ -95,7 +95,7 @@ func attack(type:int):
 				s.rotation_degrees -=90
 				s.rotateSpeed=1
 				s.direction=Vector2(Global.PlayerPos-s.global_position).normalized()
-				s.speed = 15000
+				s.speed = 250
 				
 				await get_tree().create_timer(1).timeout
 

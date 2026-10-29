@@ -41,7 +41,7 @@ func EggFlower():
 	s.rotation_degrees -=90
 	s.rotateSpeed=1
 	s.direction=Vector2(Global.PlayerPos-s.global_position).normalized()
-	s.speed = 16000
+	s.speed = 267
 	
 func atThreeQuarterHealth():
 	attackRange=1

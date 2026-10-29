@@ -87,7 +87,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_qggua")
 HP = 4000.0
-speed = 7500.0
+speed = 125.0
 inClampedScreen = false
 BounceOffSceen = false
 

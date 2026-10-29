@@ -74,6 +74,7 @@ func _process(delta):
 		%BlueBlankBackground.position.y=BG_pos
 
 	if Global.LevelEnd:
+		set_process(false)
 		await get_tree().create_timer(2.0).timeout
 		$Paused.PauseGame()
 		$Paused.queue_free()

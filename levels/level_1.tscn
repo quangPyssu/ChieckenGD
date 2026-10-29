@@ -19,7 +19,7 @@ scale = Vector2(1, 1.00559)
 size = 300.0
 entityMax = 16.0
 rotateSpeed = 0.3
-speed = 10000.0
+speed = 167.0
 direction = Vector2(1, -1)
 savedPos = Vector2(1000, 500)
 
@@ -55,7 +55,7 @@ size = 300.0
 entityMax = 16.0
 pattern = 1
 rotateSpeed = 0.1
-speed = 10000.0
+speed = 167.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 500)
 
@@ -76,7 +76,7 @@ canFlicker = false
 position = Vector2(896, -231.403)
 scale = Vector2(1.5, 1.5)
 HP = 2500.0
-speed = 10000.0
+speed = 167.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 300)
 

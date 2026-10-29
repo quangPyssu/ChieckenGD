@@ -37,7 +37,7 @@ func _ready():
 		gotoPosition(savedPos, speed)
 
 func _physics_process(delta):
-	_set_velocity(delta)
+	_set_velocity()
 	move_and_slide()
 	rotation_degrees += rotateSpeed
 
@@ -65,8 +65,8 @@ func _physics_process(delta):
 		if HP<=0:
 			queue_free()
 
-func _set_velocity(delta:float):
-	velocity = direction * speed * delta	
+func _set_velocity():
+	velocity = direction * speed	
 
 func entity_timeout():
 	kill()

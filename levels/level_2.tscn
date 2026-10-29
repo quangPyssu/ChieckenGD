@@ -21,7 +21,7 @@ position = Vector2(2382, 587.484)
 size = 400.0
 entityMax = 8.0
 pattern = 3
-speed = 10000.0
+speed = 167.0
 direction = Vector2(-1, 0)
 savedPos = Vector2(1000, 200)
 
@@ -30,7 +30,7 @@ position = Vector2(-336, 351.094)
 size = 400.0
 entityMax = 7.0
 pattern = 3
-speed = 10000.0
+speed = 167.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 200)
 
@@ -40,7 +40,7 @@ size = 100.0
 entityMax = 4.0
 Type = 5
 rotateSpeed = -1.0
-speed = 15000.0
+speed = 250.0
 direction = Vector2(-1, 0)
 savedPos = Vector2(1000, 200)
 
@@ -49,7 +49,7 @@ position = Vector2(-72, 542.6)
 size = 300.0
 entityMax = 5.0
 pattern = 3
-speed = 10000.0
+speed = 167.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 150)
 
@@ -84,7 +84,7 @@ position = Vector2(2358, 348.102)
 size = 400.0
 entityMax = 8.0
 pattern = 3
-speed = 10000.0
+speed = 167.0
 direction = Vector2(-1, 0)
 savedPos = Vector2(1000, 200)
 
@@ -93,7 +93,7 @@ position = Vector2(-360, 111.712)
 size = 400.0
 entityMax = 7.0
 pattern = 3
-speed = 10000.0
+speed = 167.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 200)
 
@@ -102,7 +102,7 @@ position = Vector2(-96, 303.218)
 size = 300.0
 entityMax = 5.0
 pattern = 3
-speed = 10000.0
+speed = 167.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 150)
 

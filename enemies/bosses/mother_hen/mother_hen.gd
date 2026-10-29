@@ -64,7 +64,7 @@ func SpecialA():
 	attackRange=4
 	direction=Vector2(0,0)
 	lockedMode=true
-	gotoPosition(Global.ScreenSize/2.0,10000.0)
+	gotoPosition(Global.ScreenSize/2.0,167.0)
 	
 	var tween:Tween = get_tree().create_tween()
 	tween.tween_property(self, "rotation", 0, 2.0).set_trans(Tween.TRANS_LINEAR)

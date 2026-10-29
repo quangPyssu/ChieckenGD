@@ -1,11 +1,10 @@
 extends entity
 
-const BaseSpeed: float = 30000.0
+const BaseSpeed: float = 500.0
 const SlowPercentage: float = 0.5
 const FastPercentage: float = 1.5
 
 var AttackLoaded: bool = true
-var SpecialLoaded: bool = false
 
 var SpecialIFrame: Array[float] = [0.7,4.0,4.5,0.0]
 var SpecialTimeRatio:float=0
@@ -26,7 +25,6 @@ func _ready():
 	Global.AP=Global.WeaponTime[Global.WeaponType]
 
 	%AttackTimer.timeout.connect(_on_attack_timer_timeout)
-	%SpecialTimer.timeout.connect(_on_special_timer_timeout)
 
 	get_node("AnimationCenter/BattlecruiserBase").visible = true
 	$AnimationCenter/Ammo.visible=false
@@ -76,12 +74,9 @@ func _process(delta):
 			atk()
 			bulletCnt=max(0,bulletCnt-1)
 	
-	if Input.is_action_pressed("Special") and SpecialLoaded:
-		SpecialLoaded = false
+	if Input.is_action_pressed("Special") and Global.SP >= Global.maxSP:
 		SpecialAttack(Global.SpecialType)
 		force_Flicker(SpecialIFrame[Global.SpecialType])
-		%SpecialTimer.wait_time=Global.SpecialTime[Global.SpecialType]
-		%SpecialTimer.start()
 		Global.SP=0.0
 		
 	recoverSP(delta)
@@ -142,9 +137,6 @@ func JetAnimation(JetType: int):
 
 func _on_attack_timer_timeout():
 	AttackLoaded = true
-
-func _on_special_timer_timeout():
-	SpecialLoaded = true
 
 func kill():
 	if !isDead:

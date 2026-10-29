@@ -4,12 +4,9 @@ These were found by reading the code. Fix them before building new content on to
 
 ## Gameplay-affecting
 
-| Issue | Where | Effect |
-|---|---|---|
-| **Frame-rate-dependent movement** | `core/entity.gd` `_set_velocity` | `velocity = direction * speed * delta` is set before `move_and_slide()`, which already accounts for delta. Speeds are tuned for 60 FPS, so at 144 FPS everything moves at about 40% speed |
-| **Per-frame beam damage** | `mother_beam`, `electro_beam`, `taper_beam` | Damage is applied every frame with no `* delta`, so the damage depends on the frame rate. A beam at 50 per frame does 3000 dmg/s at 60 FPS |
-| Special shows full but can't be used | `player/player.gd` | `SP` starts full, but `SpecialLoaded` waits for `SpecialTimer` to finish first |
-| Possible repeated level-end calls | `game/game.gd` `_process` | `await` is called every frame while `LevelEnd` is true, so `$Paused` may be used after it has been freed |
+None open.
+
+> **Not a bug: boss beam damage.** `mother_beam`, `electro_beam` and `taper_beam` call `take_damage(damage)` every frame on purpose. The player becomes invincible while flickering after a hit, so a beam deals its `damage` once per flicker window (about 1 s), not once per frame.
 
 ## Save System
 
