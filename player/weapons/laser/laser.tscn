@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://core/bullet.tscn" id="1_r2len"]
 [ext_resource type="Script" path="res://player/weapons/laser/laser.gd" id="2_oaop0"]
-[ext_resource type="Texture2D" uid="uid://btcyx0igvmfs1" path="res://shared/effects/small_beam.png" id="4_fhxdw"]
-[ext_resource type="AudioStream" uid="uid://cqfu7kouocxmu" path="res://shared/audio/laser_small.ogg" id="5_jfg83"]
+[ext_resource type="Texture2D" uid="uid://btcyx0igvmfs1" path="res://assets/shared/effects/small_beam.png" id="4_fhxdw"]
+[ext_resource type="AudioStream" uid="uid://cqfu7kouocxmu" path="res://assets/shared/audio/laser_small.ogg" id="5_jfg83"]
 
 [sub_resource type="Animation" id="Animation_1i38o"]
 resource_name = "beamSmall"

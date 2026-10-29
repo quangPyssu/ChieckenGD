@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://df1tnxmm6nrp6"]
 
-[ext_resource type="Texture2D" uid="uid://o442xdm1y8ot" path="res://player/weapons/minigun/spent_shell.png" id="1_gvj4k"]
+[ext_resource type="Texture2D" uid="uid://o442xdm1y8ot" path="res://assets/player/weapons/minigun/spent_shell.png" id="1_gvj4k"]
 
 [sub_resource type="Gradient" id="Gradient_l2171"]
 offsets = PackedFloat32Array(0.79638, 1)

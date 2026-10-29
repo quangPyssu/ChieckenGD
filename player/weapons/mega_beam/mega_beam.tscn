@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://core/bullet.tscn" id="1_r5vgt"]
 [ext_resource type="Script" path="res://player/weapons/mega_beam/mega_beam.gd" id="2_w8g3m"]
-[ext_resource type="Texture2D" uid="uid://bgv2j8tbmtwk5" path="res://shared/effects/big_beam_body.png" id="3_vtolt"]
-[ext_resource type="Texture2D" uid="uid://jbrsg4bqwpj6" path="res://shared/effects/big_beam.png" id="4_e016c"]
-[ext_resource type="AudioStream" uid="uid://uv6n7bismn7j" path="res://player/weapons/mega_beam/mega_beam.mp3" id="6_7jihr"]
-[ext_resource type="Texture2D" uid="uid://rmnkuorl8kg" path="res://player/sprites/battlecruiser_shield.png" id="6_v45yh"]
-[ext_resource type="Texture2D" uid="uid://dtirv618cf5j7" path="res://shared/effects/white.png" id="6_wrq3e"]
+[ext_resource type="Texture2D" uid="uid://bgv2j8tbmtwk5" path="res://assets/shared/effects/big_beam_body.png" id="3_vtolt"]
+[ext_resource type="Texture2D" uid="uid://jbrsg4bqwpj6" path="res://assets/shared/effects/big_beam.png" id="4_e016c"]
+[ext_resource type="AudioStream" uid="uid://uv6n7bismn7j" path="res://assets/player/weapons/mega_beam/mega_beam.mp3" id="6_7jihr"]
+[ext_resource type="Texture2D" uid="uid://rmnkuorl8kg" path="res://assets/player/sprites/battlecruiser_shield.png" id="6_v45yh"]
+[ext_resource type="Texture2D" uid="uid://dtirv618cf5j7" path="res://assets/shared/effects/white.png" id="6_wrq3e"]
 [ext_resource type="Shape2D" uid="uid://clfvtmfquskgf" path="res://shared/effects/beam_box.tres" id="7_k6kr2"]
 
 [sub_resource type="Animation" id="Animation_v046r"]

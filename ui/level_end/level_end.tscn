@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://bgtpyetgm7rql"]
 
-[ext_resource type="Texture2D" uid="uid://dc5dbfeuutvdo" path="res://ui/level_end/space_background.png" id="1_bwsbu"]
+[ext_resource type="Texture2D" uid="uid://dc5dbfeuutvdo" path="res://assets/ui/level_end/space_background.png" id="1_bwsbu"]
 [ext_resource type="Script" path="res://ui/level_end/level_end.gd" id="1_fk64q"]
-[ext_resource type="Texture2D" uid="uid://cf7xihxmn31ce" path="res://ui/shared/buttons/close.png" id="2_5is88"]
+[ext_resource type="Texture2D" uid="uid://cf7xihxmn31ce" path="res://assets/ui/shared/buttons/close.png" id="2_5is88"]
 [ext_resource type="PackedScene" uid="uid://cfg8be78qrgrg" path="res://save/save_node.tscn" id="2_ctr36"]
-[ext_resource type="Texture2D" uid="uid://br5nyvvl4eddy" path="res://ui/shared/buttons/replay.png" id="4_647yb"]
-[ext_resource type="Texture2D" uid="uid://b2ucva3lolmvx" path="res://ui/level_end/header_lost.png" id="6_3qrq7"]
-[ext_resource type="Texture2D" uid="uid://j84hhy3td1vb" path="res://ui/shared/buttons/play.png" id="6_o8k2b"]
-[ext_resource type="Texture2D" uid="uid://b2pjdy3cfnfpu" path="res://ui/level_end/header_win.png" id="7_klko5"]
+[ext_resource type="Texture2D" uid="uid://br5nyvvl4eddy" path="res://assets/ui/shared/buttons/replay.png" id="4_647yb"]
+[ext_resource type="Texture2D" uid="uid://b2ucva3lolmvx" path="res://assets/ui/level_end/header_lost.png" id="6_3qrq7"]
+[ext_resource type="Texture2D" uid="uid://j84hhy3td1vb" path="res://assets/ui/shared/buttons/play.png" id="6_o8k2b"]
+[ext_resource type="Texture2D" uid="uid://b2pjdy3cfnfpu" path="res://assets/ui/level_end/header_win.png" id="7_klko5"]
 
 [node name="LevelEnd" type="CanvasLayer"]
 process_mode = 3

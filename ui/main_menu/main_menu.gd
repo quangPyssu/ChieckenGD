@@ -34,7 +34,7 @@ func _process(_delta):
 			get_tree().change_scene_to_packed(newScene)
 	
 func BTN_Hover():
-	$AudioStreamPlayer.set_stream(preload("res://ui/shared/sfx/ui_click.mp3"))
+	$AudioStreamPlayer.set_stream(preload("res://assets/ui/shared/sfx/ui_click.mp3"))
 	$AudioStreamPlayer.play()
 
 func _on_exit_btn_pressed():

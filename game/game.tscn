@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://d26j2nusorvjk" path="res://player/player.tscn" id="1_rbiiv"]
 [ext_resource type="Script" path="res://game/game.gd" id="1_yimfk"]
-[ext_resource type="Texture2D" uid="uid://7hsxq7orbnyx" path="res://game/backgrounds/blue_background.png" id="3_mky08"]
+[ext_resource type="Texture2D" uid="uid://7hsxq7orbnyx" path="res://assets/game/backgrounds/blue_background.png" id="3_mky08"]
 [ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://enemies/chicken/chicken.tscn" id="3_scqhn"]
-[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://ui/shared/fonts/neuro.ttf" id="5_jv1r4"]
+[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://assets/ui/shared/fonts/neuro.ttf" id="5_jv1r4"]
 [ext_resource type="PackedScene" uid="uid://cfxh60sa0kekt" path="res://ui/pause_menu/pause_menu.tscn" id="5_quuxs"]
 [ext_resource type="PackedScene" uid="uid://brmi3g83eksvo" path="res://ui/hud/hud.tscn" id="5_xjudq"]
-[ext_resource type="AudioStream" uid="uid://b7xu2o4ldgpxt" path="res://shared/music/be_of_good_cheer.ogg" id="6_apjum"]
+[ext_resource type="AudioStream" uid="uid://b7xu2o4ldgpxt" path="res://assets/shared/music/be_of_good_cheer.ogg" id="6_apjum"]
 
 [sub_resource type="Animation" id="Animation_i4bqj"]
 resource_name = "Default"

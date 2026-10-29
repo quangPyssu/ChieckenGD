@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dc2ccq5smsujm"]
 
-[ext_resource type="Texture2D" uid="uid://b2pqxj5o7smbi" path="res://enemies/chicken/chicken_body.png" id="1_y40dk"]
+[ext_resource type="Texture2D" uid="uid://b2pqxj5o7smbi" path="res://assets/enemies/chicken/chicken_body.png" id="1_y40dk"]
 [ext_resource type="Script" path="res://enemies/chicken/chicken_body.gd" id="2_mrppb"]
-[ext_resource type="Texture2D" uid="uid://boyofywc41cs" path="res://enemies/chicken/chicken_faces.png" id="3_0kukt"]
-[ext_resource type="Texture2D" uid="uid://6b276mkv2l7s" path="res://enemies/chicken/chicken_shirt.png" id="4_vj6ot"]
-[ext_resource type="Texture2D" uid="uid://6qmf7de038qd" path="res://shared/effects/explosion.png" id="5_gbiqx"]
+[ext_resource type="Texture2D" uid="uid://boyofywc41cs" path="res://assets/enemies/chicken/chicken_faces.png" id="3_0kukt"]
+[ext_resource type="Texture2D" uid="uid://6b276mkv2l7s" path="res://assets/enemies/chicken/chicken_shirt.png" id="4_vj6ot"]
+[ext_resource type="Texture2D" uid="uid://6qmf7de038qd" path="res://assets/shared/effects/explosion.png" id="5_gbiqx"]
 
 [sub_resource type="Animation" id="Animation_x2jdv"]
 resource_name = "ChickenFlap"

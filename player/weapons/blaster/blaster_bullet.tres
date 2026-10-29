@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://grb2nc0vebca"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://grb2nc0vebca"]
 
-[ext_resource type="Texture2D" uid="uid://bc4if2g2rsksl" path="res://player/weapons/blaster/blaster_bullet.png" id="1_lxflp"]
+[ext_resource type="Texture2D" uid="uid://bc4if2g2rsksl" path="res://assets/player/weapons/blaster/blaster_bullet.png" id="1_lxflp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1h25w"]
 atlas = ExtResource("1_lxflp")

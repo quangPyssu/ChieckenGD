@@ -113,7 +113,7 @@ Enemies read `Global.PlayerPos` to aim. The HUD (`ui/hud/hud.gd`) only reads fro
 
 ## File Map
 
-Files are grouped **by feature**. Each folder holds a feature's scene, script, sprites, sounds and shaders together.
+Files are grouped **by feature**. Each folder holds a feature's scenes, scripts and shaders. Raw art, audio and fonts (`.png`, `.jpg`, `.ogg`, `.mp3`, `.ttf`) live under `assets/`, in a folder tree that mirrors the feature folders.
 
 ```
 core/          global.gd (autoload), entity.*, bullet.*   – base classes
@@ -123,16 +123,17 @@ player/        player.*, fire_jet.tres, sprites/
   weapons/     blaster/, laser/, minigun/, mega_beam/, shot_particle.tscn
 enemies/       chicken/, chick/
   projectiles/ egg/, asteroid/, ufo_bullet/, small_laser/, mini_bullet/, blue_zig/
-bosses/        boss_chicken/, ufo/, space_ship/, mother_hen/, henterprise/, henporer/
+  bosses/      boss_chicken/, ufo/, space_ship/, mother_hen/, henterprise/, henporer/
 ui/            hud/, main_menu/, level_select/, level_end/, pause_menu/, settings/, credits/
   shared/      buttons/, icons/, fonts/, sfx/, star_surface/, window.png, space_sea.png
 shared/        effects/ (explosion, beams, flares), audio/ (sfx used by several features), music/
 save/          save_data.gd, save_node.tscn, data.save
+assets/        art/audio/fonts, mirroring the tree above (e.g. assets/enemies/bosses/ufo/ufo.png)
 _unused/       unreferenced old assets; Godot ignores this folder (.gdignore)
 ```
 
 **Placement rules**
-- A file used by one feature goes in that feature's folder.
+- A file used by one feature goes in that feature's folder, or in the matching `assets/` folder if it is art, audio or a font.
 - A file used by several features goes in `shared/`, or in `ui/shared/` for UI files.
 - Reusable enemy bullets and hazards go in `enemies/projectiles/`, since spawners in any level can use them.
 - The Spread Shot special has no files of its own. It fires `player/weapons/blaster/blaster.tscn`.

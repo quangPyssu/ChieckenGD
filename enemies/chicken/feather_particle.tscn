@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8na1fxpn8fnt"]
 
-[ext_resource type="Texture2D" uid="uid://ctx05mqaqe2yl" path="res://enemies/chicken/feather.png" id="1_3ydqi"]
+[ext_resource type="Texture2D" uid="uid://ctx05mqaqe2yl" path="res://assets/enemies/chicken/feather.png" id="1_3ydqi"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sxsyp"]
 particles_animation = true

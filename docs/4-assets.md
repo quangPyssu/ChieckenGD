@@ -1,6 +1,6 @@
 # 4. Assets
 
-Assets live beside the feature that uses them (see the File Map in [Architecture](3-architecture.md)). This page lists what each folder holds.
+Assets live under `assets/`, mirroring the folder of the feature that uses them (see the File Map in [Architecture](3-architecture.md)). E.g. `enemies/bosses/ufo/ufo.gd` uses `assets/enemies/bosses/ufo/ufo.png`. Folders below are relative to `assets/`.
 
 ## Inventory
 
@@ -10,12 +10,12 @@ Assets live beside the feature that uses them (see the File Map in [Architecture
 | `player/weapons/*/` | Blaster bullet frames and shot sound, minigun spent shell, mega beam sound |
 | `enemies/chicken/` | Body, face sheet (15×5 eye directions), shirt, feather particle, death sound |
 | `enemies/projectiles/*/` | Egg, asteroid (+ rock sound), UFO bullet, Blue Zig sprites |
-| `bosses/boss_chicken/` | Body in 3 damage stages, death sound |
-| `bosses/ufo/` | UFO in 2 damage stages, engine sounds, glass and debris particles |
-| `bosses/space_ship/` | Body sheet (33 frames for turning toward the player), exhaust, ram sound |
-| `bosses/mother_hen/` | Layered parts (structure, yolk, egg white + shader, shell pieces), beam and shell sounds |
-| `bosses/henterprise/` | Ship front/back, electro/taper beams + shaders, sun ball, warning strip, charge particle |
-| `bosses/henporer/` | Body, limbs, cape + shader, Sky Descend star and sounds, flares |
+| `enemies/bosses/boss_chicken/` | Body in 3 damage stages, death sound |
+| `enemies/bosses/ufo/` | UFO in 2 damage stages, engine sounds, glass and debris particles |
+| `enemies/bosses/space_ship/` | Body sheet (33 frames for turning toward the player), exhaust, ram sound |
+| `enemies/bosses/mother_hen/` | Layered parts (structure, yolk, egg white + shader, shell pieces), beam and shell sounds |
+| `enemies/bosses/henterprise/` | Ship front/back, electro/taper beams + shaders, sun ball, warning strip, charge particle |
+| `enemies/bosses/henporer/` | Body, limbs, cape + shader, Sky Descend star and sounds, flares |
 | `shared/effects/` | Explosion, white/circle textures, beam materials, big/small beam textures, flares, mini bullet |
 | `shared/audio/` | Explosion, small laser, mini bullet, bugle zap, boss cry |
 | `shared/music/` | 12 tracks (level and boss music) |
@@ -27,7 +27,7 @@ Assets live beside the feature that uses them (see the File Map in [Architecture
 
 ## Notes
 
-- `hud.gd` loads weapon icons by ID (`ui/shared/icons/weapon_<id>.jpg`), so keep that filename pattern.
+- `hud.gd` loads weapon icons by ID (`assets/ui/shared/icons/weapon_<id>.jpg`), so keep that filename pattern.
 - Special icons are named after their ID: `special_0_spread_shot`, `special_1_shield`, `special_2_mega_beam`.
 
 ## Provenance

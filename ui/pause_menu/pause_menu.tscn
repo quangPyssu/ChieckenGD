@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://cfxh60sa0kekt"]
 
 [ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="1_a66hj"]
-[ext_resource type="Texture2D" uid="uid://cf7xihxmn31ce" path="res://ui/shared/buttons/close.png" id="2_b7yvq"]
-[ext_resource type="Texture2D" uid="uid://j84hhy3td1vb" path="res://ui/shared/buttons/play.png" id="4_q6yur"]
+[ext_resource type="Texture2D" uid="uid://cf7xihxmn31ce" path="res://assets/ui/shared/buttons/close.png" id="2_b7yvq"]
+[ext_resource type="Texture2D" uid="uid://j84hhy3td1vb" path="res://assets/ui/shared/buttons/play.png" id="4_q6yur"]
 [ext_resource type="PackedScene" uid="uid://do7mnex32ow7t" path="res://ui/settings/settings.tscn" id="5_sw3ip"]
-[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://ui/shared/fonts/neuro.ttf" id="5_vm3mv"]
-[ext_resource type="AudioStream" uid="uid://v4nx0thw6uja" path="res://ui/shared/sfx/pause.ogg" id="6_kx3aw"]
+[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://assets/ui/shared/fonts/neuro.ttf" id="5_vm3mv"]
+[ext_resource type="AudioStream" uid="uid://v4nx0thw6uja" path="res://assets/ui/shared/sfx/pause.ogg" id="6_kx3aw"]
 
 [node name="Paused" type="CanvasLayer"]
 process_mode = 2

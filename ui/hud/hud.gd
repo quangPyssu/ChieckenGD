@@ -23,20 +23,20 @@ func _ready():
 		i.get_node("WeaponRecharge").value = Global.WeaponTime[Global.EquippedWeapon[cnt]]
 		i.get_node("WeaponRecharge").step=0.05
 		
-		var s:String="res://ui/shared/icons/weapon_"+str(Global.EquippedWeapon[cnt])+".jpg"
+		var s:String="res://assets/ui/shared/icons/weapon_"+str(Global.EquippedWeapon[cnt])+".jpg"
 		i.texture=load(s)
 		i.get_node("WeaponRecharge").texture_progress=load(s)
 		
 		cnt+=1
 		
-	var c:String ="res://ui/shared/icons/special_0_spread_shot_grey.jpg"
+	var c:String ="res://assets/ui/shared/icons/special_0_spread_shot_grey.jpg"
 	match Global.SpecialType:
 		0:
-			c="res://ui/shared/icons/special_0_spread_shot.jpg"
+			c="res://assets/ui/shared/icons/special_0_spread_shot.jpg"
 		1:
-			c="res://ui/shared/icons/special_1_shield.jpg"
+			c="res://assets/ui/shared/icons/special_1_shield.jpg"
 		2:
-			c="res://ui/shared/icons/special_2_mega_beam.jpg"
+			c="res://assets/ui/shared/icons/special_2_mega_beam.jpg"
 	
 	$Control/AttackBG/HBoxContainer/SpecialSprite.texture=load(c)
 	%SpecialRecharge.texture_progress=load(c)

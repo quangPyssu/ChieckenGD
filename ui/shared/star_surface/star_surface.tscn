@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccpc1pyal5oti"]
 
 [ext_resource type="Material" uid="uid://by4ujb1bsujjx" path="res://ui/shared/star_surface/star_surface_material.tres" id="1_aow50"]
-[ext_resource type="Texture2D" uid="uid://cysstgdis3spv" path="res://ui/shared/star_surface/star_fragment.png" id="2_x5r6j"]
+[ext_resource type="Texture2D" uid="uid://cysstgdis3spv" path="res://assets/ui/shared/star_surface/star_fragment.png" id="2_x5r6j"]
 [ext_resource type="Script" path="res://ui/shared/star_surface/star_surface.gd" id="3_kfwb6"]
-[ext_resource type="Texture2D" uid="uid://dol4ytmt47laf" path="res://shared/effects/circle.png" id="4_cwu3g"]
-[ext_resource type="Texture2D" uid="uid://7hsxq7orbnyx" path="res://game/backgrounds/blue_background.png" id="5_4s7uk"]
+[ext_resource type="Texture2D" uid="uid://dol4ytmt47laf" path="res://assets/shared/effects/circle.png" id="4_cwu3g"]
+[ext_resource type="Texture2D" uid="uid://7hsxq7orbnyx" path="res://assets/game/backgrounds/blue_background.png" id="5_4s7uk"]
 
 [node name="starSurface" type="Sprite2D"]
 texture_filter = 1

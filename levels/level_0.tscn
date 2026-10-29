@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0mpkphl8npgt"]
+[gd_scene format=3 uid="uid://c0mpkphl8npgt"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game/game.tscn" id="1_2wfyq"]
 [ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://game/formation.tscn" id="2_s1cj1"]
 [ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://game/spawner.tscn" id="3_baj8x"]
 [ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://enemies/chicken/chicken.tscn" id="3_g8b77"]
-[ext_resource type="PackedScene" uid="uid://dl1becyep5n8l" path="res://bosses/boss_chicken/boss_chicken.tscn" id="3_yet7p"]
-[ext_resource type="AudioStream" uid="uid://cmi2f2ymikqpf" path="res://shared/music/lullaby_deserted_hell.ogg" id="6_pvt4t"]
+[ext_resource type="PackedScene" uid="uid://dl1becyep5n8l" path="res://enemies/bosses/boss_chicken/boss_chicken.tscn" id="3_yet7p"]
+[ext_resource type="AudioStream" uid="uid://cmi2f2ymikqpf" path="res://assets/shared/music/lullaby_deserted_hell.ogg" id="6_pvt4t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kofpf"]
 size = Vector2(2006, 251.251)
@@ -16,12 +16,12 @@ size = Vector2(260.5, 996.783)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_te88e"]
 size = Vector2(1920, 253.897)
 
-[node name="Game" instance=ExtResource("1_2wfyq")]
+[node name="Game" unique_id=1064546333 instance=ExtResource("1_2wfyq")]
 
 [node name="BlueBlankBackground" parent="." index="0"]
 scale = Vector2(2.5, 2.5)
 
-[node name="Anchor" parent="Enemies/Wave0" index="0" instance=ExtResource("2_s1cj1")]
+[node name="Anchor" parent="Enemies/Wave0" index="0" unique_id=983344474 instance=ExtResource("2_s1cj1")]
 position = Vector2(880, -279.279)
 scale = Vector2(1, 1.00559)
 size = 300.0
@@ -32,7 +32,7 @@ speed = 10000.0
 direction = Vector2(-1, 0)
 savedPos = Vector2(1000, 500)
 
-[node name="EnemyChicken" parent="Enemies/Wave1" index="0" instance=ExtResource("3_g8b77")]
+[node name="EnemyChicken" parent="Enemies/Wave1" index="0" unique_id=1854167909 instance=ExtResource("3_g8b77")]
 position = Vector2(2220, -300)
 scale = Vector2(1, 1.00569)
 collision_layer = 0
@@ -43,7 +43,7 @@ inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
 
-[node name="Spawner" parent="Enemies/Wave1/EnemyChicken" index="5" instance=ExtResource("3_baj8x")]
+[node name="Spawner" parent="Enemies/Wave1/EnemyChicken" index="5" unique_id=1654238517 instance=ExtResource("3_baj8x")]
 position = Vector2(-2408, 119.014)
 collision_layer = 0
 collision_mask = 0
@@ -52,24 +52,24 @@ SpawnCnt = 5
 WhatSpawning = 2
 direction = Vector2(1, 1)
 
-[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave1/EnemyChicken/Spawner" index="1"]
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave1/EnemyChicken/Spawner" index="1" unique_id=536941934]
 position = Vector2(1068, 52.3404)
 shape = SubResource("RectangleShape2D_kofpf")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
-[node name="Spawner2" parent="Enemies/Wave1/EnemyChicken" index="6" instance=ExtResource("3_baj8x")]
+[node name="Spawner2" parent="Enemies/Wave1/EnemyChicken" index="6" unique_id=222554649 instance=ExtResource("3_baj8x")]
 position = Vector2(-336, 22.4779)
 BetweenSpawn = 2.0
 SpawnCnt = 5
 WhatSpawning = 2
 direction = Vector2(1, 1)
 
-[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave1/EnemyChicken/Spawner2" index="1"]
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave1/EnemyChicken/Spawner2" index="1" unique_id=416794290]
 position = Vector2(-2012, 775.684)
 shape = SubResource("RectangleShape2D_v0jq4")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
-[node name="Anchor2" parent="Enemies/Wave2" index="0" instance=ExtResource("2_s1cj1")]
+[node name="Anchor2" parent="Enemies/Wave2" index="0" unique_id=655448927 instance=ExtResource("2_s1cj1")]
 position = Vector2(-230, 351)
 scale = Vector2(1, 1.00559)
 size = 200.0
@@ -79,7 +79,7 @@ speed = 10000.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 300)
 
-[node name="Anchor" parent="Enemies/Wave2" index="1" instance=ExtResource("2_s1cj1")]
+[node name="Anchor" parent="Enemies/Wave2" index="1" unique_id=1691742966 instance=ExtResource("2_s1cj1")]
 position = Vector2(2250, 351)
 scale = Vector2(1, 1.00559)
 size = 200.0
@@ -89,9 +89,9 @@ speed = 10000.0
 direction = Vector2(1, 0)
 savedPos = Vector2(1000, 300)
 
-[node name="Wave2_5" type="Node2D" parent="Enemies" index="4"]
+[node name="Wave2_5" type="Node2D" parent="Enemies" index="4" unique_id=863162633]
 
-[node name="EnemyChicken" parent="Enemies/Wave2_5" index="0" instance=ExtResource("3_g8b77")]
+[node name="EnemyChicken" parent="Enemies/Wave2_5" index="0" unique_id=1623391653 instance=ExtResource("3_g8b77")]
 position = Vector2(2220, -300)
 scale = Vector2(1, 1.00569)
 timerEnd = 3.0
@@ -100,17 +100,17 @@ inClampedScreen = false
 BounceOffSceen = false
 canFlicker = false
 
-[node name="Wave3" type="Node2D" parent="Enemies" index="5"]
+[node name="Wave3" type="Node2D" parent="Enemies" index="5" unique_id=1846797179]
 
-[node name="BossChicken" parent="Enemies/Wave3" index="0" instance=ExtResource("3_yet7p")]
+[node name="BossChicken" parent="Enemies/Wave3" index="0" unique_id=1353529114 instance=ExtResource("3_yet7p")]
 position = Vector2(920, -239.382)
 HP = 2000.0
 speed = 8000.0
 savedPos = Vector2(1000, 300)
 
-[node name="Node" type="Node" parent="Enemies/Wave3/BossChicken" index="5"]
+[node name="Node" type="Node" parent="Enemies/Wave3/BossChicken" index="5" unique_id=1546864479]
 
-[node name="Spawner" parent="Enemies/Wave3/BossChicken/Node" index="0" instance=ExtResource("3_baj8x")]
+[node name="Spawner" parent="Enemies/Wave3/BossChicken/Node" index="0" unique_id=852426189 instance=ExtResource("3_baj8x")]
 position = Vector2(-188, -180.774)
 scale = Vector2(1, 1.00828)
 collision_layer = 0
@@ -118,13 +118,16 @@ collision_mask = 0
 BetweenSpawn = 2.0
 direction = Vector2(0, 1)
 
-[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave3/BossChicken/Node/Spawner" index="1"]
+[node name="SpawnZone" type="CollisionShape2D" parent="Enemies/Wave3/BossChicken/Node/Spawner" index="1" unique_id=1913386242]
 position = Vector2(1148, 52.3404)
 shape = SubResource("RectangleShape2D_te88e")
 debug_color = Color(0.890196, 0, 0.788235, 0.109804)
 
 [node name="LevelName" parent="UI" index="1"]
 text = "Level 1: The Encounter"
+
+[node name="AnimationPlayer" parent="UI/LevelName" index="0"]
+autoplay = &"Default"
 
 [node name="Music" parent="." index="6"]
 stream = ExtResource("6_pvt4t")

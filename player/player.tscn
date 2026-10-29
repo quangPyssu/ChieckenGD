@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://core/entity.tscn" id="1_tg83y"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_vop0c"]
-[ext_resource type="Texture2D" uid="uid://bhmkbf01lknbj" path="res://player/sprites/battlecruiser_base.png" id="2_0rdic"]
+[ext_resource type="Texture2D" uid="uid://bhmkbf01lknbj" path="res://assets/player/sprites/battlecruiser_base.png" id="2_0rdic"]
 [ext_resource type="SpriteFrames" uid="uid://dj5qlml6yehwb" path="res://player/fire_jet.tres" id="3_y5fs6"]
-[ext_resource type="Texture2D" uid="uid://ltfaidarhr2v" path="res://player/sprites/dreadnought_shield.png" id="5_hl6uf"]
-[ext_resource type="Texture2D" uid="uid://bxwkd5kewkuvu" path="res://player/sprites/battlecruiser_engine.png" id="6_x37wx"]
-[ext_resource type="Texture2D" uid="uid://divxhjle1vn5w" path="res://player/sprites/battlecruiser_destruction.png" id="7_0psjm"]
-[ext_resource type="AudioStream" uid="uid://obb6wtmc40q5" path="res://shared/audio/explode.ogg" id="8_vio31"]
-[ext_resource type="Texture2D" uid="uid://tx1hl7rfmsa" path="res://player/sprites/ammo.png" id="9_nlerg"]
+[ext_resource type="Texture2D" uid="uid://ltfaidarhr2v" path="res://assets/player/sprites/dreadnought_shield.png" id="5_hl6uf"]
+[ext_resource type="Texture2D" uid="uid://bxwkd5kewkuvu" path="res://assets/player/sprites/battlecruiser_engine.png" id="6_x37wx"]
+[ext_resource type="Texture2D" uid="uid://divxhjle1vn5w" path="res://assets/player/sprites/battlecruiser_destruction.png" id="7_0psjm"]
+[ext_resource type="AudioStream" uid="uid://obb6wtmc40q5" path="res://assets/shared/audio/explode.ogg" id="8_vio31"]
+[ext_resource type="Texture2D" uid="uid://tx1hl7rfmsa" path="res://assets/player/sprites/ammo.png" id="9_nlerg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6o43q"]
 atlas = ExtResource("5_hl6uf")

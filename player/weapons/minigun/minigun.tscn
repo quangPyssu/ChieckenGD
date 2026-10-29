@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://core/bullet.tscn" id="1_x4yvm"]
 [ext_resource type="Script" path="res://player/weapons/minigun/minigun.gd" id="2_dkr6d"]
-[ext_resource type="Texture2D" uid="uid://86syui1ftdba" path="res://shared/effects/mini_bullet.png" id="2_wmm0t"]
-[ext_resource type="AudioStream" uid="uid://dijogd71owox4" path="res://shared/audio/mini_bullet.ogg" id="3_38n5h"]
+[ext_resource type="Texture2D" uid="uid://86syui1ftdba" path="res://assets/shared/effects/mini_bullet.png" id="2_wmm0t"]
+[ext_resource type="AudioStream" uid="uid://dijogd71owox4" path="res://assets/shared/audio/mini_bullet.ogg" id="3_38n5h"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xb1ly"]
 a = Vector2(-24, 0)

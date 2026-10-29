@@ -7,7 +7,7 @@ var targetLookDir:Vector2i = Vector2i(7,3)
 
 const visionBox:Vector2i = Vector2i(3000/15,700/5)
 
-var deathSound = preload("res://enemies/chicken/chicken_die.ogg")
+var deathSound = preload("res://assets/enemies/chicken/chicken_die.ogg")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

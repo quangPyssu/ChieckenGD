@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://7adcbrdpjynf"]
+[gd_scene format=3 uid="uid://7adcbrdpjynf"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game/game.tscn" id="1_2fd1j"]
-[ext_resource type="PackedScene" uid="uid://cgeh2dbqccio" path="res://bosses/ufo/ufo.tscn" id="2_3x6us"]
+[ext_resource type="PackedScene" uid="uid://cgeh2dbqccio" path="res://enemies/bosses/ufo/ufo.tscn" id="2_3x6us"]
 [ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://game/formation.tscn" id="2_dcytd"]
 [ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://enemies/chicken/chicken.tscn" id="3_m07tu"]
 [ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://game/spawner.tscn" id="3_y13or"]
-[ext_resource type="AudioStream" uid="uid://doq2q6boqmoog" path="res://shared/music/jinzo_lament.ogg" id="6_ygy4s"]
+[ext_resource type="AudioStream" uid="uid://doq2q6boqmoog" path="res://assets/shared/music/jinzo_lament.ogg" id="6_ygy4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q28ur"]
 size = Vector2(1920, 20)

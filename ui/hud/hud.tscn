@@ -1,14 +1,14 @@
 [gd_scene load_steps=26 format=3 uid="uid://brmi3g83eksvo"]
 
 [ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_2c54b"]
-[ext_resource type="Texture2D" uid="uid://gmm01mps67iu" path="res://ui/shared/icons/weapon_0.jpg" id="2_7vf4g"]
-[ext_resource type="Texture2D" uid="uid://dwvvcidxjtrtp" path="res://ui/shared/icons/bg_status.png" id="2_j25fr"]
-[ext_resource type="Texture2D" uid="uid://d1hg23gwh4q82" path="res://ui/shared/icons/special_2_mega_beam.jpg" id="3_4on2o"]
-[ext_resource type="Texture2D" uid="uid://brjb5snmb8x1o" path="res://ui/shared/icons/weapon_select.png" id="4_4b6t3"]
-[ext_resource type="Texture2D" uid="uid://banqcecntmlsn" path="res://ui/shared/icons/icon_cover.png" id="4_x0c3o"]
-[ext_resource type="Texture2D" uid="uid://cmljyc77g880" path="res://ui/shared/icons/weapon_1.jpg" id="5_b2gox"]
-[ext_resource type="Texture2D" uid="uid://civqckhkupqeb" path="res://ui/shared/icons/special_select.png" id="6_1ltwo"]
-[ext_resource type="Texture2D" uid="uid://do5pi708i4s4y" path="res://ui/shared/icons/bg_weapon.png" id="8_xe6ts"]
+[ext_resource type="Texture2D" uid="uid://gmm01mps67iu" path="res://assets/ui/shared/icons/weapon_0.jpg" id="2_7vf4g"]
+[ext_resource type="Texture2D" uid="uid://dwvvcidxjtrtp" path="res://assets/ui/shared/icons/bg_status.png" id="2_j25fr"]
+[ext_resource type="Texture2D" uid="uid://d1hg23gwh4q82" path="res://assets/ui/shared/icons/special_2_mega_beam.jpg" id="3_4on2o"]
+[ext_resource type="Texture2D" uid="uid://brjb5snmb8x1o" path="res://assets/ui/shared/icons/weapon_select.png" id="4_4b6t3"]
+[ext_resource type="Texture2D" uid="uid://banqcecntmlsn" path="res://assets/ui/shared/icons/icon_cover.png" id="4_x0c3o"]
+[ext_resource type="Texture2D" uid="uid://cmljyc77g880" path="res://assets/ui/shared/icons/weapon_1.jpg" id="5_b2gox"]
+[ext_resource type="Texture2D" uid="uid://civqckhkupqeb" path="res://assets/ui/shared/icons/special_select.png" id="6_1ltwo"]
+[ext_resource type="Texture2D" uid="uid://do5pi708i4s4y" path="res://assets/ui/shared/icons/bg_weapon.png" id="8_xe6ts"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjq6p"]
 

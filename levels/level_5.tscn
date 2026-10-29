@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://s6kdrfboa161"]
+[gd_scene format=3 uid="uid://s6kdrfboa161"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game/game.tscn" id="1_0sngu"]
 [ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://enemies/chicken/chicken.tscn" id="2_55x2a"]
-[ext_resource type="PackedScene" uid="uid://dwj24ow517lat" path="res://bosses/henporer/henporer.tscn" id="2_g8vk8"]
+[ext_resource type="PackedScene" uid="uid://dwj24ow517lat" path="res://enemies/bosses/henporer/henporer.tscn" id="2_g8vk8"]
 [ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://game/formation.tscn" id="2_oke5u"]
 [ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://game/spawner.tscn" id="3_0rkxi"]
-[ext_resource type="PackedScene" uid="uid://cgeh2dbqccio" path="res://bosses/ufo/ufo.tscn" id="5_g5taf"]
-[ext_resource type="PackedScene" uid="uid://dmy2mmbxd5qib" path="res://bosses/space_ship/space_ship.tscn" id="6_24rfh"]
-[ext_resource type="AudioStream" uid="uid://d4egux6t481mf" path="res://shared/music/the_sea_one_home_planet.ogg" id="8_brfyl"]
+[ext_resource type="PackedScene" uid="uid://cgeh2dbqccio" path="res://enemies/bosses/ufo/ufo.tscn" id="5_g5taf"]
+[ext_resource type="PackedScene" uid="uid://dmy2mmbxd5qib" path="res://enemies/bosses/space_ship/space_ship.tscn" id="6_24rfh"]
+[ext_resource type="AudioStream" uid="uid://d4egux6t481mf" path="res://assets/shared/music/the_sea_one_home_planet.ogg" id="8_brfyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dq0nd"]
 size = Vector2(1920, 20)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bjtqnkqwvtqki" path="res://core/entity.tscn" id="1_3xao5"]
 [ext_resource type="Script" path="res://enemies/chick/chick.gd" id="2_2gn2t"]
-[ext_resource type="Texture2D" uid="uid://dk5i10v6w0a3s" path="res://enemies/chick/chick.png" id="2_qfrfu"]
+[ext_resource type="Texture2D" uid="uid://dk5i10v6w0a3s" path="res://assets/enemies/chick/chick.png" id="2_qfrfu"]
 
 [sub_resource type="Animation" id="Animation_xspl5"]
 resource_name = "Default"

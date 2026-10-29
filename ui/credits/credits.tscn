@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://cj4b1hr5pwjea"]
 
-[ext_resource type="Texture2D" uid="uid://dsm62rvajx7ux" path="res://ui/shared/space_sea.png" id="1_b7u46"]
+[ext_resource type="Texture2D" uid="uid://dsm62rvajx7ux" path="res://assets/ui/shared/space_sea.png" id="1_b7u46"]
 [ext_resource type="Script" path="res://ui/credits/credits.gd" id="1_ggky0"]
 [ext_resource type="PackedScene" uid="uid://ccpc1pyal5oti" path="res://ui/shared/star_surface/star_surface.tscn" id="2_jpvmm"]
-[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://ui/shared/fonts/neuro.ttf" id="7_1ynr5"]
-[ext_resource type="AudioStream" uid="uid://dc8ej5pmxidqg" path="res://shared/music/space_maiden_appear.ogg" id="7_fnue3"]
+[ext_resource type="FontFile" uid="uid://c17ddxtp6ee0j" path="res://assets/ui/shared/fonts/neuro.ttf" id="7_1ynr5"]
+[ext_resource type="AudioStream" uid="uid://dc8ej5pmxidqg" path="res://assets/shared/music/space_maiden_appear.ogg" id="7_fnue3"]
 [ext_resource type="PackedScene" uid="uid://do7mnex32ow7t" path="res://ui/settings/settings.tscn" id="10_3mt17"]
 
 [sub_resource type="Animation" id="Animation_38wwi"]

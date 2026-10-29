@@ -38,17 +38,17 @@ func _ready():
 	
 	match Global.CurrentLevel:
 		0:
-			PreBossBGM=preload("res://shared/music/be_of_good_cheer.ogg")
+			PreBossBGM=preload("res://assets/shared/music/be_of_good_cheer.ogg")
 		1:
-			PreBossBGM=preload("res://shared/music/magic_jinzo_straw.ogg")
+			PreBossBGM=preload("res://assets/shared/music/magic_jinzo_straw.ogg")
 		2:
-			PreBossBGM=preload("res://shared/music/love_master_spark.ogg")
+			PreBossBGM=preload("res://assets/shared/music/love_master_spark.ogg")
 		3:
-			PreBossBGM=preload("res://shared/music/helian_alien.ogg")
+			PreBossBGM=preload("res://assets/shared/music/helian_alien.ogg")
 		4:
-			PreBossBGM=preload("res://shared/music/necrofantasia.ogg")
+			PreBossBGM=preload("res://assets/shared/music/necrofantasia.ogg")
 		5:
-			PreBossBGM=preload("res://shared/music/pure_furries.ogg")
+			PreBossBGM=preload("res://assets/shared/music/pure_furries.ogg")
 
 func _process(delta):
 	%FPS.set_text("FPS %d" % Engine.get_frames_per_second())

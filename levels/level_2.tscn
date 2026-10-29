@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3f6lmxfc16kb"]
+[gd_scene format=3 uid="uid://d3f6lmxfc16kb"]
 
 [ext_resource type="PackedScene" uid="uid://daon3rhir0iyv" path="res://game/game.tscn" id="1_y7006"]
-[ext_resource type="Texture2D" uid="uid://db31yvcovq88h" path="res://game/backgrounds/orange_background.png" id="2_wpoqj"]
+[ext_resource type="Texture2D" uid="uid://db31yvcovq88h" path="res://assets/game/backgrounds/orange_background.png" id="2_wpoqj"]
 [ext_resource type="PackedScene" uid="uid://cs0j3wwac23u7" path="res://game/formation.tscn" id="3_dqxsm"]
-[ext_resource type="PackedScene" uid="uid://dmy2mmbxd5qib" path="res://bosses/space_ship/space_ship.tscn" id="3_l2y60"]
+[ext_resource type="PackedScene" uid="uid://dmy2mmbxd5qib" path="res://enemies/bosses/space_ship/space_ship.tscn" id="3_l2y60"]
 [ext_resource type="PackedScene" uid="uid://b7ul7wk88kahr" path="res://game/spawner.tscn" id="4_u2gux"]
-[ext_resource type="AudioStream" uid="uid://dlkk3ei4syevg" path="res://shared/music/retribution_night.ogg" id="5_7j663"]
+[ext_resource type="AudioStream" uid="uid://dlkk3ei4syevg" path="res://assets/shared/music/retribution_night.ogg" id="5_7j663"]
 [ext_resource type="PackedScene" uid="uid://dujwhxsx2hnvs" path="res://enemies/chicken/chicken.tscn" id="5_5152i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxb7e"]

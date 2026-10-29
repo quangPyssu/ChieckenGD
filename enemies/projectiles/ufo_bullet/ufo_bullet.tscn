@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cayt5t5jubvq1" path="res://core/bullet.tscn" id="1_ywy4j"]
 [ext_resource type="Script" path="res://enemies/projectiles/ufo_bullet/ufo_bullet.gd" id="2_auqik"]
-[ext_resource type="Texture2D" uid="uid://dm4keq1leghk6" path="res://enemies/projectiles/ufo_bullet/ufo_bullet.png" id="3_axa7f"]
-[ext_resource type="AudioStream" uid="uid://dkhfxl18c3uvv" path="res://shared/audio/bugle_zap.ogg" id="4_t1uy3"]
+[ext_resource type="Texture2D" uid="uid://dm4keq1leghk6" path="res://assets/enemies/projectiles/ufo_bullet/ufo_bullet.png" id="3_axa7f"]
+[ext_resource type="AudioStream" uid="uid://dkhfxl18c3uvv" path="res://assets/shared/audio/bugle_zap.ogg" id="4_t1uy3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nn3i"]
 atlas = ExtResource("3_axa7f")
